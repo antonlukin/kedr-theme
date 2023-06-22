@@ -1,0 +1,41 @@
+// Setup variables
+@import "config/variables";
+@import "config/mixins";
+
+// Import fonts
+@import "config/fonts";
+@import "config/reset";
+@import "config/animations";
+
+
+html {
+  color: var(--color-dark);
+  background-color: var(--color-background);
+}
+
+body {
+  display: block;
+
+  line-height: 1.375;
+  font-weight: normal;
+  font-family: var(--font-regular);
+
+  -webkit-text-size-adjust: none;
+
+  &.admin-bar #wpadminbar {
+    position: absolute;
+  }
+}
+
+::placeholder {
+  color: grey;
+}
+
+// Basic elements styles
+@import "basic/*.scss";
+
+// Layout elements styles
+@import "layout/*.scss";
+
+// Frame styles
+@import "frame/*.scss";

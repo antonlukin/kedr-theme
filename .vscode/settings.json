@@ -1,0 +1,6 @@
+{
+    "phpcs.executablePath": "./vendor/bin/phpcs",
+    "phpcs.enable": true,
+    "phpcbf.executablePath": "./vendor/bin/phpcbf",
+    "phpcbf.onsave": true
+}

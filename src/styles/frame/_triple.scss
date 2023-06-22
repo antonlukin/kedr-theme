@@ -1,0 +1,128 @@
+.frame-triple {
+  @include container;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--width-gap);
+  position: relative;
+
+  margin: 0 auto var(--width-gap);
+
+  .frame-triple__wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+    z-index: 0;
+
+    width: 100%;
+    padding-top: 75%;
+    overflow: hidden;
+
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    border-radius: var(--radius--frame);
+
+    &:hover .frame-triple__image {
+      filter: brightness(120%);
+    }
+  }
+
+  .frame-triple__image {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    width: 100%;
+    padding-top: 75%;
+    overflow: hidden;
+
+    transition: filter 0.25s;
+
+    .frame-triple__image-thumbnail {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      transition: opacity .25s;
+
+      -webkit-backface-visibility: hidden;
+    }
+  }
+
+  .frame-triple__content {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+
+    width: 100%;
+    height: 100%;
+    padding: 1.25rem;
+  }
+
+  .frame-triple__content-category {
+    display: inline-flex;
+    position: relative;
+    z-index: 2;
+
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    color: var(--color-primary);
+
+    a {
+      transition: filter 0.25s;
+    }
+
+    a:hover, a:focus {
+      filter: brightness(150%);
+    }
+  }
+
+  .frame-triple__content-link {
+    display: block;
+
+    margin-top: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.25;
+
+    @include full-after(1);
+  }
+
+  .frame-triple__content-excerpt {
+    display: block;
+
+    margin: 0.75rem 0 1.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .frame-triple__content-authors {
+    display: inline-flex;
+    position: relative;
+    z-index: 2;
+
+    margin-top: auto;
+    font-size: 0.875rem;
+
+    color: var(--color-dim);
+
+    a {
+      transition: color 0.25s;
+    }
+
+    a:hover, a:focus {
+      color: var(--color-dark);
+    }
+  }
+}

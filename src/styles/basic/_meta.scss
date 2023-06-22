@@ -1,0 +1,25 @@
+.meta {
+  display: inline-flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  & > * {
+    cursor: default;
+    display: inline-flex;
+
+    white-space: nowrap;
+    border-bottom: none;
+  }
+
+  & > a {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+
+    transition: filter 0.25s;
+
+    &:hover {
+      filter: brightness(120%);
+    }
+  }
+}

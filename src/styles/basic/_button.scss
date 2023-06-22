@@ -1,0 +1,25 @@
+.button {
+  cursor: pointer;
+  user-select: none;
+
+  padding: 0.625rem 1.25rem;
+
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+
+  color: var(--color-light);
+  background-color: var(--color-primary);
+  text-align: center;
+  text-decoration: none;
+
+  border: solid 0.125rem;
+  border-radius: 0.375rem;
+
+  transition: filter 0.25s;
+
+  &:hover {
+    filter: brightness(120%);
+  }
+}

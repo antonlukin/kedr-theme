@@ -1,0 +1,38 @@
+@mixin full-size($zindex: 2) {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: $zindex;
+
+  width: 100%;
+  height: 100%;
+}
+
+@mixin full-after($zindex: 2) {
+  &::after {
+    content: '';
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: $zindex;
+
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin container {
+  width: var(--width-site);
+  max-width: calc(100% - var(--width-gap) * 2);
+
+  @media screen and (max-width: 1023px) {
+    max-width: var(--width-content);
+  }
+
+  @media screen and (max-width: 479px) {
+    width: 100%;
+  }
+}
