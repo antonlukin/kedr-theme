@@ -87,7 +87,7 @@
 
         <?php
         printf(
-            '<a href="%s" class="header__donate button">%s</a>',
+            '<a class="header__donate button" href="%s">%s</a>',
             esc_url( home_url( '/donate/' ) ),
             esc_html__( 'Поддержать', 'kedr-theme' )
         );

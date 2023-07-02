@@ -36,8 +36,8 @@ class Kedr_Widget_Single extends WP_Widget {
 
         $query = new WP_Query(
             array(
-                'post_status'         => 'publish',
                 'posts_per_page'      => 1,
+                'post_status'         => 'publish',
                 'post_type'           => 'any',
                 'ignore_sticky_posts' => true,
                 'post__in'            => array( $post_id ),
@@ -49,7 +49,7 @@ class Kedr_Widget_Single extends WP_Widget {
 
             $query->the_post();
 
-            get_template_part( '/templates/frame-single' );
+            get_template_part( 'templates/widget-single' );
 
             set_query_var( 'widget_exclude', array_merge( $exclude, wp_list_pluck( $query->posts, 'ID' ) ) );
             wp_reset_postdata();
@@ -62,8 +62,9 @@ class Kedr_Widget_Single extends WP_Widget {
      * Sanitize widget form values as they are saved.
      */
     public function update( $new_instance, $old_instance ) {
-        $instance         = $old_instance;
-        $instance['link'] = sanitize_text_field( $new_instance['link'] );
+        $instance          = $old_instance;
+        $instance['title'] = sanitize_text_field( $new_instance['title'] );
+        $instance['link']  = sanitize_text_field( $new_instance['link'] );
 
         return $instance;
     }
@@ -73,10 +74,20 @@ class Kedr_Widget_Single extends WP_Widget {
      */
     public function form( $instance ) {
         $defaults = array(
-            'link' => '',
+            'title' => '',
+            'link'  => '',
         );
 
         $instance = wp_parse_args( (array) $instance, $defaults );
+
+        printf(
+            '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"><small>%5$s</small></p>',
+            esc_attr( $this->get_field_id( 'title' ) ),
+            esc_attr( $this->get_field_name( 'title' ) ),
+            esc_html__( 'Заголовок:', 'kedr-theme' ),
+            esc_attr( $instance['title'] ),
+            esc_html__( 'Не будет отображаться на странице', 'kedr-theme' )
+        );
 
         printf(
             '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"><small>%5$s</small></p>',

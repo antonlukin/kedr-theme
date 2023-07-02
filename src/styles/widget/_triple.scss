@@ -1,33 +1,33 @@
-.frame-double {
+.widget-triple {
   @include container;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--width-gap);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: var(--space-outer);
   position: relative;
 
-  margin: 0 auto var(--width-gap);
+  margin: 0 auto var(--space-outer);
 
-  .frame-double__wrapper {
+  .widget-triple__wrapper {
     display: flex;
     flex-flow: column nowrap;
     position: relative;
     z-index: 0;
 
     width: 100%;
-    padding-top: 55%;
+    padding-top: 75%;
     overflow: hidden;
 
     color: var(--color-dark);
     background-color: var(--color-light);
     border-radius: var(--radius--frame);
 
-    &:hover .frame-double__image {
+    &:hover .widget-triple__image {
       filter: brightness(120%);
     }
   }
 
-  .frame-double__image {
+  .widget-triple__image {
     display: block;
     position: absolute;
     top: 0;
@@ -35,12 +35,12 @@
     z-index: -1;
 
     width: 100%;
-    padding-top: 55%;
+    padding-top: 75%;
     overflow: hidden;
 
     transition: filter 0.25s;
 
-    .frame-double__image-thumbnail {
+    .widget-triple__image-thumbnail {
       display: block;
       position: absolute;
       top: 0;
@@ -58,17 +58,17 @@
     }
   }
 
-  .frame-double__content {
+  .widget-triple__content {
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-start;
 
     width: 100%;
     height: 100%;
-    padding: 1.25rem;
+    padding: var(--space-inner);
   }
 
-  .frame-double__content-category {
+  .widget-triple__content-category {
     display: inline-flex;
     position: relative;
     z-index: 2;
@@ -86,28 +86,39 @@
     a:hover, a:focus {
       filter: brightness(150%);
     }
+
+    @media screen and (max-width: 1023px) {
+      font-size: 0.75rem;
+    }
   }
 
-  .frame-double__content-link {
+  .widget-triple__content-title {
+    @include full-after(1);
+
     display: block;
 
     margin-top: 0.75rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     line-height: 1.25;
 
-    @include full-after(1);
+    @media screen and (max-width: 1023px) {
+      font-size: 1.125rem;
+    }
   }
 
-  .frame-double__content-excerpt {
+  .widget-triple__content-excerpt {
     display: block;
 
     margin: 0.75rem 0 1.5rem;
-    font-size: 1.25rem;
-    font-weight: 400;
+    font-size: 1rem;
+
+    @media screen and (max-width: 1023px) {
+      font-size: 0.875rem;
+    }
   }
 
-  .frame-double__content-authors {
+  .widget-triple__content-authors {
     display: inline-flex;
     position: relative;
     z-index: 2;
@@ -123,6 +134,10 @@
 
     a:hover, a:focus {
       color: var(--color-dark);
+    }
+
+    @media screen and (max-width: 1023px) {
+      font-size: 0.75rem;
     }
   }
 }

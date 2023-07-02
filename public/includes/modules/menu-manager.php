@@ -31,6 +31,7 @@ class Kedr_Menu_Manager {
             array(
                 'main'   => esc_html__( 'Меню в шапке сайта', 'kedr-theme' ),
                 'social' => esc_html__( 'Меню социальных ссылок', 'kedr-theme' ),
+                'footer' => esc_html__( 'Меню в подвале', 'kedr-theme' ),
             )
         );
     }

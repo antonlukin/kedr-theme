@@ -1,0 +1,141 @@
+.widget-video {
+  @include container;
+
+  display: block;
+  position: relative;
+
+  margin: 0 auto var(--space-outer);
+
+  .widget-video__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: var(--space-outer);
+
+    position: relative;
+    z-index: 0;
+
+    width: 100%;
+    padding: var(--space-inner);
+    overflow: hidden;
+
+    color: var(--color-light);
+    background-color: var(--color-primary);
+    border-radius: var(--radius--frame);
+
+    &:hover .widget-video__player {
+      filter: brightness(120%);
+    }
+  }
+
+  .widget-video__player {
+    display: block;
+    position: relative;
+    z-index: 4;
+
+    width: 100%;
+    padding-top: 62.5%;
+    overflow: hidden;
+
+    transition: filter 0.25s;
+    border-radius: var(--radius--frame);
+
+    .widget-video__player-thumbnail {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      transition: opacity .25s;
+
+      -webkit-backface-visibility: hidden;
+    }
+  }
+
+  .widget-video__content {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .widget-video__content-category {
+    display: inline-flex;
+    position: relative;
+    z-index: 2;
+
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    color: var(--color-muted);
+
+    a {
+      transition: color 0.25s;
+    }
+
+    a:hover, a:focus {
+      color: var(--color-light);
+    }
+
+    @media screen and (max-width: 1023px) {
+      font-size: 0.75rem;
+    }
+  }
+
+  .widget-video__content-title {
+    @include full-after(1);
+
+    display: block;
+
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+
+    @media screen and (max-width: 1023px) {
+      margin-top: 0.75rem;
+    }
+  }
+
+  .widget-video__content-excerpt {
+    display: block;
+
+    margin: 0.75rem 0;
+    font-size: 1.25rem;
+
+    @media screen and (max-width: 1023px) {
+      font-size: 1rem;
+    }
+  }
+
+  .widget-video__content-authors {
+    display: inline-flex;
+    position: relative;
+    z-index: 2;
+
+    margin-top: auto;
+    font-size: 0.875rem;
+
+    color: var(--color-muted);
+
+    a {
+      transition: color 0.25s;
+    }
+
+    a:hover, a:focus {
+      color: var(--color-light);
+    }
+
+    @media screen and (max-width: 1023px) {
+      font-size: 0.75rem;
+    }
+  }
+}

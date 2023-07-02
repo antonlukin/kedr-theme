@@ -26,10 +26,10 @@
 
 @mixin container {
   width: var(--width-site);
-  max-width: calc(100% - var(--width-gap) * 2);
+  max-width: calc(100% - var(--space-outer) * 2);
 
   @media screen and (max-width: 1023px) {
-    max-width: var(--width-content);
+    width: var(--width-content);
   }
 
   @media screen and (max-width: 479px) {

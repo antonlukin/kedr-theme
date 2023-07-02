@@ -55,7 +55,7 @@ class Kedr_Widget_Podcasts extends WP_Widget {
                 'counter' => 0,
             );
 
-            get_template_part( '/templates/frame-podcasts', null, $options );
+            get_template_part( 'templates/widget-podcasts', null, $options );
 
             echo $args['after_widget']; // phpcs:ignore
         }

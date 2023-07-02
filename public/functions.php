@@ -90,3 +90,4 @@ require get_template_directory() . '/includes/modules/menu-manager.php';
 require get_template_directory() . '/includes/modules/widgets-handler.php';
 require get_template_directory() . '/includes/modules/image-filters.php';
 require get_template_directory() . '/includes/modules/special-projects.php';
+require get_template_directory() . '/includes/modules/site-meta.php';

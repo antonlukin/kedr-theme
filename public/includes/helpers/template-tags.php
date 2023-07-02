@@ -12,13 +12,29 @@ if ( ! function_exists( 'the_post_info' ) ) :
      */
     function the_post_info( $option, $before = '', $after = '' ) {
         if ( $option === 'category' ) {
-            $category = get_the_category();
+            $categories = get_the_category();
+
+            if ( empty( $categories ) ) {
+                return null;
+            }
+
+            $category = $categories[0];
+
+            // Get only one category
+            $cat_id = $category->term_id;
+
+            if ( ! empty( $category->parent ) ) {
+                $ancestors = get_ancestors( $category->term_id, 'category' );
+
+                // Get top level category id
+                $cat_id = end( $ancestors );
+            }
 
             $output = sprintf(
                 '<a href="%s" title="%s">%s</a>',
-                esc_url( get_category_link( $category[0] ) ),
+                esc_url( get_category_link( $cat_id ) ),
                 esc_html__( 'Открыть все записи из категории', 'kedr-theme' ),
-                esc_html( $category[0]->name )
+                esc_html( get_cat_name( $cat_id ) )
             );
         }
 

@@ -54,7 +54,7 @@ class Kedr_Widget_Double extends WP_Widget {
             while ( $query->have_posts() ) {
                 $query->the_post();
 
-                get_template_part( '/templates/frame-double' );
+                get_template_part( 'templates/widget-double' );
             }
 
             wp_reset_postdata();

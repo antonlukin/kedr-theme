@@ -51,7 +51,7 @@ class Kedr_Widget_Special extends WP_Widget {
         if ( $query->have_posts() ) {
             echo $args['before_widget']; // phpcs:ignore
 
-            get_template_part( '/templates/frame-special', null, compact( 'term', 'query' ) );
+            get_template_part( 'templates/widget-special', null, compact( 'term', 'query' ) );
 
             echo $args['after_widget']; // phpcs:ignore
         }
@@ -80,7 +80,6 @@ class Kedr_Widget_Special extends WP_Widget {
 
         $instance = wp_parse_args( (array) $instance, $defaults );
 
-        // Widget title
         printf(
             '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"><small>%5$s</small></p>',
             esc_attr( $this->get_field_id( 'title' ) ),
@@ -102,11 +101,8 @@ class Kedr_Widget_Special extends WP_Widget {
             )
         );
 
-        printf(
-            '<p class="kedr-widget-termlist" id="%s">%s</p>',
-            esc_attr( $this->get_field_id( 'termlist' ) ),
-            $termlist // phpcs:ignore
-        );
+        // phpcs:ignore
+        printf( '<p id="%s">%s</p>', esc_attr( $this->get_field_id( 'termlist' ) ), $termlist );
     }
 
     /**

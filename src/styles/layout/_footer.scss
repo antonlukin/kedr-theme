@@ -1,0 +1,131 @@
+.footer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  width: 100%;
+  margin-top: calc(var(--space-outer) * 2);
+
+  .footer__inner {
+    @include container;
+
+    display: grid;
+    grid-template-areas: "logo description navbar service";
+    grid-template-columns: auto 1fr 1fr 12rem;
+    grid-gap: var(--space-outer);
+
+    padding: calc(var(--space-outer) * 2) 0;
+
+    border-top: 0.125rem solid var(--color-primary);
+
+    @media screen and (max-width: 1023px) {
+      grid-template-areas: "description navbar service";
+      grid-template-columns: 2fr 2fr 10.75rem;
+    }
+  }
+
+  .footer__logo {
+    grid-area: logo;
+
+    display: inline-flex;
+    align-self: flex-start;
+    position: relative;
+
+    width: 4.75rem;
+    padding-right: var(--space-inner);
+
+    .footer__logo-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    &:focus {
+      opacity: 70%;
+    }
+
+    &:active {
+      transform: translateY(0.075rem);
+    }
+
+    @media screen and (max-width: 1023px) {
+      display: none;
+    }
+  }
+
+  .footer__description {
+    grid-area: description;
+
+    display: block;
+    position: relative;
+
+    font-size: 0.875rem;
+    line-height: 1.5;
+
+    p {
+      margin: 0 0 1rem;
+
+      &:last-child {
+        margin: 0;
+      }
+
+      @media screen and (max-width: 1023px) {
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    a {
+      border-bottom: solid 0.1075rem var(--color-primary);
+      transition: border-bottom 0.25s;
+
+      &:hover {
+        border-bottom-color: transparent;
+      }
+
+      &:focus {
+        border-bottom-color: transparent;
+      }
+    }
+
+    @media screen and (max-width: 1023px) {
+      font-size: 0.8125rem;
+    }
+  }
+
+  .footer__navbar {
+    grid-area: navbar;
+
+    display: block;
+    position: relative;
+
+    .footer__navbar-menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 0.5rem;
+
+      @media screen and (max-width: 1023px) {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  .footer__service {
+    grid-area: service;
+
+    display: block;
+    position: relative;
+  }
+
+  .footer__social {
+    justify-content: space-between;
+  }
+
+  .footer__donate {
+    display: block;
+
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+}

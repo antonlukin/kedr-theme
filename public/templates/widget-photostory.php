@@ -1,48 +1,48 @@
 <?php
 /**
- * Frame template for single post
+ * Widget template for photostory post
  *
  * @package kedr-theme
  * @since 2.0
  */
 ?>
 
-<div class="frame-single__wrapper">
-    <div class="frame-single__image">
+<div class="widget-photostory__wrapper">
+    <div class="widget-photostory__image">
         <?php
         the_post_thumbnail(
             'single',
             array(
-                'class'   => 'frame-single__image-thumbnail',
+                'class'   => 'widget-photostory__image-thumbnail',
                 'loading' => 'lazy',
             )
         );
         ?>
     </div>
 
-    <div class="frame-single__content">
+    <div class="widget-photostory__content">
         <?php
         the_post_info(
             'category',
-            '<div class="frame-single__content-category">',
+            '<div class="widget-photostory__content-category">',
             '</div>'
         );
 
         printf(
-            '<a class="frame-single__content-link" href="%s">%s</a>',
+            '<a class="widget-photostory__content-title" href="%s">%s</a>',
             esc_url( get_permalink() ),
             esc_html( get_the_title() )
         );
 
         the_post_info(
             'excerpt',
-            '<div class="frame-single__content-excerpt">',
+            '<div class="widget-photostory__content-excerpt">',
             '</div>'
         );
 
         the_post_info(
             'authors',
-            '<div class="frame-single__content-authors">',
+            '<div class="widget-photostory__content-authors">',
             '</div>'
         );
         ?>

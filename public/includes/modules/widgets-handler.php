@@ -53,7 +53,7 @@ class Kedr_Widget_Handler {
                 'name'          => esc_html__( 'Главная страница', 'kedr-theme' ),
                 'id'            => 'kedr-frontal',
                 'description'   => esc_html__( 'Добавленные виджеты появятся на главной странице.', 'kedr-theme' ),
-                'before_widget' => '<div class="frame-%2$s">',
+                'before_widget' => '<div class="widget-%2$s">',
                 'after_widget'  => '</div>',
             )
         );

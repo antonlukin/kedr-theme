@@ -1,33 +1,37 @@
-.frame-triple {
+.widget-double {
   @include container;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--width-gap);
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--space-outer);
   position: relative;
 
-  margin: 0 auto var(--width-gap);
+  margin: 0 auto var(--space-outer);
 
-  .frame-triple__wrapper {
+  .widget-double__wrapper {
     display: flex;
     flex-flow: column nowrap;
     position: relative;
     z-index: 0;
 
     width: 100%;
-    padding-top: 75%;
+    padding-top: 55%;
     overflow: hidden;
 
     color: var(--color-dark);
     background-color: var(--color-light);
     border-radius: var(--radius--frame);
 
-    &:hover .frame-triple__image {
+    &:hover .widget-double__image {
       filter: brightness(120%);
+    }
+
+    @media screen and (max-width: 1023px) {
+      padding-top: 62.5%;
     }
   }
 
-  .frame-triple__image {
+  .widget-double__image {
     display: block;
     position: absolute;
     top: 0;
@@ -35,12 +39,12 @@
     z-index: -1;
 
     width: 100%;
-    padding-top: 75%;
+    padding-top: 55%;
     overflow: hidden;
 
     transition: filter 0.25s;
 
-    .frame-triple__image-thumbnail {
+    .widget-double__image-thumbnail {
       display: block;
       position: absolute;
       top: 0;
@@ -56,19 +60,23 @@
 
       -webkit-backface-visibility: hidden;
     }
+
+    @media screen and (max-width: 1023px) {
+      padding-top: 62.5%;
+    }
   }
 
-  .frame-triple__content {
+  .widget-double__content {
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-start;
 
     width: 100%;
     height: 100%;
-    padding: 1.25rem;
+    padding: var(--space-inner);
   }
 
-  .frame-triple__content-category {
+  .widget-double__content-category {
     display: inline-flex;
     position: relative;
     z-index: 2;
@@ -86,28 +94,40 @@
     a:hover, a:focus {
       filter: brightness(150%);
     }
+
+    @media screen and (max-width: 1023px) {
+      font-size: 0.75rem;
+    }
   }
 
-  .frame-triple__content-link {
+  .widget-double__content-title {
+    @include full-after(1);
+
     display: block;
 
     margin-top: 0.75rem;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     line-height: 1.25;
 
-    @include full-after(1);
+    @media screen and (max-width: 1023px) {
+      font-size: 1.375rem;
+      line-height: 1.375;
+    }
   }
 
-  .frame-triple__content-excerpt {
+  .widget-double__content-excerpt {
     display: block;
 
     margin: 0.75rem 0 1.5rem;
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 1.25rem;
+
+    @media screen and (max-width: 1023px) {
+      font-size: 1rem;
+    }
   }
 
-  .frame-triple__content-authors {
+  .widget-double__content-authors {
     display: inline-flex;
     position: relative;
     z-index: 2;
@@ -123,6 +143,10 @@
 
     a:hover, a:focus {
       color: var(--color-dark);
+    }
+
+    @media screen and (max-width: 1023px) {
+      font-size: 0.75rem;
     }
   }
 }

@@ -1,0 +1,55 @@
+.widget-mailing {
+  @include container;
+
+  display: block;
+  position: relative;
+
+  margin: 0 auto var(--space-outer);
+  padding: var(--space-inner);
+
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  border-radius: var(--radius--frame);
+
+  .widget-mailing__wrapper {
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    position: relative;
+
+    width: var(--width-content);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+
+    @media screen and (max-width: 1023px) {
+      padding: 0;
+    }
+  }
+
+  .widget-mailing__caption {
+    display: block;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    @media screen and (max-width: 1023px) {
+      font-size: 1.375rem;
+      line-height: 1.25;
+    }
+  }
+
+  .widget-mailing__form {
+    display: grid;
+    grid-template-columns: 1fr 12.75rem;
+    grid-gap: calc(var(--space-outer) / 2);
+    align-items: center;
+
+    width: 100%;
+    margin: 1rem 0 0.5rem;
+  }
+
+  .widget-mailing__form-input {
+    text-align: center;
+  }
+}
