@@ -25,6 +25,10 @@
     &:hover .widget-video__player {
       filter: brightness(120%);
     }
+
+    @media screen and (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .widget-video__player {
@@ -51,7 +55,7 @@
       object-fit: cover;
       object-position: center;
 
-      transition: opacity .25s;
+      transition: opacity 0.25s;
 
       -webkit-backface-visibility: hidden;
     }
@@ -103,12 +107,21 @@
     @media screen and (max-width: 1023px) {
       margin-top: 0.75rem;
     }
+
+    @media screen and (max-width: 767px) {
+      font-size: 1.375rem;
+      line-height: 1.375;
+    }
+
+    @media screen and (max-width: 479px) {
+      font-size: 1.25rem;
+    }
   }
 
   .widget-video__content-excerpt {
     display: block;
 
-    margin: 0.75rem 0;
+    margin: 0.75rem 0 1.5rem;
     font-size: 1.25rem;
 
     @media screen and (max-width: 1023px) {

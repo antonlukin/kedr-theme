@@ -20,4 +20,14 @@
     --space-outer: 1.125rem;
     --space-inner: 1.125rem;
   }
+
+  @media screen and (max-width: 767px) {
+    --space-outer: 1rem;
+    --space-inner: 1rem;
+  }
+
+  @media screen and (max-width: 479px) {
+    --space-outer: 0.875rem;
+    --space-inner: 0.875rem;
+  }
 }

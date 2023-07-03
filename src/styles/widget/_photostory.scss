@@ -46,13 +46,21 @@
       object-fit: cover;
       object-position: center;
 
-      transition: opacity .25s;
+      transition: opacity 0.25s;
 
       -webkit-backface-visibility: hidden;
     }
 
     @media screen and (max-width: 1023px) {
       padding-top: 55%;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding-top: 62.5%;
+    }
+
+    @media screen and (max-width: 479px) {
+      padding-top: 100%;
     }
   }
 
@@ -105,11 +113,16 @@
 
     font-size: 3.25rem;
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.075;
     text-align: center;
 
     @media screen and (max-width: 1023px) {
       font-size: 2.5rem;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 2rem;
+      line-height: 1.125;
     }
   }
 
@@ -118,7 +131,7 @@
 
     width: 100%;
     max-width: var(--width-content);
-    margin: 0.75rem 0;
+    margin: 0.75rem 0 0;
 
     font-size: 1.25rem;
     text-align: center;

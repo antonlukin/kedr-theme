@@ -24,6 +24,17 @@
       grid-template-areas: "description navbar service";
       grid-template-columns: 2fr 2fr 10.75rem;
     }
+
+    @media screen and (max-width: 767px) {
+      grid-template-areas: "navbar navbar" "description service";
+      grid-template-columns: 1fr 10.75rem;
+      grid-gap: calc(var(--space-outer) * 2);
+    }
+
+    @media screen and (max-width: 479px) {
+      grid-template-areas: "navbar" "service" "description";
+      grid-template-columns: 1fr;
+    }
   }
 
   .footer__logo {
@@ -92,6 +103,10 @@
     @media screen and (max-width: 1023px) {
       font-size: 0.8125rem;
     }
+
+    @media screen and (max-width: 479px) {
+      font-size: 0.75rem;
+    }
   }
 
   .footer__navbar {
@@ -108,6 +123,26 @@
       @media screen and (max-width: 1023px) {
         font-size: 0.875rem;
       }
+
+      @media screen and (max-width: 767px) {
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 0.5rem 1rem;
+
+        .menu__item {
+          margin: 0;
+        }
+      }
+
+      @media screen and (max-width: 479px) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 0.5rem 1rem;
+
+        font-size: 0.8125rem;
+      }
+
+      @media screen and (max-width: 359px) {
+        grid-template-columns: 1fr 1fr;
+      }
     }
   }
 
@@ -120,6 +155,10 @@
 
   .footer__social {
     justify-content: space-between;
+
+    @media screen and (max-width: 479px) {
+      justify-content: center;
+    }
   }
 
   .footer__donate {

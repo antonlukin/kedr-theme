@@ -39,7 +39,7 @@ if ( ! function_exists( 'the_post_info' ) ) :
         }
 
         if ( $option === 'authors' ) {
-            $output = coauthors_posts_links( ',', ',', null, null, false );
+            $output = coauthors_posts_links( ', ', ', ', null, null, false );
         }
 
         if ( $option === 'excerpt' ) {
