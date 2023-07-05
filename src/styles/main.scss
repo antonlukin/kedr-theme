@@ -22,7 +22,7 @@ body {
 
   -webkit-text-size-adjust: none;
 
-  &.admin-bar #wpadminbar {
+  &.is-adminbar #wpadminbar {
     position: absolute;
   }
 }
@@ -37,5 +37,8 @@ body {
 // Layout elements styles
 @import "layout/*.scss";
 
-// Widget styles
-@import "widget/*.scss";
+// Frame styles
+@import "frames/*.scss";
+
+// Entry styles
+@import "entry/*.scss";

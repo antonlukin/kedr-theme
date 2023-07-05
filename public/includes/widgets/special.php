@@ -51,7 +51,7 @@ class Kedr_Widget_Special extends WP_Widget {
         if ( $query->have_posts() ) {
             echo $args['before_widget']; // phpcs:ignore
 
-            get_template_part( 'templates/widget-special', null, compact( 'term', 'query' ) );
+            get_template_part( 'templates/frame', 'special', compact( 'term', 'query' ) );
 
             echo $args['after_widget']; // phpcs:ignore
         }

@@ -27,7 +27,7 @@ class Kedr_Widget_Mailing extends WP_Widget {
     public function widget( $args, $instance ) {
         echo $args['before_widget']; // phpcs:ignore
 
-        get_template_part( 'templates/widget-mailing' );
+        get_template_part( 'templates/frame', 'mailing' );
 
         echo $args['after_widget']; // phpcs:ignore
     }

@@ -6,7 +6,13 @@
  * @since 2.0
  */
 
+if ( ! defined( 'WPINC' ) ) {
+    die;
+}
 
+/**
+ * Remove class from coauthors links
+ */
 add_filter(
     'coauthors_posts_link',
     function( $args ) {

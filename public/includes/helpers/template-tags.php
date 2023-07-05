@@ -6,6 +6,10 @@
  * @since 2.0
  */
 
+if ( ! defined( 'WPINC' ) ) {
+    die;
+}
+
 if ( ! function_exists( 'the_post_info' ) ) :
     /**
      * Public templates function to show post info option like category or authors

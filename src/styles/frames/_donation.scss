@@ -1,0 +1,13 @@
+.frame-donation {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  .frame-donation__button {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+  }
+}

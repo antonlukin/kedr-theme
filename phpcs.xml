@@ -7,7 +7,6 @@
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
         <exclude name="WordPress.PHP.YodaConditions"/>
         <exclude name="WordPress.WP.I18n.MissingTranslatorsComment"/>
-        <exclude name="WordPress.Security.NonceVerification"/>
     </rule>
     <rule ref="Generic.WhiteSpace.ScopeIndent">
         <properties>

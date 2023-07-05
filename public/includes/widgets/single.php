@@ -49,7 +49,7 @@ class Kedr_Widget_Single extends WP_Widget {
 
             $query->the_post();
 
-            get_template_part( 'templates/widget-single' );
+            get_template_part( 'templates/frame', 'single' );
 
             set_query_var( 'widget_exclude', array_merge( $exclude, wp_list_pluck( $query->posts, 'ID' ) ) );
             wp_reset_postdata();

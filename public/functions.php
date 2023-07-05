@@ -73,6 +73,9 @@ add_action(
 
         // Let WordPress manage cutsom background
         add_theme_support( 'custom-background', array( 'wp-head-callback' => '__return_false' ) );
+
+        // Add custom post formats support
+        add_theme_support( 'post-formats', array( 'gallery', 'video' ) );
     }
 );
 
@@ -86,8 +89,10 @@ require get_template_directory() . '/includes/helpers/plugin-filters.php';
 /**
  * Include theme core modules
  */
-require get_template_directory() . '/includes/modules/menu-manager.php';
-require get_template_directory() . '/includes/modules/widgets-handler.php';
-require get_template_directory() . '/includes/modules/image-filters.php';
-require get_template_directory() . '/includes/modules/special-projects.php';
-require get_template_directory() . '/includes/modules/site-meta.php';
+require get_template_directory() . '/includes/classes/class-menu-filters.php';
+require get_template_directory() . '/includes/classes/class-widgets-filters.php';
+require get_template_directory() . '/includes/classes/class-image-filters.php';
+require get_template_directory() . '/includes/classes/class-special-filters.php';
+require get_template_directory() . '/includes/classes/class-meta-filters.php';
+require get_template_directory() . '/includes/classes/class-theme-filters.php';
+require get_template_directory() . '/includes/classes/class-news-filters.php';

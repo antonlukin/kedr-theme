@@ -1,0 +1,13 @@
+.entry-inpost {
+  display: block;
+
+  width: 100%;
+  padding: 0 0 1rem;
+
+  & > * {
+    width: var(--width-content);
+    max-width: calc(100% - 2rem);
+
+    margin: 0 auto 1.5rem;
+  }
+}

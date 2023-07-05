@@ -1,0 +1,68 @@
+.frame-mailing {
+  @include container;
+
+  display: block;
+  position: relative;
+
+  margin: var(--space-outer) auto 0;
+  padding: var(--space-inner);
+
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  border-radius: var(--radius-frame);
+
+  .frame-mailing__wrapper {
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    position: relative;
+
+    width: var(--width-content);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+
+    @media screen and (max-width: 1023px) {
+      padding: 0;
+    }
+  }
+
+  .frame-mailing__caption {
+    display: block;
+
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    @media screen and (max-width: 767px) {
+      font-size: 1.375rem;
+      line-height: 1.375;
+    }
+
+    @media screen and (max-width: 479px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .frame-mailing__form {
+    display: grid;
+    grid-template-columns: 1fr 12.75rem;
+    grid-gap: calc(var(--space-outer) / 2);
+    align-items: center;
+
+    width: 100%;
+    margin: 1rem 0 0.5rem;
+
+    @media screen and (max-width: 767px) {
+      grid-template-columns: 1fr 10rem;
+    }
+
+    @media screen and (max-width: 479px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .frame-mailing__form-input {
+    text-align: center;
+  }
+}

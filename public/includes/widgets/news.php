@@ -53,14 +53,13 @@ class Kedr_Widget_News extends WP_Widget {
 
             while ( $featured && $featured->have_posts() ) {
                 $featured->the_post();
-
-                get_template_part( 'templates/widget-news', null, array( 'class' => 'featured' ) );
+                get_template_part( 'templates/frame', 'news', array( 'class' => 'featured' ) );
             }
 
             while ( $common->have_posts() ) {
                 $common->the_post();
 
-                get_template_part( 'templates/widget-news', null, array( 'class' => 'common' ) );
+                get_template_part( 'templates/frame', 'news', array( 'class' => 'common' ) );
             }
 
             wp_reset_postdata();

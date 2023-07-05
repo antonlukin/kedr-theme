@@ -57,8 +57,7 @@ class Kedr_Widget_Video extends WP_Widget {
 
             while ( $query->have_posts() ) {
                 $query->the_post();
-
-                get_template_part( 'templates/widget-video' );
+                get_template_part( 'templates/frame', 'video' );
             }
 
             wp_reset_postdata();

@@ -53,8 +53,7 @@ class Kedr_Widget_Triple extends WP_Widget {
 
             while ( $query->have_posts() ) {
                 $query->the_post();
-
-                get_template_part( 'templates/widget-triple' );
+                get_template_part( 'templates/frame', 'triple' );
             }
 
             wp_reset_postdata();

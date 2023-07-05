@@ -1,0 +1,14 @@
+.post {
+  @include container;
+
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+
+  margin: var(--space-outer) auto 0;
+
+  color: var(--color-dark);
+  background-color: var(--color-light);
+
+  border-radius: var(--radius-frame);
+}

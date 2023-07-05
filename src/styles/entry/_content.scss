@@ -1,0 +1,23 @@
+.entry-content {
+  display: block;
+
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0 0.5rem;
+
+  font-family: var(--font-content);
+  font-size: 1.125rem;
+  line-height: 1.5;
+
+  & > * {
+    width: var(--width-content);
+    max-width: calc(100% - 2rem);
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  p {
+    margin: 0 auto var(--space-content);
+  }
+}

@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages
+ * The template for displaying news archive
  *
  * @package kedr-theme
  * @since 2.0
@@ -17,11 +17,11 @@ get_header(); ?>
 <?php endif; ?>
 
 <?php if ( have_posts() ) : ?>
-    <section class="frame-double">
+    <section class="frame-news frame-news--archive">
         <?php
         while ( have_posts() ) :
             the_post();
-            get_template_part( 'templates/frame', 'double' );
+            get_template_part( 'templates/frame', 'news', array( 'class' => 'common' ) );
         endwhile;
         ?>
     </section>

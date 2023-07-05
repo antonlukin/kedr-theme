@@ -1,0 +1,21 @@
+.frame-banner {
+  display: block;
+  position: relative;
+
+  .frame-banner__link {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    overflow: hidden;
+
+    border-radius: var(--radius-frame);
+  }
+
+  .frame-banner__image {
+    display: block;
+    position: relative;
+
+    width: 100%;
+  }
+}
