@@ -12,9 +12,7 @@ get_header(); ?>
     <?php
     while ( have_posts() ) :
         the_post();
-
-        // The function get_the_partial is defined in template-tags.php
-        get_template_part( 'templates/content', get_post_format() );
+        get_template_part( 'templates/content', 'news' );
     endwhile;
 
     if ( is_active_sidebar( 'kedr-bottom' ) ) :

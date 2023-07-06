@@ -1,14 +1,21 @@
 .post {
   @include container;
 
-  display: flex;
-  flex-flow: column nowrap;
+  display: block;
   position: relative;
 
   margin: var(--space-outer) auto 0;
 
   color: var(--color-dark);
   background-color: var(--color-light);
-
   border-radius: var(--radius-frame);
+
+  &.post--gallery .entry-header__thumbnail {
+    flex: 1 1 100%;
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 }

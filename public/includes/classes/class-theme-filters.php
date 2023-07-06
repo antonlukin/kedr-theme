@@ -18,6 +18,7 @@ class Kedr_Theme_Filters {
     public static function load_module() {
         add_filter( 'get_the_archive_title', array( __CLASS__, 'update_archive_title' ) );
         add_filter( 'body_class', array( __CLASS__, 'update_body_classes' ) );
+        add_filter( 'post_class', array( __CLASS__, 'update_post_classes' ), 10, 2 );
         add_action( 'sanitize_file_name', array( __CLASS__, 'sanitize_file_name' ), 12 );
         add_action( 'next_posts_link_attributes', array( __CLASS__, 'update_next_posts_link' ) );
 
@@ -58,6 +59,25 @@ class Kedr_Theme_Filters {
         }
 
         return $classes;
+    }
+
+    /**
+     * Set custom post classes using only post format
+     */
+    public static function update_post_classes( $classes, $name ) {
+        $type = get_post_type();
+
+        if ( post_type_supports( $type, 'post-formats' ) ) {
+            $type = has_post_format() ? get_post_format() : 'standart';
+        }
+
+        $name[] = 'post--' . $type;
+
+        if ( has_post_thumbnail() ) {
+            $name[] = 'post--thumbnail';
+        }
+
+        return $name;
     }
 
     /**

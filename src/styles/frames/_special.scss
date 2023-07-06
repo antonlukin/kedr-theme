@@ -52,8 +52,8 @@
   .frame-special__caption-description {
     display: block;
 
-    width: var(--width-content);
-    max-width: 100%;
+    width: 100%;
+    max-width: var(--width-content);
     margin: 0.5rem 0;
 
     font-size: 1.25rem;

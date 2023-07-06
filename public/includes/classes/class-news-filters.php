@@ -25,6 +25,7 @@ class Kedr_News_Filters {
      */
     public static function load_module() {
         add_filter( 'archive_template', array( __CLASS__, 'include_archive' ) );
+        add_filter( 'single_template', array( __CLASS__, 'include_single' ) );
         add_action( 'pre_get_posts', array( __CLASS__, 'update_count' ) );
     }
 
@@ -34,6 +35,21 @@ class Kedr_News_Filters {
     public static function include_archive( $template ) {
         if ( ! is_feed() && is_category( self::$news_slug ) ) {
             $new_template = locate_template( array( 'templates/archive-news.php' ) );
+
+            if ( ! empty( $new_template ) ) {
+                return $new_template;
+            }
+        }
+
+        return $template;
+    }
+
+    /**
+     * Include custom single template for news
+     */
+    public static function include_single( $template ) {
+        if ( ! is_feed() && in_category( self::$news_slug ) ) {
+            $new_template = locate_template( array( 'templates/single-news.php' ) );
 
             if ( ! empty( $new_template ) ) {
                 return $new_template;

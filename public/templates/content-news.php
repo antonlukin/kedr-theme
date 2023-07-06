@@ -1,6 +1,6 @@
 <?php
 /**
- * Gallery post format content
+ * Standart post format content
  *
  * @package kedr-theme
  * @since 2.0
@@ -8,52 +8,38 @@
 ?>
 
 <article <?php post_class( 'post' ); ?> id="post-<?php the_ID(); ?>">
-    <div class="entry-feature">
-        <?php if ( has_post_thumbnail() ) : ?>
-            <div class="entry-feature__thumbnail">
-                <?php
-                the_post_thumbnail(
-                    'single',
-                    array(
-                        'class'   => 'entry-feature__thumbnail-image',
-                        'loading' => 'lazy',
-                    )
-                );
-                ?>
-            </div>
-        <?php endif; ?>
-
-        <div class="entry-feature__wrapper">
+    <div class="entry-header">
+        <div class="entry-header__wrapper">
             <?php
             the_post_info(
                 'category',
-                '<div class="entry-feature__category">',
+                '<div class="entry-header__category">',
                 '</div>'
             );
 
             the_title(
-                '<h1 class="entry-feature__title">',
+                '<h1 class="entry-header__title">',
                 '</h1>'
             );
 
             the_post_info(
                 'excerpt',
-                '<div class="entry-feature__excerpt">',
+                '<div class="entry-header__excerpt">',
                 '</div>'
             );
             ?>
 
-            <div class="entry-feature__meta">
+            <div class="entry-header__meta">
                 <?php
                 the_post_info(
                     'date',
-                    '<span class="entry-feature__meta-date">',
+                    '<span class="entry-header__meta-date">',
                     '</span>'
                 );
 
                 the_post_info(
                     'authors',
-                    '<span class="entry-feature__meta-authors">',
+                    '<span class="entry-header__meta-authors">',
                     '</span>'
                 );
                 ?>

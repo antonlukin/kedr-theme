@@ -46,7 +46,7 @@ if ( ! function_exists( 'the_post_info' ) ) :
             $output = coauthors_posts_links( ', ', ', ', null, null, false );
         }
 
-        if ( $option === 'excerpt' ) {
+        if ( $option === 'excerpt' && has_excerpt() ) {
             $output = apply_filters( 'the_excerpt', get_the_excerpt() );
         }
 
@@ -59,5 +59,23 @@ if ( ! function_exists( 'the_post_info' ) ) :
 
             echo $output; // phpcs:ignore WordPress.Security.EscapeOutput
         }
+    }
+endif;
+
+
+if ( ! function_exists( 'get_the_partial' ) ) :
+    /**
+     * Public templates function to get correct partial according post format and post thumbnail
+     */
+    function get_the_partial() {
+        if ( has_post_format() ) {
+            return get_post_format();
+        }
+
+        if ( has_post_thumbnail() ) {
+            return 'article';
+        }
+
+        return null;
     }
 endif;
