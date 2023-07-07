@@ -7,7 +7,7 @@
  */
 ?>
 
-<article <?php post_class( 'post' ); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class( 'post post--news' ); ?> id="post-<?php the_ID(); ?>">
     <div class="entry-header">
         <div class="entry-header__wrapper">
             <?php

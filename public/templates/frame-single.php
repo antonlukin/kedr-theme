@@ -8,7 +8,7 @@
 ?>
 
 <div class="frame-single__wrapper">
-    <div class="frame-single__image">
+    <figure class="frame-single__image">
         <?php
         the_post_thumbnail(
             'single',
@@ -18,7 +18,7 @@
             )
         );
         ?>
-    </div>
+    </figure>
 
     <div class="frame-single__content">
         <?php

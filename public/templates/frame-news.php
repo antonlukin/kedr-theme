@@ -9,7 +9,7 @@
 
 <div class="frame-news__content frame-news__content--<?php echo esc_attr( $args['class'] ); ?>">
     <?php if ( has_post_thumbnail() && $args['class'] === 'featured' ) : ?>
-        <div class="frame-news__image">
+        <figure class="frame-news__image">
             <?php
             the_post_thumbnail(
                 'card',
@@ -19,7 +19,7 @@
                 )
             );
             ?>
-        </div>
+        </figure>
     <?php endif; ?>
 
     <?php

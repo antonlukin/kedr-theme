@@ -20,13 +20,17 @@
 
     width: 100%;
     height: 100%;
-    padding: var(--space-inner);
+    padding: var(--space-outer) calc(var(--space-outer) * 2);
 
     color: var(--color-light);
     background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.85) 100%);
+
+    @media screen and (max-width: 767px) {
+      padding: var(--space-outer);
+    }
   }
 
-  .entry-feature__thumbnail {
+  .entry-feature__image {
     display: block;
     position: relative;
 
@@ -36,7 +40,7 @@
 
     border-radius: var(--radius-frame);
 
-    .entry-feature__thumbnail-image {
+    .entry-feature__image-thumbnail {
       display: block;
       position: absolute;
       top: 0;
@@ -55,7 +59,17 @@
 
     @media screen and (max-width: 1023px) {
       order: 2;
+
       margin-right: 0;
+      padding-top: 55%;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding-top: 62.5%;
+    }
+
+    @media screen and (max-width: 479px) {
+      padding-top: 100%;
     }
   }
 
@@ -79,7 +93,7 @@
     }
 
     @media screen and (max-width: 1023px) {
-      font-size: 0.75rem;
+      font-size: 0.8125rem;
     }
   }
 
@@ -125,6 +139,8 @@
 
   .entry-feature__meta {
     display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: center;
     position: relative;
     z-index: 2;
 
@@ -141,28 +157,29 @@
       color: var(--color-light);
     }
 
-    @media screen and (max-width: 1023px) {
-      margin-top: 0.75rem;
-      font-size: 0.75rem;
-    }
-  }
-
-  .entry-feature__meta-date {
-    cursor: default;
-
-    display: inline-flex;
-    position: relative;
-
-    &::after {
+    & > ::after {
       content: '•';
 
       display: inline-flex;
       margin: 0 0.5rem;
     }
+
+    & > :last-child::after {
+      display: none;
+    }
+
+    @media screen and (max-width: 1023px) {
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+    }
+  }
+
+  .entry-feature__meta-date {
+    cursor: default;
+    position: relative;
   }
 
   .entry-feature__meta-authors {
-    display: inline-flex;
     position: relative;
 
     a {
@@ -174,7 +191,12 @@
     }
   }
 
+  .entry-feature__meta-caption {
+    cursor: default;
+  }
+
   @media screen and (max-width: 1023px) {
     flex-flow: column nowrap;
+    position: relative;
   }
 }

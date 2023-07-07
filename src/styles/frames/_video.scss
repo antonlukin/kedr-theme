@@ -90,7 +90,7 @@
     }
 
     @media screen and (max-width: 1023px) {
-      font-size: 0.75rem;
+      font-size: 0.8125rem;
     }
   }
 
@@ -127,6 +127,10 @@
     @media screen and (max-width: 1023px) {
       font-size: 1rem;
     }
+
+    @media screen and (max-width: 479px) {
+      margin: 0.5rem 0 1rem;
+    }
   }
 
   .frame-video__content-authors {
@@ -148,7 +152,7 @@
     }
 
     @media screen and (max-width: 1023px) {
-      font-size: 0.75rem;
+      font-size: 0.8125rem;
     }
   }
 }

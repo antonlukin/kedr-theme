@@ -8,7 +8,7 @@
 ?>
 
 <div class="frame-double__wrapper">
-    <div class="frame-double__image">
+    <figure class="frame-double__image">
         <?php
         the_post_thumbnail(
             'card',
@@ -18,7 +18,7 @@
             )
         );
         ?>
-    </div>
+    </figure>
 
     <div class="frame-double__content">
         <?php

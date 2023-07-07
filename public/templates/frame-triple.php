@@ -8,7 +8,7 @@
 ?>
 
 <div class="frame-triple__wrapper">
-    <div class="frame-triple__image">
+    <figure class="frame-triple__image">
         <?php
         the_post_thumbnail(
             'card',
@@ -18,7 +18,7 @@
             )
         );
         ?>
-    </div>
+    </figure>
 
     <div class="frame-triple__content">
         <?php

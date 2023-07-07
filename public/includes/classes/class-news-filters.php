@@ -18,7 +18,7 @@ class Kedr_News_Filters {
      * @access  public
      * @var     string
      */
-    public static $news_slug = 'news';
+    public static $slug = 'news';
 
     /**
      * Init function instead of constructor
@@ -27,13 +27,14 @@ class Kedr_News_Filters {
         add_filter( 'archive_template', array( __CLASS__, 'include_archive' ) );
         add_filter( 'single_template', array( __CLASS__, 'include_single' ) );
         add_action( 'pre_get_posts', array( __CLASS__, 'update_count' ) );
+        add_action( 'pre_get_posts', array( __CLASS__, 'remove_from_authors' ) );
     }
 
     /**
      * Include custom archive template for news
      */
     public static function include_archive( $template ) {
-        if ( ! is_feed() && is_category( self::$news_slug ) ) {
+        if ( ! is_feed() && is_category( self::$slug ) ) {
             $new_template = locate_template( array( 'templates/archive-news.php' ) );
 
             if ( ! empty( $new_template ) ) {
@@ -48,7 +49,7 @@ class Kedr_News_Filters {
      * Include custom single template for news
      */
     public static function include_single( $template ) {
-        if ( ! is_feed() && in_category( self::$news_slug ) ) {
+        if ( ! is_feed() && in_category( self::$slug ) ) {
             $new_template = locate_template( array( 'templates/single-news.php' ) );
 
             if ( ! empty( $new_template ) ) {
@@ -63,8 +64,25 @@ class Kedr_News_Filters {
      * Change posts_per_page for news category archive template
      */
     public static function update_count( $query ) {
-        if ( $query->is_main_query() && get_query_var( 'category_name' ) === self::$news_slug ) {
+        if ( $query->is_main_query() && get_query_var( 'category_name' ) === self::$slug ) {
             $query->set( 'posts_per_page', 18 );
+        }
+    }
+
+    /**
+     * Remove news from authors archive
+     */
+    public static function remove_from_authors( $query ) {
+        if ( $query->is_main_query() && $query->is_author() ) {
+
+            $query->tax_query->queries[] = array(
+                'taxonomy' => 'category',
+                'field'    => 'slug',
+                'terms'    => self::$slug,
+                'operator' => 'NOT IN',
+            );
+
+            $query->query_vars['tax_query'] = $query->tax_query->queries; // phpcs:ignore
         }
     }
 }

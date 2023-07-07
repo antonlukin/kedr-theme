@@ -54,6 +54,16 @@ if ( ! function_exists( 'the_post_info' ) ) :
             $output = get_the_date();
         }
 
+        $caption = get_the_post_thumbnail_caption();
+
+        if ( $option === 'caption' && ! empty( $caption ) ) {
+            $output = esc_html( $caption );
+        }
+
+        if ( $option === 'photocaption' && ! empty( $caption ) ) {
+            $output = esc_html( __( 'Фото: ', 'kedr-theme' ) . $caption );
+        }
+
         if ( ! empty( $output ) ) {
             $output = $before . $output . $after;
 

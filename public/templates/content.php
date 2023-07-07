@@ -47,17 +47,23 @@
         </div>
 
         <?php if ( has_post_thumbnail() ) : ?>
-            <div class="entry-header__thumbnail">
+            <figure class="entry-header__image">
                 <?php
                 the_post_thumbnail(
                     'single',
                     array(
-                        'class'   => 'entry-header__thumbnail-image',
+                        'class'   => 'entry-header__image-thumbnail',
                         'loading' => 'lazy',
                     )
                 );
+
+                the_post_info(
+                    'caption',
+                    '<figcaption class="entry-header__image-caption">',
+                    '</figcaption>'
+                );
                 ?>
-            </div>
+            </figure>
         <?php endif; ?>
     </div>
 

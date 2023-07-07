@@ -67,11 +67,13 @@ class Kedr_Theme_Filters {
     public static function update_post_classes( $classes, $name ) {
         $type = get_post_type();
 
-        if ( post_type_supports( $type, 'post-formats' ) ) {
-            $type = has_post_format() ? get_post_format() : 'standart';
+        if ( $type !== 'post' ) {
+            $name[] = 'post--' . $type;
         }
 
-        $name[] = 'post--' . $type;
+        if ( has_post_format() ) {
+            $name[] = 'post--' . get_post_format();
+        }
 
         if ( has_post_thumbnail() ) {
             $name[] = 'post--thumbnail';

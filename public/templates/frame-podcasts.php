@@ -23,7 +23,7 @@
             <?php $args['query']->the_post(); ?>
 
             <div class="frame-podcasts__item">
-                <div class="frame-podcasts__image">
+                <figure class="frame-podcasts__image">
                     <?php
                     the_post_thumbnail(
                         'card',
@@ -33,7 +33,7 @@
                         )
                     );
                     ?>
-                </div>
+                </figure>
 
                 <div class="frame-podcasts__content">
                     <?php

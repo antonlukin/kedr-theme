@@ -15,6 +15,18 @@
     margin-right: 0;
   }
 
+  &.post--page .entry-header {
+    padding-bottom: 0;
+  }
+
+  &.post--page .entry-content {
+    padding-bottom: calc(var(--space-outer) * 2);
+  }
+
+  &.post--news .entry-header {
+    padding-bottom: 0;
+  }
+
   @media screen and (max-width: 767px) {
     width: 100%;
   }

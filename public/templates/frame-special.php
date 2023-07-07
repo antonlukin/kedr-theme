@@ -28,7 +28,7 @@
             <?php $args['query']->the_post(); ?>
 
             <div class="frame-special__item">
-                <div class="frame-special__image">
+                <figure class="frame-special__image">
                     <?php
                     the_post_thumbnail(
                         'card',
@@ -38,7 +38,7 @@
                         )
                     );
                     ?>
-                </div>
+                </figure>
 
                 <div class="frame-special__content">
                     <?php

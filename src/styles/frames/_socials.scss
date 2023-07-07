@@ -5,7 +5,7 @@
   justify-content: center;
 
   width: 100%;
-  padding: 2rem;
+  padding: calc(var(--space-inner) * 1.5) var(--space-inner);
 
   background-color: var(--color-background);
   border-radius: var(--radius-frame);
@@ -35,10 +35,14 @@
   }
 
   .frame-socials__menu .social__item {
-    margin: 0.25rem 1rem;
+    margin: 0.5rem 1rem;
 
     font-weight: 600;
     line-height: 1.25;
+
+    @media screen and (max-width: 767px) {
+      margin: 0.375rem 0.75rem;
+    }
   }
 
   .frame-socials__menu .social__item-link {

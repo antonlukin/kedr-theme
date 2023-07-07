@@ -10,17 +10,17 @@
 <article <?php post_class( 'post' ); ?> id="post-<?php the_ID(); ?>">
     <div class="entry-feature">
         <?php if ( has_post_thumbnail() ) : ?>
-            <div class="entry-feature__thumbnail">
+            <figure class="entry-feature__image">
                 <?php
                 the_post_thumbnail(
                     'single',
                     array(
-                        'class'   => 'entry-feature__thumbnail-image',
+                        'class'   => 'entry-feature__image-thumbnail',
                         'loading' => 'lazy',
                     )
                 );
                 ?>
-            </div>
+            </figure>
         <?php endif; ?>
 
         <div class="entry-feature__wrapper">
@@ -54,6 +54,12 @@
                 the_post_info(
                     'authors',
                     '<span class="entry-feature__meta-authors">',
+                    '</span>'
+                );
+
+                the_post_info(
+                    'photocaption',
+                    '<span class="entry-feature__meta-caption">',
                     '</span>'
                 );
                 ?>

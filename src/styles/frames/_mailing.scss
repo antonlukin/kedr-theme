@@ -65,4 +65,12 @@
   .frame-mailing__form-input {
     text-align: center;
   }
+
+  @media screen and (max-width: 1023px) {
+    &.frame-mailing--bottom {
+      padding-left: 0;
+      padding-right: 0;
+      background-color: transparent;
+    }
+  }
 }
