@@ -2,7 +2,7 @@
   display: block;
 
   width: 100%;
-  padding: var(--space-outer) calc(var(--space-outer) * 2);
+  padding: var(--space-outer);
 
   font-family: var(--font-content);
   font-size: 1.1875rem;
@@ -18,6 +18,11 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+
+  @media screen and (max-width: 1023px) {
+    padding: var(--space-outer) calc(var(--space-outer) * 2);
   }
 
   @media screen and (max-width: 767px) {

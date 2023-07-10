@@ -3,7 +3,7 @@
   flex-flow: row nowrap;
 
   width: 100%;
-  padding: var(--space-outer) calc(var(--space-outer) * 2);
+  padding: var(--space-outer);
 
   .entry-header__wrapper {
     flex: 1 1 auto;
@@ -45,7 +45,7 @@
       border-radius: var(--radius-frame);
     }
 
-    .entry-header__thumbnail-caption {
+    .entry-header__image-caption {
       cursor: default;
 
       display: block;
@@ -161,6 +161,7 @@
   }
 
   @media screen and (max-width: 1023px) {
+    padding: var(--space-outer) calc(var(--space-outer) * 2);
     flex-flow: column nowrap;
   }
 

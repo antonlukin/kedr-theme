@@ -2,13 +2,18 @@
   display: block;
 
   width: 100%;
-  padding: var(--space-outer) calc(var(--space-outer) * 2);
+  padding: var(--space-outer);
 
   & > * {
     width: 100%;
     max-width: var(--width-content);
 
     margin: 0 auto 1.5rem;
+  }
+
+  @media screen and (max-width: 1023px) {
+    padding: var(--space-outer) calc(var(--space-outer) * 2);
+    flex-flow: column nowrap;
   }
 
   @media screen and (max-width: 767px) {

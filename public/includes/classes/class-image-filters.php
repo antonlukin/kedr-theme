@@ -43,10 +43,8 @@ class Kedr_Image_Filters {
     /**
      * Filters the maximum image width to be included in a 'srcset' attribute
      */
-    public static function set_srcset_width( $width ) {
-        $width = 1200;
-
-        return $width;
+    public static function set_srcset_width() {
+        return 1200;
     }
 
     /**
