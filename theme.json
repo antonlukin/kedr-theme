@@ -1,0 +1,237 @@
+{
+  "version": 2,
+  "settings": {
+    "layout": {
+      "contentSize": "730px",
+      "wideSize": "100%"
+    },
+    "color": {
+      "palette": [
+        {
+          "name": "Кедр",
+          "slug": "primary",
+          "color": "#34815E"
+        },
+        {
+          "name": "Кедр ПП",
+          "slug": "overlay-primary",
+          "color": "#34815E70"
+        },
+        {
+          "name": "Альтернативный",
+          "slug": "secondary",
+          "color": "#E9E9E6"
+        },
+        {
+          "name": "Контрастный",
+          "slug": "light",
+          "color": "#888888"
+        },
+        {
+          "name": "Фоновый",
+          "slug": "gray",
+          "color": "#EFEDED"
+        },
+        {
+          "name": "Темный",
+          "slug": "dark",
+          "color": "#262626"
+        },
+        {
+          "name": "Черный",
+          "slug": "black",
+          "color": "#000000"
+        },
+        {
+          "name": "Белый",
+          "slug": "white",
+          "color": "#ffffff"
+        },
+        {
+          "name": "",
+          "slug": "overlay-dark",
+          "color": "#262626b3"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "name": "Lora",
+          "slug": "lora",
+          "fontFamily": "Lora",
+          "fontFace": [
+            {
+              "fontFamily": "Lora",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "fontStretch": "normal",
+              "src": [ "file:./assets/fonts/local/Lora-Regular.woff2" ]
+            },
+            {
+              "fontFamily": "Lora",
+              "fontWeight": "600",
+              "fontStyle": "normal",
+              "fontStretch": "normal",
+              "src": [ "file:./assets/fonts/local/Lora-Bold.woff2" ]
+            }
+          ]
+        },
+        {
+          "name": "Raleway",
+          "slug": "raleway",
+          "fontFamily": "Raleway",
+          "fontFace": [
+            {
+              "fontFamily": "Raleway",
+              "fontWeight": "300",
+              "fontStyle": "normal",
+              "fontStretch": "normal",
+              "src": [
+                "file:./assets/fonts/local/Raleway-Light.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Raleway",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "fontStretch": "normal",
+              "src": [
+                "file:./assets/fonts/local/Raleway-Regular.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Raleway",
+              "fontWeight": "600",
+              "fontStyle": "normal",
+              "fontStretch": "normal",
+              "src": [
+                "file:./assets/fonts/local/Raleway-Semibold.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Raleway",
+              "fontWeight": "700",
+              "fontStyle": "normal",
+              "fontStretch": "normal",
+              "src": [
+                "file:./assets/fonts/local/Raleway-Bold.woff2"
+              ]
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        {
+          "name": "Нормальный",
+          "slug": "normal",
+          "size": "16px"
+        },
+        {
+          "name": "Подзаголовок",
+          "slug": "subtitle",
+          "size": "24px"
+        },
+        {
+          "name": "Заголовок",
+          "slug": "title",
+          "size": "32px"
+        }
+      ]
+    },
+    "blocks": {
+      "core/paragraph": {
+        "typography": {
+          "fontFamilies": [
+            {
+              "name": "Lora",
+              "slug": "lora",
+              "fontFamily": "Lora"
+            },
+            {
+              "name": "Raleway",
+              "slug": "raleway",
+              "fontFamily": "Raleway"
+            }
+          ]
+        }
+      },
+      "core/image": {
+        "typography": {
+          "fontSizes": [
+            {
+              "name": "Нормальный",
+              "slug": "normal",
+              "size": "15px"
+            },
+            {
+              "name": "Маленький",
+              "slug": "normal",
+              "size": "12px"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "styles" : {
+    "color": {
+      "background": "var(--wp--preset--color--grey)",
+      "text": "#000000"
+    },
+    "typography": {
+      "fontSize": "var(--wp--preset--font-size--normal)",
+      "lineHeight": "1.4",
+      "fontFamily": "var(--wp--preset--font-family--lora)"
+    },
+    "elements": {
+      "h1": {
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--title)"
+        }
+      },
+      "h2": {
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--subtitle)"
+        }
+      },
+      "h3": {
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--subtitle)"
+        }
+      },
+      "h4": {
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--subtitle)"
+        }
+      }
+    },
+    "blocks": {
+      "core/pullquote": {
+        "border": {
+          "color": "var(--wp--preset--color--primary)",
+          "width": "8px"
+        },
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--subtitle)",
+          "lineHeight": "1.4"
+        }
+      },
+      "core/post-title": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--raleway)"
+        }
+      },
+      "core/quote": {
+        "border": {
+          "color": "var(--wp--preset--color--primary)",
+          "width": "8px"
+        },
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--subtitle)",
+          "lineHeight": "1.4"
+        }
+      }
+    }
+  }
+}
