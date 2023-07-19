@@ -23,10 +23,6 @@
     filter: brightness(120%);
   }
 
-  &:focus {
-    filter: brightness(120%);
-  }
-
   @media screen and (max-width: 767px) {
     font-size: 0.9375rem;
   }

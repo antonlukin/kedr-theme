@@ -6,7 +6,7 @@
   position: relative;
 
   width: 100%;
-  margin-bottom: var(--space-inner);
+  margin-bottom: var(--space-outer);
 
   .entry-feature__wrapper {
     display: flex;
@@ -76,7 +76,8 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-light);
     }
 
@@ -141,12 +142,13 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-light);
     }
 
     & > ::after {
-      content: '•';
+      content: "•";
 
       display: inline-flex;
       margin: 0 0.5rem;
@@ -174,7 +176,8 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-light);
     }
   }

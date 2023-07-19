@@ -11,7 +11,7 @@
 
 @mixin full-after($zindex: 2) {
   &::after {
-    content: '';
+    content: "";
 
     display: block;
     position: absolute;
@@ -34,5 +34,31 @@
 
   @media screen and (max-width: 479px) {
     max-width: 100%;
+  }
+}
+
+@mixin cross-button($width, $height: 2px) {
+  width: $width;
+  height: $width;
+
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - $height / 2);
+    left: calc(50% - $width / 2);
+
+    height: $height;
+    width: $width;
+
+    background-color: var(--color-primary);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+
+  &:before {
+    transform: rotate(45deg);
   }
 }

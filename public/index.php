@@ -9,10 +9,11 @@
  * @since 2.0
  */
 
-get_header();
+get_header(); ?>
 
-// Add 404 message template part
-// TODO: rebuild
-// get_template_part( 'partials/message' );
+<section class="content">
+    <?php get_template_part( 'templates/content', 'none' ); ?>
+</section>
 
+<?php
 get_footer();

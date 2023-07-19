@@ -8,7 +8,8 @@
   border-top: solid 1px var(--color-primary);
   border-bottom: solid 1px var(--color-primary);
 
-  .frame-special + &, .frame-special + & {
+  .frame-special + &,
+  .frame-special + & {
     padding-top: 0;
     border-top: 0;
   }
@@ -26,7 +27,7 @@
     width: 100%;
     max-width: var(--width-content);
 
-    padding: 0 var(--space-inner);
+    padding: 0 var(--space-outer);
     padding-bottom: var(--space-outer);
   }
 
@@ -137,7 +138,7 @@
 
     width: 100%;
     height: 100%;
-    padding: var(--space-inner);
+    padding: var(--space-outer);
 
     @media screen and (max-width: 1023px) {
       flex: 1 1 auto;
@@ -155,7 +156,8 @@
       transition: filter 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       filter: brightness(150%);
     }
   }

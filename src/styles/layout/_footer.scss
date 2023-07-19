@@ -45,16 +45,12 @@
     position: relative;
 
     width: 4.75rem;
-    padding-right: var(--space-inner);
+    padding-right: var(--space-outer);
 
     .footer__logo-image {
       display: block;
       width: 100%;
       height: auto;
-    }
-
-    &:focus {
-      opacity: 70%;
     }
 
     &:active {
@@ -92,10 +88,6 @@
       transition: border-bottom 0.25s;
 
       &:hover {
-        border-bottom-color: transparent;
-      }
-
-      &:focus {
         border-bottom-color: transparent;
       }
     }

@@ -21,9 +21,19 @@ class Kedr_Theme_Filters {
         add_filter( 'post_class', array( __CLASS__, 'update_post_classes' ), 10, 2 );
         add_action( 'sanitize_file_name', array( __CLASS__, 'sanitize_file_name' ), 12 );
         add_action( 'next_posts_link_attributes', array( __CLASS__, 'update_next_posts_link' ) );
+        add_action( 'get_header', array( __CLASS__, 'remove_adminbar_styles' ) );
 
         // Remove auto suggestions
         add_filter( 'do_redirect_guess_404_permalink', '__return_false' );
+
+        // Remove emojis handlers
+        remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+        remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+        remove_action( 'wp_print_styles', 'print_emoji_styles' );
+        remove_action( 'admin_print_styles', 'print_emoji_styles' );
+        remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+        remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+        remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
     }
 
     /**
@@ -59,6 +69,13 @@ class Kedr_Theme_Filters {
         }
 
         return $classes;
+    }
+
+    /**
+     * Remove admin-bar styles
+     */
+    public static function remove_adminbar_styles() {
+        remove_action( 'wp_head', '_admin_bar_bump_cb' );
     }
 
     /**

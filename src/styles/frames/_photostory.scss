@@ -69,7 +69,7 @@
     align-items: center;
 
     width: 100%;
-    padding: var(--space-inner);
+    padding: var(--space-outer);
 
     background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
   }
@@ -89,7 +89,8 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-light);
     }
 
@@ -152,7 +153,8 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-light);
     }
 

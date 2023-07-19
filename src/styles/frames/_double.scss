@@ -89,7 +89,7 @@
 
     width: 100%;
     height: 100%;
-    padding: var(--space-inner);
+    padding: var(--space-outer);
   }
 
   .frame-double__content-category {
@@ -107,7 +107,8 @@
       transition: filter 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       filter: brightness(150%);
     }
 
@@ -165,7 +166,8 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-dark);
     }
 

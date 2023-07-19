@@ -66,5 +66,26 @@
 </footer>
 
 <?php wp_footer(); ?>
+
+
+
+<?php if (is_singular()) : ?>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+
+<script>
+    (function() {
+        Fancybox.bind(".entry-content img", {
+            groupAll: true,
+            Thumbs: false,
+            zoomOpacity: "auto"
+        });
+    })();
+</script>
+
+<?php endif; ?>
 </body>
 </html>

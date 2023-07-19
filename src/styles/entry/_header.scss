@@ -37,7 +37,7 @@
 
     display: block;
     overflow: hidden;
-    margin-right: calc(var(--space-inner) * 2);
+    margin-right: calc(var(--space-outer) * 2);
 
     .entry-header__image-thumbnail {
       display: block;
@@ -80,7 +80,8 @@
       transition: filter 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       filter: brightness(150%);
     }
 
@@ -100,10 +101,6 @@
     @media screen and (max-width: 1023px) {
       font-size: 1.75rem;
       line-height: 1.25;
-    }
-
-    @media screen and (max-width: 479px) {
-      font-size: 1.625rem;
     }
   }
 
@@ -125,7 +122,7 @@
     font-size: 1rem;
 
     & > ::after {
-      content: '•';
+      content: "•";
 
       display: inline-flex;
       margin: 0 0.5rem;
@@ -155,7 +152,8 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-dark);
     }
   }

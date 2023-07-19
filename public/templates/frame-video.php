@@ -37,14 +37,15 @@
     </div>
 
     <div class="frame-video__player">
+        <?php echo wp_oembed_get($args['video']); ?>
         <?php
-        the_post_thumbnail(
-            'single',
-            array(
-                'class'   => 'frame-video__player-thumbnail',
-                'loading' => 'lazy',
-            )
-        );
+        // the_post_thumbnail(
+        //     'single',
+        //     array(
+        //         'class'   => 'frame-video__player-thumbnail',
+        //         'loading' => 'lazy',
+        //     )
+        // );
         ?>
     </div>
 </div>

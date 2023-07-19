@@ -81,7 +81,7 @@
 
     width: 100%;
     height: 100%;
-    padding: var(--space-inner);
+    padding: var(--space-outer);
   }
 
   .frame-single__content-category {
@@ -99,7 +99,8 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-light);
     }
 
@@ -159,7 +160,8 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-light);
     }
 

@@ -14,7 +14,7 @@
  * We have to install this value for image sizes
  */
 if ( ! isset( $content_width ) ) {
-    $content_width = 1024;
+    $content_width = 736;
 }
 
 /**
@@ -79,7 +79,6 @@ add_action(
     }
 );
 
-
 /**
  * Include theme helpers
  */
@@ -89,10 +88,12 @@ require get_template_directory() . '/includes/helpers/plugin-filters.php';
 /**
  * Include theme core modules
  */
-require get_template_directory() . '/includes/classes/class-menu-filters.php';
-require get_template_directory() . '/includes/classes/class-widgets-filters.php';
-require get_template_directory() . '/includes/classes/class-image-filters.php';
-require get_template_directory() . '/includes/classes/class-special-filters.php';
-require get_template_directory() . '/includes/classes/class-meta-filters.php';
-require get_template_directory() . '/includes/classes/class-theme-filters.php';
-require get_template_directory() . '/includes/classes/class-news-filters.php';
+require get_template_directory() . '/includes/modules/theme-filters.php';
+require get_template_directory() . '/includes/modules/widgets-filters.php';
+require get_template_directory() . '/includes/modules/blocks-filters.php';
+require get_template_directory() . '/includes/modules/image-filters.php';
+require get_template_directory() . '/includes/modules/menu-filters.php';
+require get_template_directory() . '/includes/modules/special-filters.php';
+require get_template_directory() . '/includes/modules/meta-filters.php';
+require get_template_directory() . '/includes/modules/news-filters.php';
+require get_template_directory() . '/includes/modules/embed-filters.php';

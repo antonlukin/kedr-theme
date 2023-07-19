@@ -58,7 +58,6 @@ class Kedr_Widget_News extends WP_Widget {
 
             while ( $common->have_posts() ) {
                 $common->the_post();
-
                 get_template_part( 'templates/frame', 'news', array( 'class' => 'common' ) );
             }
 
@@ -114,14 +113,8 @@ class Kedr_Widget_News extends WP_Widget {
      * Generate query params from instance args
      */
     private function get_common_query( $instance ) {
-        $posts_per_page = 6;
-
-        if ( ! empty( $instance['featured'] ) ) {
-            $posts_per_page = 4;
-        }
-
         $query = array(
-            'posts_per_page'      => $posts_per_page,
+            'posts_per_page'      => 6,
             'post_type'           => $this->post_type,
             'post_status'         => 'publish',
             'ignore_sticky_posts' => true,
@@ -132,13 +125,18 @@ class Kedr_Widget_News extends WP_Widget {
                     'terms'    => $this->category,
                 ),
             ),
-            'meta_query'          => array( // phpcs:ignore
+        );
+
+        if ( ! empty( $instance['featured'] ) && property_exists( 'Kedr_Gutenberg_Topnews', 'meta' ) ) {
+            $query['posts_per_page'] = 4;
+
+            $query['meta_query'] = array( // phpcs:ignore
                 array(
-                    'key'     => '_kedr_featured_news',
+                    'key'     => Kedr_Gutenberg_Topnews::$meta,
                     'compare' => 'NOT EXISTS',
                 ),
-            ),
-        );
+            );
+        }
 
         return $query;
     }
@@ -147,7 +145,7 @@ class Kedr_Widget_News extends WP_Widget {
      * Generate query params from instance args
      */
     private function get_featured_query( $instance ) {
-        if ( empty( $instance['featured'] ) ) {
+        if ( empty( $instance['featured'] ) || ! property_exists( 'Kedr_Gutenberg_Topnews', 'meta' ) ) {
             return null;
         }
 
@@ -165,7 +163,7 @@ class Kedr_Widget_News extends WP_Widget {
             ),
             'meta_query'          => array( // phpcs:ignore
                 array(
-                    'key'     => '_kedr_featured_news',
+                    'key'     => Kedr_Gutenberg_Topnews::$meta,
                     'compare' => 'EXISTS',
                 ),
             ),
@@ -174,7 +172,6 @@ class Kedr_Widget_News extends WP_Widget {
         return $query;
     }
 }
-
 
 /**
  * It is time to register widget

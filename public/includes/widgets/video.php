@@ -57,7 +57,12 @@ class Kedr_Widget_Video extends WP_Widget {
 
             while ( $query->have_posts() ) {
                 $query->the_post();
-                get_template_part( 'templates/frame', 'video' );
+
+                $options = array(
+                    'video' => $this->get_video_url( get_the_content() ),
+                );
+
+                get_template_part( 'templates/frame', 'video', $options );
             }
 
             wp_reset_postdata();
@@ -131,6 +136,39 @@ class Kedr_Widget_Video extends WP_Widget {
             esc_attr( $this->get_field_name( 'post_id' ) ),
             implode( '', $list ) // phpcs:ignore
         );
+    }
+
+    /**
+     * Get url to YouTube video from content blocks
+     */
+    private function get_video_url( $content ) {
+        if ( ! has_blocks( $content ) ) {
+            return null;
+        }
+
+        $blocks = parse_blocks( $content );
+
+        foreach ( $blocks as $block ) {
+            if ( empty( $block['blockName'] ) || $block['blockName'] !== 'core/embed' ) {
+                continue;
+            }
+
+            if ( empty( $block['attrs']['providerNameSlug'] ) ) {
+                continue;
+            }
+
+            if ( $block['attrs']['providerNameSlug'] !== 'youtube' ) {
+                continue;
+            }
+
+            if ( empty( $block['attrs']['url'] ) ) {
+                continue;
+            }
+
+            return $block['attrs']['url'];
+        }
+
+        return null;
     }
 }
 

@@ -1,37 +1,38 @@
 :root {
   --width-site: 80rem;
   --width-content: 46rem;
-  --space-outer: 1.375rem;
-  --space-inner: 1.25rem;
-  --space-content: 1.75rem;
+
+  --space-outer: 1.25rem;
+  --space-content: 1.5rem;
 
   --radius-frame: 0.3125rem;
 
   --color-primary: #48625e;
-  --color-inputs: rgb(72, 98, 94, 0.2);
+  --color-inputs: #48625e33;
+  --color-overlay: #48625e50;
   --color-dark: #212529;
   --color-light: #fff;
   --color-background: #efeded;
-  --color-dim: rgba(0, 0, 0, 0.5);
+  --color-summary: #e0e0e0;
+  --color-dim: #00000080;
   --color-muted: #c4c4c4;
+  --color-reference: #e8f1ef;
 
-  --font-regular: 'Raleway', sans-serif;
-  --font-content: 'Lora', serif;
+  --font-regular: "Raleway", sans-serif;
+  --font-content: "Lora", serif;
+  --font-monospace: "Monaco", "Roboto Mono", "Courier", monospace;
 
   @media screen and (max-width: 1023px) {
     --space-outer: 1.125rem;
-    --space-inner: 1.125rem;
   }
 
   @media screen and (max-width: 767px) {
     --space-outer: 1rem;
-    --space-inner: 1rem;
     --space-content: 1.5rem;
   }
 
   @media screen and (max-width: 479px) {
     --space-outer: 0.875rem;
-    --space-inner: 0.875rem;
-    --space-content: 1.25rem;
+    --space-content: 1rem;
   }
 }

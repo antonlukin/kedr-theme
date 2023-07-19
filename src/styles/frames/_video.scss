@@ -15,7 +15,7 @@
     z-index: 0;
 
     width: 100%;
-    padding: var(--space-inner);
+    padding: var(--space-outer);
     overflow: hidden;
 
     color: var(--color-light);
@@ -37,7 +37,6 @@
     z-index: 4;
 
     width: 100%;
-    padding-top: 62.5%;
     overflow: hidden;
 
     transition: filter 0.25s;
@@ -85,7 +84,8 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-light);
     }
 
@@ -147,7 +147,8 @@
       transition: color 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       color: var(--color-light);
     }
 

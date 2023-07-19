@@ -2,11 +2,9 @@
 @import "config/variables";
 @import "config/mixins";
 
-// Import fonts
 @import "config/fonts";
 @import "config/reset";
 @import "config/animations";
-
 
 html {
   color: var(--color-dark);
@@ -22,8 +20,34 @@ body {
 
   -webkit-text-size-adjust: none;
 
-  &.is-adminbar #wpadminbar {
-    position: absolute;
+  &.is-adminbar {
+    padding-top: 32px;
+
+    @media screen and (max-width: 782px) {
+      padding-top: 46px;
+    }
+  }
+
+  @media screen and (max-width: 1199px) {
+    &.is-navbar {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        cursor: default;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 4;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+      }
+    }
   }
 }
 

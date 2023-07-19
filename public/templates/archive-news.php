@@ -21,7 +21,9 @@ get_header(); ?>
         <?php
         while ( have_posts() ) :
             the_post();
-            get_template_part( 'templates/frame', 'news', array( 'class' => 'common' ) );
+
+            $options = array( 'class' => 'common' );
+            get_template_part( 'templates/frame', 'news', $options );
         endwhile;
         ?>
     </section>

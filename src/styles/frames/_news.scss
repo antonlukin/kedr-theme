@@ -13,7 +13,8 @@
   border-top: solid 1px var(--color-primary);
   border-bottom: solid 1px var(--color-primary);
 
-  .frame-special + &, .frame-podcasts + & {
+  .frame-special + &,
+  .frame-podcasts + & {
     padding-top: 0;
     border-top: 0;
   }
@@ -95,7 +96,8 @@
       transition: filter 0.25s;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       filter: brightness(150%);
     }
 
@@ -110,7 +112,7 @@
 
     width: 100%;
     padding-top: 62.5%;
-    margin-bottom: var(--space-inner);
+    margin-bottom: var(--space-outer);
     overflow: hidden;
 
     border-radius: calc(var(--radius-frame) / 1.5);
@@ -119,17 +121,17 @@
 
     @media screen and (max-width: 767px) {
       position: absolute;
-      top: var(--space-inner);
-      left: var(--space-inner);
+      top: var(--space-outer);
+      left: var(--space-outer);
 
-      width: calc(40% - var(--space-inner) * 2);
-      height: calc(100% - var(--space-inner) * 2);
+      width: calc(40% - var(--space-outer) * 2);
+      height: calc(100% - var(--space-outer) * 2);
 
       padding-top: 0;
     }
 
     @media screen and (max-width: 479px) {
-      width: calc(7rem - var(--space-inner) * 2);
+      width: calc(7rem - var(--space-outer) * 2);
     }
   }
 
