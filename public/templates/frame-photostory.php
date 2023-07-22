@@ -11,7 +11,7 @@
     <figure class="frame-photostory__image">
         <?php
         the_post_thumbnail(
-            'single',
+            'wide',
             array(
                 'class'   => 'frame-photostory__image-thumbnail',
                 'loading' => 'lazy',

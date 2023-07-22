@@ -19,6 +19,30 @@ class Kedr_Image_Filters {
         add_action( 'template_redirect', array( __CLASS__, 'redirect_attachments' ) );
         add_filter( 'max_srcset_image_width', array( __CLASS__, 'set_srcset_width' ) );
         add_filter( 'jpeg_quality', array( __CLASS__, 'improve_jpeg' ) );
+
+        add_filter( 'wp_generate_attachment_metadata', array( __CLASS__, 'compress_original_image' ), 10, 2 );
+    }
+
+    /**
+     * Compress original jpg image
+     */
+    public static function compress_original_image( $metadata, $attachment_id ) {
+        $file = get_attached_file( $attachment_id );
+        $type = get_post_mime_type( $attachment_id );
+
+        if ( in_array( $type, array( 'image/jpg', 'image/jpeg' ), true ) ) {
+            $editor = wp_get_image_editor( $file );
+
+            if ( ! is_wp_error( $editor ) ) {
+                $result = $editor->set_quality( 90 );
+
+                if ( ! is_wp_error( $result ) ) {
+                    $editor->save( $file );
+                }
+            }
+        }
+
+        return $metadata;
     }
 
     /**
@@ -28,9 +52,9 @@ class Kedr_Image_Filters {
         add_theme_support( 'post-thumbnails' );
         set_post_thumbnail_size( 300, 300, true );
 
-        add_image_size( 'card', 800, 9999, false );
-        add_image_size( 'wide', 1200, 9999, false );
-        add_image_size( 'single', 900, 600, false );
+        add_image_size( 'card', 640, 9999, false );
+        add_image_size( 'wide', 1280, 9999, false );
+        add_image_size( 'single', 960, 600, false );
     }
 
     /**
@@ -44,7 +68,7 @@ class Kedr_Image_Filters {
      * Filters the maximum image width to be included in a 'srcset' attribute
      */
     public static function set_srcset_width() {
-        return 1200;
+        return 1280;
     }
 
     /**
