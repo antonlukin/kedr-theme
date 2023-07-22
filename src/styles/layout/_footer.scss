@@ -90,6 +90,10 @@
       &:hover {
         border-bottom-color: transparent;
       }
+
+      @media screen and (max-width: 767px) {
+        border-width: 0.0625rem;
+      }
     }
 
     @media screen and (max-width: 1023px) {

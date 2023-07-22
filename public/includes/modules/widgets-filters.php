@@ -29,6 +29,8 @@ class Kedr_Widgets_Filters {
         add_action( 'wp_ajax_widgets-order', array( __CLASS__, 'clear_cache' ), 1 );
 
         add_filter( 'widget_update_callback', array( __CLASS__, 'update_widget' ) );
+
+        // TODO: Cache widget output
         // add_filter( 'widget_display_callback', array( __CLASS__, 'cache_widget' ), 10, 3 );
     }
 
