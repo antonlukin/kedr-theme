@@ -70,9 +70,11 @@
       color: var(--color-light);
       background-color: var(--color-primary);
 
-      transition:
-        color 0.25s,
-        background-color 0.25s;
+      transition: color 0.25s, background-color 0.25s;
+    }
+
+    @media screen and (max-width: 767px) {
+      border-width: 0.0625rem;
     }
   }
 
