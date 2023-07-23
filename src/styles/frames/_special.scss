@@ -97,10 +97,6 @@
     }
 
     @media screen and (max-width: 767px) {
-      grid-template-columns: 10rem 1fr;
-    }
-
-    @media screen and (max-width: 479px) {
       grid-template-columns: 1fr;
     }
   }
@@ -128,7 +124,7 @@
       -webkit-backface-visibility: hidden;
     }
 
-    @media screen and (max-width: 479px) {
+    @media screen and (max-width: 767px) {
       display: none;
     }
   }

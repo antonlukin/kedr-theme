@@ -20,6 +20,10 @@
       &:hover {
         border-bottom: solid 0.125rem var(--color-primary);
         transition: border-bottom 0.375s;
+
+        @media screen and (max-width: 767px) {
+          border-width: 0.0625rem;
+        }
       }
     }
   }

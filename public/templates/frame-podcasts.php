@@ -26,7 +26,7 @@
                 <figure class="frame-podcasts__image">
                     <?php
                     the_post_thumbnail(
-                        'card',
+                        'post-thumbnail',
                         array(
                             'class'   => 'frame-podcasts__image-thumbnail',
                             'loading' => 'lazy',

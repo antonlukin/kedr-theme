@@ -52,8 +52,8 @@ class Kedr_Image_Filters {
         add_theme_support( 'post-thumbnails' );
         set_post_thumbnail_size( 300, 300, true );
 
-        add_image_size( 'card', 640, 9999, false );
-        add_image_size( 'wide', 1280, 9999, false );
+        add_image_size( 'card', 640, 480, false );
+        add_image_size( 'wide', 1280, 600, false );
         add_image_size( 'single', 960, 600, false );
     }
 

@@ -29,7 +29,7 @@ get_header(); ?>
     </section>
 
     <nav class="navigate">
-        <?php next_posts_link( esc_html__( 'Следующие', 'knife-theme' ) ); ?>
+        <?php next_posts_link( esc_html__( 'Дальше', 'kedr-theme' ) ); ?>
     </nav>
 <?php endif; ?>
 

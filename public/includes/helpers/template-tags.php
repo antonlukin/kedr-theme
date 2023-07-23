@@ -24,7 +24,7 @@ if ( ! function_exists( 'the_post_info' ) ) :
 
             $category = $categories[0];
 
-            // Get only one category
+            // Get only the first category
             $cat_id = $category->term_id;
 
             if ( ! empty( $category->parent ) ) {
