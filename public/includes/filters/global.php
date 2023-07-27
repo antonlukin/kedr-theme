@@ -11,7 +11,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Theme_Filters {
+class Kedr_Filters_Global {
     /**
      * Use this method instead of constructor to avoid multiple hook setting
      */
@@ -153,4 +153,4 @@ class Kedr_Theme_Filters {
 /**
  * Load current module environment
  */
-Kedr_Theme_Filters::load_module();
+Kedr_Filters_Global::load_module();

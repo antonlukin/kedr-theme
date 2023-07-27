@@ -11,7 +11,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_News_Filters {
+class Kedr_Filters_News {
     /**
      * Unique slug using for news category url
      *
@@ -91,4 +91,4 @@ class Kedr_News_Filters {
 /**
  * Load current module environment
  */
-Kedr_News_Filters::load_module();
+Kedr_Filters_News::load_module();

@@ -11,7 +11,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Meta_Filters {
+class Kedr_Filters_Sitemeta {
     /**
      * Use this method instead of constructor to avoid setting multiple hooks
      */
@@ -55,4 +55,4 @@ class Kedr_Meta_Filters {
 /**
  * Load current module environment
  */
-Kedr_Meta_Filters::load_module();
+Kedr_Filters_Sitemeta::load_module();

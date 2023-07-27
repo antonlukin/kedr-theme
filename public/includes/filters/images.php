@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Image_Filters {
+class Kedr_Filters_Images {
     /**
      * Use this method instead of constructor to avoid multiple hook setting
      */
@@ -89,4 +89,4 @@ class Kedr_Image_Filters {
 /**
  * Load current module environment
  */
-Kedr_Image_Filters::load_module();
+Kedr_Filters_Images::load_module();

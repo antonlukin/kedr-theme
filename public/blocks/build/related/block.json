@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "kedr/related",
+  "title": "Читайте также",
+  "category": "widgets",
+  "textdomain": "kedr-theme",
+  "icon": "archive",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "keywords": [
+    "read more",
+    "related",
+    "похожие записи",
+    "читайте также"
+  ],
+  "attributes": {
+    "link": {
+      "type": "string"
+    }
+  }
+}

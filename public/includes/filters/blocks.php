@@ -11,14 +11,31 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Blocks_Filters {
+class Kedr_Filters_Blocks {
     /**
      * Use this method instead of constructor to avoid multiple hook setting
      */
     public static function load_module() {
+        add_action( 'after_setup_theme', array( __CLASS__, 'register_custom_blocks' ) );
         add_action( 'wp_enqueue_scripts', array( __CLASS__, 'remove_block_styles' ) );
+
         add_filter( 'allowed_block_types_all', array( __CLASS__, 'disable_core_blocks' ), 20 );
         add_filter( 'block_type_metadata_settings', array( __CLASS__, 'remove_gallery_gaps' ) );
+    }
+
+    /**
+     *
+     */
+    public static function register_custom_blocks() {
+        if ( ! function_exists( 'register_block_type' ) ) {
+            return;
+        }
+
+        require_once get_stylesheet_directory() . '/blocks/details.php';
+        require_once get_stylesheet_directory() . '/blocks/help.php';
+        require_once get_stylesheet_directory() . '/blocks/reference.php';
+        require_once get_stylesheet_directory() . '/blocks/related.php';
+        require_once get_stylesheet_directory() . '/blocks/topnews.php';
     }
 
     /**
@@ -188,4 +205,4 @@ class Kedr_Blocks_Filters {
 /**
  * Load current module environment
  */
-Kedr_Blocks_Filters::load_module();
+Kedr_Filters_Blocks::load_module();

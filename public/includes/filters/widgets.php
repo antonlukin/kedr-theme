@@ -11,7 +11,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Widgets_Filters {
+class Kedr_Filters_Widgets {
     /**
      * Use this method instead of constructor to avoid multiple hook setting
      */
@@ -167,4 +167,4 @@ class Kedr_Widgets_Filters {
 /**
  * Load current module environment
  */
-Kedr_Widgets_Filters::load_module();
+Kedr_Filters_Widgets::load_module();

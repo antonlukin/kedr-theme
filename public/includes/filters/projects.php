@@ -11,7 +11,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Special_Filters {
+class Kedr_Filters_Projects {
     /**
      * Unique slug using for taxonomy register and url
      *
@@ -55,7 +55,7 @@ class Kedr_Special_Filters {
                     'update_item'       => esc_attr__( 'Обновить проект', 'kedr-theme' ),
                     'add_new_item'      => esc_attr__( 'Добавить проект', 'kedr-theme' ),
                     'new_item_name'     => esc_attr__( 'Имя проекта', 'kedr-theme' ),
-                    'menu_name'         => esc_attr__( 'Проект', 'kedr-theme' ),
+                    'menu_name'         => esc_attr__( 'Проекты', 'kedr-theme' ),
                     'back_to_items'     => esc_attr__( 'Назад в проекты', 'kedr-theme' ),
                 ),
                 'description'       => '',
@@ -66,7 +66,7 @@ class Kedr_Special_Filters {
                 'meta_box_cb'       => null,
                 'show_admin_column' => false,
                 'show_in_rest'      => true,
-                'rest_base'         => true,
+                'rest_base'         => 'projects',
             )
         );
     }
@@ -76,4 +76,4 @@ class Kedr_Special_Filters {
 /**
  * Load current module environment
  */
-Kedr_Special_Filters::load_module();
+Kedr_Filters_Projects::load_module();

@@ -1,0 +1,5 @@
+{
+    "name": "kedr/topnews",
+    "textdomain": "kedr-theme",
+    "editorScript": "file:index.js"
+}

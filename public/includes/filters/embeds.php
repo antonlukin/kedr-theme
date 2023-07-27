@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Embed_Filters {
+class Kedr_Filters_Embeds {
     /**
      * Use this method instead of constructor to avoid multiple hook setting
      */
@@ -131,11 +131,10 @@ class Kedr_Embed_Filters {
 
         return $content;
     }
-
 }
 
 
 /**
  * Load current module environment
  */
-Kedr_Embed_Filters::load_module();
+Kedr_Filters_Embeds::load_module();

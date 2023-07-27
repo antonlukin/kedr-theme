@@ -88,12 +88,13 @@ require get_template_directory() . '/includes/helpers/plugin-filters.php';
 /**
  * Include theme core modules
  */
-require get_template_directory() . '/includes/modules/theme-filters.php';
-require get_template_directory() . '/includes/modules/widgets-filters.php';
-require get_template_directory() . '/includes/modules/blocks-filters.php';
-require get_template_directory() . '/includes/modules/image-filters.php';
-require get_template_directory() . '/includes/modules/menu-filters.php';
-require get_template_directory() . '/includes/modules/special-filters.php';
-require get_template_directory() . '/includes/modules/meta-filters.php';
-require get_template_directory() . '/includes/modules/news-filters.php';
-require get_template_directory() . '/includes/modules/embed-filters.php';
+require get_template_directory() . '/includes/filters/global.php';
+require get_template_directory() . '/includes/filters/widgets.php';
+require get_template_directory() . '/includes/filters/blocks.php';
+require get_template_directory() . '/includes/filters/images.php';
+require get_template_directory() . '/includes/filters/menu.php';
+require get_template_directory() . '/includes/filters/projects.php';
+require get_template_directory() . '/includes/filters/sitemeta.php';
+require get_template_directory() . '/includes/filters/news.php';
+require get_template_directory() . '/includes/filters/embeds.php';
+require get_template_directory() . '/includes/filters/regions.php';
