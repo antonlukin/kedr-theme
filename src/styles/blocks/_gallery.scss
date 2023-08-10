@@ -1,5 +1,27 @@
 .wp-block-gallery {
   grid-gap: calc(var(--space-outer) / 2);
+
+  &.alignwide {
+    max-width: 100%;
+  }
+
+  &.alignfull {
+    max-width: 100%;
+  }
+
+  &.is-layout-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    & > * {
+      margin: 0;
+    }
+  }
+
+  .wp-element-caption {
+    padding-top: 0;
+  }
 }
 
 .wp-block-gallery:not(.has-nested-images) {

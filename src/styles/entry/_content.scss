@@ -92,11 +92,12 @@
   }
 
   h1 {
-    font-size: 2.25rem;
-    line-height: 1.075;
+    font-size: 2rem;
+    line-height: 1.125;
 
     @media screen and (max-width: 767px) {
       font-size: 1.8125rem;
+      line-height: 1.125;
     }
 
     @media screen and (max-width: 479px) {
@@ -105,7 +106,7 @@
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.875rem;
     line-height: 1.125;
 
     @media screen and (max-width: 767px) {
@@ -214,27 +215,20 @@
     font-size: small;
   }
 
-  figcaption {
-    cursor: default;
-
-    display: block;
-    position: relative;
-
-    width: 100%;
-    margin: 0;
-    padding-top: 0.5rem;
-
-    font-family: var(--font-regular);
-    font-size: 0.875rem;
-    text-align: left;
-
-    color: var(--color-dim);
-  }
-
-  // Gutenberg blocks styles
-  @import "blocks/default";
+  @import "blocks/paragraph";
+  @import "blocks/heading";
+  @import "blocks/caption";
+  @import "blocks/details";
+  @import "blocks/embed";
   @import "blocks/gallery";
-  @import "blocks/custom";
+  @import "blocks/help";
+  @import "blocks/image";
+  @import "blocks/quote";
+  @import "blocks/audio";
+  @import "blocks/video";
+  @import "blocks/reference";
+  @import "blocks/separator";
+  @import "blocks/speech";
 
   @media screen and (max-width: 1023px) {
     padding: var(--space-outer) calc(var(--space-outer) * 2);

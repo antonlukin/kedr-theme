@@ -29,7 +29,7 @@ add_action(
             $version = gmdate( 'U' );
         }
 
-        wp_enqueue_script( 'kedr-theme', get_template_directory_uri() . '/assets/scripts.min.js', array(), $version, true );
+        wp_enqueue_script( 'kedr-theme', get_template_directory_uri() . '/assets/scripts.min.js', array( 'wp-i18n' ), $version, true );
     }
 );
 
@@ -80,21 +80,48 @@ add_action(
 );
 
 /**
+ * Create new helper function for templates
+ */
+if ( ! function_exists( 'the_post_info' ) ) :
+    /**
+     * Public templates function to show post info option like category or authors
+     */
+    function the_post_info( $option, $before = '', $after = '' ) {
+        $method = 'get_' . $option;
+
+        if ( method_exists( 'Kedr_Modules_Postinfo', $method ) ) {
+            $output = Kedr_Modules_Postinfo::$method();
+        }
+
+        if ( ! empty( $output ) ) {
+            $output = $before . $output . $after;
+
+            echo $output; // phpcs:ignore WordPress.Security.EscapeOutput
+        }
+    }
+endif;
+
+/**
  * Include theme helpers
  */
-require get_template_directory() . '/includes/helpers/template-tags.php';
-require get_template_directory() . '/includes/helpers/plugin-filters.php';
+require_once get_template_directory() . '/helpers/coauthors-plus/index.php';
+require_once get_template_directory() . '/helpers/leyka/index.php';
 
 /**
  * Include theme core modules
  */
-require get_template_directory() . '/includes/filters/global.php';
-require get_template_directory() . '/includes/filters/widgets.php';
-require get_template_directory() . '/includes/filters/blocks.php';
-require get_template_directory() . '/includes/filters/images.php';
-require get_template_directory() . '/includes/filters/menu.php';
-require get_template_directory() . '/includes/filters/projects.php';
-require get_template_directory() . '/includes/filters/sitemeta.php';
-require get_template_directory() . '/includes/filters/news.php';
-require get_template_directory() . '/includes/filters/embeds.php';
-require get_template_directory() . '/includes/filters/regions.php';
+require_once get_template_directory() . '/modules/global.php';
+require_once get_template_directory() . '/modules/translit.php';
+require_once get_template_directory() . '/modules/widgets.php';
+require_once get_template_directory() . '/modules/login.php';
+require_once get_template_directory() . '/modules/blocks.php';
+require_once get_template_directory() . '/modules/images.php';
+require_once get_template_directory() . '/modules/postinfo.php';
+require_once get_template_directory() . '/modules/menu.php';
+require_once get_template_directory() . '/modules/projects.php';
+require_once get_template_directory() . '/modules/sitemeta.php';
+require_once get_template_directory() . '/modules/news.php';
+require_once get_template_directory() . '/modules/embeds.php';
+require_once get_template_directory() . '/modules/regions.php';
+require_once get_template_directory() . '/modules/snippet.php';
+require_once get_template_directory() . '/modules/requests.php';

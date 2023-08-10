@@ -1,3 +1,24 @@
 .wp-block-kedr-help {
 	box-sizing: border-box;
+
+	padding: 2rem;
+	font-family: var(--wp--preset--font-family--regular);
+
+	color: var(--wp--custom--color-dark);
+	background-color: var(--wp--custom--color-background);
+
+	border-radius: 0.3125rem;
+
+	p {
+		margin: 0;
+	}
+
+	&.has-overlay-background-color {
+		background-color: var(--wp--custom--color-overlay);
+	}
+
+	&.has-italic-font {
+		font-family: var(--wp--preset--font-family--serif);
+		font-style: italic;
+	}
 }

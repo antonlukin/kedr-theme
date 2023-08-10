@@ -55,7 +55,7 @@
       padding-top: 0.5rem;
       font-size: 0.875rem;
 
-      text-align: left;
+      text-align: center;
       color: var(--color-dim);
     }
 
@@ -94,13 +94,12 @@
     display: block;
     position: relative;
 
-    font-size: 1.875rem;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.125;
 
     @media screen and (max-width: 767px) {
       font-size: 1.8125rem;
-      line-height: 1.25;
     }
 
     @media screen and (max-width: 479px) {

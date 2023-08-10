@@ -18,6 +18,16 @@
       "type": "string",
       "source": "html",
       "selector": "p"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "customBackgroundColor": {
+      "type": "string"
+    },
+    "italic": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

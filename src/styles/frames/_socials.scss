@@ -54,7 +54,6 @@
     border-bottom: solid 0.125rem var(--color-primary);
     transition: border-bottom 0.25s;
 
-    &:focus,
     &:hover {
       border-bottom: solid 0.125rem transparent;
     }

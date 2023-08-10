@@ -23,7 +23,7 @@ class Kedr_Blocks_Reference {
      * Register new reference block
      */
     public static function register_block() {
-        register_block_type( dirname( __DIR__ ) . '/build/reference' );
+        register_block_type( __DIR__ . '/build/reference' );
     }
 }
 

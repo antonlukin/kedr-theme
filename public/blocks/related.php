@@ -24,7 +24,7 @@ class Kedr_Blocks_Related {
      */
     public static function register_block() {
         register_block_type(
-            dirname( __DIR__ ) . '/build/related',
+            __DIR__ . '/build/related',
             array(
                 'render_callback' => array( __CLASS__, 'render_block' ),
             )
@@ -47,17 +47,23 @@ class Kedr_Blocks_Related {
 
         $query = self::get_related_query( $post_id );
 
-        ob_start();
-
-        if ( $query->have_posts() ) {
-            $query->the_post();
-
-            // Try to find related template
-            require dirname( __DIR__ ) . '/templates/related.php';
-            wp_reset_postdata();
+        if ( ! $query->have_posts() ) {
+            return null;
         }
 
-        return ob_get_clean();
+        ob_start();
+
+        $query->the_post();
+
+        get_template_part( 'templates/frame', 'related' );
+        wp_reset_postdata();
+
+        $output = sprintf(
+            '<div class="frame-related wp-block-kedr-related">%s</div>',
+            ob_get_clean()
+        );
+
+        return $output;
     }
 
     /**

@@ -1,11 +1,6 @@
 {
   "author": "Anton Lukin",
   "description": "Custom Gutenberg blocks for kedr.media WordPress theme",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/antonlukin/kedr-gutenberg.git"
-  },
   "license": "MIT",
   "scripts": {
     "build": "wp-scripts build",

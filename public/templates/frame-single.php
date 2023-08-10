@@ -8,18 +8,6 @@
 ?>
 
 <div class="frame-single__wrapper">
-    <figure class="frame-single__image">
-        <?php
-        the_post_thumbnail(
-            'single',
-            array(
-                'class'   => 'frame-single__image-thumbnail',
-                'loading' => 'lazy',
-            )
-        );
-        ?>
-    </figure>
-
     <div class="frame-single__content">
         <?php
         the_post_info(
@@ -47,4 +35,16 @@
         );
         ?>
     </div>
+
+    <figure class="frame-single__image">
+        <?php
+        the_post_thumbnail(
+            'single',
+            array(
+                'class'   => 'frame-single__image-thumbnail',
+                'loading' => 'lazy',
+            )
+        );
+        ?>
+    </figure>
 </div>

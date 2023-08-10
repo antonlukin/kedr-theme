@@ -1,0 +1,5 @@
+{
+  "name": "kedr/videolead",
+  "textdomain": "kedr-theme",
+  "editorScript": "file:index.js"
+}

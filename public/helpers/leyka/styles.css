@@ -1,0 +1,26 @@
+#leyka-pf-1060 {
+  --leyka-color-main: var(--color-primary);
+  --leyka-color-main-second: var(--color-primary);
+  --leyka-color-main-third: var(--color-background);
+  --leyka-color-main-inactive: var(--color-overlay);
+
+  width: var(--width-content) !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+
+  border: solid 0.125rem var(--color-primary);
+  border-radius: var(--radius-frame);
+  box-shadow: none;
+}
+
+#leyka-pf-1060 #leyka-platform-signature {
+  justify-content: center;
+}
+
+#leyka-pf-1060 .section .section__fields.periodicity a.active {
+  z-index: 5;
+}
+
+#leyka-pf-1060 .section .section__fields.periodicity a {
+  z-index: 4;
+}

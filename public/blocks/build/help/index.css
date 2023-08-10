@@ -1,1 +1,23 @@
-.wp-block-kedr-help{box-sizing:border-box}
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/help/editor.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+.wp-block-kedr-help {
+  box-sizing: border-box;
+  padding: 2rem;
+  font-family: var(--wp--preset--font-family--regular);
+  color: var(--wp--custom--color-dark);
+  background-color: var(--wp--custom--color-background);
+  border-radius: 0.3125rem;
+}
+.wp-block-kedr-help p {
+  margin: 0;
+}
+.wp-block-kedr-help.has-overlay-background-color {
+  background-color: var(--wp--custom--color-overlay);
+}
+.wp-block-kedr-help.has-italic-font {
+  font-family: var(--wp--preset--font-family--serif);
+  font-style: italic;
+}
+
+/*# sourceMappingURL=index.css.map*/

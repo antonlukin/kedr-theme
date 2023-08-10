@@ -18,8 +18,8 @@ import './editor.scss';
 
 const ReferenceButton = ( { isActive, value, onChange, activeAttributes } ) => {
 	const label = isActive
-		? __( 'Удалить аннотацию', 'kedr-gutenberg' )
-		: __( 'Добавить аннотацию', 'kedr-gutenberg' );
+		? __( 'Удалить аннотацию', 'kedr-theme' )
+		: __( 'Добавить аннотацию', 'kedr-theme' );
 
 	const onToggle = () => {
 		onChange( toggleFormat( value, { type: metadata.name } ) );
@@ -57,7 +57,7 @@ const ReferenceButton = ( { isActive, value, onChange, activeAttributes } ) => {
 						onChange={ onTextAreaChange }
 						placeholder={ __(
 							'Введите текст аннотации',
-							'kedr-gutenberg'
+							'kedr-theme'
 						) }
 					/>
 				</Popover>
@@ -67,7 +67,7 @@ const ReferenceButton = ( { isActive, value, onChange, activeAttributes } ) => {
 };
 
 registerFormatType( metadata.name, {
-	title: __( 'Add Tooltip', 'kedr-gutenberg' ),
+	title: __( 'Add Tooltip', 'kedr-theme' ),
 	tagName: 'span',
 	className: 'wp-block-kedr-reference',
 	attributes: {

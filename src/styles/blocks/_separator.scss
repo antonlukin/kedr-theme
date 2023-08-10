@@ -1,0 +1,28 @@
+.wp-block-separator {
+  display: flex;
+  justify-content: center;
+
+  height: 0.125rem;
+  margin: calc(var(--space-content) * 2) auto;
+
+  border: 0;
+  background-color: var(--color-background);
+
+  &.is-style-dots {
+    height: auto;
+    margin: var(--space-content) auto;
+
+    background-color: transparent;
+
+    &::before {
+      content: "···";
+
+      padding-left: 2rem;
+      font-size: 2rem;
+      letter-spacing: 2rem;
+      line-height: 1;
+
+      color: var(--color-primary);
+    }
+  }
+}

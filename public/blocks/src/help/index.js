@@ -1,4 +1,5 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { withColors } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
@@ -8,6 +9,6 @@ import save from './save';
 import metadata from './block.json';
 
 registerBlockType( metadata.name, {
-	edit: Edit,
+	edit: withColors( 'backgroundColor' )( Edit ),
 	save,
 } );

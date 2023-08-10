@@ -6,8 +6,9 @@ import { useSelect, useDispatch } from '@wordpress/data';
 
 import styles from './styles.module.css';
 
-const KedrThemeTopnews = ( props ) => {
-	const category = Number( window.kedr_theme_topnews?.option || 0 );
+const KedrThemeTopnews = () => {
+	const termId = Number( window.kedr_theme_topnews?.term || 0 );
+	const metaKey = window.kedr_theme_topnews?.meta;
 
 	const options = useSelect( ( select ) => {
 		const editor = select( 'core/editor' );
@@ -20,8 +21,8 @@ const KedrThemeTopnews = ( props ) => {
 		const categories = editor.getEditedPostAttribute( 'categories' ) || [];
 
 		return {
-			field: meta[ props.metaKey ],
-			hidden: ! categories.includes( category ),
+			field: meta[ metaKey ],
+			hidden: ! categories.includes( termId ),
 		};
 	} );
 
@@ -38,7 +39,7 @@ const KedrThemeTopnews = ( props ) => {
 					checked={ field }
 					onChange={ ( checked ) => {
 						editPost( {
-							meta: { [ props.metaKey ]: Number( checked ) },
+							meta: { [ metaKey ]: Number( checked ) },
 						} );
 					} }
 					disabled={ options.hidden }
@@ -52,7 +53,7 @@ registerPlugin( 'kedr-theme-topnews', {
 	render: () => {
 		return (
 			<PluginPostStatusInfo>
-				<KedrThemeTopnews metaKey="_kedr_topnews" />
+				<KedrThemeTopnews />
 			</PluginPostStatusInfo>
 		);
 	},

@@ -23,7 +23,7 @@ class Kedr_Blocks_Help {
      * Register new help block
      */
     public static function register_block() {
-        register_block_type( dirname( __DIR__ ) . '/build/help' );
+        register_block_type( __DIR__ . '/build/help' );
     }
 }
 

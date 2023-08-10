@@ -1,0 +1,15 @@
+.form {
+  position: relative;
+
+  .form__message {
+    display: none;
+
+    &.form__message--visible {
+      display: flex;
+    }
+
+    &.form__message--warning {
+      color: var(--color-warning);
+    }
+  }
+}

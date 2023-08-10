@@ -1,0 +1,50 @@
+.finder {
+  @include container;
+
+  display: block;
+  position: relative;
+  margin: calc(4 * var(--space-outer)) auto 0;
+
+  font-family: var(--font-regular);
+  line-height: 1.5;
+
+  .is-empty & {
+    min-height: calc(100vh - 24rem);
+    margin-top: 0;
+    padding-top: calc(4 * var(--space-outer));
+  }
+
+  .finder__wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    position: relative;
+
+    width: 100%;
+  }
+
+  .finder__message {
+    display: block;
+    position: relative;
+
+    margin-top: var(--space-outer);
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .finder__input {
+    flex: 1 1 100%;
+    margin-right: var(--space-outer);
+  }
+
+  .finder__button {
+    flex: 0 0 12rem;
+  }
+
+  .finder__empty {
+    display: block;
+
+    width: 100%;
+    text-align: center;
+  }
+}

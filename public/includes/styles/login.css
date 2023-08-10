@@ -1,0 +1,25 @@
+body.login h1 a {
+	width: 70px;
+	height: 110px;
+  background-image: url('../../assets/images/logo.svg');
+	background-size: contain;
+	background-position: center;
+	box-shadow: none;
+}
+
+body.login #nav {
+	margin-top: 20px;
+	text-align: center;
+}
+
+body.login #backtoblog {
+	display: none;
+}
+
+body.login .language-switcher {
+  display: none;
+}
+
+body.login .privacy-policy-page-link {
+  display: none;
+}

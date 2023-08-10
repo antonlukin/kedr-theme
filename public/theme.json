@@ -11,7 +11,8 @@
       "color-background": "#efeded",
       "color-dark": "#212529",
       "color-muted": "#c4c4c4",
-      "color-dim": "#00000080"
+      "color-dim": "#00000080",
+      "color-overlay": "#48625e50"
     },
     "color": {
       "custom": false,
@@ -20,30 +21,13 @@
       "link": false,
       "defaultPalette": false,
       "defaultGradients": false,
-      "duotone": [],
-      "palette": [
-        {
-          "name": "Основной",
-          "slug": "primary",
-          "color": "#48625e"
-        },
-        {
-          "name": "Полупрозрачный",
-          "slug": "overlay-primary",
-          "color": "#48625e50"
-        },
-        {
-          "name": "Альтернативный",
-          "slug": "secondary",
-          "color": "#efeded"
-        }
-      ]
+      "duotone": []
     },
     "typography": {
       "fontFamilies": [
         {
           "name": "Lora",
-          "slug": "serif",
+          "slug": "content",
           "fontFamily": "Lora",
           "fontFace": [
             {
@@ -117,6 +101,25 @@
       "core/paragraph": {
         "typography": {
           "fontFamilies": []
+        },
+        "color": {
+					"palette": []
+				}
+      },
+      "kedr/help": {
+        "color": {
+          "palette": [
+            {
+              "name": "Полупрозрачный",
+              "slug": "overlay",
+              "color": "var(--wp--custom--color-overlay)"
+            },
+            {
+              "name": "Альтернативный",
+              "slug": "secondary",
+              "color": "var(--wp--custom--color-background)"
+            }
+          ]
         }
       }
     },
@@ -128,45 +131,75 @@
     "typography": {
       "fontSize": "1.1875rem",
       "lineHeight": "1.5",
-      "fontFamily": "var(--wp--preset--font-family--serif)"
+      "fontFamily": "var(--wp--preset--font-family--content)"
     },
     "elements": {
       "h1": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--regular)",
-          "fontSize": "2.25rem",
-          "lineHeight": "1.075"
+          "fontSize": "2rem",
+          "lineHeight": "1.125"
+        },
+        "spacing": {
+          "margin": {
+            "bottom": "0"
+          }
         }
       },
       "h2": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--regular)",
-          "fontSize": "2rem",
+          "fontSize": "1.875rem",
           "lineHeight": "1.125"
+        },
+        "spacing": {
+          "margin": {
+            "bottom": "0"
+          }
         }
       },
       "h3": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--regular)",
           "fontSize": "1.75rem"
+        },
+        "spacing": {
+          "margin": {
+            "bottom": "0"
+          }
         }
       },
       "h4": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--regular)",
           "fontSize": "1.5rem"
+        },
+        "spacing": {
+          "margin": {
+            "bottom": "0"
+          }
         }
       },
       "h5": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--regular)",
           "fontSize": "1.375rem"
+        },
+        "spacing": {
+          "margin": {
+            "bottom": "0"
+          }
         }
       },
       "h6": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--regular)",
           "fontSize": "1.1875rem"
+        },
+        "spacing": {
+          "margin": {
+            "bottom": "auto"
+          }
         }
       },
       "caption": {
@@ -205,9 +238,7 @@
           "fontFamily": "var(--wp--preset--font-family--regular)"
         }
       },
-      "core/paragraph": {
-        "css": "& {box-sizing: border-box} &.has-background {border-radius: 0.3125rem}"
-      },
+      "core/paragraph": {},
       "core/quote": {
         "border": {
           "left": {
@@ -226,7 +257,7 @@
             "bottom": "2rem"
           },
           "padding": {
-            "left": "1.5rem"
+            "left": "2rem"
           }
         },
         "elements": {
@@ -249,7 +280,7 @@
         "border": {
           "radius": "0.3125rem"
         },
-        "css": "&.alignleft {float: none; max-width: 736px; margin-left: auto; margin-right: auto;} &.alignright {float: none; max-width: 736px; margin-left: auto; margin-right: auto;} & figcaption {max-width: 736px; margin-left: auto; margin-right: auto; text-align: left}"
+        "css": "&.alignleft {float:none; max-width:736px; margin-left:auto; margin-right:auto;} &.alignright {float:none; max-width:736px; margin-left:auto; margin-right:auto;} & figcaption {max-width:736px; margin:0 auto; text-align:left}"
       },
       "core/embed": {
         "css": "& figcaption {text-align: left}"
@@ -257,28 +288,7 @@
       "core/gallery": {
         "css": "& figure.wp-block-image figcaption {position:relative; background:none; color:var(--wp--custom--color-dim)}"
       },
-      "kedr/help": {
-        "typography": {
-          "fontSize": "1rem",
-          "fontFamily": "var(--wp--preset--font-family--regular)"
-        },
-        "color": {
-          "text": "var(--wp--custom--color-dark)",
-          "background": "var(--wp--custom--color-background)"
-        },
-        "spacing": {
-          "padding": {
-            "left": "2.5rem",
-            "right": "2.5rem",
-            "top": "2rem",
-            "bottom": "2rem"
-          }
-        },
-        "border": {
-          "radius": "0.3125rem"
-        }
-      },
-      "kedr/details": {
+      "core/details": {
         "color": {
           "text": "var(--wp--custom--color-dark)"
         },
@@ -293,7 +303,7 @@
           "color": "var(--wp--custom--color-muted)",
           "radius": "0.3125rem"
         },
-        "css": "& {box-sizing:border-box; border:solid 2px var(--wp--custom--color-muted);} & summary {display:flex; justify-content:center; padding:1rem 0; font-family:var(--wp--preset--font-family--regular); font-weight: 600;}"
+        "css": "& {box-sizing:border-box; border:solid 2px var(--wp--custom--color-muted);} & summary {display:flex; justify-content:center; padding:1rem 0; margin-bottom:0; font-family:var(--wp--preset--font-family--regular); font-weight:600;} & > * {margin-bottom:1rem}"
       }
     }
   }

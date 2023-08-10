@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for display page
+ * Page templates
  *
  * @package kedr-theme
  * @since 2.0

@@ -23,8 +23,8 @@
         );
 
         the_post_info(
-            'excerpt',
-            '<div class="frame-video__content-excerpt">',
+            'videolead',
+            '<div class="frame-video__content-videolead">',
             '</div>'
         );
 
@@ -36,16 +36,11 @@
         ?>
     </div>
 
-    <div class="frame-video__player">
-        <?php echo wp_oembed_get($args['video']); ?>
-        <?php
-        // the_post_thumbnail(
-        //     'single',
-        //     array(
-        //         'class'   => 'frame-video__player-thumbnail',
-        //         'loading' => 'lazy',
-        //     )
-        // );
-        ?>
-    </div>
+    <?php
+    the_post_info(
+        'video',
+        '<div class="frame-video__player">',
+        '</div>'
+    );
+    ?>
 </div>

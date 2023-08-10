@@ -16,4 +16,5 @@
     </rule>
     <rule ref="Generic.WhiteSpace.DisallowTabIndent" />
     <rule ref="Generic.ControlStructures.DisallowYodaConditions"/>
+    <exclude-pattern>external/*</exclude-pattern>
 </ruleset>

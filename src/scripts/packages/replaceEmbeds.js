@@ -42,25 +42,30 @@ function createIframe( embed ) {
 }
 
 /**
- * Default class
+ * Start embed on click
+ *
+ * @param {HTMLElement} embed
+ */
+function startEmbed( embed ) {
+	embed.addEventListener( 'click', function( e ) {
+		e.preventDefault();
+
+		// Remove all embed child nodes
+		while ( embed.firstChild ) {
+			embed.removeChild( embed.firstChild );
+		}
+
+		embed.appendChild( createIframe( embed ) );
+	} );
+}
+
+/**
+ * Default function
  *
  * @param {NodeList} embeds
  */
 function replaceEmbeds( embeds ) {
-	embeds.forEach( ( embed ) => {
-		embed.addEventListener( 'click', function( e ) {
-			if ( embed.hasAttribute( 'data-embed' ) ) {
-				e.preventDefault();
-
-				// Remove all embed child nodes
-				while ( embed.firstChild ) {
-					embed.removeChild( embed.firstChild );
-				}
-
-				embed.appendChild( createIframe( embed ) );
-			}
-		} );
-	} );
+	embeds.forEach( startEmbed );
 }
 
 export default replaceEmbeds;

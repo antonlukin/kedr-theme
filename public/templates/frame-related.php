@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget template for related post
+ * Related block template
  *
  * @package kedr-theme
  * @since 2.0
@@ -8,17 +8,19 @@
 ?>
 
 <div class="frame-related__wrapper">
-    <figure class="frame-related__image">
-        <?php
-        the_post_thumbnail(
-            'single',
-            array(
-                'class'   => 'frame-related__image-thumbnail',
-                'loading' => 'lazy',
-            )
-        );
-        ?>
-    </figure>
+    <?php if ( has_post_thumbnail() ) : ?>
+        <figure class="frame-related__image">
+            <?php
+            the_post_thumbnail(
+                'single',
+                array(
+                    'class'   => 'frame-related__image-thumbnail',
+                    'loading' => 'lazy',
+                )
+            );
+            ?>
+        </figure>
+    <?php endif; ?>
 
     <div class="frame-related__content">
         <?php
@@ -33,11 +35,12 @@
             esc_html( get_the_title() )
         );
 
-        the_post_info(
-            'excerpt',
-            '<div class="frame-related__content-excerpt">',
-            '</div>'
-        );
+        if ( has_excerpt() ) {
+            printf(
+                '<div class="frame-related__content-excerpt">%s</div>',
+                wp_kses_post( apply_filters( 'the_excerpt', get_the_excerpt() ) )
+            );
+        }
         ?>
     </div>
 </div>

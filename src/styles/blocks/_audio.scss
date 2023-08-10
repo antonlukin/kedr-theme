@@ -1,0 +1,40 @@
+.wp-block-audio {
+  display: block;
+
+  audio {
+    display: block;
+    width: 100%;
+  }
+
+  &.alignwide {
+    max-width: 100%;
+
+    audio {
+      width: 100%;
+    }
+
+    figcaption {
+      max-width: var(--width-content);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &.alignfull {
+    width: calc(100% + calc(var(--space-outer) * 2));
+    max-width: calc(100% + calc(var(--space-outer) * 2));
+
+    margin-left: calc(var(--space-outer) * -1);
+    margin-right: calc(var(--space-outer) * -1);
+
+    audio {
+      width: 100%;
+    }
+
+    figcaption {
+      max-width: var(--width-content);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

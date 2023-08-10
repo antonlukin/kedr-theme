@@ -25,6 +25,11 @@
 
   &.post--news .entry-header {
     padding-bottom: 0;
+
+    .entry-header__image {
+      order: 0;
+      margin-right: 0;
+    }
   }
 
   &.post--video .entry-header {

@@ -1,0 +1,52 @@
+.wp-block-details {
+  display: block;
+  padding: 0;
+
+  border-top: solid 0.125rem var(--color-summary);
+  border-bottom: solid 0.125rem var(--color-summary);
+
+  & > * {
+    display: block;
+
+    width: 100%;
+    max-width: var(--width-content);
+
+    margin: 0 auto var(--space-content);
+  }
+
+  summary {
+    @extend .button;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: var(--space-content);
+    padding: 0.875rem 1.25rem;
+    font-family: var(--font-regular);
+
+    color: var(--color-dark);
+    background-color: var(--color-summary);
+
+    &::after {
+      content: "↓";
+
+      display: block;
+      margin-top: 0.375rem;
+      margin-left: 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    &:hover {
+      filter: brightness(80%);
+    }
+  }
+
+  &[open] summary {
+    margin-bottom: 1.5rem;
+
+    &::after {
+      content: "↑";
+    }
+  }
+}

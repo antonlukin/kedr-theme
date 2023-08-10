@@ -85,7 +85,8 @@ class Kedr_Blocks_Topnews {
             'kedr-theme-' . $slug,
             'kedr_theme_' . $slug,
             array(
-                'option' => $category->term_id,
+                'term' => $category->term_id,
+                'meta' => self::$meta,
             )
         );
 

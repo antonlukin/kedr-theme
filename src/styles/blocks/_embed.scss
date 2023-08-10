@@ -1,0 +1,12 @@
+.wp-block-embed {
+  display: block;
+  position: relative;
+  overflow: hidden;
+
+  border-radius: var(--radius-frame);
+
+  iframe {
+    display: block;
+    width: 100%;
+  }
+}

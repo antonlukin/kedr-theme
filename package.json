@@ -18,10 +18,12 @@
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/preset-env": "^7.22.9",
+    "@fancyapps/ui": "^5.0.20",
     "@wordpress/babel-preset-default": "^7.21.0",
     "@wordpress/eslint-plugin": "^14.10.0",
     "babel-loader": "^9.1.3",
     "babel-preset-latest": "^6.24.1",
+    "css-loader": "^6.8.1",
     "eslint": "^8.0.0",
     "eslint-plugin-prettier": "5.0.0",
     "gulp": "^4.0.2",
@@ -34,6 +36,7 @@
     "gulp-sass-glob": "^1.1.0",
     "gulp-uglify": "^3.0.2",
     "sass": "^1.52.1",
+    "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
     "webpack-stream": "^7.0.0"
   },
@@ -45,6 +48,5 @@
     "opera >= 23",
     "ios >= 7",
     "android >= 4.4"
-  ],
-  "dependencies": {}
+  ]
 }

@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+    "name": "kedr/speech",
+    "title": "Прямая речь",
+    "category": "text",
+	"textdomain": "kedr-theme",
+	"icon": "format-status",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"keywords": [
+		"quote",
+		"speech",
+		"прямая речь",
+		"цитата",
+		"автор"
+	],
+	"attributes": {
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"citation": {
+			"type": "string",
+			"source": "html",
+			"selector": "figcaption"
+		},
+		"imageUrl": {
+			"type": "string"
+		},
+		"imageId": {
+			"type": "number"
+		}
+	}
+}

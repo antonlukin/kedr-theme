@@ -1,0 +1,15 @@
+.wp-block-kedr-reference {
+  cursor: pointer;
+
+  padding: 0 0.125rem 0.075rem;
+  white-space: pre-wrap;
+  background-color: rgba(0, 0, 0, 0.075);
+
+  border: solid 1px rgba(0, 0, 0, 0.175);
+  border-radius: 0.125rem;
+
+  &[data-active] {
+    background-color: var(--color-reference);
+    border-color: var(--color-reference);
+  }
+}

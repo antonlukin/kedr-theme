@@ -58,7 +58,7 @@
                 );
 
                 the_post_info(
-                    'photocaption',
+                    'get_labelcaption',
                     '<span class="entry-feature__meta-caption">',
                     '</span>'
                 );

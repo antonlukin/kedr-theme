@@ -70,5 +70,4 @@ gulp.task( 'watch', () => {
 } );
 
 gulp.task( 'build', gulp.parallel( 'styles', 'scripts', 'images', 'icons', 'fonts' ) );
-
 gulp.task( 'default', gulp.series( 'build', 'watch' ) );
