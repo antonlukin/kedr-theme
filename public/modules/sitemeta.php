@@ -30,8 +30,8 @@ class Kedr_Modules_Sitemeta {
         add_action( 'wp_head', array( __CLASS__, 'add_singular_microdata' ), 25 );
         add_action( 'wp_head', array( __CLASS__, 'add_frontpage_microdata' ), 25 );
 
-        // Add google tagmanager script
-        add_action( 'wp_head', array( __CLASS__, 'add_tagmanager' ), 20 );
+        // Add custom analytics scripts
+        add_action( 'wp_head', array( __CLASS__, 'add_analytics' ), 20 );
     }
 
     /**
@@ -104,9 +104,9 @@ class Kedr_Modules_Sitemeta {
     /**
      * Add tagmanager script to header
      */
-    public static function add_tagmanager() {
+    public static function add_analytics() {
         if ( defined( 'KEDR_TAGMANAGER' ) ) {
-            include get_template_directory() . '/includes/views/tagmanager-script.php';
+            include get_template_directory() . '/includes/views/sitemeta-scripts.php';
         }
     }
 

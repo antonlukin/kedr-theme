@@ -29,7 +29,7 @@ class Kedr_Modules_Login {
 
         wp_enqueue_style(
             'kedr-theme-login',
-            get_template_directory_uri() . '/includes/styles/login.css',
+            get_template_directory_uri() . '/includes/styles/login-screen.css',
             array(),
             $version
         );

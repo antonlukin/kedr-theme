@@ -32,7 +32,7 @@ class Kedr_Widget_Socials extends WP_Widget {
         $instance = wp_parse_args( (array) $instance, $defaults );
 
         if ( has_nav_menu( 'social' ) ) {
-            echo $args['before_widget']; // phpcs:ignore
+            echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
             printf(
                 '<p class="frame-socials__caption">%s</p>',
@@ -49,7 +49,7 @@ class Kedr_Widget_Socials extends WP_Widget {
                 )
             );
 
-            echo $args['after_widget']; // phpcs:ignore
+            echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
         }
     }
 

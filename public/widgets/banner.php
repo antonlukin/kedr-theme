@@ -29,11 +29,12 @@ class Kedr_Widget_Banner extends WP_Widget {
             'title'  => '',
             'link'   => '',
             'image'  => '',
+            'mobile' => '',
             'target' => 1,
         );
 
-        if ( ! empty( $instance['link'] ) ) {
-            echo $args['before_widget']; // phpcs:ignore
+        if ( ! empty( $instance['link'] ) && ! empty( $instance['image'] ) ) {
+            echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
             $target = null;
 
@@ -41,16 +42,35 @@ class Kedr_Widget_Banner extends WP_Widget {
                 $target = 'target="_blank" rel="noopener"';
             }
 
-            printf(
-                '<a class="frame-banner__link" href="%s" %s><img class="frame-banner__image" src="%s" alt="%s"></a>',
-                esc_attr( $instance['link'] ),
-                $target, // phpcs:ignore
-                esc_attr( $instance['image'] ),
-                esc_attr( $instance['title'] )
-            );
-        }
+            $images = array();
 
-        echo $args['after_widget']; // phpcs:ignore
+            if ( ! empty( $instance['mobile'] ) ) {
+                $images[] = sprintf(
+                    '<img class="frame-banner__mobile" src="%s" alt="%s">',
+                    esc_attr( $instance['mobile'] ),
+                    esc_attr( $instance['title'] )
+                );
+            }
+
+            if ( ! empty( $instance['image'] ) ) {
+                $images[] = sprintf(
+                    '<img class="frame-banner__image" src="%s" alt="%s">',
+                    esc_attr( $instance['image'] ),
+                    esc_attr( $instance['title'] )
+                );
+            }
+
+            // phpcs:disable WordPress.Security.EscapeOutput
+            printf(
+                '<a class="frame-banner__link" href="%s" %s>%s</a>',
+                esc_attr( $instance['link'] ),
+                $target,
+                implode( ' ', $images )
+            );
+            // phpcs:enable WordPress.Security.EscapeOutput
+
+            echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
+        }
     }
 
     /**
@@ -58,9 +78,10 @@ class Kedr_Widget_Banner extends WP_Widget {
      */
     public function update( $new_instance, $old_instance ) {
         $instance['title']  = sanitize_text_field( $new_instance['title'] );
-        $instance['image']  = sanitize_text_field( $new_instance['image'] );
         $instance['link']   = sanitize_text_field( $new_instance['link'] );
-        $instance['target'] = $new_instance['target'] ? 1 : 0;
+        $instance['image']  = sanitize_text_field( $new_instance['image'] );
+        $instance['mobile'] = sanitize_text_field( $new_instance['mobile'] );
+        $instance['target'] = ! empty( $new_instance['target'] ) ? 1 : 0;
 
         return $instance;
     }
@@ -73,6 +94,7 @@ class Kedr_Widget_Banner extends WP_Widget {
             'title'  => '',
             'link'   => '',
             'image'  => '',
+            'mobile' => '',
             'target' => 1,
         );
 
@@ -100,6 +122,15 @@ class Kedr_Widget_Banner extends WP_Widget {
             esc_attr( $this->get_field_name( 'image' ) ),
             esc_html__( 'Ссылка на изображение:', 'kedr-theme' ),
             esc_attr( $instance['image'] )
+        );
+
+        printf(
+            '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"><small>%5$s</small></p>',
+            esc_attr( $this->get_field_id( 'mobile' ) ),
+            esc_attr( $this->get_field_name( 'mobile' ) ),
+            esc_html__( 'Ссылка на мобильное изображение:', 'kedr-theme' ),
+            esc_attr( $instance['mobile'] ),
+            esc_html__( 'Необязательное поле', 'kedr-theme' )
         );
 
         printf(

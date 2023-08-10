@@ -58,7 +58,8 @@ class Kedr_Widget_Script extends WP_Widget {
         // Adds noreferrer and noopener relationships, without duplicating values, to all HTML A elements that have a target.
         $content = wp_targeted_link_rel( $instance['content'] );
 
-        echo $args['before_widget'] . $content . $args['after_widget']; // phpcs:ignore
+        // phpcs:ignore WordPress.Security.EscapeOutput
+        echo $args['before_widget'] . $content . $args['after_widget'];
     }
 
     /**

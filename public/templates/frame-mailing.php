@@ -11,7 +11,7 @@
     <?php
     printf(
         '<p class="frame-mailing__caption">%s</p>',
-        esc_html__( 'Подпишитесь на рассылку «Кедр.Медиа»', 'kedr-theme' )
+        esc_html__( 'Подпишитесь на рассылку «Кедр.медиа»', 'kedr-theme' )
     )
     ?>
 

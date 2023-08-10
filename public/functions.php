@@ -125,3 +125,4 @@ require_once get_template_directory() . '/modules/embeds.php';
 require_once get_template_directory() . '/modules/regions.php';
 require_once get_template_directory() . '/modules/snippet.php';
 require_once get_template_directory() . '/modules/requests.php';
+require_once get_template_directory() . '/modules/videos.php';

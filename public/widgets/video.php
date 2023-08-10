@@ -53,7 +53,7 @@ class Kedr_Widget_Video extends WP_Widget {
         );
 
         if ( $query->have_posts() ) {
-            echo $args['before_widget']; // phpcs:ignore
+            echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
             while ( $query->have_posts() ) {
                 $query->the_post();
@@ -67,7 +67,7 @@ class Kedr_Widget_Video extends WP_Widget {
 
             wp_reset_postdata();
 
-            echo $args['after_widget']; // phpcs:ignore
+            echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
         }
     }
 
@@ -134,7 +134,7 @@ class Kedr_Widget_Video extends WP_Widget {
         printf(
             '<p><select name="%s" class="widefat">%s</select></p>',
             esc_attr( $this->get_field_name( 'post_id' ) ),
-            implode( '', $list ) // phpcs:ignore
+            implode( '', $list ) // phpcs:ignore WordPress.Security.EscapeOutput
         );
     }
 

@@ -25,11 +25,11 @@ class Kedr_Widget_Mailing extends WP_Widget {
      * Outputs the content of the widget.
      */
     public function widget( $args, $instance ) {
-        echo $args['before_widget']; // phpcs:ignore
+        echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
         get_template_part( 'templates/frame', 'mailing' );
 
-        echo $args['after_widget']; // phpcs:ignore
+        echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
     }
 
     /**

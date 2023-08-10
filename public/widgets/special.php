@@ -49,12 +49,12 @@ class Kedr_Widget_Special extends WP_Widget {
         $term = get_term_by( 'id', $instance['term'], $this->taxonomy );
 
         if ( $query->have_posts() ) {
-            echo $args['before_widget']; // phpcs:ignore
+            echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
             $options = compact( 'term', 'query' );
             get_template_part( 'templates/frame', 'special', $options );
 
-            echo $args['after_widget']; // phpcs:ignore
+            echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
         }
     }
 
@@ -102,7 +102,7 @@ class Kedr_Widget_Special extends WP_Widget {
             )
         );
 
-        // phpcs:ignore
+        // phpcs:ignore WordPress.Security.EscapeOutput
         printf( '<p id="%s">%s</p>', esc_attr( $this->get_field_id( 'termlist' ) ), $termlist );
     }
 

@@ -1,6 +1,10 @@
 .frame-banner {
+  @include container;
+
   display: block;
   position: relative;
+
+  margin: var(--space-outer) auto 0;
 
   .frame-banner__link {
     display: block;
@@ -17,5 +21,30 @@
     position: relative;
 
     width: 100%;
+  }
+
+  .frame-banner__mobile {
+    display: none;
+    position: relative;
+
+    width: 100%;
+
+    @media screen and (max-width: 479px) {
+      display: block;
+    }
+  }
+
+  &.frame-banner--inpost {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    max-width: var(--width-content);
+  }
+
+  @media screen and (max-width: 479px) {
+    .frame-banner__mobile + .frame-banner__image {
+      display: none;
+    }
   }
 }

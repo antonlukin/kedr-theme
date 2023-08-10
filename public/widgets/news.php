@@ -49,7 +49,7 @@ class Kedr_Widget_News extends WP_Widget {
         $featured = new WP_Query( $this->get_featured_query( $instance ) );
 
         if ( $common->have_posts() ) {
-            echo $args['before_widget']; // phpcs:ignore
+            echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
             while ( $featured && $featured->have_posts() ) {
                 $featured->the_post();
@@ -63,7 +63,7 @@ class Kedr_Widget_News extends WP_Widget {
 
             wp_reset_postdata();
 
-            echo $args['after_widget']; // phpcs:ignore
+            echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
         }
     }
 

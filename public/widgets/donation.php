@@ -30,7 +30,7 @@ class Kedr_Widget_Donation extends WP_Widget {
             'label' => '',
         );
 
-        echo $args['before_widget']; // phpcs:ignore
+        echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
         printf(
             '<a class="frame-donation__button button" href="%s">%s</a>',
@@ -38,7 +38,7 @@ class Kedr_Widget_Donation extends WP_Widget {
             esc_html( $instance['label'] )
         );
 
-        echo $args['after_widget']; // phpcs:ignore
+        echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
     }
 
     /**
@@ -63,7 +63,7 @@ class Kedr_Widget_Donation extends WP_Widget {
         $instance = wp_parse_args( (array) $instance, $defaults );
 
         if ( empty( $instance['label'] ) ) {
-            $instance['label'] = esc_html__( 'Поддержите «Кедр.Медиа»', 'kedr-theme' );
+            $instance['label'] = esc_html__( 'Поддержите «Кедр.медиа»', 'kedr-theme' );
         }
 
         printf(

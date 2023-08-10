@@ -45,7 +45,7 @@ class Kedr_Widget_Podcasts extends WP_Widget {
         $query = new WP_Query( $this->get_query( $instance ) );
 
         if ( $query->have_posts() ) {
-            echo $args['before_widget']; // phpcs:ignore
+            echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
             $options = array(
                 'query'   => $query,
@@ -57,7 +57,7 @@ class Kedr_Widget_Podcasts extends WP_Widget {
 
             get_template_part( 'templates/frame', 'podcasts', $options );
 
-            echo $args['after_widget']; // phpcs:ignore
+            echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
         }
     }
 

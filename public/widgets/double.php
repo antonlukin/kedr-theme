@@ -49,7 +49,7 @@ class Kedr_Widget_Double extends WP_Widget {
         $query = new WP_Query( $this->get_query( $instance, $exclude ) );
 
         if ( $query->have_posts() ) {
-            echo $args['before_widget']; // phpcs:ignore
+            echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
             while ( $query->have_posts() ) {
                 $query->the_post();
@@ -59,7 +59,7 @@ class Kedr_Widget_Double extends WP_Widget {
             wp_reset_postdata();
             set_query_var( 'widget_exclude', array_merge( $exclude, wp_list_pluck( $query->posts, 'ID' ) ) );
 
-            echo $args['after_widget']; // phpcs:ignore
+            echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
         }
     }
 
