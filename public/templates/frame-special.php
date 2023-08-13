@@ -48,13 +48,13 @@
                         esc_html( get_the_title() )
                     );
 
-                    the_post_info(
+                    kedr_theme_info(
                         'excerpt',
                         '<div class="frame-special__content-excerpt">',
                         '</div>'
                     );
 
-                    the_post_info(
+                    kedr_theme_info(
                         'authors',
                         '<div class="frame-special__content-authors">',
                         '</div>'

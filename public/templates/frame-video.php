@@ -10,7 +10,7 @@
 <div class="frame-video__wrapper">
     <div class="frame-video__content">
         <?php
-        the_post_info(
+        kedr_theme_info(
             'category',
             '<div class="frame-video__content-category">',
             '</div>'
@@ -22,13 +22,13 @@
             esc_html( get_the_title() )
         );
 
-        the_post_info(
+        kedr_theme_info(
             'videolead',
             '<div class="frame-video__content-videolead">',
             '</div>'
         );
 
-        the_post_info(
+        kedr_theme_info(
             'authors',
             '<div class="frame-video__content-authors">',
             '</div>'
@@ -37,7 +37,7 @@
     </div>
 
     <?php
-    the_post_info(
+    kedr_theme_info(
         'video',
         '<div class="frame-video__player">',
         '</div>'

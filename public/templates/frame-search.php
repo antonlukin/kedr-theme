@@ -9,7 +9,7 @@
 
 <div class="frame-search__content">
     <?php
-    the_post_info(
+    kedr_theme_info(
         'category',
         '<div class="frame-search__content-category">',
         '</div>'
@@ -21,13 +21,13 @@
         esc_html( get_the_title() )
     );
 
-    the_post_info(
+    kedr_theme_info(
         'excerpt',
         '<div class="frame-search__content-excerpt">',
         '</div>'
     );
 
-    the_post_info(
+    kedr_theme_info(
         'date',
         '<div class="frame-search__content-date">',
         '</div>'

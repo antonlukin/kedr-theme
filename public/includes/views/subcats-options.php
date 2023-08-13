@@ -1,26 +1,23 @@
-<?php
-$background = (array) get_term_meta( $term->term_id, self::$term_meta, true );
-
-$background = wp_parse_args(
-    $background,
-    array(
-        'image' => '',
-    )
-);
-?>
-
 <tr class="form-field hide-if-no-js">
     <th scope="row" valign="top">
         <label><?php esc_html_e( 'Обложка рубрики', 'kedr-theme' ); ?></label>
     </th>
 
     <td>
-        <div id="kedr-videos-options" style="max-width: 300px;">
+        <div id="kedr-subcats-options" style="max-width: 300px;">
             <?php
+            if ( ! empty( $options['attachment'] ) ) {
+                printf(
+                    '<img src="%s" alt="" style="%s">',
+                    esc_attr( wp_get_attachment_image_url( $options['attachment'], 'full' ) ),
+                    'max-width: 95%'
+                );
+            }
+
             printf(
-                '<input class="image" type="hidden" name="%s[image]" value="%s">',
+                '<input type="hidden" name="%s[attachment]" value="%s">',
                 esc_attr( self::$term_meta ),
-                esc_url( $background['image'] )
+                esc_attr( $options['attachment'] )
             );
             ?>
 

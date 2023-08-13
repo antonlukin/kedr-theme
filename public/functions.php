@@ -79,18 +79,16 @@ add_action(
     }
 );
 
-/**
- * Create new helper function for templates
- */
-if ( ! function_exists( 'the_post_info' ) ) :
+if ( ! function_exists( 'kedr_theme_info' ) ) :
     /**
-     * Public templates function to show post info option like category or authors
+     * Public template function to show post info
      */
-    function the_post_info( $option, $before = '', $after = '' ) {
+    function kedr_theme_info( $option, $before = '', $after = '', $args = null ) {
+        $output = null;
         $method = 'get_' . $option;
 
         if ( method_exists( 'Kedr_Modules_Postinfo', $method ) ) {
-            $output = Kedr_Modules_Postinfo::$method();
+            $output = Kedr_Modules_Postinfo::$method( $args );
         }
 
         if ( ! empty( $output ) ) {
@@ -125,4 +123,4 @@ require_once get_template_directory() . '/modules/embeds.php';
 require_once get_template_directory() . '/modules/regions.php';
 require_once get_template_directory() . '/modules/snippet.php';
 require_once get_template_directory() . '/modules/requests.php';
-require_once get_template_directory() . '/modules/videos.php';
+require_once get_template_directory() . '/modules/subcats.php';

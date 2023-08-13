@@ -10,7 +10,7 @@
 <div class="frame-single__wrapper">
     <div class="frame-single__content">
         <?php
-        the_post_info(
+        kedr_theme_info(
             'category',
             '<div class="frame-single__content-category">',
             '</div>'
@@ -22,13 +22,13 @@
             esc_html( get_the_title() )
         );
 
-        the_post_info(
+        kedr_theme_info(
             'excerpt',
             '<div class="frame-single__content-excerpt">',
             '</div>'
         );
 
-        the_post_info(
+        kedr_theme_info(
             'authors',
             '<div class="frame-single__content-authors">',
             '</div>'

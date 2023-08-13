@@ -15,7 +15,7 @@ class Kedr_Modules_Postinfo {
     /**
      * Get link to parent category
      */
-    public static function get_category( $output = '' ) {
+    public static function get_category( $args, $output = '' ) {
         $categories = get_the_category();
 
         if ( empty( $categories ) ) {
@@ -47,7 +47,7 @@ class Kedr_Modules_Postinfo {
     /**
      * Get list of post authors
      */
-    public static function get_authors( $output = '' ) {
+    public static function get_authors( $args, $output = '' ) {
         if ( function_exists( 'coauthors_posts_links' ) ) {
             $output = coauthors_posts_links( ', ', ', ', null, null, false );
         }
@@ -58,7 +58,7 @@ class Kedr_Modules_Postinfo {
     /**
      * Get post excerpt if exists
      */
-    public static function get_excerpt( $output = '' ) {
+    public static function get_excerpt( $args, $output = '' ) {
         if ( has_excerpt() ) {
             $output = apply_filters( 'the_excerpt', get_the_excerpt() );
         }
@@ -76,7 +76,7 @@ class Kedr_Modules_Postinfo {
     /**
      * Get thumbnail caption
      */
-    public static function get_caption( $output = '' ) {
+    public static function get_caption( $args, $output = '' ) {
         $caption = get_the_post_thumbnail_caption();
 
         if ( ! empty( $caption ) ) {
@@ -89,7 +89,7 @@ class Kedr_Modules_Postinfo {
     /**
      * Get thumbnail caption with label
      */
-    public static function get_labelcaption( $output = '' ) {
+    public static function get_labelcaption( $args, $output = '' ) {
         $caption = get_the_post_thumbnail_caption();
 
         if ( ! empty( $caption ) ) {
@@ -102,7 +102,7 @@ class Kedr_Modules_Postinfo {
     /**
      * Get oEmbed code for first video from post content
      */
-    public static function get_video( $output = '' ) {
+    public static function get_video( $args, $output = '' ) {
         $url = self::parse_video_url( get_the_content() );
 
         if ( ! empty( $url ) ) {
@@ -113,9 +113,9 @@ class Kedr_Modules_Postinfo {
     }
 
     /**
-     * Get custom video lead
+     * Get custom video lead from block
      */
-    public static function get_videolead() {
+    public static function get_videolead( $args, $output = '' ) {
         if ( property_exists( 'Kedr_Blocks_Videolead', 'meta' ) ) {
             $output = get_post_meta( get_the_ID(), Kedr_Blocks_Videolead::$meta, true );
 
@@ -125,6 +125,19 @@ class Kedr_Modules_Postinfo {
         }
 
         return self::get_excerpt();
+    }
+
+    /**
+     * Get extrameta from customizer settings
+     */
+    public static function get_extrameta( $args, $output = '' ) {
+        $meta = get_theme_mod( 'extra-meta' );
+
+        if ( ! empty( $meta ) ) {
+            $output = $meta;
+        }
+
+        return $output;
     }
 
     /**

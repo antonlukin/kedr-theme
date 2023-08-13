@@ -23,7 +23,7 @@
     <?php endif; ?>
 
     <?php
-    the_post_info(
+    kedr_theme_info(
         'category',
         '<div class="frame-news__content-category">',
         '</div>'
@@ -35,7 +35,7 @@
         esc_html( get_the_title() )
     );
 
-    the_post_info(
+    kedr_theme_info(
         'date',
         '<div class="frame-news__content-date">',
         '</div>'

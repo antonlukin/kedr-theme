@@ -11,7 +11,7 @@
     <div class="entry-header">
         <div class="entry-header__wrapper">
             <?php
-            the_post_info(
+            kedr_theme_info(
                 'category',
                 '<div class="entry-header__category">',
                 '</div>'
@@ -22,7 +22,7 @@
                 '</h1>'
             );
 
-            the_post_info(
+            kedr_theme_info(
                 'excerpt',
                 '<div class="entry-header__excerpt">',
                 '</div>'
@@ -31,13 +31,13 @@
 
             <div class="entry-header__meta">
                 <?php
-                the_post_info(
+                kedr_theme_info(
                     'date',
                     '<span class="entry-header__meta-date">',
                     '</span>'
                 );
 
-                the_post_info(
+                kedr_theme_info(
                     'authors',
                     '<span class="entry-header__meta-authors">',
                     '</span>'

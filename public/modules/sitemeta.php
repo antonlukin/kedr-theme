@@ -17,10 +17,11 @@ class Kedr_Modules_Sitemeta {
      */
     public static function load_module() {
         add_filter( 'language_attributes', array( __CLASS__, 'add_xmlns' ) );
-        add_action( 'customize_register', array( __CLASS__, 'update_customize_settings' ) );
+        add_action( 'customize_register', array( __CLASS__, 'update_customizer_settings' ) );
 
-        add_action( 'wp_head', array( __CLASS__, 'add_icons' ), 4 );
         add_action( 'wp_head', array( __CLASS__, 'add_og_tags' ), 5 );
+        add_action( 'wp_head', array( __CLASS__, 'add_icons' ), 4 );
+        add_action( 'admin_head', array( __CLASS__, 'add_icons' ), 4 );
 
         add_action( 'wp_head', array( __CLASS__, 'add_twitter_tags' ), 5 );
         add_action( 'wp_head', array( __CLASS__, 'add_facebook_tags' ), 5 );
@@ -44,13 +45,14 @@ class Kedr_Modules_Sitemeta {
     /**
      * Footer description option
      */
-    public static function update_customize_settings( $wp_customize ) {
-        $wp_customize->add_setting( 'footer-description' );
+    public static function update_customizer_settings( $wp_customize ) {
+        $wp_customize->add_setting( 'extra-description' );
+        $wp_customize->add_setting( 'extra-meta' );
 
         $wp_customize->add_section(
-            'kedr_footer',
+            'kedr_extra',
             array(
-                'title'    => esc_html__( 'Подвал сайта', 'kedr-theme' ),
+                'title'    => esc_html__( 'Дополнительные настройки', 'kedr-theme' ),
                 'priority' => 160,
             )
         );
@@ -58,18 +60,32 @@ class Kedr_Modules_Sitemeta {
         $wp_customize->add_control(
             new WP_Customize_Code_Editor_Control(
                 $wp_customize,
-                'footer-description',
+                'extra-description',
                 array(
                     'label'     => esc_html__( 'Описание в подвале', 'kedr-theme' ),
-                    'section'   => 'kedr_footer',
+                    'section'   => 'kedr_extra',
                     'code_type' => 'text/html',
                     'priority'  => 10,
                 )
             )
         );
 
-        // Remove site icon controls from admin customizer
+        $wp_customize->add_control(
+            new WP_Customize_Code_Editor_Control(
+                $wp_customize,
+                'extra-meta',
+                array(
+                    'label'     => esc_html__( 'Блок под метой записи', 'kedr-theme' ),
+                    'section'   => 'kedr_extra',
+                    'code_type' => 'text/html',
+                    'priority'  => 10,
+                )
+            )
+        );
+
+        // Remove site icon customize setting
         $wp_customize->remove_control( 'site_icon' );
+        $wp_customize->remove_section( 'static_front_page' );
     }
 
     /**

@@ -45,7 +45,7 @@ class Kedr_Widget_Special extends WP_Widget {
         // Create new WP_Query by instance vars
         $query = new WP_Query( $this->get_query( $instance ) );
 
-        // get term object by id
+        // Get term object by id
         $term = get_term_by( 'id', $instance['term'], $this->taxonomy );
 
         if ( $query->have_posts() ) {

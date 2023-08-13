@@ -49,6 +49,13 @@ class Kedr_Modules_Global {
         remove_action( 'wp_head', 'wp_resource_hints', 2 );
         remove_action( 'wp_head', 'wp_shortlink_wp_head', 10 );
         remove_action( 'wp_head', 'wp_site_icon', 99 );
+
+        add_action(
+            'admin_init',
+            function() {
+                remove_action( 'admin_head', 'wp_site_icon' );
+            }
+        );
     }
 
     /**

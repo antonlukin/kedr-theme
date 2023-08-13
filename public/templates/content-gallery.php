@@ -25,7 +25,7 @@
 
         <div class="entry-feature__wrapper">
             <?php
-            the_post_info(
+            kedr_theme_info(
                 'category',
                 '<div class="entry-feature__category">',
                 '</div>'
@@ -36,7 +36,7 @@
                 '</h1>'
             );
 
-            the_post_info(
+            kedr_theme_info(
                 'excerpt',
                 '<div class="entry-feature__excerpt">',
                 '</div>'
@@ -45,19 +45,19 @@
 
             <div class="entry-feature__meta">
                 <?php
-                the_post_info(
+                kedr_theme_info(
                     'date',
                     '<span class="entry-feature__meta-date">',
                     '</span>'
                 );
 
-                the_post_info(
+                kedr_theme_info(
                     'authors',
                     '<span class="entry-feature__meta-authors">',
                     '</span>'
                 );
 
-                the_post_info(
+                kedr_theme_info(
                     'get_labelcaption',
                     '<span class="entry-feature__meta-caption">',
                     '</span>'

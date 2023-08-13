@@ -24,19 +24,18 @@ class Kedr_Modules_Blocks {
     }
 
     /**
-     *
+     * Add custom blocks
      */
     public static function register_custom_blocks() {
         if ( ! function_exists( 'register_block_type' ) ) {
             return;
         }
 
-        require_once get_stylesheet_directory() . '/blocks/help.php';
-        require_once get_stylesheet_directory() . '/blocks/reference.php';
-        require_once get_stylesheet_directory() . '/blocks/speech.php';
-        require_once get_stylesheet_directory() . '/blocks/related.php';
-        require_once get_stylesheet_directory() . '/blocks/topnews.php';
-        require_once get_stylesheet_directory() . '/blocks/videolead.php';
+        $include = get_template_directory() . '/blocks/';
+
+        foreach ( glob( $include . '*.php' ) as $widget ) {
+            include_once $include . basename( $widget );
+        }
     }
 
     /**
@@ -68,10 +67,6 @@ class Kedr_Modules_Blocks {
     public static function disable_core_blocks( $allowed ) {
         $blocks = array_keys( WP_Block_Type_Registry::get_instance()->get_all_registered() );
 
-        // foreach ( $blocks as $block ) {
-        //     echo "'$block',\n";
-        // }
-
         // Alloweed core blocks
         $allowed = array(
             'core/paragraph',
@@ -91,104 +86,6 @@ class Kedr_Modules_Blocks {
             'core/block',
             'core/details',
         );
-
-        // $allowed = array(
-        //     // 'core/legacy-widget',
-        //     // 'core/widget-group',
-        //     // 'core/archives',
-        //     // 'core/avatar',
-        //     'core/block',
-        //     // 'core/calendar',
-        //     // 'core/categories',
-        //     // 'core/comment-author-name',
-        //     // 'core/comment-content',
-        //     // 'core/comment-date',
-        //     // 'core/comment-edit-link',
-        //     // 'core/comment-reply-link',
-        //     // 'core/comment-template',
-        //     // 'core/comments',
-        //     // 'core/comments-pagination',
-        //     // 'core/comments-pagination-next',
-        //     // 'core/comments-pagination-numbers',
-        //     // 'core/comments-pagination-previous',
-        //     // 'core/comments-title',
-        //     // 'core/cover',
-        //     // 'core/file',
-        //     // 'core/gallery',
-        //     // 'core/heading',
-        //     // 'core/home-link',
-        //     // 'core/image',
-        //     // 'core/latest-comments',
-        //     // 'core/latest-posts',
-        //     // 'core/loginout',
-        //     // 'core/navigation',
-        //     // 'core/navigation-link',
-        //     // 'core/navigation-submenu',
-        //     // 'core/page-list',
-        //     // 'core/pattern',
-        //     // 'core/post-author',
-        //     // 'core/post-author-biography',
-        //     // 'core/post-author-name',
-        //     // 'core/post-comments-form',
-        //     // 'core/post-content',
-        //     // 'core/post-date',
-        //     // 'core/post-excerpt',
-        //     // 'core/post-featured-image',
-        //     // 'core/post-navigation-link',
-        //     // 'core/post-template',
-        //     // 'core/post-terms',
-        //     // 'core/post-title',
-        //     // 'core/query',
-        //     // 'core/query-no-results',
-        //     // 'core/query-pagination',
-        //     // 'core/query-pagination-next',
-        //     // 'core/query-pagination-numbers',
-        //     // 'core/query-pagination-previous',
-        //     // 'core/query-title',
-        //     // 'core/read-more',
-        //     // 'core/rss',
-        //     // 'core/search',
-        //     // 'core/shortcode',
-        //     // 'core/site-logo',
-        //     // 'core/site-tagline',
-        //     // 'core/site-title',
-        //     // 'core/social-link',
-        //     // 'core/tag-cloud',
-        //     // 'core/template-part',
-        //     // 'core/term-description',
-        //     // 'core/audio',
-        //     // 'core/button',
-        //     // 'core/buttons',
-        //     // 'core/code',
-        //     // 'core/column',
-        //     // 'core/columns',
-        //     // 'core/embed',
-        //     // 'core/freeform',
-        //     // 'core/group',
-        //     // 'core/html',
-        //     // 'core/list',
-        //     // 'core/list-item',
-        //     // 'core/media-text',
-        //     // 'core/missing',
-        //     // 'core/more',
-        //     // 'core/nextpage',
-        //     // 'core/page-list-item',
-        //     'core/paragraph',
-        //     // 'core/preformatted',
-        //     // 'core/pullquote',
-        //     // 'core/quote',
-        //     // 'core/separator',
-        //     // 'core/social-links',
-        //     'core/spacer',
-        //     // 'core/table',
-        //     // 'core/text-columns',
-        //     // 'core/verse',
-        //     // 'core/video',
-        //     // 'kedr/help',
-        //     // 'kedr/details',
-        //     // 'kedr/related',
-        //     'core/post-comments',
-        // );
 
         $whitelist = array();
 

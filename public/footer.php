@@ -22,7 +22,7 @@
         </a>
 
         <div class="footer__description">
-            <?php echo wp_kses_post( get_theme_mod( 'footer-description' ) ); ?>
+            <?php echo wp_kses_post( get_theme_mod( 'extra-description' ) ); ?>
         </div>
 
         <div class="footer__navbar">

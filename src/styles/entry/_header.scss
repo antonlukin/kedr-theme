@@ -22,7 +22,7 @@
     }
 
     & > *:last-child {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0;
     }
 
     @media screen and (max-width: 1023px) {
@@ -124,6 +124,10 @@
 
     font-size: 1rem;
 
+    & > * {
+      margin: 0 0 0.5rem;
+    }
+
     & > ::after {
       content: "•";
 
@@ -142,12 +146,15 @@
 
   .entry-header__meta-date {
     cursor: default;
+
+    display: inline-flex;
     position: relative;
 
     color: var(--color-dim);
   }
 
   .entry-header__meta-authors {
+    display: inline-flex;
     position: relative;
     color: var(--color-primary);
 
@@ -158,6 +165,24 @@
     a:hover,
     a:focus {
       color: var(--color-dark);
+    }
+  }
+
+  .entry-header__meta-extra {
+    display: inline-flex;
+    position: relative;
+
+    padding: 0.25rem 0.5rem;
+
+    color: var(--color-light);
+    background-color: var(--color-primary);
+
+    border-radius: 0.25rem;
+
+    transition: filter 0.25s;
+
+    &:hover {
+      filter: brightness(120%);
     }
   }
 

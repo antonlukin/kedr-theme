@@ -22,7 +22,7 @@
 
     <div class="frame-photostory__content">
         <?php
-        the_post_info(
+        kedr_theme_info(
             'category',
             '<div class="frame-photostory__content-category">',
             '</div>'
@@ -34,13 +34,13 @@
             esc_html( get_the_title() )
         );
 
-        the_post_info(
+        kedr_theme_info(
             'excerpt',
             '<div class="frame-photostory__content-excerpt">',
             '</div>'
         );
 
-        the_post_info(
+        kedr_theme_info(
             'authors',
             '<div class="frame-photostory__content-authors">',
             '</div>'
