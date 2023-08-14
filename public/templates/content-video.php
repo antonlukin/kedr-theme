@@ -42,6 +42,12 @@
                     '<span class="entry-header__meta-authors">',
                     '</span>'
                 );
+
+                kedr_theme_info(
+                    'extrameta',
+                    '<span class="entry-header__meta-extra">',
+                    '</span>'
+                );
                 ?>
             </div>
         </div>

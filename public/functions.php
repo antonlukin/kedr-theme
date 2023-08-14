@@ -83,12 +83,12 @@ if ( ! function_exists( 'kedr_theme_info' ) ) :
     /**
      * Public template function to show post info
      */
-    function kedr_theme_info( $option, $before = '', $after = '', $args = null ) {
+    function kedr_theme_info( $option, $before = '', $after = '' ) {
         $output = null;
         $method = 'get_' . $option;
 
         if ( method_exists( 'Kedr_Modules_Postinfo', $method ) ) {
-            $output = Kedr_Modules_Postinfo::$method( $args );
+            $output = Kedr_Modules_Postinfo::$method();
         }
 
         if ( ! empty( $output ) ) {
