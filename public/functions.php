@@ -37,7 +37,7 @@ add_action(
  * Insert styles
  */
 add_action(
-    'wp_print_styles',
+    'wp_enqueue_scripts',
     function () {
         $version = wp_get_theme()->get( 'Version' );
 

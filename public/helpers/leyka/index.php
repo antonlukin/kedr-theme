@@ -44,3 +44,13 @@ add_action(
         );
     }
 );
+
+add_action(
+    'widgets_init',
+    function() {
+        unregister_widget( 'Leyka_Campaigns_List_Widget' );
+        unregister_widget( 'Leyka_Campaign_Card_Widget' );
+        unregister_widget( 'Leyka_Donations_List_Widget' );
+    },
+    20
+);

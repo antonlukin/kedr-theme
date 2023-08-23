@@ -281,7 +281,7 @@ function _typeof(obj) {
   \*****************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"kedr/help","title":"Справка","category":"text","textdomain":"kedr-theme","description":"Отображает стилизованный под справку текстовый блок.","icon":"book-alt","editorStyle":"file:./index.css","editorScript":"file:./index.js","keywords":["help","справка"],"attributes":{"content":{"type":"string","source":"html","selector":"p"},"backgroundColor":{"type":"string"},"customBackgroundColor":{"type":"string"},"italic":{"type":"boolean","default":false}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"kedr/help","title":"Справка","category":"text","textdomain":"kedr-theme","description":"Отображает стилизованный под справку текстовый блок.","icon":"book-alt","editorScript":"file:./index.js","editorStyle":"file:./index.css","keywords":["help","справка"],"attributes":{"content":{"type":"string","source":"html","selector":"p"},"backgroundColor":{"type":"string"},"customBackgroundColor":{"type":"string"},"italic":{"type":"boolean","default":false}}}');
 
 /***/ })
 

@@ -23,9 +23,23 @@ class Kedr_Blocks_Related {
      * Register new related block
      */
     public static function register_block() {
+        $slug = 'related';
+
+        // Get assets arguments
+        $asset = require __DIR__ . "/build/{$slug}/index.asset.php";
+
+        wp_register_script(
+            'kedr-theme-' . $slug,
+            get_stylesheet_directory_uri() . "/blocks/build/{$slug}/index.js",
+            $asset['dependencies'],
+            $asset['version'],
+            true
+        );
+
         register_block_type(
-            __DIR__ . '/build/related',
+            __DIR__ . "/build/{$slug}",
             array(
+                'editor_script'   => 'kedr-theme-' . $slug,
                 'render_callback' => array( __CLASS__, 'render_block' ),
             )
         );

@@ -70,7 +70,7 @@ module.exports = window["wp"]["richText"];
   \**********************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"kedr/reference","title":"Аннотация","textdomain":"kedr-theme","editorScript":"file:./index.js","editorStyle":"file:./index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"kedr/reference","title":"Аннотация","textdomain":"kedr-theme","editorScript":"file:./index.js","editorStyle":"file:./index.css","keywords":["аннтоация","reference","annotation"]}');
 
 /***/ })
 

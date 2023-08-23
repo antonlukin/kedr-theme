@@ -20,10 +20,36 @@ class Kedr_Blocks_Speech {
     }
 
     /**
-     * Register new help block
+     * Register new speech block
      */
     public static function register_block() {
-        register_block_type( __DIR__ . '/build/speech' );
+        $slug = 'speech';
+
+        // Get assets arguments
+        $asset = require __DIR__ . "/build/{$slug}/index.asset.php";
+
+        wp_register_script(
+            'kedr-theme-' . $slug,
+            get_stylesheet_directory_uri() . "/blocks/build/{$slug}/index.js",
+            $asset['dependencies'],
+            $asset['version'],
+            true
+        );
+
+        wp_register_style(
+            'kedr-theme-' . $slug,
+            get_stylesheet_directory_uri() . "/blocks/build/{$slug}/index.css",
+            array(),
+            $asset['version']
+        );
+
+        register_block_type(
+            __DIR__ . "/build/{$slug}",
+            array(
+                'editor_script' => 'kedr-theme-' . $slug,
+                'editor_style'  => 'kedr-theme-' . $slug,
+            )
+        );
     }
 }
 
