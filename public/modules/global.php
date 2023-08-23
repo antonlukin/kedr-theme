@@ -50,6 +50,10 @@ class Kedr_Modules_Global {
         remove_action( 'wp_head', 'wp_shortlink_wp_head', 10 );
         remove_action( 'wp_head', 'wp_site_icon', 99 );
 
+        // Disables the block editor from managing widgets in the Gutenberg plugin.
+        add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
+        add_filter( 'use_widgets_block_editor', '__return_false' );
+
         add_action(
             'admin_init',
             function() {

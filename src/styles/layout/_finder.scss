@@ -21,6 +21,10 @@
     position: relative;
 
     width: 100%;
+
+    @media screen and (max-width: 359px) {
+      flex-flow: row wrap;
+    }
   }
 
   .finder__message {
@@ -33,12 +37,25 @@
   }
 
   .finder__input {
-    flex: 1 1 100%;
+    flex: 1;
     margin-right: var(--space-outer);
+
+    @media screen and (max-width: 359px) {
+      margin-right: 0;
+    }
   }
 
   .finder__button {
     flex: 0 0 12rem;
+
+    @media screen and (max-width: 479px) {
+      flex: 0 0 auto;
+    }
+
+    @media screen and (max-width: 359px) {
+      flex: 1 1 100%;
+      margin-top: calc(var(--space-outer) * 2 / 3);
+    }
   }
 
   .finder__empty {
