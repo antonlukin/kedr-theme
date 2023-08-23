@@ -40,7 +40,7 @@
                     printf(
                         '<p class="frame-podcasts__content-category">%s %d</p>',
                         esc_html__( 'Выпуск', 'kedr-theme' ),
-                        absint( $args['total'] - $args['counter']++ )
+                        absint( $args['total'] - $args['counter'] )
                     );
 
                     printf(

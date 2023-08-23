@@ -99,7 +99,7 @@ class Kedr_Widget_Podcasts extends WP_Widget {
         $query = array(
             'posts_per_page'      => 4,
             'post_type'           => $this->post_type,
-            'post_status'         => 'publish',
+            'post_status'         => array( 'publish', 'private' ),
             'ignore_sticky_posts' => true,
             'tax_query'           => array( // phpcs:ignore
                 array(
