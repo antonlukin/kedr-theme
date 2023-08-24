@@ -27,6 +27,9 @@ class Kedr_Modules_Requests {
         add_action( 'rest_api_init', array( __CLASS__, 'register_rest_routes' ) );
         add_action( 'after_switch_theme', array( __CLASS__, 'create_table' ) );
         add_action( 'admin_menu', array( __CLASS__, 'add_mailing_page' ), 25 );
+        add_action( 'admin_menu', array( __CLASS__, 'add_donation_page' ), 25 );
+
+        add_filter( 'the_content', array( __CLASS__, 'append_donation_form' ), 20 );
     }
 
     /**
@@ -42,8 +45,21 @@ class Kedr_Modules_Requests {
                 'permission_callback' => '__return_true',
             )
         );
+
+        register_rest_route(
+            'kedr-requests/v1',
+            '/canceling',
+            array(
+                'methods'             => WP_REST_Server::CREATABLE,
+                'callback'            => array( __CLASS__, 'process_canceling_request' ),
+                'permission_callback' => '__return_true',
+            )
+        );
     }
 
+    /**
+     * Add mailing addresses page
+     */
     public static function add_mailing_page() {
         $hookname = add_management_page(
             esc_html__( 'Адреса рассылки', 'kedr-theme' ),
@@ -55,7 +71,20 @@ class Kedr_Modules_Requests {
     }
 
     /**
-     * Display management page
+     * Add canceling recurrent donations page
+     */
+    public static function add_donation_page() {
+        $hookname = add_management_page(
+            esc_html__( 'Отмена платежей', 'kedr-theme' ),
+            esc_html__( 'Отмена платежей', 'kedr-theme' ),
+            'edit_pages',
+            'kedr-canceling',
+            array( __CLASS__, 'display_canceling_page' )
+        );
+    }
+
+    /**
+     * Display mailing page
      */
     public static function display_mailing_page() {
         include_once get_template_directory() . '/includes/tables/requests-mailing.php';
@@ -68,6 +97,36 @@ class Kedr_Modules_Requests {
     }
 
     /**
+     * Display recurrent page
+     */
+    public static function display_canceling_page() {
+        include_once get_template_directory() . '/includes/tables/requests-canceling.php';
+
+        // Get recurrent table instance
+        $table = new Kedr_Requests_Canceling_Table();
+        $table->prepare_items();
+
+        include_once get_template_directory() . '/includes/views/requests-canceling.php';
+    }
+
+    public static function append_donation_form( $content ) {
+        if ( ! is_page( 'cancel-donation' ) ) {
+            return $content;
+        }
+
+        ob_start();
+
+        get_template_part( 'templates/frame', 'canceling' );
+
+        $output = sprintf(
+            '<div class="frame-canceling">%s</div>',
+            ob_get_clean()
+        );
+
+        return $content . $output;
+    }
+
+    /**
      * Process mailing request
      */
     public static function process_mailing_request( $request ) {
@@ -77,19 +136,40 @@ class Kedr_Modules_Requests {
             return self::show_error( esc_html__( 'Неверный формат адреса почты', 'kedr-theme' ) );
         }
 
-        $exists = self::check_field( 'email', $content, 'mailing' );
+        $exists = self::find_row( $content, 'mailing' );
 
         if ( ! empty( $exists ) ) {
             return self::show_error( esc_html__( 'Адрес уже подписан на рассылку', 'kedr-theme' ) );
         }
 
-        $result = self::add_field( 'email', $content, 'mailing' );
+        $result = self::add_row( $content, 'mailing' );
 
         if ( ! empty( $result ) ) {
             return self::show_success( esc_html__( 'Адрес успешно сохранен', 'kedr-theme' ) );
         }
 
         return self::show_error( esc_html__( 'Не удалось сохранить адрес почты. Попробуйте позже', 'kedr-theme' ) );
+    }
+
+    /**
+     * Process canceling request
+     */
+    public static function process_canceling_request( $request ) {
+        $content = $request->get_param( 'first' ) . '...' . $request->get_param( 'last' );
+
+        $exists = self::find_row( $content, 'canceling' );
+
+        if ( ! empty( $exists ) ) {
+            return self::show_error( esc_html__( 'Номер карты уже исключен', 'kedr-theme' ) );
+        }
+
+        $result = self::add_row( $content, 'canceling' );
+
+        if ( ! empty( $result ) ) {
+            return self::show_success( esc_html__( 'Номер карты записан и вскоре будет исключен', 'kedr-theme' ) );
+        }
+
+        return self::show_error( esc_html__( 'Не удалось записать номер карты. Попробуйте позже', 'kedr-theme' ) );
     }
 
     /**
@@ -103,7 +183,6 @@ class Kedr_Modules_Requests {
         $query = "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}requests (
             id int(11) NOT NULL AUTO_INCREMENT,
             form varchar(128) NOT NULL,
-            field varchar(256) NOT NULL,
             content text NOT NULL,
             ip varchar(128) NOT NULL,
             created datetime NOT NULL DEFAULT current_timestamp(),
@@ -133,7 +212,7 @@ class Kedr_Modules_Requests {
     /**
      * Add requests fields to database
      */
-    private static function add_field( $field, $content, $form ) {
+    private static function add_row( $content, $form ) {
         global $wpdb;
 
         $ip = null;
@@ -143,7 +222,6 @@ class Kedr_Modules_Requests {
         }
 
         $values = array(
-            'field'   => $field,
             'content' => $content,
             'form'    => $form,
             'ip'      => $ip,
@@ -155,12 +233,12 @@ class Kedr_Modules_Requests {
     /**
      * Check if field already exists in database
      */
-    private static function check_field( $field, $content, $form ) {
+    private static function find_row( $content, $form ) {
         global $wpdb;
 
         $query = $wpdb->prepare(
-            "SELECT id FROM {$wpdb->prefix}requests WHERE field = %s AND content = %s AND form = %s",
-            array( $field, $content, $form )
+            "SELECT id FROM {$wpdb->prefix}requests WHERE content = %s AND form = %s",
+            array( $content, $form )
         );
 
         // phpcs:ignore
