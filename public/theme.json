@@ -286,7 +286,7 @@
         "css": "& figcaption {text-align: left}"
       },
       "core/gallery": {
-        "css": "& figure.wp-block-image figcaption {position:relative; background:none; color:var(--wp--custom--color-dim)}"
+        "css": "& figure.wp-block-image figcaption {flex: 0 0 auto; position:relative; background:none; color:var(--wp--custom--color-dim); text-align: left; padding: 0.5rem 0 0;}"
       },
       "core/details": {
         "color": {
