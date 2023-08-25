@@ -4,7 +4,7 @@
   display: block;
   position: relative;
 
-  margin: var(--space-outer) auto 0;
+  margin: calc(var(--space-outer) * 1.5) auto;
   padding: var(--space-outer);
 
   color: var(--color-dark);
@@ -35,12 +35,8 @@
     font-weight: 700;
 
     @media screen and (max-width: 767px) {
-      font-size: 1.375rem;
+      font-size: 1.125rem;
       line-height: 1.375;
-    }
-
-    @media screen and (max-width: 479px) {
-      font-size: 1.25rem;
     }
   }
 

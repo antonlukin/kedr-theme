@@ -18,6 +18,10 @@
       margin: 0;
     }
   }
+
+  .blocks-gallery-caption {
+    padding-top: 0;
+  }
 }
 
 .wp-block-gallery:not(.has-nested-images) {
@@ -168,7 +172,11 @@ figure.wp-block-gallery.has-nested-images {
 
 .wp-block-gallery.has-nested-images figure.wp-block-image:not(#individual-image) {
   margin: 0;
-  width: calc(50% - var(--space-outer, 16px) / 2);
+  width: calc(50% - var(--space-outer) / 2);
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 }
 
 .wp-block-gallery.has-nested-images figure.wp-block-image {

@@ -175,4 +175,9 @@
       font-size: 0.875rem;
     }
   }
+
+  @media screen and (max-width: 767px) {
+    border-top: none;
+    border-bottom: none;
+  }
 }

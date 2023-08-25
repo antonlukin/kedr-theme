@@ -112,10 +112,6 @@
     position: relative;
 
     font-size: 1.25rem;
-
-    @media screen and (max-width: 1023px) {
-      font-size: 1.125rem;
-    }
   }
 
   .entry-header__meta {
@@ -174,16 +170,17 @@
     position: relative;
 
     padding: 0.25rem 0.5rem;
+    font-weight: 600;
 
-    color: var(--color-light);
-    background-color: var(--color-primary);
+    color: var(--color-primary);
+    border: solid 0.075rem;
 
     border-radius: 0.25rem;
 
-    transition: filter 0.25s;
+    transition: color 0.25s;
 
     &:hover {
-      filter: brightness(120%);
+      color: var(--color-dark);
     }
   }
 
