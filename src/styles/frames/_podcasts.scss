@@ -128,6 +128,10 @@
     @media screen and (max-width: 479px) {
       flex: 0 0 7.5rem;
     }
+
+    @media screen and (max-width: 359px) {
+      display: none;
+    }
   }
 
   .frame-podcasts__content {
@@ -171,13 +175,10 @@
     font-weight: 600;
 
     @media screen and (max-width: 479px) {
-      margin-top: 0.25rem;
-      font-size: 0.875rem;
+      margin-top: 0.5rem;
     }
   }
 
   @media screen and (max-width: 767px) {
-    border-top: none;
-    border-bottom: none;
   }
 }
