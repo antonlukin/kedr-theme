@@ -80,8 +80,10 @@
     background-color: var(--color-light);
   }
 
-  @media screen and (max-width: 1023px) {
-    &.frame-mailing--bottom {
+  &.frame-mailing--bottom {
+    margin: var(--space-outer) auto;
+
+    @media screen and (max-width: 1023px) {
       padding-left: 0;
       padding-right: 0;
       background-color: transparent;
