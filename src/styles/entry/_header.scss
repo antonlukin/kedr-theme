@@ -53,7 +53,7 @@
 
       width: 100%;
       padding-top: 0.5rem;
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
 
       text-align: center;
       color: var(--color-dim);
@@ -99,11 +99,11 @@
     line-height: 1.125;
 
     @media screen and (max-width: 767px) {
-      font-size: 1.8125rem;
+      font-size: 1.875rem;
     }
 
     @media screen and (max-width: 479px) {
-      font-size: 1.75rem;
+      font-size: 1.8125rem;
     }
   }
 
