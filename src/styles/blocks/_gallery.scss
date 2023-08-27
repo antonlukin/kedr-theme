@@ -3,6 +3,16 @@
 
   &.alignwide {
     max-width: 100%;
+
+    img {
+      width: 100%;
+    }
+
+    figcaption {
+      max-width: var(--width-content);
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   &.alignfull {
