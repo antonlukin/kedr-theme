@@ -9,7 +9,7 @@
   border-bottom: solid 1px var(--color-primary);
 
   .frame-special + &,
-  .frame-special + & {
+  .frame-news + & {
     padding-top: 0;
     border-top: 0;
   }
@@ -84,6 +84,12 @@
     @media screen and (max-width: 1023px) {
       flex-flow: row nowrap;
       padding-top: 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      &:nth-child(n + 4) {
+        display: none;
+      }
     }
   }
 
@@ -163,6 +169,10 @@
     a:focus {
       filter: brightness(150%);
     }
+
+    @media screen and (max-width: 479px) {
+      display: none;
+    }
   }
 
   .frame-podcasts__content-title {
@@ -175,7 +185,7 @@
     font-weight: 600;
 
     @media screen and (max-width: 479px) {
-      margin-top: 0.5rem;
+      margin-top: 0;
     }
   }
 

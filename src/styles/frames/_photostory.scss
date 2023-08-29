@@ -128,7 +128,7 @@
 
     width: 100%;
     max-width: var(--width-content);
-    margin: 0.75rem 0 0;
+    margin: 0.75rem 0;
 
     font-size: 1.25rem;
     text-align: center;
@@ -136,31 +136,6 @@
     @media screen and (max-width: 1023px) {
       max-width: calc(var(--width-content) / 1.5);
       font-size: 1.0625rem;
-    }
-  }
-
-  .frame-photostory__content-authors {
-    display: inline-flex;
-    position: relative;
-    z-index: 2;
-
-    margin-top: 1.5rem;
-    font-size: 0.875rem;
-
-    color: var(--color-muted);
-
-    a {
-      transition: color 0.25s;
-    }
-
-    a:hover,
-    a:focus {
-      color: var(--color-light);
-    }
-
-    @media screen and (max-width: 1023px) {
-      margin-top: 0.75rem;
-      font-size: 0.8125rem;
     }
   }
 }

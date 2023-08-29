@@ -21,6 +21,8 @@ class Kedr_Modules_Widgets {
         add_action( 'widgets_init', array( __CLASS__, 'unregister_defaults' ), 1 );
         add_filter( 'widget_title', '__return_empty_string' );
 
+        add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
+
         add_action( 'added_post_meta', array( __CLASS__, 'clear_cache' ) );
         add_action( 'deleted_post_meta', array( __CLASS__, 'clear_cache' ) );
         add_action( 'updated_post_meta', array( __CLASS__, 'clear_cache' ) );
@@ -33,6 +35,8 @@ class Kedr_Modules_Widgets {
         if ( defined( 'WP_DEBUG' ) && ! WP_DEBUG ) {
             add_filter( 'widget_display_callback', array( __CLASS__, 'cache_widget' ), 10, 3 );
         }
+
+        add_action( 'wp_ajax_kedr_widgets', array( __CLASS__, 'handle_ajax' ) );
     }
 
     /**
@@ -108,6 +112,42 @@ class Kedr_Modules_Widgets {
     }
 
     /**
+     * Enqueue assets to wigets admin page screen only
+     */
+    public static function enqueue_assets( $hook ) {
+        if ( $hook !== 'widgets.php' ) {
+            return;
+        }
+
+        $version = wp_get_theme()->get( 'Version' );
+
+        wp_enqueue_media();
+
+        wp_enqueue_script(
+            'kedr-theme-widgets',
+            get_template_directory_uri() . '/includes/scripts/widgets-screen.js',
+            array( 'jquery' ),
+            $version,
+            true
+        );
+
+        wp_enqueue_style(
+            'kedr-theme-widgets',
+            get_template_directory_uri() . '/includes/styles/widgets-screen.css',
+            array(),
+            $version
+        );
+
+        $options = array(
+            'action'  => 'kedr_widgets',
+            'nonce'   => wp_create_nonce( 'kedr-widgets-nonce' ),
+            'warning' => esc_html__( 'Произошла неизвестная ошибка', 'kedr-theme' ),
+        );
+
+        wp_localize_script( 'kedr-theme-widgets', 'kedr_widgets', $options );
+    }
+
+    /**
      * Remove widgets cache on save or delete post
      */
     public static function clear_cache() {
@@ -161,6 +201,38 @@ class Kedr_Modules_Widgets {
         echo $cached_widget; // phpcs:ignore WordPress.Security.EscapeOutput
 
         return false;
+    }
+
+
+    /**
+     * Handle widgets AJAX requests
+     */
+    public static function handle_ajax() {
+        check_ajax_referer( 'kedr-widgets-nonce', 'nonce' );
+
+        if ( ! empty( $_REQUEST['linkset'] ) ) {
+            return self::process_linkset( sanitize_text_field( wp_unslash( $_REQUEST['linkset'] ) ) );
+        }
+    }
+
+    /**
+     * Find post for linkset AJAX query
+     */
+    private static function process_linkset( $url ) {
+        $post_id = url_to_postid( trim( $url ) );
+
+        if ( empty( $post_id ) ) {
+            return wp_send_json_error( esc_html__( 'Запись не найдена', 'kedr-theme' ) );
+        }
+
+        $post = array(
+            'title' => esc_html( get_the_title( $post_id ) ),
+            'link'  => esc_url( get_permalink( $post_id ) ),
+            'image' => esc_url( get_the_post_thumbnail_url( $post_id ) ),
+            'post'  => absint( $post_id ),
+        );
+
+        wp_send_json_success( $post );
     }
 }
 

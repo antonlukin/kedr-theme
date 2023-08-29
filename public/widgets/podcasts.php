@@ -50,7 +50,7 @@ class Kedr_Widget_Podcasts extends WP_Widget {
             $options = array(
                 'query'   => $query,
                 'total'   => $query->found_posts,
-                'title'   => __( 'Подкаст', 'kedr-theme' ),
+                'title'   => esc_html__( 'Подкаст', 'kedr-theme' ),
                 'link'    => get_category_link( get_category_by_slug( $this->category ) ),
                 'counter' => 0,
             );

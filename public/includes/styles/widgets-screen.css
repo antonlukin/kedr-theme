@@ -1,0 +1,90 @@
+.kedr-widgets-linkset {
+  display: block;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.kedr-widgets-linkset header {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.kedr-widgets-linkset header > label {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.25em;
+}
+
+.kedr-widgets-linkset header > p {
+  margin: 0.5em 0 0;
+  color: #a00;
+}
+
+.kedr-widgets-linkset header > input[type="text"] {
+  flex: 1;
+  margin-right: 0.5em;
+}
+
+.kedr-widgets-linkset ul {
+  margin: 1em 0;
+  padding-bottom: 0.5em;
+
+  border-bottom: 1px solid #c3c4c7;
+}
+
+.kedr-widgets-linkset ul > li {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  position: relative;
+
+  width: 100%;
+  margin: 0 0 0.75em;
+  padding: 0.5em;
+  font-size: 0.8125rem;
+
+  background-color: #f0f0f1;
+  border: 1px solid #c3c4c7;
+  box-shadow: 0 1px 1px rgba(0,0,0,.04);
+  border-radius: 0.25em;
+}
+
+.kedr-widgets-linkset ul > li img {
+  display: block;
+
+  width: 2em;
+  height: 2em;
+  margin-right: 0.75em;
+
+  border-radius: 0.125em;
+}
+
+.kedr-widgets-linkset ul > li a {
+  overflow: hidden;
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+.kedr-widgets-linkset ul > li button {
+  display: block;
+  cursor: pointer;
+
+  margin-left: auto;
+  font-size: 18px;
+  line-height: 1;
+
+  color: #a00;
+  background: transparent;
+  border: none;
+}
+
+.kedr-widgets-linkset ul > li button::after {
+  content: "\f182";
+  display: block;
+  font-family: dashicons;
+  line-height: 1;
+}

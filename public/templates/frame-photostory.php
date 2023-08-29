@@ -39,12 +39,6 @@
             '<div class="frame-photostory__content-excerpt">',
             '</div>'
         );
-
-        kedr_theme_info(
-            'authors',
-            '<div class="frame-photostory__content-authors">',
-            '</div>'
-        );
         ?>
     </div>
 </div>
