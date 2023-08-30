@@ -77,7 +77,7 @@
               "fontWeight": "600",
               "fontStyle": "normal",
               "fontStretch": "normal",
-              "src": ["file:./assets/fonts/Raleway-Semibold.woff2"]
+              "src": ["file:./assets/fonts/Raleway-SemiBold.woff2"]
             },
             {
               "fontFamily": "Raleway",

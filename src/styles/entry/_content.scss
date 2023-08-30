@@ -8,6 +8,8 @@
   font-size: 1.1875rem;
   line-height: 1.5;
 
+  overflow-wrap: break-word;
+
   & > * {
     display: block;
 
@@ -22,10 +24,6 @@
     &:last-child {
       margin-bottom: 0;
     }
-  }
-
-  img {
-    cursor: zoom-in;
   }
 
   strong {
