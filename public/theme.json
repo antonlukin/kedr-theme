@@ -213,7 +213,7 @@
         },
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--regular)",
-          "fontSize": "0.875rem"
+          "fontSize": "0.8125rem"
         }
       },
       "link": {

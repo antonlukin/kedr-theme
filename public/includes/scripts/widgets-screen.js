@@ -97,6 +97,7 @@ window.jQuery( document ).ready( function( $ ) {
 
 			// Hide error before ajax request
 			header.find( 'p' ).remove();
+			header.find( 'input' ).trigger( 'change' );
 
 			sendRequest( { linkset: value }, createItem, showError );
 		} );
@@ -106,7 +107,7 @@ window.jQuery( document ).ready( function( $ ) {
 			e.preventDefault();
 
 			$( this ).closest( 'li' ).remove();
-			$( header ).find( 'input' ).trigger( 'change' );
+			header.find( 'input' ).trigger( 'change' );
 		} );
 	}
 

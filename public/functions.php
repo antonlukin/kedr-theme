@@ -71,11 +71,11 @@ add_action(
         // Add links to feeds in header
         add_theme_support( 'automatic-feed-links' );
 
-        // Let WordPress manage cutsom background
-        add_theme_support( 'custom-background', array( 'wp-head-callback' => '__return_false' ) );
-
         // Add custom post formats support
         add_theme_support( 'post-formats', array( 'gallery', 'video' ) );
+
+        // Add selective refresh support
+        add_theme_support( 'customize-selective-refresh-widgets' );
     }
 );
 
