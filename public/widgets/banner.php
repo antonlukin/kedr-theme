@@ -101,11 +101,12 @@ class Kedr_Widget_Banner extends WP_Widget {
         $instance = wp_parse_args( (array) $instance, $defaults );
 
         printf(
-            '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"></p>',
+            '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"><small>%5$s</small></p>',
             esc_attr( $this->get_field_id( 'title' ) ),
             esc_attr( $this->get_field_name( 'title' ) ),
             esc_html__( 'Заголовок:', 'kedr-theme' ),
-            esc_attr( $instance['title'] )
+            esc_attr( $instance['title'] ),
+            esc_html__( 'Не будет отображаться на странице', 'kedr-theme' )
         );
 
         printf(
