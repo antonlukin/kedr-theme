@@ -139,11 +139,6 @@
           "fontFamily": "var(--wp--preset--font-family--regular)",
           "fontSize": "2rem",
           "lineHeight": "1.125"
-        },
-        "spacing": {
-          "margin": {
-            "bottom": "0"
-          }
         }
       },
       "h2": {
@@ -238,7 +233,6 @@
           "fontFamily": "var(--wp--preset--font-family--regular)"
         }
       },
-      "core/paragraph": {},
       "core/quote": {
         "border": {
           "left": {
