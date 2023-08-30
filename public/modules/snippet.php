@@ -98,7 +98,7 @@ class Kedr_Modules_Snippet {
         }
 
         if ( has_post_thumbnail( $post_id ) ) {
-            $options['thumbnail'] = get_attached_file( get_post_thumbnail_id( $post->ID ) );
+            $options['thumbnail'] = get_attached_file( get_post_thumbnail_id( $post_id ) );
         }
 
         if ( has_excerpt( $post_id ) ) {
