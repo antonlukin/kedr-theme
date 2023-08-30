@@ -40,12 +40,10 @@ function Edit(_ref) {
     link = _useState2[0],
     setLink = _useState2[1];
   var blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useBlockProps)();
-  var onSubmit = function onSubmit(event) {
-    if (event) {
-      event.preventDefault();
-    }
+  var onChange = function onChange(event) {
+    setLink(event.target.value);
     setAttributes({
-      link: link
+      link: event.target.value
     });
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createElement)("div", _objectSpread({}, blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Placeholder, {
@@ -53,16 +51,12 @@ function Edit(_ref) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Читайте также', 'kedr-theme'),
     onFocus: onFocus,
     instructions: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Вставьте ссылку на запись с этого сайта', 'kedr-theme')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createElement)("form", {
-    onSubmit: onSubmit
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createElement)("input", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createElement)("form", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createElement)("input", {
     type: "url",
     value: link || '',
     className: "components-placeholder__input",
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Ссылка на запись…', 'kedr-theme'),
-    onChange: function onChange(event) {
-      return setLink(event.target.value);
-    }
+    onChange: onChange
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createElement)("div", {
     className: "components-placeholder__learn-more"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('На страницу автоматически подгрузится заголовок, изображение и отрывок записи', 'kedr-theme')))));

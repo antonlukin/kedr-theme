@@ -7,12 +7,9 @@ export default function Edit( { attributes, setAttributes, onFocus } ) {
 	const [ link, setLink ] = useState( attributes.link );
 	const blockProps = useBlockProps();
 
-	const onSubmit = ( event ) => {
-		if ( event ) {
-			event.preventDefault();
-		}
-
-		setAttributes( { link } );
+	const onChange = ( event ) => {
+		setLink( event.target.value );
+		setAttributes( { link: event.target.value } );
 	};
 
 	return (
@@ -26,7 +23,7 @@ export default function Edit( { attributes, setAttributes, onFocus } ) {
 					'kedr-theme'
 				) }
 			>
-				<form onSubmit={ onSubmit }>
+				<form>
 					<input
 						type="url"
 						value={ link || '' }
@@ -35,7 +32,7 @@ export default function Edit( { attributes, setAttributes, onFocus } ) {
 							'Ссылка на запись…',
 							'kedr-theme'
 						) }
-						onChange={ ( event ) => setLink( event.target.value ) }
+						onChange={ onChange }
 					/>
 				</form>
 				<div className="components-placeholder__learn-more">
