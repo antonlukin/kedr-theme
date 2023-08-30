@@ -21,6 +21,7 @@ class Kedr_Modules_Sitemeta {
 
         add_action( 'wp_head', array( __CLASS__, 'add_og_tags' ), 5 );
         add_action( 'wp_head', array( __CLASS__, 'add_icons' ), 4 );
+        add_action( 'wp_head', array( __CLASS__, 'add_seo_tags' ), 4 );
         add_action( 'admin_head', array( __CLASS__, 'add_icons' ), 4 );
 
         add_action( 'wp_head', array( __CLASS__, 'add_twitter_tags' ), 5 );
@@ -124,6 +125,20 @@ class Kedr_Modules_Sitemeta {
         if ( defined( 'KEDR_TAGMANAGER' ) ) {
             include get_template_directory() . '/includes/views/sitemeta-scripts.php';
         }
+    }
+
+    /**
+     * Add seo tags
+     */
+    public static function add_seo_tags() {
+        $meta = array();
+
+        $meta[] = sprintf(
+            '<meta name="description" content="%s">',
+            esc_attr( self::get_description() )
+        );
+
+        return self::print_tags( $meta );
     }
 
     /**
