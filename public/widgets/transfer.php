@@ -1,24 +1,24 @@
 <?php
 /**
- * Widget with donation link button
+ * Widget with custom button link
  *
  * @package kedr-theme
  * @since 2.0
  */
 
 
-class Kedr_Widget_Donation extends WP_Widget {
+class Kedr_Widget_Transfer extends WP_Widget {
     /**
      * Widget constructor
      */
     public function __construct() {
         $widget_ops = array(
-            'classname'                   => 'donation',
-            'description'                 => esc_html__( 'Выводит кнопку со ссылкой на страницу донатов', 'kedr-theme' ),
+            'classname'                   => 'transfer',
+            'description'                 => esc_html__( 'Выводит кнопку со ссылкой', 'kedr-theme' ),
             'customize_selective_refresh' => true,
         );
 
-        parent::__construct( 'kedr_widget_donation', esc_html__( 'Кнопка донатов', 'kedr-theme' ), $widget_ops );
+        parent::__construct( 'kedr_widget_transfer', esc_html__( 'Настраиваемая кнопка', 'kedr-theme' ), $widget_ops );
     }
 
     /**
@@ -33,7 +33,7 @@ class Kedr_Widget_Donation extends WP_Widget {
         echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
         printf(
-            '<a class="frame-donation__button button" href="%s">%s</a>',
+            '<a class="frame-transfer__button button" href="%s">%s</a>',
             esc_attr( $instance['link'] ),
             esc_html( $instance['label'] )
         );
@@ -91,6 +91,6 @@ class Kedr_Widget_Donation extends WP_Widget {
 add_action(
     'widgets_init',
     function() {
-        register_widget( 'Kedr_Widget_Donation' );
+        register_widget( 'Kedr_Widget_Transfer' );
     }
 );
