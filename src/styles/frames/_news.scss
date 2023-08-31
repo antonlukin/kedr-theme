@@ -100,6 +100,10 @@
     border-radius: calc(var(--radius-frame) / 1.5);
 
     transition: filter 0.25s;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
   }
 
   .frame-news__image-thumbnail {

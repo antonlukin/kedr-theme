@@ -90,6 +90,7 @@
     position: relative;
     z-index: 2;
 
+    margin-bottom: auto;
     font-size: 0.875rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -116,14 +117,18 @@
     display: block;
 
     margin-top: 1.5rem;
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-weight: 700;
     line-height: 1.125;
 
     @media screen and (max-width: 1023px) {
       margin-top: 0.75rem;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       line-height: 1.25;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 1.5rem;
     }
 
     @media screen and (max-width: 479px) {
@@ -136,7 +141,7 @@
     display: block;
 
     margin: 0.75rem 0 1.5rem;
-    font-size: 1.25rem;
+    font-size: 1.375rem;
 
     @media screen and (max-width: 1023px) {
       font-size: 1.0625rem;

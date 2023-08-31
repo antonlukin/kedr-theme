@@ -4,7 +4,7 @@
   "settings": {
     "layout": {
       "contentSize": "736px",
-      "wideSize": "calc(100% - 2rem)"
+      "wideSize": "736px"
     },
     "custom": {
       "color-primary": "#48625e",
@@ -233,6 +233,13 @@
           "fontFamily": "var(--wp--preset--font-family--regular)"
         }
       },
+      "core/list-item": {
+        "spacing": {
+          "margin": {
+            "bottom": "0.5rem"
+          }
+        }
+      },
       "core/quote": {
         "border": {
           "left": {
@@ -274,13 +281,21 @@
         "border": {
           "radius": "0.3125rem"
         },
-        "css": "&.alignleft {float:none; max-width:736px; margin-left:auto; margin-right:auto;} &.alignright {float:none; max-width:736px; margin-left:auto; margin-right:auto;} & figcaption {max-width:736px; margin:0 auto; text-align:left}"
+        "css": "&.alignleft {display: block; float:none; max-width:736px; margin-left:auto; margin-right:auto;} &.alignright {display: block; float:none; max-width:736px; margin-left:auto; margin-right:auto;} &.alignright img {margin-left: auto;} & figcaption {max-width:736px; margin:0 auto; text-align:left}"
       },
       "core/embed": {
         "css": "& figcaption {text-align: left}"
       },
       "core/gallery": {
         "css": "& figure.wp-block-image figcaption {flex: 0 0 auto; position:relative; background:none; color:var(--wp--custom--color-dim); text-align: left; padding: 0.5rem 0 0;}"
+      },
+      "core/post-content": {
+        "spacing": {
+          "padding": {
+            "left": "1rem",
+            "right": "1rem"
+          }
+        }
       },
       "core/details": {
         "color": {

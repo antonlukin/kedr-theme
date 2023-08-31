@@ -4,6 +4,7 @@
 
   padding: 2rem;
   font-family: var(--font-regular);
+  font-size: 1.125rem;
 
   color: var(--color-dark);
   background-color: var(--color-background);
@@ -21,5 +22,6 @@
 
   @media screen and (max-width: 767px) {
     padding: 1.5rem;
+    font-size: 1rem;
   }
 }

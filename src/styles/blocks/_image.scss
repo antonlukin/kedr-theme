@@ -12,7 +12,7 @@
     border-radius: var(--radius-frame);
   }
 
-  &.alignwide {
+  &.alignfull {
     max-width: 100%;
 
     img {
@@ -26,20 +26,14 @@
     }
   }
 
-  &.alignfull {
-    width: calc(100% + calc(var(--space-outer) * 2));
-    max-width: calc(100% + calc(var(--space-outer) * 2));
-
-    margin-left: calc(var(--space-outer) * -1);
-    margin-right: calc(var(--space-outer) * -1);
-
+  &.alignright {
     img {
-      width: 100%;
-      border-radius: 0;
+      margin-left: auto;
     }
+  }
 
-    figcaption {
-      max-width: var(--width-content);
+  &.aligncenter {
+    img {
       margin-left: auto;
       margin-right: auto;
     }

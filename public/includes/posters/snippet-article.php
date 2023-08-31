@@ -28,22 +28,22 @@ $logo->make( $options['logo'] )->downsize( 60, null );
 $poster->insert(
     $logo,
     array(
-        'x' => 1085,
+        'x' => 75,
         'y' => 50,
     )
 );
 
 $poster->text(
-    $options['label'],
+    mb_strtoupper( $options['label'] ),
     array(
         'x'          => 75,
-        'y'          => 180,
+        'y'          => 220,
         'width'      => 1000,
         'height'     => 50,
         'horizontal' => 'left',
         'vertical'   => 'top',
         'fontpath'   => $options['font'],
-        'fontsize'   => 22,
+        'fontsize'   => 18,
         'lineheight' => 1.5,
         'color'      => '#ffffff',
     )
@@ -53,14 +53,14 @@ $poster->text(
     $options['caption'],
     array(
         'x'          => 75,
-        'y'          => 260,
+        'y'          => 285,
         'width'      => 1000,
         'height'     => 200,
         'horizontal' => 'left',
         'vertical'   => 'top',
         'fontpath'   => $options['font'],
-        'fontsize'   => 40,
-        'lineheight' => 1.375,
+        'fontsize'   => 48,
+        'lineheight' => 1.5,
         'color'      => '#ffffff',
     ),
     $boundary
@@ -71,13 +71,13 @@ if ( ! empty( $options['excerpt'] ) ) {
         $options['excerpt'],
         array(
             'x'          => 75,
-            'y'          => $boundary['height'] + 280,
+            'y'          => $boundary['height'] + 295,
             'width'      => 1000,
             'height'     => 300 - $boundary['height'],
             'horizontal' => 'left',
             'vertical'   => 'top',
             'fontpath'   => $options['thinfont'],
-            'fontsize'   => 28,
+            'fontsize'   => 34,
             'lineheight' => 1.5,
             'color'      => '#ffffff',
         )
