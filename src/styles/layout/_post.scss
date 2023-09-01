@@ -23,11 +23,10 @@
     padding-bottom: calc(var(--space-outer) * 2);
   }
 
-  &.post--news .entry-header {
-    padding-bottom: 0;
+  &.post--news .entry-header__wrapper {
+    display: block;
 
     .entry-header__image {
-      order: 0;
       margin-right: 0;
     }
   }
