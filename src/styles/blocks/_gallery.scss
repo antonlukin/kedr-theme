@@ -1,7 +1,7 @@
 .wp-block-gallery {
   grid-gap: calc(var(--space-outer) / 2);
 
-  &.alignwide {
+  &.alignfull {
     max-width: 100%;
 
     img {
@@ -13,10 +13,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-  }
-
-  &.alignfull {
-    max-width: 100%;
   }
 
   &.is-layout-flex {
