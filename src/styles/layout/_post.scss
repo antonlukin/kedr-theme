@@ -29,6 +29,10 @@
     .entry-header__image {
       margin-right: 0;
     }
+
+    .entry-header__image-caption {
+      text-align: left;
+    }
   }
 
   &.post--video .entry-header {
