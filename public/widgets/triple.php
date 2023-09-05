@@ -38,6 +38,7 @@ class Kedr_Widget_Triple extends WP_Widget {
         $defaults = array(
             'title'          => '',
             'posts_per_page' => 3,
+            'self_hide'      => 1,
         );
 
         $instance = wp_parse_args( (array) $instance, $defaults );
@@ -70,6 +71,7 @@ class Kedr_Widget_Triple extends WP_Widget {
         $instance = $old_instance;
 
         $instance['title'] = sanitize_text_field( $new_instance['title'] );
+        $instance['self_hide'] = absint( $new_instance['self_hide'] );
 
         // Use int to avoid phpcs error
         $instance['posts_per_page'] = (int) $new_instance['posts_per_page'];
@@ -84,11 +86,11 @@ class Kedr_Widget_Triple extends WP_Widget {
         $defaults = array(
             'title'          => '',
             'posts_per_page' => 3,
+            'self_hide'      => 1,
         );
 
         $instance = wp_parse_args( (array) $instance, $defaults );
 
-        // Widget title
         printf(
             '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"><small>%5$s</small></p>',
             esc_attr( $this->get_field_id( 'title' ) ),
@@ -98,7 +100,6 @@ class Kedr_Widget_Triple extends WP_Widget {
             esc_html__( 'Не будет отображаться на странице', 'kedr-theme' )
         );
 
-        // Posts count
         printf(
             '<p><label for="%1$s">%3$s</label> <input class="tiny-text" id="%1$s" name="%2$s" type="number" min="2" max="10" value="%4$s"> <small>%5$s</small></p>',
             esc_attr( $this->get_field_id( 'posts_per_page' ) ),
@@ -107,12 +108,20 @@ class Kedr_Widget_Triple extends WP_Widget {
             esc_attr( $instance['posts_per_page'] ),
             esc_html__( '(кратное трём)', 'kedr-theme' )
         );
+
+        printf(
+            '<p><input type="checkbox" id="%1$s" name="%2$s" value="1" class="checkbox"%4$s><label for="%1$s">%3$s</label></p>',
+            esc_attr( $this->get_field_id( 'self_hide' ) ),
+            esc_attr( $this->get_field_name( 'self_hide' ) ),
+            esc_html__( 'Скрывать ссылку на себя внутри записи', 'kedr-theme' ),
+            checked( $instance['self_hide'], 1, false )
+        );
     }
 
     /**
      * Generate query params from instance args
      */
-    private function get_query( $instance, $exclude ) {
+    private function get_query( $instance, $exclude = array() ) {
         $query = array(
             'posts_per_page'      => $instance['posts_per_page'],
             'post_type'           => $this->post_type,
@@ -126,6 +135,10 @@ class Kedr_Widget_Triple extends WP_Widget {
                 ),
             ),
         );
+
+        if ( ! empty( $instance['self_hide'] ) && is_singular() ) {
+            $exclude[] = get_queried_object_id();
+        }
 
         if ( ! empty( $exclude ) ) {
             $query['post__not_in'] = $exclude;

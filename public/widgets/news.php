@@ -89,7 +89,6 @@ class Kedr_Widget_News extends WP_Widget {
 
         $instance = wp_parse_args( (array) $instance, $defaults );
 
-        // Widget title
         printf(
             '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"><small>%5$s</small></p>',
             esc_attr( $this->get_field_id( 'title' ) ),
