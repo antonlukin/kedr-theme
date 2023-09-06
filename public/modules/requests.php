@@ -133,22 +133,22 @@ class Kedr_Modules_Requests {
         $content = $request->get_param( 'email' );
 
         if ( ! is_email( $content ) ) {
-            return self::show_error( esc_html__( 'Неверный формат адреса почты', 'kedr-theme' ) );
+            return new WP_REST_Response( array( 'message' => esc_html__( 'Неверный формат адреса почты', 'kedr-theme' ) ), 400 );
         }
 
         $exists = self::find_row( $content, 'mailing' );
 
         if ( ! empty( $exists ) ) {
-            return self::show_error( esc_html__( 'Адрес уже подписан на рассылку', 'kedr-theme' ) );
+            return new WP_REST_Response( array( 'message' => esc_html__( 'Адрес уже подписан на рассылку', 'kedr-theme' ) ), 400 );
         }
 
         $result = self::add_row( $content, 'mailing' );
 
         if ( ! empty( $result ) ) {
-            return self::show_success( esc_html__( 'Адрес успешно сохранен', 'kedr-theme' ) );
+            return new WP_REST_Response( array( 'message' => esc_html__( 'Адрес успешно сохранен', 'kedr-theme' ) ), 200 );
         }
 
-        return self::show_error( esc_html__( 'Не удалось сохранить адрес почты. Попробуйте позже', 'kedr-theme' ) );
+        return new WP_REST_Response( array( 'message' => esc_html__( 'Не удалось сохранить адрес почты. Попробуйте позже', 'kedr-theme' ) ), 500 );
     }
 
     /**
@@ -160,16 +160,16 @@ class Kedr_Modules_Requests {
         $exists = self::find_row( $content, 'canceling' );
 
         if ( ! empty( $exists ) ) {
-            return self::show_error( esc_html__( 'Номер карты уже исключен', 'kedr-theme' ) );
+            return new WP_REST_Response( array( 'message' => esc_html__( 'Номер карты уже исключен', 'kedr-theme' ) ), 400 );
         }
 
         $result = self::add_row( $content, 'canceling' );
 
         if ( ! empty( $result ) ) {
-            return self::show_success( esc_html__( 'Номер карты записан и вскоре будет исключен', 'kedr-theme' ) );
+            return new WP_REST_Response( array( 'message' => esc_html__( 'Номер карты записан и вскоре будет исключен', 'kedr-theme' ) ), 200 );
         }
 
-        return self::show_error( esc_html__( 'Не удалось записать номер карты. Попробуйте позже', 'kedr-theme' ) );
+        return new WP_REST_Response( array( 'message' => esc_html__( 'Не удалось записать номер карты. Попробуйте позже', 'kedr-theme' ) ), 500 );
     }
 
     /**
@@ -193,20 +193,6 @@ class Kedr_Modules_Requests {
 
         // We do not use dbDelta here cause of DESCRIBE error
         $wpdb->query( $query ); // phpcs:ignore
-    }
-
-    /**
-     * Show error response
-     */
-    private static function show_error( $message, $status = 400 ) {
-        return new WP_REST_Response( array( 'message' => $message ), $status );
-    }
-
-    /**
-     * Show success response
-     */
-    private static function show_success( $message, $status = 200 ) {
-        return new WP_REST_Response( array( 'message' => $message ), $status );
     }
 
     /**

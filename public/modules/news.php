@@ -24,7 +24,7 @@ class Kedr_Modules_News {
      * Init function instead of constructor
      */
     public static function load_module() {
-        add_filter( 'archive_template', array( __CLASS__, 'include_archive' ) );
+        add_filter( 'category_template', array( __CLASS__, 'include_archive' ) );
         add_filter( 'single_template', array( __CLASS__, 'include_single' ) );
         add_action( 'pre_get_posts', array( __CLASS__, 'remove_from_archives' ) );
     }
@@ -34,7 +34,7 @@ class Kedr_Modules_News {
      */
     public static function include_archive( $template ) {
         if ( ! is_feed() && is_category( self::$slug ) ) {
-            $new_template = locate_template( array( 'templates/archive-news.php' ) );
+            $new_template = locate_template( array( 'templates/category-news.php' ) );
 
             if ( ! empty( $new_template ) ) {
                 return $new_template;

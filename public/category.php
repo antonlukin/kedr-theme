@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying news archive
+ * The template for displaying category archive page
  *
  * @package kedr-theme
  * @since 2.0
@@ -17,19 +17,17 @@ get_header(); ?>
 <?php endif; ?>
 
 <?php if ( have_posts() ) : ?>
-    <section class="frame-news frame-news--archive">
+    <section class="frame-double">
         <?php
         while ( have_posts() ) :
             the_post();
-
-            $options = array( 'class' => 'common' );
-            get_template_part( 'templates/frame', 'news', $options );
+            get_template_part( 'templates/frame', 'double' );
         endwhile;
         ?>
     </section>
 
-    <nav class="navigate">
-        <?php next_posts_link( esc_html__( 'Дальше', 'kedr-theme' ) ); ?>
+    <nav class="navigate navigate--more">
+        <?php next_posts_link( esc_html__( 'Показать еще', 'kedr-theme' ) ); ?>
     </nav>
 <?php endif; ?>
 

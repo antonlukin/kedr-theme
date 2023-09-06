@@ -57,14 +57,18 @@ class Kedr_Widget_News extends WP_Widget {
 
             while ( $featured->have_posts() ) {
                 $featured->the_post();
-                get_template_part( 'templates/frame', 'news', array( 'class' => 'featured' ) );
+
+                $options = array( 'class' => 'featured' );
+                get_template_part( 'templates/frame', 'news', $options );
             }
 
             wp_reset_postdata();
 
             while ( $common->have_posts() ) {
                 $common->the_post();
-                get_template_part( 'templates/frame', 'news', array( 'class' => 'common' ) );
+
+                $options = array( 'class' => 'common' );
+                get_template_part( 'templates/frame', 'news', $options );
             }
 
             wp_reset_postdata();

@@ -70,7 +70,7 @@ class Kedr_Widget_Triple extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
 
-        $instance['title'] = sanitize_text_field( $new_instance['title'] );
+        $instance['title']     = sanitize_text_field( $new_instance['title'] );
         $instance['self_hide'] = absint( $new_instance['self_hide'] );
 
         // Use int to avoid phpcs error
