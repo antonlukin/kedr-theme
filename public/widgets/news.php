@@ -16,7 +16,7 @@ class Kedr_Widget_News extends WP_Widget {
     /**
      * Categories to show in news
      */
-    private $category = array( 'news' );
+    private $category = array();
 
     /**
      * Widget constructor
@@ -27,6 +27,10 @@ class Kedr_Widget_News extends WP_Widget {
             'description'                 => esc_html__( 'Выводит последние новости', 'kedr-theme' ),
             'customize_selective_refresh' => true,
         );
+
+        if ( property_exists( 'Kedr_Modules_News', 'slug' ) ) {
+            $this->category[] = Kedr_Modules_News::$slug;
+        }
 
         parent::__construct( 'kedr_widget_news', esc_html__( 'Новости', 'kedr-theme' ), $widget_ops );
     }
@@ -42,19 +46,21 @@ class Kedr_Widget_News extends WP_Widget {
 
         $instance = wp_parse_args( (array) $instance, $defaults );
 
-        // Create WP_Query with common news posts
-        $common = new WP_Query( $this->get_common_query( $instance ) );
-
         // Create WP_Query with single featured news post
         $featured = new WP_Query( $this->get_featured_query( $instance ) );
+
+        // Create WP_Query with common news posts
+        $common = new WP_Query( $this->get_common_query( $featured ) );
 
         if ( $common->have_posts() ) {
             echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
-            while ( $featured && $featured->have_posts() ) {
+            while ( $featured->have_posts() ) {
                 $featured->the_post();
                 get_template_part( 'templates/frame', 'news', array( 'class' => 'featured' ) );
             }
+
+            wp_reset_postdata();
 
             while ( $common->have_posts() ) {
                 $common->the_post();
@@ -111,7 +117,7 @@ class Kedr_Widget_News extends WP_Widget {
     /**
      * Generate query params from instance args
      */
-    private function get_common_query( $instance ) {
+    private function get_common_query( $featured ) {
         $query = array(
             'posts_per_page'      => 6,
             'post_type'           => $this->post_type,
@@ -126,15 +132,9 @@ class Kedr_Widget_News extends WP_Widget {
             ),
         );
 
-        if ( ! empty( $instance['featured'] ) && property_exists( 'Kedr_Blocks_Topnews', 'meta' ) ) {
+        if ( ! empty( $featured->posts ) ) {
             $query['posts_per_page'] = 4;
-
-            $query['meta_query'] = array( // phpcs:ignore
-                array(
-                    'key'     => Kedr_Blocks_Topnews::$meta,
-                    'compare' => 'NOT EXISTS',
-                ),
-            );
+            $query['post__not_in']   = wp_list_pluck( $featured->posts, 'ID' );
         }
 
         return $query;
@@ -144,10 +144,6 @@ class Kedr_Widget_News extends WP_Widget {
      * Generate query params from instance args
      */
     private function get_featured_query( $instance ) {
-        if ( empty( $instance['featured'] ) || ! property_exists( 'Kedr_Blocks_Topnews', 'meta' ) ) {
-            return null;
-        }
-
         $query = array(
             'posts_per_page'      => 1,
             'post_type'           => $this->post_type,
@@ -167,6 +163,10 @@ class Kedr_Widget_News extends WP_Widget {
                 ),
             ),
         );
+
+        if ( ! property_exists( 'Kedr_Blocks_Topnews', 'meta' ) || empty( $instance['featured'] ) ) {
+            $query['post__in'] = array( 0 );
+        }
 
         return $query;
     }

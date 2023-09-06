@@ -26,8 +26,7 @@ class Kedr_Modules_News {
     public static function load_module() {
         add_filter( 'archive_template', array( __CLASS__, 'include_archive' ) );
         add_filter( 'single_template', array( __CLASS__, 'include_single' ) );
-        add_action( 'pre_get_posts', array( __CLASS__, 'update_count' ) );
-        add_action( 'pre_get_posts', array( __CLASS__, 'remove_from_authors' ) );
+        add_action( 'pre_get_posts', array( __CLASS__, 'remove_from_archives' ) );
     }
 
     /**
@@ -61,20 +60,14 @@ class Kedr_Modules_News {
     }
 
     /**
-     * Change posts_per_page for news category archive template
+     * Remove news from authors and tag archives
      */
-    public static function update_count( $query ) {
-        if ( $query->is_main_query() && get_query_var( 'category_name' ) === self::$slug ) {
-            $query->set( 'posts_per_page', 18 );
+    public static function remove_from_archives( $query ) {
+        if ( ! $query->is_main_query() ) {
+            return;
         }
-    }
 
-    /**
-     * Remove news from authors archive
-     */
-    public static function remove_from_authors( $query ) {
-        if ( $query->is_main_query() && $query->is_author() ) {
-
+        if ( $query->is_author() || $query->is_tag() ) {
             $query->tax_query->queries[] = array(
                 'taxonomy' => 'category',
                 'field'    => 'slug',

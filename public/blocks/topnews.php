@@ -42,16 +42,16 @@ class Kedr_Blocks_Topnews {
             )
         );
 
-        add_filter( 'update_post_metadata', array( __CLASS__, 'remove_empty_meta' ), 10, 5 );
+        add_filter( 'update_post_metadata', array( __CLASS__, 'remove_empty_meta' ), 15, 4 );
         add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'enqueue_assets' ) );
     }
 
     /**
      * Remove empty topnews meta value
      */
-    public static function remove_empty_meta( $check, $id, $key, $value, $prev ) {
+    public static function remove_empty_meta( $check, $id, $key, $value ) {
         if ( $key === self::$meta && empty( $value ) ) {
-            delete_post_meta( $id, $key, $prev );
+            delete_post_meta( $id, $key );
             return true;
         }
 
