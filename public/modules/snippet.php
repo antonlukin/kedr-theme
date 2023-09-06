@@ -72,13 +72,14 @@ class Kedr_Modules_Snippet {
 
         try {
             $options = array(
-                'file'     => $basedir . $filename,
-                'color'    => '#48625e',
-                'label'    => esc_html( get_cat_name( $category->term_id ) ),
-                'caption'  => get_the_title( $post_id ),
-                'logo'     => get_template_directory() . '/assets/images/logo-white.png',
-                'font'     => get_template_directory() . '/assets/fonts/Raleway-Bold.ttf',
-                'thinfont' => get_template_directory() . '/assets/fonts/Raleway-Regular.ttf',
+                'file'       => $basedir . $filename,
+                'color'      => '#48625e',
+                'label'      => esc_html( get_cat_name( $category->term_id ) ),
+                'caption'    => get_the_title( $post_id ),
+                'logo-green' => get_template_directory() . '/assets/images/logosign-green.png',
+                'logo-white' => get_template_directory() . '/assets/images/logosign-white.png',
+                'font-bold'  => get_template_directory() . '/assets/fonts/Raleway-Bold.ttf',
+                'font-thin'  => get_template_directory() . '/assets/fonts/Raleway-Regular.ttf',
             );
 
             self::include_template( $options, $post_id, $category );

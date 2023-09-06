@@ -23,7 +23,7 @@ if ( ! empty( $options['thumbnail'] ) ) {
 }
 
 $logo = new PosterEditor\PosterEditor();
-$logo->make( $options['logo'] )->downsize( 60, null );
+$logo->make( $options['logo-green'] )->downsize( 184, null );
 
 $poster->insert(
     $logo,
@@ -42,7 +42,7 @@ $poster->text(
         'height'     => 50,
         'horizontal' => 'left',
         'vertical'   => 'top',
-        'fontpath'   => $options['font'],
+        'fontpath'   => $options['font-bold'],
         'fontsize'   => 18,
         'lineheight' => 1.5,
         'color'      => '#ffffff',
@@ -58,7 +58,7 @@ $poster->text(
         'height'     => 200,
         'horizontal' => 'left',
         'vertical'   => 'top',
-        'fontpath'   => $options['font'],
+        'fontpath'   => $options['font-bold'],
         'fontsize'   => 48,
         'lineheight' => 1.5,
         'color'      => '#ffffff',
@@ -76,7 +76,7 @@ if ( ! empty( $options['excerpt'] ) ) {
             'height'     => 300 - $boundary['height'],
             'horizontal' => 'left',
             'vertical'   => 'top',
-            'fontpath'   => $options['thinfont'],
+            'fontpath'   => $options['font-thin'],
             'fontsize'   => 34,
             'lineheight' => 1.5,
             'color'      => '#ffffff',

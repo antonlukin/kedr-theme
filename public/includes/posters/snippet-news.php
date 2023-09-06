@@ -18,7 +18,7 @@ $poster->canvas(
 );
 
 $logo = new PosterEditor\PosterEditor();
-$logo->make( $options['logo'] )->downsize( 60, null );
+$logo->make( $options['logo-white'] )->downsize( 184, null );
 
 $poster->insert(
     $logo,
@@ -37,7 +37,7 @@ $poster->text(
         'height'     => 50,
         'horizontal' => 'left',
         'vertical'   => 'top',
-        'fontpath'   => $options['font'],
+        'fontpath'   => $options['font-bold'],
         'fontsize'   => 18,
         'lineheight' => 1.5,
         'color'      => '#ffffff',
@@ -53,7 +53,7 @@ $poster->text(
         'height'     => 270,
         'horizontal' => 'left',
         'vertical'   => 'top',
-        'fontpath'   => $options['font'],
+        'fontpath'   => $options['font-bold'],
         'fontsize'   => 40,
         'lineheight' => 1.5,
         'color'      => '#ffffff',
