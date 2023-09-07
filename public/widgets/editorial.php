@@ -6,7 +6,6 @@
  * @since 2.0
  */
 
-
 class Kedr_Widget_Editorial extends WP_Widget {
     /**
      * Widget constructor
@@ -101,10 +100,9 @@ class Kedr_Widget_Editorial extends WP_Widget {
             esc_html__( 'Отобразится над списком записей', 'kedr-theme' )
         );
 
-        include get_template_directory() . '/includes/views/widgets-editorial.php';
+        include get_template_directory() . '/includes/views/widgets-linkset.php';
     }
 }
-
 
 /**
  * It is time to register widget

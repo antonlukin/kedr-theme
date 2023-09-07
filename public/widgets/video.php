@@ -6,7 +6,6 @@
  * @since 2.0
  */
 
-
 class Kedr_Widget_Video extends WP_Widget {
     /**
      * Widget post types
@@ -171,7 +170,6 @@ class Kedr_Widget_Video extends WP_Widget {
         return null;
     }
 }
-
 
 /**
  * It is time to register widget

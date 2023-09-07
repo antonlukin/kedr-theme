@@ -7,7 +7,6 @@
  * @since 2.0
  */
 
-
 class Kedr_Widget_Script extends WP_Widget {
 
     /**
@@ -155,7 +154,6 @@ class Kedr_Widget_Script extends WP_Widget {
         <?php
     }
 }
-
 
 /**
  * It is time to register widget

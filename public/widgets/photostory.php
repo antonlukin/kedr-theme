@@ -6,7 +6,6 @@
  * @since 2.0
  */
 
-
 class Kedr_Widget_Photostory extends WP_Widget {
     /**
      * Widget post types
@@ -133,7 +132,6 @@ class Kedr_Widget_Photostory extends WP_Widget {
         );
     }
 }
-
 
 /**
  * It is time to register widget

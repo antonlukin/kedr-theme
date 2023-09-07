@@ -6,7 +6,6 @@
  * @since 2.0
  */
 
-
 class Kedr_Widget_Podcasts extends WP_Widget {
     /**
      * Widget post types
@@ -113,7 +112,6 @@ class Kedr_Widget_Podcasts extends WP_Widget {
         return $query;
     }
 }
-
 
 /**
  * It is time to register widget

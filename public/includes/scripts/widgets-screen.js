@@ -12,7 +12,15 @@ window.jQuery( document ).ready( function( $ ) {
 		return false;
 	}
 
-	function sendRequest( payload, success, failure ) {
+	/**
+	 * Send AJAX request to ajaxurl
+	 *
+	 * @param {jQuery}   context
+	 * @param {Object}   payload
+	 * @param {Function} success
+	 * @param {Function} failure
+	 */
+	function sendRequest( context, payload, success, failure ) {
 		if ( ! window.ajaxurl || ! window.kedr_widgets ) {
 			return failure();
 		}
@@ -30,10 +38,10 @@ window.jQuery( document ).ready( function( $ ) {
 			result.success = result.success || false;
 
 			if ( ! result.success ) {
-				return failure( result.data );
+				return failure( context, result.data );
 			}
 
-			return success( result.data );
+			return success( context, result.data );
 		} );
 
 		request.fail( function() {
@@ -42,17 +50,40 @@ window.jQuery( document ).ready( function( $ ) {
 	}
 
 	/**
-	 * Create
+	 * Create linkset element
 	 *
 	 * @param {jQuery} linkset
 	 */
 	function composeLinkset( linkset ) {
-		const header = linkset.find( 'header' );
-		const list = linkset.find( 'ul' );
+		linkset.on( 'click', 'header button', function( e ) {
+			e.preventDefault();
 
-		// Create item on successful ajax request
-		const createItem = function( data ) {
-			const item = $( '<li>' ).appendTo( list );
+			const input = $( this ).siblings( 'input' );
+
+			if ( input.val().length < 1 ) {
+				return false;
+			}
+
+			// Hide error before ajax request
+			$( this ).closest( 'header' ).find( 'p' ).remove();
+			input.trigger( 'change' );
+
+			const context = $( this ).closest( linkset );
+
+			sendRequest( context, { linkset: input.val() }, createItem, showError );
+		} );
+
+		linkset.on( 'click', 'ul button', function( e ) {
+			e.preventDefault();
+
+			const context = $( this ).closest( linkset );
+			context.find( 'header input' ).trigger( 'change' );
+
+			$( this ).closest( 'li' ).remove();
+		} );
+
+		const createItem = function( context, data ) {
+			const item = $( '<li>' ).appendTo( context.find( 'ul' ) );
 
 			if ( data.image ) {
 				$( '<img>', { src: data.image } ).appendTo( item );
@@ -69,46 +100,21 @@ window.jQuery( document ).ready( function( $ ) {
 			const hidden = $( '<input>' ).appendTo( item );
 
 			hidden.attr( 'type', 'hidden' );
-			hidden.attr( 'name', linkset.attr( 'data-name' ) );
+			hidden.attr( 'name', context.attr( 'data-name' ) );
 			hidden.attr( 'value', data.post );
 
-			$( header ).find( 'input' ).val( '' );
+			context.find( 'header input' ).val( '' );
 		};
 
-		// Show error after failed ajax request
-		const showError = function( data ) {
-			let message = header.find( 'p' );
+		const showError = function( context, data ) {
+			let message = context.find( 'header p' );
 
 			if ( message.length < 1 ) {
-				message = $( '<p>' ).appendTo( header );
+				message = $( '<p>' ).appendTo( context.find( 'header' ) );
 			}
 
 			message.text( data || window.kedr_widgets.warning );
 		};
-
-		header.on( 'click', 'button', function( e ) {
-			e.preventDefault();
-
-			const value = $( header ).find( 'input' ).val();
-
-			if ( value.length < 1 ) {
-				return false;
-			}
-
-			// Hide error before ajax request
-			header.find( 'p' ).remove();
-			header.find( 'input' ).trigger( 'change' );
-
-			sendRequest( { linkset: value }, createItem, showError );
-		} );
-
-		// Listen clicks on delete buttons
-		list.on( 'click', 'button', function( e ) {
-			e.preventDefault();
-
-			$( this ).closest( 'li' ).remove();
-			header.find( 'input' ).trigger( 'change' );
-		} );
 	}
 
 	$( document ).on( 'widget-added widget-updated', function( event, widget ) {

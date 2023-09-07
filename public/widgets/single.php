@@ -6,7 +6,6 @@
  * @since 2.0
  */
 
-
 class Kedr_Widget_Single extends WP_Widget {
     /**
      * Widget constructor
@@ -26,13 +25,14 @@ class Kedr_Widget_Single extends WP_Widget {
      */
     public function widget( $args, $instance ) {
         $defaults = array(
-            'link' => '',
+            'posts' => array(),
         );
 
         $instance = wp_parse_args( (array) $instance, $defaults );
 
-        $exclude = get_query_var( 'widget_exclude', array() );
-        $post_id = $this->find_postid( $instance['link'] );
+        if ( empty( $instance['posts'] ) ) {
+            return;
+        }
 
         $query = new WP_Query(
             array(
@@ -40,7 +40,7 @@ class Kedr_Widget_Single extends WP_Widget {
                 'post_status'         => 'publish',
                 'post_type'           => 'any',
                 'ignore_sticky_posts' => true,
-                'post__in'            => array( $post_id ),
+                'post__in'            => $instance['posts'],
             )
         );
 
@@ -48,10 +48,8 @@ class Kedr_Widget_Single extends WP_Widget {
             echo $args['before_widget']; // phpcs:ignore
 
             $query->the_post();
-
             get_template_part( 'templates/frame', 'single' );
 
-            set_query_var( 'widget_exclude', array_merge( $exclude, wp_list_pluck( $query->posts, 'ID' ) ) );
             wp_reset_postdata();
 
             echo $args['after_widget']; // phpcs:ignore
@@ -62,9 +60,16 @@ class Kedr_Widget_Single extends WP_Widget {
      * Sanitize widget form values as they are saved.
      */
     public function update( $new_instance, $old_instance ) {
-        $instance          = $old_instance;
+        $instance = array();
+
         $instance['title'] = sanitize_text_field( $new_instance['title'] );
-        $instance['link']  = sanitize_text_field( $new_instance['link'] );
+        $instance['posts'] = array();
+
+        if ( ! empty( $new_instance['posts'] ) ) {
+            $instance['posts'] = array_map( 'absint', $new_instance['posts'] );
+        }
+
+        $instance['posts'] = array_splice( $instance['posts'], -1 );
 
         return $instance;
     }
@@ -75,7 +80,7 @@ class Kedr_Widget_Single extends WP_Widget {
     public function form( $instance ) {
         $defaults = array(
             'title' => '',
-            'link'  => '',
+            'posts' => array(),
         );
 
         $instance = wp_parse_args( (array) $instance, $defaults );
@@ -89,33 +94,9 @@ class Kedr_Widget_Single extends WP_Widget {
             esc_html__( 'Не будет отображаться на странице', 'kedr-theme' )
         );
 
-        printf(
-            '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"><small>%5$s</small></p>',
-            esc_attr( $this->get_field_id( 'link' ) ),
-            esc_attr( $this->get_field_name( 'link' ) ),
-            esc_html__( 'Ссылка:', 'kedr-theme' ),
-            esc_attr( $instance['link'] ),
-            esc_html__( 'На запись c этого сайта', 'kedr-theme' )
-        );
-
-        $post_id = $this->find_postid( $instance['link'] );
-
-        if ( empty( $post_id ) ) {
-            printf(
-                '<p><span class="dashicons dashicons-warning"></span> <strong>%s</strong></p>',
-                esc_html__( 'Запись не найдена', 'kedr-theme' )
-            );
-        }
-    }
-
-    /**
-     * Try to find post ID by teaser link.
-     */
-    private function find_postid( $link ) {
-        return url_to_postid( wp_make_link_relative( $link ) );
+        include get_template_directory() . '/includes/views/widgets-linkset.php';
     }
 }
-
 
 /**
  * It is time to register widget

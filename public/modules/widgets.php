@@ -22,6 +22,7 @@ class Kedr_Modules_Widgets {
         add_filter( 'widget_title', '__return_empty_string' );
 
         add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
+        add_action( 'dynamic_sidebar_before', array( __CLASS__, 'exclude_single_widget' ) );
 
         add_action( 'added_post_meta', array( __CLASS__, 'clear_cache' ) );
         add_action( 'deleted_post_meta', array( __CLASS__, 'clear_cache' ) );
@@ -37,6 +38,40 @@ class Kedr_Modules_Widgets {
         }
 
         add_action( 'wp_ajax_kedr_widgets', array( __CLASS__, 'handle_ajax' ) );
+    }
+
+    /**
+     * Exclude single widget from post lists
+     */
+    public static function exclude_single_widget( $sidebar ) {
+        $exclude = get_query_var( 'widget_exclude', array() );
+
+        if ( empty( $exclude[ $sidebar ] ) ) {
+            $exclude[ $sidebar ] = array();
+        }
+
+        $single = new Kedr_Widget_Single();
+
+        // Get all settings of single widget
+        $settings = $single->get_settings();
+
+        $widgets = wp_get_sidebars_widgets();
+
+        foreach ( $widgets[ $sidebar ] as $id ) {
+            if ( substr( $id, 0, strlen( $single->id_base ) ) !== $single->id_base ) {
+                continue;
+            }
+
+            $index = str_replace( $single->id_base . '-', '', $id );
+
+            if ( is_array( $settings[ $index ]['posts'] ) ) {
+                $exclude[ $sidebar ] = array_merge( $exclude[ $sidebar ], $settings[ $index ]['posts'] );
+            }
+        }
+
+        $exclude[ $sidebar ] = array_unique( $exclude[ $sidebar ] );
+
+        set_query_var( 'widget_exclude', $exclude );
     }
 
     /**
@@ -203,7 +238,6 @@ class Kedr_Modules_Widgets {
         return false;
     }
 
-
     /**
      * Handle widgets AJAX requests
      */
@@ -219,7 +253,7 @@ class Kedr_Modules_Widgets {
      * Find post for linkset AJAX query
      */
     private static function process_linkset( $url ) {
-        $post_id = url_to_postid( trim( $url ) );
+        $post_id = url_to_postid( wp_make_link_relative( $url ) );
 
         if ( empty( $post_id ) ) {
             return wp_send_json_error( esc_html__( 'Запись не найдена', 'kedr-theme' ) );

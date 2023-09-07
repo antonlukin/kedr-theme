@@ -6,7 +6,6 @@
  * @since 2.0
  */
 
-
 class Kedr_Widget_News extends WP_Widget {
     /**
      * Widget post types

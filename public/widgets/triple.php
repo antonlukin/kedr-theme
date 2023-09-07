@@ -6,7 +6,6 @@
  * @since 2.0
  */
 
-
 class Kedr_Widget_Triple extends WP_Widget {
     /**
      * Widget post types
@@ -44,7 +43,7 @@ class Kedr_Widget_Triple extends WP_Widget {
         $instance = wp_parse_args( (array) $instance, $defaults );
 
         // Using exclude global query var to avoid posts duplicate
-        $exclude = get_query_var( 'widget_exclude', array() );
+        $exclude = $this->get_excluded_posts( $args['id'] );
 
         // Create new WP_Query by instance vars
         $query = new WP_Query( $this->get_query( $instance, $exclude ) );
@@ -58,10 +57,11 @@ class Kedr_Widget_Triple extends WP_Widget {
             }
 
             wp_reset_postdata();
-            set_query_var( 'widget_exclude', array_merge( $exclude, wp_list_pluck( $query->posts, 'ID' ) ) );
 
             echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
         }
+
+        $this->set_excluded_posts( $args['id'], wp_list_pluck( $query->posts, 'ID' ) );
     }
 
     /**
@@ -146,8 +146,35 @@ class Kedr_Widget_Triple extends WP_Widget {
 
         return $query;
     }
-}
 
+    /**
+     * Find all excluded posts by sidebar id
+     */
+    private function get_excluded_posts( $sidebar ) {
+        $exclude = get_query_var( 'widget_exclude', array() );
+
+        if ( empty( $exclude[ $sidebar ] ) ) {
+            return array();
+        }
+
+        return $exclude[ $sidebar ];
+    }
+
+    /**
+     * Set new excluded posts by sidebar id
+     */
+    private function set_excluded_posts( $sidebar, $ids ) {
+        $exclude = get_query_var( 'widget_exclude', array() );
+
+        if ( empty( $exclude[ $sidebar ] ) ) {
+            $exclude[ $sidebar ] = array();
+        }
+
+        $exclude[ $sidebar ] = array_merge( $exclude[ $sidebar ], $ids );
+
+        set_query_var( 'widget_exclude', $exclude );
+    }
+}
 
 /**
  * It is time to register widget

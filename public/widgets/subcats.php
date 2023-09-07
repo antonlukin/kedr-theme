@@ -6,7 +6,6 @@
  * @since 2.0
  */
 
-
 class Kedr_Widget_Subcats extends WP_Widget {
     /**
      * Widget constructor
@@ -81,7 +80,6 @@ class Kedr_Widget_Subcats extends WP_Widget {
         );
     }
 }
-
 
 /**
  * It is time to register widget
