@@ -16,7 +16,7 @@ class Kedr_Widget_News extends WP_Widget {
     /**
      * Categories to show in news
      */
-    private $category = array();
+    private $category = array( 'news' );
 
     /**
      * Widget constructor
@@ -27,10 +27,6 @@ class Kedr_Widget_News extends WP_Widget {
             'description'                 => esc_html__( 'Выводит последние новости', 'kedr-theme' ),
             'customize_selective_refresh' => true,
         );
-
-        if ( property_exists( 'Kedr_Modules_News', 'slug' ) ) {
-            $this->category[] = Kedr_Modules_News::$slug;
-        }
 
         parent::__construct( 'kedr_widget_news', esc_html__( 'Новости', 'kedr-theme' ), $widget_ops );
     }

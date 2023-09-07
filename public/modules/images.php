@@ -22,7 +22,6 @@ class Kedr_Modules_Images {
 
         add_filter( 'wp_generate_attachment_metadata', array( __CLASS__, 'compress_original_image' ), 10, 2 );
         add_filter( 'wp_image_editors', array( __CLASS__, 'change_image_editor' ) );
-        add_filter( 'intermediate_image_sizes', array( __CLASS__, 'remove_image_sizes' ) );
     }
 
     /**
@@ -31,16 +30,6 @@ class Kedr_Modules_Images {
      */
     public static function change_image_editor() {
         return array( 'WP_Image_Editor_GD', 'WP_Image_Editor_Imagick' );
-    }
-
-    /**
-     * Remove default useless large and medium sizes
-     */
-    public static function remove_image_sizes( $def_sizes ) {
-        unset( $def_sizes['medium'] );
-        unset( $def_sizes['large'] );
-
-        return $def_sizes;
     }
 
     /**

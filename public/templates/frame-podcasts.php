@@ -37,10 +37,11 @@
 
                 <div class="frame-podcasts__content">
                     <?php
-                    printf(
-                        '<p class="frame-podcasts__content-category">%s %d</p>',
-                        esc_html__( 'Выпуск', 'kedr-theme' ),
-                        absint( $args['total'] - $args['counter']++ )
+
+                    kedr_theme_info(
+                        'castlead',
+                        '<div class="frame-podcasts__content-castlead">',
+                        '</div>'
                     );
 
                     printf(

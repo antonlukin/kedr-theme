@@ -42,7 +42,7 @@ get_header(); ?>
     </section>
 
     <nav class="navigate">
-        <?php next_posts_link( esc_html__( 'Показать еще', 'kedr-theme' ) ); ?>
+        <?php next_posts_link( esc_html__( 'Следуюшая страница', 'kedr-theme' ) ); ?>
     </nav>
 <?php endif; ?>
 

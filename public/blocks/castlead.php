@@ -1,6 +1,6 @@
 <?php
 /**
- * Alternative lead for posts with video format
+ * Podcast episode number to show in widgets
  * Add custom textbox field to post settings sidebar.
  *
  * @package kedr-theme
@@ -11,11 +11,11 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Blocks_Videolead {
+class Kedr_Blocks_castlead {
     /**
      * Post meta title to store featured news
      */
-    public static $meta = '_kedr_videolead';
+    public static $meta = '_kedr_castlead';
 
     /**
      * Init function instead of constructor
@@ -49,7 +49,7 @@ class Kedr_Blocks_Videolead {
      * Add Gutenberg scripts for topnews option
      */
     public static function enqueue_assets() {
-        $slug = 'videolead';
+        $slug = 'castlead';
 
         // Get assets arguments
         $asset = require __DIR__ . "/build/{$slug}/index.asset.php";
@@ -62,10 +62,17 @@ class Kedr_Blocks_Videolead {
             true
         );
 
+        $category = get_category_by_slug( 'podcast' );
+
+        if ( $category === false ) {
+            return;
+        }
+
         wp_localize_script(
             'kedr-theme-' . $slug,
             'kedr_theme_' . $slug,
             array(
+                'term' => $category->term_id,
                 'meta' => self::$meta,
             )
         );
@@ -77,4 +84,4 @@ class Kedr_Blocks_Videolead {
 /**
  * Load current module environment
  */
-Kedr_Blocks_Videolead::load_module();
+Kedr_Blocks_castlead::load_module();

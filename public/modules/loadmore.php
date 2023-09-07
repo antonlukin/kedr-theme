@@ -121,12 +121,8 @@ class Kedr_Modules_Loadmore {
     public static function get_taxonomy_template( $taxonomy, $slug ) {
         $template = array( 'double', array() );
 
-        if ( ! property_exists( 'Kedr_Modules_News', 'slug' ) ) {
-            return $template;
-        }
-
         // Check for news archive template
-        if ( $taxonomy === 'category' && Kedr_Modules_News::$slug === $slug ) {
+        if ( $taxonomy === 'category' && $slug === 'news' ) {
             $template = array( 'news', array( 'class' => 'common' ) );
         }
 
