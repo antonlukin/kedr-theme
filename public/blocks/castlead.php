@@ -11,7 +11,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Blocks_castlead {
+class Kedr_Blocks_Castlead {
     /**
      * Post meta title to store featured news
      */
@@ -84,4 +84,4 @@ class Kedr_Blocks_castlead {
 /**
  * Load current module environment
  */
-Kedr_Blocks_castlead::load_module();
+Kedr_Blocks_Castlead::load_module();

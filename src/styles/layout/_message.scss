@@ -1,11 +1,13 @@
 .message {
   @include container;
 
-  display: block;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
   position: relative;
 
   margin: 0 auto;
-  padding: 4rem 0 2rem;
+  padding: 2rem 0;
 
   font-family: var(--font-regular);
   font-size: 1.1875rem;

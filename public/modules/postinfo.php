@@ -131,8 +131,8 @@ class Kedr_Modules_Postinfo {
      * Get podcast issue caption
      */
     public static function get_castlead( $output = '' ) {
-        if ( property_exists( 'Kedr_Blocks_castlead', 'meta' ) ) {
-            $output = get_post_meta( get_the_ID(), Kedr_Blocks_castlead::$meta, true );
+        if ( property_exists( 'Kedr_Blocks_Castlead', 'meta' ) ) {
+            $output = get_post_meta( get_the_ID(), Kedr_Blocks_Castlead::$meta, true );
 
             if ( ! empty( $output ) ) {
                 return apply_filters( 'the_excerpt', $output );
