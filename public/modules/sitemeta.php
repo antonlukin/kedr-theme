@@ -34,6 +34,7 @@ class Kedr_Modules_Sitemeta {
 
         // Add custom analytics scripts
         add_action( 'wp_head', array( __CLASS__, 'add_analytics' ), 20 );
+        add_action( 'wp_head', array( __CLASS__, 'add_io_tracker' ), 20 );
     }
 
     /**
@@ -123,8 +124,21 @@ class Kedr_Modules_Sitemeta {
      */
     public static function add_analytics() {
         if ( defined( 'KEDR_TAGMANAGER' ) ) {
-            include get_template_directory() . '/includes/views/sitemeta-scripts.php';
+            include get_template_directory() . '/includes/views/sitemeta-tagmanager.php';
         }
+    }
+
+    /**
+     * Add IO tracker
+     */
+    public static function add_io_tracker() {
+        if ( ! defined( 'KEDR_IO_TRACKER' ) ) {
+            return;
+        }
+
+        $params = self::get_io_params();
+
+        include get_template_directory() . '/includes/views/sitemeta-iotracker.php';
     }
 
     /**
@@ -399,12 +413,111 @@ class Kedr_Modules_Sitemeta {
     }
 
     /**
+     * Get IO tracker params
+     */
+    private static function get_io_params() {
+        if ( is_tax() || is_category() || is_tag() ) {
+            return self::get_io_taxonomy();
+        }
+
+        if ( is_author() ) {
+            return self::get_io_author();
+        }
+
+        if ( is_front_page() ) {
+            return self::get_io_frontpage();
+        }
+
+        if ( is_singular() ) {
+            return self::get_io_singular();
+        }
+    }
+
+    /**
+     * Get IO tracker params on taxonomy archive page
+     */
+    private static function get_io_taxonomy() {
+        $params = array(
+            'page_title' => get_queried_object()->name,
+            'page_type'  => 'default',
+        );
+
+        return $params;
+    }
+
+    /**
+     * Get IO tracker params on author archive page
+     */
+    private static function get_io_author() {
+        $params = array(
+            'page_title' => get_the_author(),
+            'page_type'  => 'default',
+        );
+
+        return $params;
+    }
+
+    /**
+     * Get IO tracker params on frontpage
+     */
+    private static function get_io_frontpage() {
+        $params = array(
+            'page_title' => 'Home',
+            'page_type'  => 'main',
+        );
+
+        return $params;
+    }
+
+    /**
+     * Get IO tracker params on singular page
+     */
+    private static function get_io_singular() {
+        $gmt_timestamp = get_post_time( 'U', true );
+
+        $authors = array();
+
+        if ( function_exists( 'coauthors' ) ) {
+            $authors = coauthors( ', ', ', ', '"', '"', false );
+        }
+
+        $cats = array();
+
+        foreach ( get_the_category() as $category ) {
+            $cats[] = self::wrap_string( $category->cat_name, '"', '"' );
+        }
+
+        $tags = array();
+
+        foreach ( get_the_tags() as $tag ) {
+            $tags[] = self::wrap_string( $tag->name, '"', '"' );
+        }
+
+        $params = array(
+            'page_title'               => get_the_title(),
+            'page_url_canonical'       => esc_url( get_the_permalink() ),
+            'page_type'                => 'article',
+            'article_type'             => 'article',
+            'article_publication_date' => gmdate( 'd M Y h:i:s', $gmt_timestamp ) . 'GMT',
+            'article_authors'          => self::wrap_string( $authors, '[', ']' ),
+            'article_categories'       => self::wrap_string( implode( ', ', $cats ), '[', ']' ),
+            'tags'                     => self::wrap_string( implode( ', ', $tags ), '[', ']' ),
+        );
+
+        return $params;
+    }
+
+    /**
      * Print tags if not empty array
      */
     private static function print_tags( $meta ) {
         foreach ( $meta as $tag ) {
             echo $tag . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
         }
+    }
+
+    private static function wrap_string( $str, $start, $end ) {
+        return $start . $str . $end;
     }
 }
 
