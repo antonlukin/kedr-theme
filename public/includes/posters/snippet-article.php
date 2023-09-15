@@ -59,7 +59,7 @@ $poster->text(
         'horizontal' => 'left',
         'vertical'   => 'top',
         'fontpath'   => $options['font-bold'],
-        'fontsize'   => 48,
+        'fontsize'   => 46,
         'lineheight' => 1.5,
         'color'      => '#ffffff',
     ),
@@ -77,7 +77,7 @@ if ( ! empty( $options['excerpt'] ) ) {
             'horizontal' => 'left',
             'vertical'   => 'top',
             'fontpath'   => $options['font-thin'],
-            'fontsize'   => 34,
+            'fontsize'   => 36,
             'lineheight' => 1.5,
             'color'      => '#ffffff',
         )
