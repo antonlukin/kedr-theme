@@ -184,6 +184,7 @@
 
   .frame-special__content-authors {
     display: inline-flex;
+    flex-flow: row wrap;
     position: relative;
     z-index: 2;
 
@@ -193,6 +194,7 @@
     color: var(--color-dim);
 
     a {
+      white-space: nowrap;
       transition: color 0.25s;
     }
 
