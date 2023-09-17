@@ -169,10 +169,6 @@
     a:focus {
       filter: brightness(150%);
     }
-
-    @media screen and (max-width: 479px) {
-      display: none;
-    }
   }
 
   .frame-podcasts__content-title {
@@ -185,7 +181,7 @@
     font-weight: 600;
 
     @media screen and (max-width: 479px) {
-      margin-top: 0;
+      margin-top: 0.5rem;
     }
   }
 
