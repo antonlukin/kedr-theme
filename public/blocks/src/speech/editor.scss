@@ -40,7 +40,7 @@
       margin: 0;
 
       font-size: 1rem;
-      font-weight: 700;
+      font-weight: 400;
       font-style: normal;
       font-family: var(--wp--preset--font-family--regular);
     }
@@ -52,5 +52,10 @@
     margin: 1.5rem 0 0;
 
     font-style: italic;
+  }
+
+  &.has-only-author {
+    padding: 0;
+    border: 0;
   }
 }

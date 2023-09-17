@@ -3,7 +3,15 @@ import { RichText, useBlockProps } from '@wordpress/block-editor';
 import './editor.scss';
 
 export default function save( props ) {
-	const blockProps = useBlockProps.save();
+	const classes = [];
+
+	if ( props.attributes.onlyAuthor ) {
+		classes.push( 'has-only-author' );
+	}
+
+	const blockProps = useBlockProps.save( {
+		className: classes.join( ' ' ),
+	} );
 
 	return (
 		<blockquote { ...blockProps }>

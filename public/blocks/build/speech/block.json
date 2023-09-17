@@ -31,6 +31,10 @@
     },
     "imageId": {
       "type": "number"
+    },
+    "onlyAuthor": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
