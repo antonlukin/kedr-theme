@@ -200,7 +200,7 @@ class Kedr_Modules_Global {
      * Filters the anchor tag attributes for the next posts page link.
      */
     public static function update_next_posts_link() {
-        return 'class="naviate__button button"';
+        return 'class="navigate__button button"';
     }
 }
 

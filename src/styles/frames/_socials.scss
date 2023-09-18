@@ -33,6 +33,10 @@
     font-size: 0.875rem;
     font-family: var(--font-content);
     font-style: italic;
+
+    @media screen and (max-width: 767px) {
+      margin-top: 0.875rem;
+    }
   }
 
   .frame-socials__menu {
@@ -42,6 +46,10 @@
     justify-content: center;
 
     margin-top: 1.25rem;
+
+    @media screen and (max-width: 767px) {
+      margin-top: 0.875rem;
+    }
   }
 
   .frame-socials__menu .menu__item {
