@@ -22,6 +22,21 @@ function createLoader( embed ) {
 }
 
 /**
+ * Add mute param for mobile devices.
+ *
+ * @param {HTMLElement} embed Embed element.
+ */
+function getEmbedUrl( embed ) {
+	const url = embed.dataset.embed;
+
+	if ( 'ontouchstart' in window && url.includes( 'autoplay=1' ) ) {
+		return url + '&mute=1';
+	}
+
+	return url;
+}
+
+/**
  * Create iframe using data-embed attribute
  *
  * @param {HTMLElement} embed Embed element.
@@ -32,7 +47,9 @@ function createIframe( embed ) {
 
 	iframe.setAttribute( 'allow', 'autoplay' );
 	iframe.setAttribute( 'frameborder', '0' );
-	iframe.setAttribute( 'src', embed.dataset.embed );
+
+	const url = getEmbedUrl( embed );
+	iframe.setAttribute( 'src', url );
 
 	iframe.addEventListener( 'load', function() {
 		loader.parentNode.removeChild( loader );
