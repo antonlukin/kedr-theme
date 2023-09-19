@@ -17,8 +17,10 @@ class Kedr_Modules_Embeds {
     public static function load_module() {
         add_filter( 'embed_defaults', array( __CLASS__, 'set_defaults' ) );
 
-        add_filter( 'pre_oembed_result', array( __CLASS__, 'update_youtube_embed' ), 10, 2 );
-        add_filter( 'pre_oembed_result', array( __CLASS__, 'update_vimeo_embed' ), 10, 2 );
+        if ( ! is_admin() ) {
+            add_filter( 'embed_oembed_html', array( __CLASS__, 'update_youtube_embed' ), 10, 2 );
+            add_filter( 'embed_oembed_html', array( __CLASS__, 'update_vimeo_embed' ), 10, 2 );
+        }
 
         add_filter( 'the_content_feed', array( __CLASS__, 'replace_feed_embeds' ), 5 );
     }
@@ -39,10 +41,6 @@ class Kedr_Modules_Embeds {
      * Update YouTube html to show preloader
      */
     public static function update_youtube_embed( $result, $url ) {
-        if ( is_admin() ) {
-            return $result;
-        }
-
         $regex = '~http(?:s)?:\/\/(?:m.)?(?:www\.)?youtu(?:\.be\/|(?:be-nocookie|be)\.com\/(?:watch|[\w]+\?(?:feature=[\w]+.[\w]+\&)?v=|v\/|e\/|embed\/|live\/|shorts\/|user\/(?:[\w#]+\/)+))([^&#?\n]+)~i';
 
         if ( ! preg_match( $regex, $url, $match ) ) {
