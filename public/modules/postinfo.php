@@ -106,7 +106,7 @@ class Kedr_Modules_Postinfo {
         $url = self::parse_video_url( get_the_content() );
 
         if ( ! empty( $url ) ) {
-            $output = wp_oembed_get( $url );
+            $output = apply_filters( 'embed_oembed_html', wp_oembed_get( $url ), $url );
         }
 
         return $output;
