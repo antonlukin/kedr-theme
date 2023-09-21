@@ -19,7 +19,7 @@ $poster->canvas(
 
 if ( ! empty( $options['thumbnail'] ) ) {
     $poster->make( $options['thumbnail'] )->fit( 1200, 630 );
-    $poster->blackout( 70 );
+    $poster->blackout( 50 );
 }
 
 $logo = new PosterEditor\PosterEditor();
