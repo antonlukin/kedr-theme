@@ -397,11 +397,15 @@ class Kedr_Modules_Sitemeta {
             }
 
             if ( ! empty( $object_type->name ) ) {
-                $description = sprintf( __( 'Архив записей по теме &laquo;%s&raquo;', 'kedr-theme' ), wp_strip_all_tags( $object_type->name ) );
+                $description = sprintf( __( 'Раздел &laquo;%s&raquo;', 'kedr-theme' ), wp_strip_all_tags( $object_type->name ) );
             }
 
             if ( ! empty( $object_type->label ) ) {
-                $description = sprintf( __( 'Архив записей по теме &laquo;%s&raquo;', 'kedr-theme' ), wp_strip_all_tags( $object_type->label ) );
+                $description = sprintf( __( 'Раздел &laquo;%s&raquo;', 'kedr-theme' ), wp_strip_all_tags( $object_type->label ) );
+            }
+
+            if ( is_author() ) {
+                $description = sprintf( __( 'Публикации автора: %s', 'kedr-theme' ), wp_strip_all_tags( get_the_author() ) );
             }
 
             if ( get_query_var( 'paged' ) ) {
