@@ -10,7 +10,7 @@
       "color-primary": "#48625e",
       "color-background": "#efeded",
       "color-dark": "#212529",
-      "color-muted": "#c4c4c4",
+      "color-muted": "##d6d6d6",
       "color-dim": "#00000090",
       "color-overlay": "#48625e50"
     },
