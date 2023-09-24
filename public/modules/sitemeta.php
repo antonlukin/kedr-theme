@@ -435,6 +435,8 @@ class Kedr_Modules_Sitemeta {
         if ( is_singular() ) {
             return self::get_io_singular();
         }
+
+        return array();
     }
 
     /**
@@ -487,13 +489,13 @@ class Kedr_Modules_Sitemeta {
 
         $cats = array();
 
-        foreach ( get_the_category() as $category ) {
+        foreach ( (array) get_the_category() as $category ) {
             $cats[] = self::wrap_string( $category->cat_name, '"', '"' );
         }
 
         $tags = array();
 
-        foreach ( get_the_tags() as $tag ) {
+        foreach ( (array) get_the_tags() as $tag ) {
             $tags[] = self::wrap_string( $tag->name, '"', '"' );
         }
 
