@@ -19,8 +19,10 @@
 
 #leyka-pf-1060 .section .section__fields.periodicity a.active {
   z-index: 5;
+  padding: 0 16px;
 }
 
 #leyka-pf-1060 .section .section__fields.periodicity a {
   z-index: 4;
+  padding: 0 16px;
 }
