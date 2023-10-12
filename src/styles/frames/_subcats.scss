@@ -2,7 +2,7 @@
   @include container;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: var(--space-outer);
   position: relative;
 
@@ -15,7 +15,7 @@
     z-index: 0;
 
     width: 100%;
-    padding-top: 100%;
+    padding-top: 75%;
     overflow: hidden;
 
     color: var(--color-dark);
