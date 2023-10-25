@@ -74,7 +74,7 @@
                 endif;
                 ?>
 
-                <a href="<?php echo esc_url( home_url( '?s=' ) ); ?>" class="header__search">
+                <a href="<?php echo esc_url( home_url( '/search/' ) ); ?>" class="header__search">
                     <?php
                     printf(
                         '<svg class="header__search-icon"><use xlink:href="%s"></use></svg>',

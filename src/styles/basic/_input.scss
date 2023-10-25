@@ -24,6 +24,11 @@
     pointer-events: none;
   }
 
+  &::selection {
+    color: var(--color-light);
+    background-color: var(--color-primary);
+  }
+
   @media screen and (max-width: 767px) {
     font-size: 0.91375rem;
   }

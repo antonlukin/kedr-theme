@@ -128,17 +128,6 @@
       margin: 0 0 0.5rem;
     }
 
-    & > ::after {
-      content: "•";
-
-      display: inline-flex;
-      margin: 0 0.5rem;
-    }
-
-    & > :last-child::after {
-      display: none;
-    }
-
     @media screen and (max-width: 1023px) {
       font-size: 0.9375rem;
     }
@@ -151,11 +140,21 @@
     position: relative;
 
     color: var(--color-dim);
+
+    &::after {
+      content: "•";
+
+      display: inline-flex;
+      margin: 0 0.5rem;
+    }
   }
 
   .entry-header__meta-authors {
     display: inline-flex;
+    flex-flow: row wrap;
+
     position: relative;
+    margin-right: 1rem;
     color: var(--color-primary);
 
     a {

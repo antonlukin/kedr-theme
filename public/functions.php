@@ -118,6 +118,7 @@ require_once get_template_directory() . '/modules/postinfo.php';
 require_once get_template_directory() . '/modules/menu.php';
 require_once get_template_directory() . '/modules/projects.php';
 require_once get_template_directory() . '/modules/sitemeta.php';
+require_once get_template_directory() . '/modules/search.php';
 require_once get_template_directory() . '/modules/news.php';
 require_once get_template_directory() . '/modules/content.php';
 require_once get_template_directory() . '/modules/embeds.php';

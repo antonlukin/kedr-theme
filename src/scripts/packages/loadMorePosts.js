@@ -7,12 +7,12 @@
 /**
  * Handle navigate button
  *
- * @param {string} taxonomy Taxonomy slug
- * @param {string} slug     Term slug
- * @param {number} page     Page number
+ * @param {string} archive archive slug
+ * @param {string} slug    Term slug
+ * @param {number} page    Page number
  */
-async function getPosts( taxonomy, slug, page ) {
-	const url = `/wp-json/kedr-loadmore/v1/${ taxonomy }/${ slug }?page=${ page }`;
+async function getPosts( archive, slug, page ) {
+	const url = `/wp-json/kedr-loadmore/v1/${ archive }/${ slug }?page=${ page }`;
 
 	const response = await fetch( url, {
 		method: 'GET',
@@ -42,7 +42,7 @@ function loadMorePosts( navigate ) {
 		return;
 	}
 
-	let [ , taxonomy, slug, page ] = matches;
+	let [ , archive, slug, page ] = matches;
 
 	page = parseInt( page );
 
@@ -52,7 +52,7 @@ function loadMorePosts( navigate ) {
 		button.classList.add( 'button--preload' );
 
 		try {
-			const { output, pages } = await getPosts( taxonomy, slug, page );
+			const { output, pages } = await getPosts( archive, slug, page );
 
 			if ( ! output ) {
 				throw new Error();
@@ -67,7 +67,7 @@ function loadMorePosts( navigate ) {
 			window.history.pushState( {}, '', url );
 
 			page = page + 1;
-			url.pathname = `/${ taxonomy }/${ slug }/page/${ page }`;
+			url.pathname = `/${ archive }/${ slug }/page/${ page }`;
 
 			button.setAttribute( 'href', url.href );
 		} catch ( error ) {

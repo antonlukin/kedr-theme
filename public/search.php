@@ -8,11 +8,11 @@
 
 get_header(); ?>
 
-<form class="finder" action="/" method="GET">
+<form class="finder" action="/search/" method="GET">
     <div class="finder__wrapper">
         <?php
         printf(
-            '<input class="finder__input input" type="text" name="s" value="%s" placeholder="%s">',
+            '<input class="finder__input input" type="text" name="s" required value="%s" placeholder="%s">',
             esc_html( get_search_query() ),
             esc_html__( 'Введите ваш поисковый запрос', 'kedr-theme' )
         );
@@ -41,8 +41,8 @@ get_header(); ?>
         ?>
     </section>
 
-    <nav class="navigate">
-        <?php next_posts_link( esc_html__( 'Следуюшая страница', 'kedr-theme' ) ); ?>
+    <nav class="navigate navigate--more">
+        <?php next_posts_link( esc_html__( 'Показать еще', 'kedr-theme' ) ); ?>
     </nav>
 <?php endif; ?>
 

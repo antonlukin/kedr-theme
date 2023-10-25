@@ -26,11 +26,21 @@
         '<div class="frame-search__content-excerpt">',
         '</div>'
     );
-
-    kedr_theme_info(
-        'date',
-        '<div class="frame-search__content-date">',
-        '</div>'
-    );
     ?>
+
+    <div class="frame-search__content-meta">
+        <?php
+        kedr_theme_info(
+            'date',
+            '<div class="frame-search__content-date">',
+            '</div>'
+        );
+
+        kedr_theme_info(
+            'authors',
+            '<div class="frame-search__content-authors">',
+            '</div>'
+        );
+        ?>
+    </div>
 </div>

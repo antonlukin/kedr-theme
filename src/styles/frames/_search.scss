@@ -100,14 +100,53 @@
     }
   }
 
+  .frame-search__content-meta {
+    display: flex;
+    flex-flow: row wrap;
+
+    margin-top: auto;
+  }
+
   .frame-search__content-date {
     display: inline-flex;
 
-    margin-top: auto;
     font-size: 0.875rem;
     font-weight: 400;
 
     color: var(--color-dim);
+
+    &::after {
+      content: "•";
+
+      display: inline-flex;
+      margin: 0 0.5rem;
+    }
+
+    @media screen and (max-width: 1023px) {
+      font-size: 0.8125rem;
+    }
+  }
+
+  .frame-search__content-authors {
+    display: inline-flex;
+    flex-flow: row wrap;
+    position: relative;
+    z-index: 2;
+
+    margin-top: auto;
+    font-size: 0.875rem;
+
+    color: var(--color-dim);
+
+    a {
+      white-space: nowrap;
+      transition: color 0.25s;
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--color-dark);
+    }
 
     @media screen and (max-width: 1023px) {
       font-size: 0.8125rem;

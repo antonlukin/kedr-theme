@@ -205,10 +205,14 @@ class Kedr_Modules_Sitemeta {
         }
 
         if ( is_tax() || is_category() || is_tag() ) {
-            $meta[] = sprintf(
-                '<meta property="og:url" content="%s">',
-                esc_url( get_term_link( get_queried_object()->term_id ) )
-            );
+            $object = get_queried_object();
+
+            if ( ! empty( $object->term_id ) ) {
+                $meta[] = sprintf(
+                    '<meta property="og:url" content="%s">',
+                    esc_url( get_term_link( get_queried_object()->term_id ) )
+                );
+            }
         }
 
         if ( is_front_page() ) {
@@ -313,7 +317,7 @@ class Kedr_Modules_Sitemeta {
 
         $schema['potentialAction'] = array(
             '@type'       => 'SearchAction',
-            'target'      => home_url( '/?s={search_term_string}' ),
+            'target'      => home_url( '/search/{search_term_string}' ),
             'query-input' => 'required name=search_term_string',
         );
 
