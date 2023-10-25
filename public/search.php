@@ -12,7 +12,7 @@ get_header(); ?>
     <div class="finder__wrapper">
         <?php
         printf(
-            '<input class="finder__input input" type="text" name="s" required value="%s" placeholder="%s">',
+            '<input class="finder__input input" type="text" name="s" value="%s" placeholder="%s" required autofocus>',
             esc_html( get_search_query() ),
             esc_html__( 'Введите ваш поисковый запрос', 'kedr-theme' )
         );
