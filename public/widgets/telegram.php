@@ -73,7 +73,7 @@ class Kedr_Widget_Telegram extends WP_Widget {
         );
 
         printf(
-            '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"</p>',
+            '<p><label for="%1$s">%3$s</label><input class="widefat" id="%1$s" name="%2$s" type="text" value="%4$s"></p>',
             esc_attr( $this->get_field_id( 'link' ) ),
             esc_attr( $this->get_field_name( 'link' ) ),
             esc_html__( 'Ссылка с виджета:', 'kedr-theme' ),
