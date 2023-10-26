@@ -29,7 +29,7 @@ function showTelegramFrame( frame ) {
 	}
 
 	// 2 weeks ago
-	const interval = Math.floor( Date.now() / 1000 ) - ( 3600 * 24 * 14 );
+	const interval = Math.floor( Date.now() / 1000 ) - ( 3600 * 24 * 45 );
 
 	if ( options.closed && options.closed > interval ) {
 		return false;
