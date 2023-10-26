@@ -65,6 +65,12 @@
     </div>
 </footer>
 
+<?php
+if ( is_active_sidebar( 'kedr-flexible' ) ) :
+    dynamic_sidebar( 'kedr-flexible' );
+endif;
+?>
+
 <?php wp_footer(); ?>
 </body>
 </html>

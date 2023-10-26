@@ -48,6 +48,10 @@ function movePopup( popup, target ) {
  * @param {HTMLElement} post Post html element
  */
 function showReference( post ) {
+	if ( post === null ) {
+		return false;
+	}
+
 	post.addEventListener( 'click', function( e ) {
 		const target = e.target;
 

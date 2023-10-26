@@ -12,7 +12,7 @@
     printf(
         '<p class="frame-mailing__caption">%s</p>',
         esc_html__( 'Подпишитесь на рассылку «Кедр.медиа»', 'kedr-theme' )
-    )
+    );
     ?>
 
     <form class="frame-mailing__form form" action="/" method="POST" data-requests="mailing">

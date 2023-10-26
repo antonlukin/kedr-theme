@@ -107,6 +107,16 @@ class Kedr_Modules_Widgets {
                 'after_widget'  => '</div>',
             )
         );
+
+        register_sidebar(
+            array(
+                'name'          => esc_html__( 'Скрипты и счетчики', 'kedr-theme' ),
+                'id'            => 'kedr-flexible',
+                'description'   => esc_html__( 'Добавленные виджеты загрузятся в последнюю очередь. Для скриптов и счетчиков.', 'kedr-theme' ),
+                'before_widget' => '<div class="frame-%2$s frame-%2$s--flexible">',
+                'after_widget'  => '</div>',
+            )
+        );
     }
 
     /**

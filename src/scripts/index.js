@@ -4,27 +4,25 @@ import toggleNavbar from './packages/toggleNavbar';
 import initFancybox from './packages/initFancybox';
 import handleRequests from './packages/handleRequests';
 import loadMorePosts from './packages/loadMorePosts';
+import showTelegramFrame from './packages/showTelegramFrame';
 
-( function() {
-	const post = document.querySelector( '.post' );
+// Show post's reference blocks
+showReference( document.querySelector( '.post' ) );
 
-	if ( post !== null ) {
-		initFancybox( post );
-		showReference( post );
-	}
+// Init Fancybox for post galleries
+initFancybox( document.querySelector( '.post' ) );
 
-	const header = document.querySelector( '.header' );
+// Control header navbar
+toggleNavbar( document.querySelector( '.header' ) );
 
-	if ( header !== null ) {
-		toggleNavbar( header );
-	}
+// Dynamic loading more posts
+loadMorePosts( document.querySelector( '.navigate--more' ) );
 
-	const navigate = document.querySelector( '.navigate--more' );
+// Handle Telegram promo frame in flexible widget area
+showTelegramFrame( document.querySelector( '.frame-telegram--flexible' ) );
 
-	if ( navigate !== null ) {
-		loadMorePosts( navigate );
-	}
+// Handle preloaded embeds
+replaceEmbeds( document.querySelectorAll( '[data-embed]' ) );
 
-	replaceEmbeds( document.querySelectorAll( '[data-embed]' ) );
-	handleRequests( document.querySelectorAll( '[data-requests]' ) );
-}() );
+// Handle requests forms
+handleRequests( document.querySelectorAll( '[data-requests]' ) );

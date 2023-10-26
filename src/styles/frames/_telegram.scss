@@ -1,0 +1,141 @@
+.frame-telegram {
+  @include container;
+
+  display: block;
+  position: relative;
+
+  width: calc(100% - var(--space-outer) * 4);
+  max-width: var(--width-site);
+  margin: var(--space-outer) auto 0;
+
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  border: solid 2px var(--color-primary);
+  border-radius: var(--radius-frame);
+
+  .frame-telegram__wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+
+    padding: 1rem;
+  }
+
+  .frame-telegram__icon {
+    display: block;
+    flex: 0 0 3.25rem;
+    height: auto;
+    margin-right: var(--space-outer);
+
+    @media screen and (max-width: 767px) {
+      flex: 0 0 3rem;
+    }
+
+    @media screen and (max-width: 479px) {
+      flex: 0 0 2.75rem;
+    }
+  }
+
+  .frame-telegram__content {
+    display: block;
+    padding-right: 2rem;
+  }
+
+  .frame-telegram__content-title {
+    @include full-after(1);
+
+    display: block;
+
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.375;
+
+    transition: color 0.25s;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+
+    @media screen and (max-width: 479px) {
+      font-size: 0.9375rem;
+    }
+  }
+
+  .frame-telegram__content-description {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 1rem;
+
+    @media screen and (max-width: 479px) {
+      font-size: 0.875rem;
+    }
+  }
+
+  .frame-telegram__close {
+    display: none;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 2;
+
+    width: 2rem;
+    height: 2rem;
+    text-indent: -9999rem;
+
+    transition: none;
+
+    &::before,
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      width: 50%;
+      height: 0.125rem;
+
+      background-color: var(--color-dark);
+      transform: translate(-50%, -50%) rotate(45deg);
+      transition: background-color 0.25s;
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover {
+      &::after, &::before {
+        background-color: var(--color-primary);
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      top: 50%;
+      margin-top: -1rem;
+    }
+  }
+
+  &.frame-telegram--flexible {
+    display: none;
+    position: fixed;
+
+    left: 50%;
+    bottom: 2rem;
+    z-index: 3;
+
+    max-width: 24rem;
+    transform: translateX(-50%);
+    opacity: 0;
+
+    .frame-telegram__close {
+      display: block;
+    }
+  }
+
+  &.frame-telegram--visible {
+    display: block;
+    animation: fade-in 0.25s ease-in forwards;
+  }
+}

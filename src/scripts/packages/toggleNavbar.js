@@ -46,6 +46,10 @@ function clickOutside( e ) {
  * @param {HTMLElement} header Header HTML element
  */
 function toggleNavbar( header ) {
+	if ( header === null ) {
+		return false;
+	}
+
 	const body = document.body;
 
 	toggle.addEventListener( 'click', function( e ) {

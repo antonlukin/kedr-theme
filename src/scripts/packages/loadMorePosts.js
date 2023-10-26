@@ -27,6 +27,10 @@ async function getPosts( archive, slug, page ) {
  * @param {NodeList} navigate Navigate html element
  */
 function loadMorePosts( navigate ) {
+	if ( navigate === null ) {
+		return false;
+	}
+
 	const button = navigate.querySelector( '.button[href]' );
 
 	if ( button === null ) {
