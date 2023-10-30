@@ -391,6 +391,8 @@ class Kedr_Modules_Sitemeta {
             if ( has_excerpt( $object_id ) ) {
                 return trim( wp_strip_all_tags( get_the_excerpt( $object_id ) ) );
             }
+
+            return self::parse_excerpt( $object_id, $description );
         }
 
         if ( is_archive() ) {
@@ -515,6 +517,21 @@ class Kedr_Modules_Sitemeta {
         );
 
         return $params;
+    }
+
+    /**
+     * Parse excerpt from content
+     */
+    private static function parse_excerpt( $post_id, $description ) {
+        $blocks = parse_blocks( get_the_content( $post_id ) );
+
+        foreach ( $blocks as $block ) {
+            if ( $block['blockName'] === 'core/paragraph' ) {
+                return wp_strip_all_tags( $block['innerHTML'] );
+            }
+        }
+
+        return $description;
     }
 
     /**
