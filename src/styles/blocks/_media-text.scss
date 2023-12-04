@@ -39,7 +39,7 @@
 
   &.is-stacked-on-mobile {
     .wp-block-media-text__media {
-      max-width: 10rem;
+      max-width: 8rem;
     }
 
     @media screen and (max-width: 767px) {
@@ -52,6 +52,7 @@
     align-items: center;
 
     img {
+      width: 100%;
       border-radius: 50%;
     }
   }
