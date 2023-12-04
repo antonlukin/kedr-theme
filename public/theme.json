@@ -344,12 +344,15 @@
           "padding": {
             "left": "1.25em",
             "right": "1.25em"
+          },
+          "margin": {
+              "top": "2em"
           }
         },
         "border": {
           "radius": "0.3125rem"
         },
-        "css": "& {grid-gap: 1.25em; overflow: hidden} & > .wp-block-media-text__content {padding:0} & > .wp-block-media-text__media {margin: 1em 0; border-radius:50%; overflow:hidden;} &.is-image-fill > .editor-media-container__resizer {height: auto !important;}"
+        "css": "& {grid-gap: 1.25em; overflow: hidden} & > .wp-block-media-text__content {padding:0} & > .wp-block-media-text__media {margin: 1em 0} & > .wp-block-media-text__media img {border-radius:50%} &.is-image-fill > .editor-media-container__resizer {height: auto !important;}"
       }
     }
   }

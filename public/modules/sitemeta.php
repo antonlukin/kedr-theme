@@ -502,7 +502,9 @@ class Kedr_Modules_Sitemeta {
         $tags = array();
 
         foreach ( (array) get_the_tags() as $tag ) {
-            $tags[] = self::wrap_string( $tag->name, '"', '"' );
+            if ( ! empty( $tag->name) ) {
+                $tags[] = self::wrap_string( $tag->name, '"', '"' );
+            }
         }
 
         $params = array(
