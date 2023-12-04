@@ -85,6 +85,7 @@ class Kedr_Modules_Blocks {
             'core/heading',
             'core/block',
             'core/details',
+            'core/media-text',
         );
 
         $whitelist = array();

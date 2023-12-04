@@ -331,6 +331,25 @@
           "radius": "0.3125rem"
         },
         "css": "& {box-sizing:border-box; border:solid 2px var(--wp--custom--color-muted);} & summary {display:flex; justify-content:center; padding:1rem 0; margin-bottom:0; font-family:var(--wp--preset--font-family--regular); font-weight:600;} & > * {margin-bottom:1rem}"
+      },
+      "core/media-text": {
+        "color": {
+          "background": "var(--wp--custom--color-background)"
+        },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--regular)",
+          "fontSize": "1rem"
+        },
+        "spacing": {
+          "padding": {
+            "left": "1.25em",
+            "right": "1.25em"
+          }
+        },
+        "border": {
+          "radius": "0.3125rem"
+        },
+        "css": "& {grid-gap: 1.25em; overflow: hidden} & > .wp-block-media-text__content {padding:0} & > .wp-block-media-text__media {margin: 1em 0; border-radius:50%; overflow:hidden;} &.is-image-fill > .editor-media-container__resizer {height: auto !important;}"
       }
     }
   }

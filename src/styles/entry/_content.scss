@@ -208,21 +208,6 @@
     font-size: small;
   }
 
-  @import "blocks/paragraph";
-  @import "blocks/heading";
-  @import "blocks/caption";
-  @import "blocks/details";
-  @import "blocks/embed";
-  @import "blocks/gallery";
-  @import "blocks/help";
-  @import "blocks/image";
-  @import "blocks/quote";
-  @import "blocks/audio";
-  @import "blocks/video";
-  @import "blocks/reference";
-  @import "blocks/separator";
-  @import "blocks/speech";
-
   @media screen and (max-width: 1023px) {
     padding: var(--space-outer) calc(var(--space-outer) * 2);
   }
