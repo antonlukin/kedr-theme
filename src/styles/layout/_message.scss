@@ -44,4 +44,22 @@
     font-size: 1.125rem;
     font-weight: 400;
   }
+
+  .message__logo {
+    display: block;
+    width: 100%;
+    max-width: 12rem;
+    margin: 0 auto;
+  }
+
+  &.message--closed {
+    display: flex;
+    align-items: center;
+    height: calc(100vh - 4rem);
+  }
+
+  &.message--closed .message__title {
+    margin-top: 2rem;
+    text-align: center;
+  }
 }
