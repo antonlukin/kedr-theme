@@ -10,6 +10,10 @@
  * @param {HTMLElement} frame Telegram frame element
  */
 function showTelegramFrame( frame ) {
+	if ( ! frame ) {
+		return false;
+	}
+
 	const key = 'kedr-telegram-frame';
 
 	// Get localstorage value by key
