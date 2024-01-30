@@ -30,6 +30,10 @@ function toggleHeader( header, display ) {
  * @param {Event} e JS event
  */
 function clickOutside( e ) {
+  if ( toggle === null ) {
+    return;
+  }
+
 	if ( e.target === document.body ) {
 		e.stopPropagation();
 
@@ -46,7 +50,7 @@ function clickOutside( e ) {
  * @param {HTMLElement} header Header HTML element
  */
 function toggleNavbar( header ) {
-	if ( header === null ) {
+	if ( header === null || toggle === null ) {
 		return false;
 	}
 

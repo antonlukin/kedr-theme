@@ -22,7 +22,7 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     position: relative;
 
     height: 5rem;
@@ -42,22 +42,11 @@
     align-items: center;
     height: 100%;
 
-    .header__logo-vertical {
+    .header__logo-horizontal {
       display: block;
 
       width: auto;
-      height: 80%;
-
-      @media screen and (max-width: 1199px) {
-        display: none;
-      }
-    }
-
-    .header__logo-horizontal {
-      display: none;
-
-      width: auto;
-      height: 70%;
+      height: 50%;
 
       @media screen and (max-width: 1199px) {
         display: block;
