@@ -22,9 +22,25 @@ class Kedr_Modules_Comments {
         add_filter( 'rest_endpoints', array( __CLASS__, 'filter_rest_endpoints' ) );
         add_filter( 'xmlrpc_methods', array( __CLASS__, 'disable_xmlrc_comments' ) );
         add_filter( 'rest_pre_insert_comment', array( __CLASS__, 'disable_rest_api_comments' ), 10, 2 );
+        add_filter( 'comments_open', '__return_false', 20, 2 );
+        add_filter( 'pings_open', '__return_false', 20, 2 );
+        add_filter( 'comments_array', '__return_empty_array', 10, 2 );
 
         add_action( 'admin_menu', array( __CLASS__, 'filter_admin_menu' ) );
         add_filter( 'pre_option_default_pingback_flag', '__return_zero' );
+        add_action( 'init', array( __CLASS__, 'remove_post_type_supports' ) );
+    }
+
+    /**
+     * Remove post type supports
+     */
+    public static function remove_post_type_supports() {
+        foreach ( get_post_types() as $post_type ) {
+            if ( post_type_supports( $post_type, 'comments' ) ) {
+                remove_post_type_support( $post_type, 'comments' );
+                remove_post_type_support( $post_type, 'trackbacks' );
+            }
+        }
     }
 
     /**

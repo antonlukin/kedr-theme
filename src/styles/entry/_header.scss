@@ -102,6 +102,17 @@
     font-weight: 700;
     line-height: 1.125;
 
+    em {
+      display: block;
+      position: relative;
+
+      margin-top: 1rem;
+
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.375;
+    }
+
     @media screen and (max-width: 767px) {
       font-size: 1.875rem;
     }

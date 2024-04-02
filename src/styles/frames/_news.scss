@@ -69,18 +69,8 @@
     position: relative;
     z-index: 2;
 
-    font-size: 0.875rem;
-    font-weight: 400;
-
-    color: var(--color-primary);
-
     a {
-      transition: filter 0.25s;
-    }
-
-    a:hover,
-    a:focus {
-      filter: brightness(150%);
+      @include stamp-label;
     }
 
     @media screen and (max-width: 1023px) {
@@ -132,7 +122,7 @@
     margin: 0.5rem 0 1.25rem;
 
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .frame-news__content-date {

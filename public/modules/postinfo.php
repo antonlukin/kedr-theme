@@ -56,6 +56,19 @@ class Kedr_Modules_Postinfo {
     }
 
     /**
+     * Get post title with excerpt for single post
+     */
+    public static function get_title( $output = '' ) {
+        $output = get_the_title();
+
+        if ( has_excerpt() ) {
+            $output = $output . sprintf( ' <em>%s</em>', wp_strip_all_tags( get_the_excerpt() ) );
+        }
+
+        return $output;
+    }
+
+    /**
      * Get post excerpt if exists
      */
     public static function get_excerpt( $output = '' ) {

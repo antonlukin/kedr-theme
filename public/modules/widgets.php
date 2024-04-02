@@ -57,6 +57,10 @@ class Kedr_Modules_Widgets {
 
         $widgets = wp_get_sidebars_widgets();
 
+        if ( empty( $widgets[ $sidebar ] ) ) {
+            $widgets[ $sidebar ] = array();
+        }
+
         foreach ( $widgets[ $sidebar ] as $id ) {
             if ( substr( $id, 0, strlen( $single->id_base ) ) !== $single->id_base ) {
                 continue;
@@ -196,17 +200,7 @@ class Kedr_Modules_Widgets {
      * Remove widgets cache on save or delete post
      */
     public static function clear_cache() {
-        $sidebars = get_option( 'sidebars_widgets' );
-
-        foreach ( $sidebars as $sidebar ) {
-            if ( ! is_array( $sidebar ) ) {
-                continue;
-            }
-
-            foreach ( $sidebar as $widget ) {
-                delete_transient( $widget );
-            }
-        }
+        wp_cache_flush();
     }
 
     /**

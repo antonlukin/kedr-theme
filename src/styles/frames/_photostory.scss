@@ -79,19 +79,10 @@
     position: relative;
     z-index: 2;
 
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-
-    color: var(--color-muted);
-
     a {
-      transition: color 0.25s;
-    }
+      @include stamp-label;
 
-    a:hover,
-    a:focus {
-      color: var(--color-light);
+      color: var(--color-muted);
     }
 
     @media screen and (max-width: 1023px) {

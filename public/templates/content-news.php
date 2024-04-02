@@ -17,15 +17,10 @@
                 '</div>'
             );
 
-            the_title(
+            kedr_theme_info(
+                'title',
                 '<h1 class="entry-header__title">',
                 '</h1>'
-            );
-
-            kedr_theme_info(
-                'excerpt',
-                '<div class="entry-header__excerpt">',
-                '</div>'
             );
             ?>
 

@@ -97,12 +97,7 @@
     color: var(--color-muted);
 
     a {
-      transition: color 0.25s;
-    }
-
-    a:hover,
-    a:focus {
-      color: var(--color-light);
+      @include stamp-label;
     }
 
     @media screen and (max-width: 1023px) {

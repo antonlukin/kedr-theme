@@ -165,11 +165,15 @@ class Kedr_Modules_Requests {
 
         $result = self::add_row( $content, 'canceling' );
 
-        if ( ! empty( $result ) ) {
-            return new WP_REST_Response( array( 'message' => esc_html__( 'Номер карты записан и вскоре будет исключен', 'kedr-theme' ) ), 200 );
+        if ( empty( $result ) ) {
+            return new WP_REST_Response( array( 'message' => esc_html__( 'Не удалось записать номер карты. Попробуйте позже', 'kedr-theme' ) ), 500 );
         }
 
-        return new WP_REST_Response( array( 'message' => esc_html__( 'Не удалось записать номер карты. Попробуйте позже', 'kedr-theme' ) ), 500 );
+        if ( defined( 'KEDR_REQUESTS' ) ) {
+            self::send_notification( esc_html__( 'Необходимо отписать от рекуррентных платежей: ', 'kedr-theme' ) . $content );
+        }
+
+        return new WP_REST_Response( array( 'message' => esc_html__( 'Номер карты записан и вскоре будет исключен', 'kedr-theme' ) ), 200 );
     }
 
     /**
@@ -229,6 +233,31 @@ class Kedr_Modules_Requests {
 
         // phpcs:ignore
         return $wpdb->get_var( $query );
+    }
+
+    /**
+     * Send notification to Telegram using options from config
+     */
+    private static function send_notification( $message ) {
+        $options = KEDR_REQUESTS;
+
+        if ( empty( $options['token'] ) || empty( $options['chat'] ) ) {
+            return;
+        }
+
+        $data = array(
+            'chat_id'              => $options['chat'],
+            'text'                 => $message,
+            'disable_notification' => true,
+        );
+
+        wp_remote_post(
+            'https://api.telegram.org/bot' . $options['token'] . '/sendMessage',
+            array(
+                'body'     => http_build_query( $data ),
+                'blocking' => false,
+            )
+        );
     }
 }
 

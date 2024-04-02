@@ -62,3 +62,39 @@
     transform: rotate(45deg);
   }
 }
+
+@mixin stamp-label {
+  padding: 0.125rem 0 0.075rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-transform: uppercase;
+
+  color: var(--color-primary);
+  border-radius: 0.125rem;
+
+  transition: filter 0.25s;
+
+  &:hover, &:focus {
+    filter: brightness(120%);
+  }
+}
+
+@mixin blank-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-transform: uppercase;
+
+  color: var(--color-secondary);
+
+  transition: filter 0.25s;
+
+  &:hover, &:focus {
+    filter: brightness(120%);
+  }
+
+  @media screen and (max-width: 1023px) {
+    font-size: 0.75rem;
+  }
+}
