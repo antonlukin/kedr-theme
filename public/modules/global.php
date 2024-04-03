@@ -25,6 +25,7 @@ class Kedr_Modules_Global {
         add_filter( 'feed_links_show_comments_feed', '__return_false' );
         add_filter( 'posts_search', array( __CLASS__, 'hide_empty_search' ), 10, 2 );
 
+        add_action( 'template_redirect', array( __CLASS__, 'redirect_old_slugs' ) );
         add_action( 'admin_init', array( __CLASS__, 'hide_dashboard_widgets' ) );
 
         // Remove auto suggestions
@@ -61,6 +62,30 @@ class Kedr_Modules_Global {
                 remove_action( 'admin_head', 'wp_site_icon' );
             }
         );
+    }
+
+    /**
+     * Redirect old slugs to new permalink structure
+     *
+     * @since 2.2
+     */
+    public static function redirect_old_slugs() {
+        if ( ! is_404() ) {
+            return;
+        }
+
+        preg_match( '~([\d]+)$~i', get_query_var( 'name' ), $match );
+
+        if ( empty( $match[1] ) ) {
+            return;
+        }
+
+        $post = get_post( $match[1] );
+
+        if ( ! empty( $post->ID ) && $post->post_status === 'publish' ) {
+            wp_safe_redirect( get_permalink( $post->ID ), 301 );
+            exit;
+        }
     }
 
     /**
