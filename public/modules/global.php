@@ -30,6 +30,7 @@ class Kedr_Modules_Global {
 
         // Remove auto suggestions
         add_filter( 'do_redirect_guess_404_permalink', '__return_false' );
+        add_filter( 'rest_endpoints', array( __CLASS__, 'remove_users_endpoint' ) );
 
         // Remove emojis handlers
         remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
@@ -62,6 +63,22 @@ class Kedr_Modules_Global {
                 remove_action( 'admin_head', 'wp_site_icon' );
             }
         );
+    }
+
+    /**
+     * Remove users endpoint from reset api.
+     *
+     * @since 2.2
+     */
+    public static function remove_users_endpoint( $endpoints ) {
+        if ( isset( $endpoints['/wp/v2/users'] ) ) {
+            unset( $endpoints['/wp/v2/users'] );
+        }
+        if ( isset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] ) ) {
+            unset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] );
+        }
+
+        return $endpoints;
     }
 
     /**
