@@ -71,6 +71,11 @@ class Kedr_Modules_Global {
      * @since 2.2
      */
     public static function remove_users_endpoint( $endpoints ) {
+        // Skip this rule in case of maps.kedr.media
+        if ( true ) { // phpcs:ignore
+            return $endpoints;
+        }
+
         if ( isset( $endpoints['/wp/v2/users'] ) ) {
             unset( $endpoints['/wp/v2/users'] );
         }
