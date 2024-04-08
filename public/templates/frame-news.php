@@ -1,27 +1,4 @@
-<?php
-/**
- * Frame template with recent news
- *
- * @package kedr-theme
- * @since 2.0
- */
-?>
-
 <div class="frame-news__content frame-news__content--<?php echo esc_attr( $args['class'] ); ?>">
-    <?php if ( has_post_thumbnail() && $args['class'] === 'featured' ) : ?>
-        <figure class="frame-news__image">
-            <?php
-            the_post_thumbnail(
-                'card',
-                array(
-                    'class'   => 'frame-news__image-thumbnail',
-                    'loading' => 'lazy',
-                )
-            );
-            ?>
-        </figure>
-    <?php endif; ?>
-
     <?php
     kedr_theme_info(
         'category',

@@ -383,7 +383,7 @@ class Kedr_Modules_Sitemeta {
      * Get description
      */
     private static function get_description() {
-        $description = esc_html__( 'Мы говорим о том, что важно, и показываем то, что красиво. И стараемся не только делать объективный и интересный контент, но и решать накопившиеся экологические проблемы.', 'kedr-theme' );
+        $description = esc_html__( 'Журналистские материалы о самых важных экологических событиях в России и мире. Новости. Исследования. Истории.', 'kedr-theme' );
 
         if ( is_singular() && ! is_front_page() ) {
             $object_id = get_queried_object_id();

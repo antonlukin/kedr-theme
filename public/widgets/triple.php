@@ -15,7 +15,7 @@ class Kedr_Widget_Triple extends WP_Widget {
     /**
      * Categories to show in triple
      */
-    private $category = array( 'explain', 'opinions', 'stories', 'research', 'interview' );
+    private $category = array( 'explain', 'opinions', 'stories', 'research', 'interview', 'to-read' );
 
     /**
      * Widget constructor

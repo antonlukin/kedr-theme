@@ -15,7 +15,7 @@ class Kedr_Widget_Double extends WP_Widget {
     /**
      * Categories to show in double
      */
-    private $category = array( 'explain', 'opinions', 'stories', 'research', 'interview' );
+    private $category = array( 'explain', 'opinions', 'stories', 'research', 'interview', 'to-read' );
 
     /**
      * Widget constructor
