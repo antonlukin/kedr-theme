@@ -70,8 +70,12 @@ class Kedr_Widget_Triple extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
 
-        $instance['title']     = sanitize_text_field( $new_instance['title'] );
-        $instance['self_hide'] = absint( $new_instance['self_hide'] );
+        $instance['title'] = sanitize_text_field( $new_instance['title'] );
+
+        $instance['self_hide'] = 0;
+        if ( ! empty( $new_instance['self_hide'] ) ) {
+            $instance['self_hide'] = 1;
+        }
 
         // Use int to avoid phpcs error
         $instance['posts_per_page'] = (int) $new_instance['posts_per_page'];
