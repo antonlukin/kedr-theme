@@ -180,20 +180,22 @@
   }
 
   .entry-header__meta-extra {
-    display: inline-flex;
+    display: flex;
     position: relative;
 
-    padding: 0.25rem 0.5rem;
-    font-weight: 600;
+    & > a {
+      padding: 0.25rem 0.5rem;
+      font-weight: 600;
 
-    color: var(--color-primary);
-    border: solid 0.075rem;
-    border-radius: 0.25rem;
+      color: var(--color-primary);
+      border: solid 0.075rem;
+      border-radius: 0.25rem;
 
-    transition: color 0.25s;
+      transition: color 0.25s;
 
-    &:hover {
-      color: var(--color-dark);
+      &:hover {
+        color: var(--color-dark);
+      }
     }
   }
 
