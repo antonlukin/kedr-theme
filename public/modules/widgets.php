@@ -24,19 +24,6 @@ class Kedr_Modules_Widgets {
         add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
         add_action( 'dynamic_sidebar_before', array( __CLASS__, 'exclude_single_widget' ) );
 
-        add_action( 'added_post_meta', array( __CLASS__, 'clear_cache' ) );
-        add_action( 'deleted_post_meta', array( __CLASS__, 'clear_cache' ) );
-        add_action( 'updated_post_meta', array( __CLASS__, 'clear_cache' ) );
-        add_action( 'deleted_post', array( __CLASS__, 'clear_cache' ) );
-        add_action( 'save_post', array( __CLASS__, 'clear_cache' ) );
-        add_action( 'wp_ajax_widgets-order', array( __CLASS__, 'clear_cache' ), 1 );
-
-        add_filter( 'widget_update_callback', array( __CLASS__, 'update_widget' ) );
-
-        if ( defined( 'WP_DEBUG' ) && ! WP_DEBUG ) {
-            add_filter( 'widget_display_callback', array( __CLASS__, 'cache_widget' ), 10, 3 );
-        }
-
         add_action( 'wp_ajax_kedr_widgets', array( __CLASS__, 'handle_ajax' ) );
     }
 
@@ -194,52 +181,6 @@ class Kedr_Modules_Widgets {
         );
 
         wp_localize_script( 'kedr-theme-widgets', 'kedr_widgets', $options );
-    }
-
-    /**
-     * Remove widgets cache on save or delete post
-     */
-    public static function clear_cache() {
-        wp_cache_flush();
-    }
-
-    /**
-     * Update widget callback
-     */
-    public static function update_widget( $instance ) {
-        self::clear_cache();
-
-        return $instance;
-    }
-
-    /**
-     * Cache widget output
-     */
-    public static function cache_widget( $instance, $widget, $args ) {
-        if ( $instance === false ) {
-            return $instance;
-        }
-
-        // Skip cache on preview
-        if ( $widget->is_preview() ) {
-            return $instance;
-        }
-
-        // Get cached version
-        $cached_widget = get_transient( $widget->id );
-
-        if ( $cached_widget === false ) {
-            ob_start();
-
-            $widget->widget( $args, $instance );
-            $cached_widget = ob_get_clean();
-
-            set_transient( $widget->id, $cached_widget, 10 * DAY_IN_SECONDS );
-        }
-
-        echo $cached_widget; // phpcs:ignore WordPress.Security.EscapeOutput
-
-        return false;
     }
 
     /**
