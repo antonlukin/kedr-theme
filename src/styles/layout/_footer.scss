@@ -150,7 +150,7 @@
   }
 
   .footer__social {
-    justify-content: space-between;
+    justify-content: flex-start;
 
     @media screen and (max-width: 479px) {
       justify-content: center;
