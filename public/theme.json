@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "settings": {
     "layout": {
@@ -353,6 +353,18 @@
           "radius": "0.3125rem"
         },
         "css": "& {grid-gap: 1.25em; overflow: hidden} & > .wp-block-media-text__content {padding:0} & > .wp-block-media-text__media {margin: 1em 0} & > .wp-block-media-text__media img {border-radius:50%} &.is-image-fill > .editor-media-container__resizer {height: auto !important;}"
+      },
+      "core/heading": {
+        "variations": {
+          "separator": {
+            "color": {
+              "text": "#f0f"
+            },
+            "border": {
+              "style": "solid 3px #f0f"
+            }
+          }
+        }
       }
     }
   }
