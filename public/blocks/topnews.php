@@ -59,7 +59,7 @@ class Kedr_Blocks_Topnews {
     }
 
     /**
-     * Add Gutenberg scripts for topnews option
+     * Add Gutenberg scripts
      */
     public static function enqueue_assets() {
         $slug = 'topnews';

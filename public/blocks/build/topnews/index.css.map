@@ -1,1 +1,0 @@
-{"version":3,"file":"topnews/index.css","mappings":";;;AAAA;EACE,oBAAoB;EACpB,YAAY;AACd,C","sources":["webpack:///./src/topnews/styles.module.css"],"sourcesContent":[".hidden {\n  pointer-events: none;\n  opacity: 0.5;\n}"],"names":[],"sourceRoot":""}

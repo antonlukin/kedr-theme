@@ -117,6 +117,7 @@
   }
 
   h3 {
+    margin-top: calc(var(--space-content) * 1.75);
     font-size: 1.75rem;
     line-height: 1.25;
 
@@ -130,6 +131,7 @@
   }
 
   h4 {
+    margin-top: calc(var(--space-content) * 1.5);
     font-size: 1.625rem;
     line-height: 1.375;
 
@@ -143,6 +145,7 @@
   }
 
   h5 {
+    margin-top: calc(var(--space-content) * 1.25);
     font-size: 1.5rem;
     line-height: 1.375;
 
@@ -156,6 +159,7 @@
   }
 
   h6 {
+    margin-top: var(--space-content);
     font-size: 1.375rem;
 
     @media screen and (max-width: 767px) {

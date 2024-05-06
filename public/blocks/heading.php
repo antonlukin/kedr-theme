@@ -1,6 +1,6 @@
 <?php
 /**
- * Hide comments panel.
+ * Custom heading variation
  *
  * @package kedr-theme
  * @version 2.0
@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Blocks_Comments {
+class Kedr_Blocks_Heading {
     /**
      * Init function instead of constructor
      */
@@ -29,7 +29,7 @@ class Kedr_Blocks_Comments {
      * Add Gutenberg scripts
      */
     public static function enqueue_assets() {
-        $slug = 'comments';
+        $slug = 'heading';
 
         // Get assets arguments
         $asset = require __DIR__ . "/build/{$slug}/index.asset.php";
@@ -43,10 +43,17 @@ class Kedr_Blocks_Comments {
         );
 
         wp_enqueue_script( 'kedr-theme-' . $slug );
+
+        wp_enqueue_style(
+            'kedr-theme-' . $slug,
+            get_stylesheet_directory_uri() . "/blocks/build/{$slug}/index.css",
+            array(),
+            $asset['version']
+        );
     }
 }
 
 /**
  * Load current module environment
  */
-Kedr_Blocks_Comments::load_module();
+Kedr_Blocks_Heading::load_module();

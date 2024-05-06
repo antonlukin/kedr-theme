@@ -128,3 +128,16 @@ require_once get_template_directory() . '/modules/snippet.php';
 require_once get_template_directory() . '/modules/requests.php';
 require_once get_template_directory() . '/modules/subcats.php';
 require_once get_template_directory() . '/modules/comments.php';
+
+
+function themeslug_register_block_styles() {
+    register_block_style(
+        'core/heading',
+        array(
+            'name'  => 'separator',
+            'label' => __( 'Разделитель', 'kedr-theme' ),
+        )
+    );
+}
+
+// add_action( 'init', 'themeslug_register_block_styles' );
