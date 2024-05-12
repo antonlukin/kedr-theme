@@ -87,7 +87,7 @@ class Kedr_Modules_Loadmore {
             array(
                 'paged'               => $page,
                 's'                   => $slug,
-                'post_status'         => 'publish',
+                'post_status'         => 'any',
                 'ignore_sticky_posts' => true,
             )
         );
@@ -124,8 +124,7 @@ class Kedr_Modules_Loadmore {
             array(
                 'paged'               => $page,
                 'post_type'           => 'post',
-                'post_status'         => 'publish',
-                'ignore_sticky_posts' => true,
+                'post_status'         => array( 'publish', 'private' ),
                 'tax_query'           => array( // phpcs:ignore
                     array(
                         'taxonomy' => $taxonomy,
