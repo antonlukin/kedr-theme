@@ -24,6 +24,7 @@ class Kedr_Modules_Global {
         add_action( 'get_header', array( __CLASS__, 'remove_adminbar_styles' ) );
         add_filter( 'feed_links_show_comments_feed', '__return_false' );
         add_filter( 'posts_search', array( __CLASS__, 'hide_empty_search' ), 10, 2 );
+        add_action( 'pre_get_posts', array( __CLASS__, 'remove_private_posts' ) );
 
         add_action( 'template_redirect', array( __CLASS__, 'redirect_old_slugs' ) );
         add_action( 'admin_init', array( __CLASS__, 'hide_dashboard_widgets' ) );
@@ -63,6 +64,21 @@ class Kedr_Modules_Global {
                 remove_action( 'admin_head', 'wp_site_icon' );
             }
         );
+    }
+
+    /**
+     * Remove private posts from archives and home page.
+     *
+     * @since 2.2
+     */
+    public static function remove_private_posts( $query ) {
+        if ( is_admin() || ! $query->is_main_query() ) {
+            return;
+        }
+
+        if ( $query->is_archive() || $query->is_home() ) {
+            $query->set( 'post_status', 'publish' );
+        }
     }
 
     /**

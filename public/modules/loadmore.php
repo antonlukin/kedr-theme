@@ -124,7 +124,7 @@ class Kedr_Modules_Loadmore {
             array(
                 'paged'               => $page,
                 'post_type'           => 'post',
-                'post_status'         => array( 'publish', 'private' ),
+                'post_status'         => 'publish',
                 'tax_query'           => array( // phpcs:ignore
                     array(
                         'taxonomy' => $taxonomy,
