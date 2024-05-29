@@ -50,6 +50,7 @@ class Kedr_Modules_Sitemeta {
     public static function update_customizer_settings( $wp_customize ) {
         $wp_customize->add_setting( 'extra-description' );
         $wp_customize->add_setting( 'extra-meta' );
+        $wp_customize->add_setting( 'extra-map' );
 
         $wp_customize->add_section(
             'kedr_extra',
@@ -78,6 +79,19 @@ class Kedr_Modules_Sitemeta {
                 'extra-meta',
                 array(
                     'label'     => esc_html__( 'Блок под метой записи', 'kedr-theme' ),
+                    'section'   => 'kedr_extra',
+                    'code_type' => 'text/html',
+                    'priority'  => 10,
+                )
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Code_Editor_Control(
+                $wp_customize,
+                'extra-map',
+                array(
+                    'label'     => esc_html__( 'Промо блок эко-карты внутри записи', 'kedr-theme' ),
                     'section'   => 'kedr_extra',
                     'code_type' => 'text/html',
                     'priority'  => 10,
@@ -502,7 +516,7 @@ class Kedr_Modules_Sitemeta {
         $tags = array();
 
         foreach ( (array) get_the_tags() as $tag ) {
-            if ( ! empty( $tag->name) ) {
+            if ( ! empty( $tag->name ) ) {
                 $tags[] = self::wrap_string( $tag->name, '"', '"' );
             }
         }

@@ -1,0 +1,9 @@
+.frame-promo {
+  display: block;
+  position: relative;
+
+  &.frame-promo--map > p {
+    display: inline;
+    background-color: var(--color-promo);
+  }
+}

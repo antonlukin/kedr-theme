@@ -1,7 +1,7 @@
 <?php
 /**
  * Content filters
- * Fix small content problems on post save
+ * Show additional content blocks and fix small problems on post save.
  *
  * @package kedr-theme
  * @since 2.0
@@ -18,6 +18,7 @@ class Kedr_Modules_Content {
     public static function load_module() {
         add_filter( 'content_save_pre', array( __CLASS__, 'remove_linked_space' ) );
         add_filter( 'content_save_pre', array( __CLASS__, 'add_links_target' ) );
+        add_filter( 'the_content', array( __CLASS__, 'add_map_promo' ) );
     }
 
     /**
@@ -36,6 +37,36 @@ class Kedr_Modules_Content {
         $content = links_add_target( wp_unslash( $content ) );
 
         return wp_slash( $content );
+    }
+
+    /**
+     * Add custom extra block for Map promo.
+     *
+     * @since 2.3
+     */
+    public static function add_map_promo( $content ) {
+        $extra = get_theme_mod( 'extra-map' );
+
+        if ( empty( $extra ) ) {
+            return $content;
+        }
+
+        global $post;
+
+        if ( ! property_exists( 'Kedr_Modules_Regions', 'taxonomy' ) ) {
+            return $content;
+        }
+
+        if ( ! has_term( '', Kedr_Modules_Regions::$taxonomy, $post ) ) {
+            return $content;
+        }
+
+        $extra = sprintf(
+            '<figure class="frame-promo frame-promo--map">%s</figure>',
+            wpautop( strip_tags( $extra, '<a>' ) )
+        );
+
+        return $content . $extra;
     }
 }
 

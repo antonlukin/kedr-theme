@@ -1,4 +1,5 @@
 import replaceEmbeds from './packages/replaceEmbeds';
+import raisePromo from './packages/raisePromo';
 import showReference from './packages/showReference';
 import toggleNavbar from './packages/toggleNavbar';
 import initFancybox from './packages/initFancybox';
@@ -11,6 +12,9 @@ showReference( document.querySelector( '.post' ) );
 
 // Init Fancybox for post galleries
 initFancybox( document.querySelector( '.post' ) );
+
+// Raise promo blocks inside entry content
+raisePromo( document.querySelector( '.entry-content' ) );
 
 // Control header navbar
 toggleNavbar( document.querySelector( '.header' ) );
