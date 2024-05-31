@@ -26,8 +26,8 @@ class Kedr_Modules_Translit {
     public static function sanitize_title( $name ) {
         $name = self::replace_latin( $name );
 
-        // Leave only latin chars and digits in slugs
-        $name = preg_replace( '/[^a-z0-9]/i', '-', $name );
+        // Leave only latin chars, underscores and digits in slugs
+        $name = preg_replace( '/[^a-z0-9_]/i', '-', $name );
 
         return $name;
     }
