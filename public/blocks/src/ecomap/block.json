@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+    "name": "kedr/ecomap",
+    "title": "Записи Экокарты",
+    "category": "widgets",
+	"textdomain": "kedr-theme",
+	"icon": "admin-site",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"keywords": [
+		"ecomap",
+		"экокарта",
+		"экологическяа карта"
+	],
+	"attributes": {
+		"link": {
+			"type": "string"
+		}
+	}
+}

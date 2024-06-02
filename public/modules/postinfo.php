@@ -45,6 +45,34 @@ class Kedr_Modules_Postinfo {
     }
 
     /**
+     * Get link to parent category
+     *
+     * @since 2.3
+     */
+    public static function get_region( $output = '' ) {
+        if ( ! property_exists( 'Kedr_Modules_Regions', 'taxonomy' ) ) {
+            return null;
+        }
+
+        $terms = get_the_terms( get_the_ID(), Kedr_Modules_Regions::$taxonomy );
+
+        if ( empty( $terms ) ) {
+            return null;
+        }
+
+        $term = $terms[0];
+
+        $output = sprintf(
+            '<a href="%s" title="%s">%s</a>',
+            esc_url( get_term_link( $term ) ),
+            esc_html__( 'Открыть все записи региона', 'kedr-theme' ),
+            esc_html( $term->name )
+        );
+
+        return $output;
+    }
+
+    /**
      * Get list of post authors
      */
     public static function get_authors( $output = '' ) {

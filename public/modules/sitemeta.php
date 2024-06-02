@@ -91,7 +91,7 @@ class Kedr_Modules_Sitemeta {
                 $wp_customize,
                 'extra-map',
                 array(
-                    'label'     => esc_html__( 'Промо блок эко-карты внутри записи', 'kedr-theme' ),
+                    'label'     => esc_html__( 'Промо блок экокарты внутри записи', 'kedr-theme' ),
                     'section'   => 'kedr_extra',
                     'code_type' => 'text/html',
                     'priority'  => 10,
