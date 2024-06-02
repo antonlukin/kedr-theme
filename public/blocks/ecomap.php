@@ -55,6 +55,7 @@ class Kedr_Blocks_EcoMap {
 
         $args = array(
             'post_type'      => 'post',
+            'post_status'    => 'publish',
             'posts_per_page' => 2,
             'tax_query'      => array( // phpcs:ignore
                 array(
