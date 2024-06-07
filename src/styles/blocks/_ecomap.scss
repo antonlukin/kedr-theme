@@ -1,0 +1,7 @@
+.wp-block-kedr-ecomap {
+  @media screen and (max-width: 767px) {
+    width: calc(100% + var(--space-outer) * 2);
+    margin-left: calc(var(--space-outer) * -1);
+    margin-right: calc(var(--space-outer) * -1);
+  }
+}
