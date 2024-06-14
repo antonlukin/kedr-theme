@@ -33,7 +33,7 @@
 
             kedr_theme_info(
                 'title',
-                '<h1 class="entry-header__title">',
+                '<h1 class="entry-feature__title">',
                 '</h1>'
             );
             ?>
