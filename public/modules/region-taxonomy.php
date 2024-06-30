@@ -21,18 +21,19 @@ class Kedr_Modules_Regions {
     public static $taxonomy = 'region';
 
     /**
-     * Default post type with project taxonomy
+     * Default post type with region taxonomy
      *
      * @access  public
      * @var     array
      */
-    public static $post_type = array( 'post' );
+    public static $post_type = array( 'post', 'region-about' );
 
     /**
      * Use this method instead of constructor to avoid setting multiple hooks
      */
     public static function load_module() {
         add_action( 'init', array( __CLASS__, 'register_taxonomy' ) );
+        add_filter( 'taxonomy_template', array( __CLASS__, 'include_taxonomy_template' ) );
     }
 
     /**
@@ -69,6 +70,27 @@ class Kedr_Modules_Regions {
                 'rest_base'         => 'regions',
             )
         );
+    }
+
+    /**
+     * Include custom taxonomy template for region taxonomy
+     */
+    public static function include_taxonomy_template( $template ) {
+        if ( is_tax( 'region' ) && is_main_query() && ! is_paged() && ! is_singular() && ! is_page() ) {
+            global $wp;
+
+            $current_url = home_url( $wp->request );
+            $taxonomy_base_url = home_url( 'region/' . $wp->query_vars['region'] );
+            if ( $current_url == $taxonomy_base_url ) {
+                $new_template = locate_template( array( 'templates/single-region.php' ) );
+
+                if ( ! empty( $new_template ) ) {
+                    return $new_template;
+                }
+            }
+        }
+
+        return $template;
     }
 }
 
