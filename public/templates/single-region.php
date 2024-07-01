@@ -11,12 +11,12 @@ get_header(); ?>
 <section class="content region">
     <div class="region__wrapper">
         <div class="region__content">
-            <h1 class="region__content-title"><?php echo get_queried_object()->name; ?></h1>
+            <?php the_archive_title(); ?>
             <div>
-                <?php echo get_queried_object()->description; ?>
+                <?php the_archive_description(); ?>
             </div>
             <a class="button region__content-button" type="button" href="<?
-                echo get_permalink();
+                the_permalink();
             ?>">О регионе</a>
         </div>
         <div class="region__image">

@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Kedr_Modules_Custom_Post_Type {
+class Kedr_Modules_Region_About {
     /**
      * Unique post type slug
      *
@@ -38,7 +38,7 @@ class Kedr_Modules_Custom_Post_Type {
         );
 
           $args = array(
-              'label' => __( 'Экокарта' ),
+              'label' => esc_html__( 'Экокарта' , 'kedr-theme' ),
               'labels' => $labels,
               'description' => '',
               'public' => true,
@@ -103,4 +103,4 @@ class Kedr_Modules_Custom_Post_Type {
 /**
  * Load current module environment
  */
-Kedr_Modules_Custom_Post_Type::load_module();
+Kedr_Modules_Region_About::load_module();

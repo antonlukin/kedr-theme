@@ -1,35 +1,28 @@
 .region {
-
-    background-color: #48625E;
+    background-color: var(--color-region-background);
     padding-bottom: 2em;
 
     .region__wrapper {
         width: 100%;
-
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: var(--space-outer);
         position: relative;
-
-        background-color: #EBEFEE;
+        background-color: var(--color-region-description-background);
     }
 
     .region__image {
         display: block;
-
         height: 100%;
         width: auto;
         overflow: hidden;
 
         .region__image-thumbnail {
             display: block;
-
             width: 100%;
             height: 100%;
-
             object-fit: cover;
             object-position: center;
-
             -webkit-backface-visibility: hidden;
         }
 
@@ -48,29 +41,23 @@
 
     .region__content {
         position: relative;
-
         display: flex;
         flex-flow: column nowrap;
         align-items: flex-start;
         gap: 12px;
-
         width: 100%;
         height: 100%;
-
         padding-top: 1.75rem;
         padding-left: calc(var(--space-outer) * 2);
     }
 
     .region__content-title {
         display: block;
-
         font-size: 2rem;
         font-weight: 700;
         line-height: 1;
-
         padding-bottom: 0.75rem;
-
-        color: #B80F22;
+        color: var(--color-region-title);
     }
 
     .region__content-description {
@@ -82,7 +69,6 @@
         padding-right: 2rem;
         margin-bottom: 1.5rem;
     }
-
 
     @media screen and (max-width: 767px) {
         grid-template-columns: 1fr;

@@ -81,7 +81,7 @@ class Kedr_Modules_Regions {
 
             $current_url = home_url( $wp->request );
             $taxonomy_base_url = home_url( 'region/' . $wp->query_vars['region'] );
-            if ( $current_url == $taxonomy_base_url ) {
+            if ( $current_url === $taxonomy_base_url ) {
                 $new_template = locate_template( array( 'templates/single-region.php' ) );
 
                 if ( ! empty( $new_template ) ) {
