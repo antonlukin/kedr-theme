@@ -11,36 +11,27 @@
     border-radius: .375rem;
     padding: var(--space-content);
 
-    & > * {
-      
+    .frame-promo--map__logo {
+      display: block;
+      width: 143px;
     }
 
-    p:first-child {
+    p {
       margin-left: var(--space-content);
       margin-right: var(--space-content);
     }
 
-    .button {
+    .frame-promo--map__button {
       background-color: var(--color-red);
       font-size: 0.8125rem;
       border-bottom: none;
-      padding: 12px 32px;
+      padding: 8px 29px;
     }
-    &:before {
-      content: "";
-          display: block;
-          width: 143px;
-          height: 80px;
-          background-image: url(images/ecomap.svg);
-          background-size: contain;
-          background-position: center;
-          background-repeat: no-repeat;
-
-    }
-
+    
     @media screen and (max-width: 767px) {
       display: inline-block;
-      &:before {
+
+      .frame-promo--map__logo {
         float: left;
         margin-right: var(--space-content);
         margin-bottom: var(--space-content);
@@ -48,17 +39,20 @@
         height: 70px;
         background-position: top;
       }
-      p:first-child {
+
+      p {
         margin-bottom: var(--space-content);
       }
-      .button {
+
+      .frame-promo--map__button {
         display: block;
         width: 100%;
       }
     }
 
     @media screen and (max-width: 479px) {
-      &:before {
+      
+      .frame-promo--map__logo {
         max-width: 40px;
       }
     }

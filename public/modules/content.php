@@ -61,9 +61,12 @@ class Kedr_Modules_Content {
             return $content;
         }
 
+        $ecologo = file_get_contents( get_template_directory() . '/assets/images/ecomap.svg' );
+
         $extra = sprintf(
-            '<figure class="frame-promo frame-promo--map">%s</figure>',
-            strip_tags( $extra, '<a><p>' ) 
+            '<figure class="frame-promo frame-promo--map"><div class="frame-promo--map__logo">%1$s</div>%2$s<a class="frame-promo--map__button button" href="https://maps.kedr.media/" target="_blank" rel="noopener">Читать</a></figure>',
+            $ecologo,
+            wpautop( strip_tags( $extra, '<a>' ) )
         );
 
         return $content . $extra;
