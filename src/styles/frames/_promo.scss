@@ -2,8 +2,65 @@
   display: block;
   position: relative;
 
-  &.frame-promo--map > p {
-    display: inline;
+  &.frame-promo--map {
+    display: flex;
+    align-items: center;
     background-color: var(--color-promo);
-  }
+    font-family: var(--font-regular);
+    font-size: 0.8125rem;
+    border-radius: .375rem;
+    padding: var(--space-content);
+
+    & > * {
+      
+    }
+
+    p:first-child {
+      margin-left: var(--space-content);
+      margin-right: var(--space-content);
+    }
+
+    .button {
+      background-color: var(--color-red);
+      font-size: 0.8125rem;
+      border-bottom: none;
+      padding: 12px 32px;
+    }
+    &:before {
+      content: "";
+          display: block;
+          width: 143px;
+          height: 80px;
+          background-image: url(images/ecomap.svg);
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+
+    }
+
+    @media screen and (max-width: 767px) {
+      display: inline-block;
+      &:before {
+        float: left;
+        margin-right: var(--space-content);
+        margin-bottom: var(--space-content);
+        width: 40px;
+        height: 70px;
+        background-position: top;
+      }
+      p:first-child {
+        margin-bottom: var(--space-content);
+      }
+      .button {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 479px) {
+      &:before {
+        max-width: 40px;
+      }
+    }
+  } 
 }

@@ -63,7 +63,7 @@ class Kedr_Modules_Content {
 
         $extra = sprintf(
             '<figure class="frame-promo frame-promo--map">%s</figure>',
-            wpautop( strip_tags( $extra, '<a>' ) )
+            strip_tags( $extra, '<a><p>' ) 
         );
 
         return $content . $extra;
