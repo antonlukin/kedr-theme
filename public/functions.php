@@ -107,8 +107,8 @@ if ( ! function_exists( 'kedr_theme_get' ) ) :
         $output = null;
         $method = 'get_' . $option;
 
-        if ( method_exists( 'Kedr_Modules_Postinfo', $method ) ) {
-            return Kedr_Modules_Postinfo::$method();
+        if ( method_exists( 'Kedr_Modules_Postsettings', $method ) ) {
+            return Kedr_Modules_Postsettings::$method();
         }
 
         return null;
@@ -131,6 +131,7 @@ require_once get_template_directory() . '/modules/login.php';
 require_once get_template_directory() . '/modules/blocks.php';
 require_once get_template_directory() . '/modules/images.php';
 require_once get_template_directory() . '/modules/postinfo.php';
+require_once get_template_directory() . '/modules/postsettings.php';
 require_once get_template_directory() . '/modules/menu.php';
 require_once get_template_directory() . '/modules/projects.php';
 require_once get_template_directory() . '/modules/sitemeta.php';

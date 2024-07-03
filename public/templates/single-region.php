@@ -15,12 +15,20 @@ get_header(); ?>
             <div>
                 <?php the_archive_description(); ?>
             </div>
-            <a class="button region__content-button" type="button" href="<?
-                the_permalink();
-            ?>">О регионе</a>
-        </div>
+                <?php
+                kedr_theme_info(
+                    'region_about_link',
+                    '<a class="button region__content-button" type="button" href="',
+                    '">О регионе</a>'
+                );
+                ?>
+            </div>
         <div class="region__image">
-            <img class="region__image-thumbnail" src="<?php echo get_template_directory_uri() . '/assets/images/region-placeholder.jpg'; ?>">
+            <img class="region__image-thumbnail" src=
+                <?php
+                echo esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' );
+                ?>
+            >
         </div>
     </div>
 

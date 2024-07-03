@@ -19,6 +19,14 @@ class Kedr_Modules_Region_About {
     public static $post_type = 'region-about';
 
     /**
+     * Postname
+     *
+     * @access  public
+     * @var string
+     */
+    public static $post_name = 'about';
+
+    /**
      * Load module
      */
     public static function load_module() {
@@ -33,38 +41,38 @@ class Kedr_Modules_Region_About {
     public static function register_post_type() {
 
         $labels = array(
-            'name' => __( 'Экокарта' ),
+            'name'          => __( 'Экокарта' ),
             'singular_name' => __( 'Экокарта' ),
         );
 
-          $args = array(
-              'label' => esc_html__( 'Экокарта' , 'kedr-theme' ),
-              'labels' => $labels,
-              'description' => '',
-              'public' => true,
-              'publicly_queryable' => true,
-              'show_ui' => true,
-              'show_in_rest' => true,
-              'rest_base' => '',
-              'rest_controller_class' => 'WP_REST_Posts_Controller',
-              'has_archive' => 'map',
-              'show_in_menu' => true,
-              'show_in_nav_menus' => true,
-              'delete_with_user' => false,
-              'exclude_from_search' => false,
-              'capability_type' => 'post',
-              'map_meta_cap' => true,
-              'hierarchical' => false,
-              'rewrite' => array(
-                  'slug' => 'region/%region%',
-                  'with_front' => true,
-              ),
-              'query_var' => true,
-              'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'post-formats' ),
-              'taxonomies' => array(),
-          );
+        $args = array(
+            'label'                 => esc_html__( 'Экокарта', 'kedr-theme' ),
+            'labels'                => $labels,
+            'description'           => '',
+            'public'                => true,
+            'publicly_queryable'    => true,
+            'show_ui'               => true,
+            'show_in_rest'          => true,
+            'rest_base'             => '',
+            'rest_controller_class' => 'WP_REST_Posts_Controller',
+            'has_archive'           => 'map',
+            'show_in_menu'          => true,
+            'show_in_nav_menus'     => true,
+            'delete_with_user'      => false,
+            'exclude_from_search'   => false,
+            'capability_type'       => 'post',
+            'map_meta_cap'          => true,
+            'hierarchical'          => false,
+            'rewrite'               => array(
+                'slug'       => self::get_addr( '%region%' ),
+                'with_front' => true,
+            ),
+            'query_var'             => true,
+            'supports'              => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'post-formats' ),
+            'taxonomies'            => array(),
+        );
 
-            register_post_type( self::$post_type, $args );
+        register_post_type( self::$post_type, $args );
     }
 
     /**
@@ -91,12 +99,16 @@ class Kedr_Modules_Region_About {
 
         if ( $post->post_type == self::$post_type ) {
             $post_args = array(
-                'ID' => $post_ID,
-                'post_name' => 'about',
+                'ID'        => $post_ID,
+                'post_name' => self::$post_name,
             );
 
             wp_update_post( $post_args );
         }
+    }
+
+    public static function get_addr( $region ) {
+        return Kedr_Modules_Regions::get_addr( $region ) . '/' . self::$post_name;
     }
 }
 

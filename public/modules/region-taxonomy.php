@@ -73,6 +73,10 @@ class Kedr_Modules_Regions {
         );
     }
 
+    public static function get_addr( $region ) {
+        return self::$taxonomy . '/' . $region;
+    }
+
     /**
      * Include custom taxonomy template for region taxonomy
      */
@@ -80,8 +84,8 @@ class Kedr_Modules_Regions {
         if ( is_tax( 'region' ) && is_main_query() && ! is_paged() && ! is_singular() && ! is_page() ) {
             global $wp;
 
-            $current_url = home_url( $wp->request );
-            $taxonomy_base_url = home_url( 'region/' . $wp->query_vars['region'] );
+            $current_url       = home_url( $wp->request );
+            $taxonomy_base_url = home_url( self::$taxonomy . '/' . $wp->query_vars['region'] );
             if ( $current_url === $taxonomy_base_url ) {
                 $new_template = locate_template( array( 'templates/single-region.php' ) );
 

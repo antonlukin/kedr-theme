@@ -141,20 +141,13 @@ class Kedr_Modules_Postinfo {
     }
 
     /**
-     * Get thumbnail caption
+     * Get link to post region-about type
      */
-    public static function get_navigation_mod( $output = '' ) {
+    public static function get_region_about_link( $output = '' ) {
         global $wp;
-
         if ( isset( $wp->query_vars['region'] ) ) {
-            $current_url = home_url( $wp->request );
-            $taxonomy_base_url = home_url( 'region/' . $wp->query_vars['region'] );
-            $region_about_base_url = home_url( 'region/' . $wp->query_vars['region'] . '/about' );
-
-            // temporary hide header/footer for ecomap
-            if ( /* $current_url == $taxonomy_base_url || */ $current_url == $region_about_base_url ) {
-                return 'ecomap';
-            }
+            $about_page = Kedr_Modules_Region_About::get_addr( $wp->query_vars['region'] );
+            return home_url( $about_page );
         }
         return $output;
     }
