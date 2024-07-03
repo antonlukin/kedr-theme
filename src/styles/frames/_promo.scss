@@ -2,10 +2,10 @@
   display: block;
   position: relative;
 
-  &.frame-promo--map {
+  &.frame-map {
     display: flex;
     align-items: center;
-    background-color: var(--color-promo);
+    background-color: var(--color-region-light);
     font-family: var(--font-regular);
     font-size: 0.8125rem;
     border-radius: .375rem;
@@ -13,8 +13,13 @@
     box-shadow: 0px 2px 8px 0px rgba(63, 63, 63, 0.03);
 
 
-    .frame-promo--map__logo {
+    .frame-map__logo {
       flex-basis: 21%;
+      align-self: stretch;
+      background-image: url("images/ecomap-large.png");
+      background-repeat:no-repeat;
+      background-size: contain;
+      background-position: center;
     }
 
     p {
@@ -22,8 +27,8 @@
       margin-right: var(--space-content);
     }
 
-    .frame-promo--map__button {
-      background-color: var(--color-red);
+    .frame-map__button {
+      background-color: var(--color-region-accent);
       font-size: 0.8125rem;
       border-bottom: none;
       padding: 8px 29px;
@@ -32,9 +37,9 @@
     @media screen and (max-width: 767px) {
       flex-wrap: wrap;
 
-      .frame-promo--map__logo {
-        flex-basis: 40px;
-        align-self: start;
+      .frame-map__logo {
+        flex-basis: 10%;
+        background-position: 0 5px;
       }
 
       p {
@@ -42,9 +47,16 @@
         flex: 1;
       }
 
-      .frame-promo--map__button {
+      .frame-map__button {
         width: 100%;
       }
+    }
+    @media screen and (max-width: 479px) {
+
+      .frame-map__logo {
+        flex-basis: 15%;
+      }
+
     }
   } 
 }
