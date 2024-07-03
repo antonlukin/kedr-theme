@@ -141,6 +141,24 @@ class Kedr_Modules_Postinfo {
     }
 
     /**
+     * Get thumbnail caption
+     */
+    public static function get_navigation_mod( $output = '' ) {
+        global $wp;
+
+        if ( isset( $wp->query_vars['region'] ) ) {
+            $current_url = home_url( $wp->request );
+            $taxonomy_base_url = home_url( 'region/' . $wp->query_vars['region'] );
+            $region_about_base_url = home_url( 'region/' . $wp->query_vars['region'] . '/about' );
+
+            if ( $current_url == $taxonomy_base_url || $current_url == $region_about_base_url ) {
+                return 'ecomap';
+            }
+        }
+        return $output;
+    }
+
+    /**
      * Get oEmbed code for first video from post content
      */
     public static function get_video( $output = '' ) {

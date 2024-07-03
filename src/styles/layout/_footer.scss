@@ -167,4 +167,13 @@
       padding: 0.625rem 1.25rem;
     }
   }
+
+  &.footer--ecomap {
+
+    .footer__inner {
+      grid-template-areas: "description service";
+      grid-template-columns: 1fr auto;
+
+    }
+  }
 }

@@ -99,6 +99,22 @@ if ( ! function_exists( 'kedr_theme_info' ) ) :
     }
 endif;
 
+if ( ! function_exists( 'kedr_theme_get' ) ) :
+    /**
+     * Public template function to show post info
+     */
+    function kedr_theme_get( $option ) {
+        $output = null;
+        $method = 'get_' . $option;
+
+        if ( method_exists( 'Kedr_Modules_Postinfo', $method ) ) {
+            return Kedr_Modules_Postinfo::$method();
+        }
+
+        return null;
+    }
+endif;
+
 /**
  * Include theme helpers
  */
