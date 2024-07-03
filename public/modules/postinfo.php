@@ -151,7 +151,8 @@ class Kedr_Modules_Postinfo {
             $taxonomy_base_url = home_url( 'region/' . $wp->query_vars['region'] );
             $region_about_base_url = home_url( 'region/' . $wp->query_vars['region'] . '/about' );
 
-            if ( $current_url == $taxonomy_base_url || $current_url == $region_about_base_url ) {
+            // temporary hide header/footer for ecomap
+            if ( /* $current_url == $taxonomy_base_url || */ $current_url == $region_about_base_url ) {
                 return 'ecomap';
             }
         }

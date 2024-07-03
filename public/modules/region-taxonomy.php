@@ -33,7 +33,8 @@ class Kedr_Modules_Regions {
      */
     public static function load_module() {
         add_action( 'init', array( __CLASS__, 'register_taxonomy' ) );
-        add_filter( 'taxonomy_template', array( __CLASS__, 'include_taxonomy_template' ) );
+        // temporary deactivate
+        // add_filter( 'taxonomy_template', array( __CLASS__, 'include_taxonomy_template' ) );
     }
 
     /**
