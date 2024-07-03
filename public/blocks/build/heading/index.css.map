@@ -1,1 +1,0 @@
-{"version":3,"file":"heading/index.css","mappings":";;;AAAA;EACE;EACA;EACA;AACF,C","sources":["webpack:///./src/heading/editor.scss"],"sourcesContent":[".wp-block.is-style-separator {\n  padding-bottom: 1.75rem;\n  text-align: center;\n  border-bottom: solid 1px #d6d6d6;\n}"],"names":[],"sourceRoot":""}
