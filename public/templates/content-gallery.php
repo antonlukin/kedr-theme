@@ -31,6 +31,13 @@
                 '</div>'
             );
 
+
+            kedr_theme_info(
+                'ecomap',
+                '<a href="/regions" class="entry-feature__meta-ecomap">',
+                '</a>'
+            );
+
             kedr_theme_info(
                 'title',
                 '<h1 class="entry-feature__title">',

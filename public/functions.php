@@ -99,6 +99,22 @@ if ( ! function_exists( 'kedr_theme_info' ) ) :
     }
 endif;
 
+if ( ! function_exists( 'kedr_theme_get' ) ) :
+    /**
+     * Public template function to show post info
+     */
+    function kedr_theme_get( $option ) {
+        $output = null;
+        $method = 'get_' . $option;
+
+        if ( method_exists( 'Kedr_Modules_Postsettings', $method ) ) {
+            return Kedr_Modules_Postsettings::$method();
+        }
+
+        return null;
+    }
+endif;
+
 /**
  * Include theme helpers
  */
@@ -115,6 +131,7 @@ require_once get_template_directory() . '/modules/login.php';
 require_once get_template_directory() . '/modules/blocks.php';
 require_once get_template_directory() . '/modules/images.php';
 require_once get_template_directory() . '/modules/postinfo.php';
+require_once get_template_directory() . '/modules/postsettings.php';
 require_once get_template_directory() . '/modules/menu.php';
 require_once get_template_directory() . '/modules/projects.php';
 require_once get_template_directory() . '/modules/sitemeta.php';
@@ -123,7 +140,8 @@ require_once get_template_directory() . '/modules/news.php';
 require_once get_template_directory() . '/modules/content.php';
 require_once get_template_directory() . '/modules/embeds.php';
 require_once get_template_directory() . '/modules/loadmore.php';
-require_once get_template_directory() . '/modules/regions.php';
+require_once get_template_directory() . '/modules/region-about.php';
+require_once get_template_directory() . '/modules/region-taxonomy.php';
 require_once get_template_directory() . '/modules/snippet.php';
 require_once get_template_directory() . '/modules/requests.php';
 require_once get_template_directory() . '/modules/subcats.php';

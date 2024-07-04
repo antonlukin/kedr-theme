@@ -250,6 +250,13 @@ class Kedr_Modules_Global {
             );
         }
 
+        if ( is_tax('region') ) {
+            return sprintf(
+                '<h1 class="caption__title region__content-title">%s</h1>',
+                single_term_title( '', false )
+            );
+        }
+
         if ( is_tag() || is_tax() ) {
             return sprintf(
                 '<h1 class="caption__title">%s</h1>',

@@ -51,6 +51,8 @@ class Kedr_Modules_Sitemeta {
         $wp_customize->add_setting( 'extra-description' );
         $wp_customize->add_setting( 'extra-meta' );
         $wp_customize->add_setting( 'extra-map' );
+        $wp_customize->add_setting( 'extra-ecomap-contacts' );
+        $wp_customize->add_setting( 'extra-ecomap-description' );
 
         $wp_customize->add_section(
             'kedr_extra',
@@ -92,6 +94,32 @@ class Kedr_Modules_Sitemeta {
                 'extra-map',
                 array(
                     'label'     => esc_html__( 'Промо блок экокарты внутри записи', 'kedr-theme' ),
+                    'section'   => 'kedr_extra',
+                    'code_type' => 'text/html',
+                    'priority'  => 10,
+                )
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Code_Editor_Control(
+                $wp_customize,
+                'extra-ecomap-contacts',
+                array(
+                    'label'     => esc_html__( 'Контакты в подвале для Экокарты', 'kedr-theme' ),
+                    'section'   => 'kedr_extra',
+                    'code_type' => 'text/html',
+                    'priority'  => 10,
+                )
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Code_Editor_Control(
+                $wp_customize,
+                'extra-ecomap-description',
+                array(
+                    'label'     => esc_html__( 'Описание в подвале для Экокарты', 'kedr-theme' ),
                     'section'   => 'kedr_extra',
                     'code_type' => 'text/html',
                     'priority'  => 10,
