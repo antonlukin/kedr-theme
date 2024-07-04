@@ -73,10 +73,6 @@ class Kedr_Modules_Regions {
         );
     }
 
-    public static function get_addr( $region ) {
-        return self::$taxonomy . '/' . $region;
-    }
-
     /**
      * Include custom taxonomy template for region taxonomy
      */

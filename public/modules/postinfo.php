@@ -146,8 +146,24 @@ class Kedr_Modules_Postinfo {
     public static function get_region_about_link( $output = '' ) {
         global $wp;
         if ( isset( $wp->query_vars['region'] ) ) {
-            $about_page = Kedr_Modules_Region_About::get_addr( $wp->query_vars['region'] );
-            return home_url( $about_page );
+            $tax_slug = $wp->query_vars['region'];
+
+            $args = array(
+                'post_type'      => Kedr_Modules_Region_About::$post_type,
+                'posts_per_page' => 1,
+                'tax_query'      => array(
+                    array(
+                        'taxonomy' => Kedr_Modules_Regions::$taxonomy,
+                        'field'    => 'slug',
+                        'terms'    => $tax_slug,
+                    ),
+                ),
+            );
+
+            $query = new WP_Query( $args );
+            if ( ! empty( $query->posts ) ) {
+                return get_permalink( $query->posts[0] );
+            }
         }
         return $output;
     }

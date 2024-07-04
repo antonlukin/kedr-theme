@@ -32,7 +32,6 @@ class Kedr_Modules_Region_About {
     public static function load_module() {
         add_action( 'init', array( __CLASS__, 'register_post_type' ) );
         add_filter( 'post_type_link', array( __CLASS__, 'post_type_permalink' ), 1, 2 );
-        add_action( 'wp_insert_post', array( __CLASS__, 'set_custom_post_name' ), 10, 3 );
     }
 
     /**
@@ -64,7 +63,7 @@ class Kedr_Modules_Region_About {
             'map_meta_cap'          => true,
             'hierarchical'          => false,
             'rewrite'               => array(
-                'slug'       => self::get_addr( '%region%' ),
+                'slug'       => Kedr_Modules_Regions::$taxonomy . '/%region%',
                 'with_front' => true,
             ),
             'query_var'             => true,
@@ -86,29 +85,6 @@ class Kedr_Modules_Region_About {
             }
         }
         return $permalink;
-    }
-
-    /**
-     * Modify post_name for custom post type region_about
-     */
-    public static function set_custom_post_name( $post_ID, $post, $update ) {
-        static $updating = false;
-        if ( $update || $updating ) {
-            return;
-        }
-
-        if ( $post->post_type == self::$post_type ) {
-            $post_args = array(
-                'ID'        => $post_ID,
-                'post_name' => self::$post_name,
-            );
-
-            wp_update_post( $post_args );
-        }
-    }
-
-    public static function get_addr( $region ) {
-        return Kedr_Modules_Regions::get_addr( $region ) . '/' . self::$post_name;
     }
 }
 
