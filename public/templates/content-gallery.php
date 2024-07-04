@@ -53,6 +53,12 @@
                 );
 
                 kedr_theme_info(
+                    'ecomap',
+                    '<span class="entry-feature__meta-ecomap">',
+                    '</span>'
+                );
+
+                kedr_theme_info(
                     'get_labelcaption',
                     '<span class="entry-feature__meta-caption">',
                     '</span>'

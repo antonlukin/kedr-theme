@@ -76,6 +76,10 @@ class Kedr_Modules_Postinfo {
      * Get list of post authors
      */
     public static function get_authors( $output = '' ) {
+        if ( get_post_type() === Kedr_Modules_Region_About::$post_type ) {
+            return '';
+        }
+
         if ( function_exists( 'coauthors_posts_links' ) ) {
             $output = coauthors_posts_links( ', ', ', ', null, null, false );
         }
@@ -111,7 +115,20 @@ class Kedr_Modules_Postinfo {
      * Get post publish date
      */
     public static function get_date() {
+        if ( get_post_type() === Kedr_Modules_Region_About::$post_type ) {
+            return '';
+        }
         return esc_html( get_the_date() );
+    }
+
+    /**
+     * Get post ecomap flag
+     */
+    public static function get_ecomap() {
+        if ( get_post_type() === Kedr_Modules_Region_About::$post_type ) {
+            return 'Экокарта';
+        }
+        return '';
     }
 
     /**

@@ -32,6 +32,7 @@ class Kedr_Modules_Region_About {
     public static function load_module() {
         add_action( 'init', array( __CLASS__, 'register_post_type' ) );
         add_filter( 'post_type_link', array( __CLASS__, 'post_type_permalink' ), 1, 2 );
+        add_filter( 'option_default_post_format', array( __CLASS__, 'default_post_format_filter' ), 95 );
     }
 
     /**
@@ -85,6 +86,17 @@ class Kedr_Modules_Region_About {
             }
         }
         return $permalink;
+    }
+
+    /**
+     * Modify post-format for custom post type
+     */
+    public static function default_post_format_filter( $format ) {
+        global $post_type;
+        if ( $post_type == self::$post_type ) {
+            $format = 'gallery';
+        }
+        return $format;
     }
 }
 

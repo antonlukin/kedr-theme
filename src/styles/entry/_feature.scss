@@ -187,6 +187,11 @@
     cursor: default;
   }
 
+  .entry-feature__meta-ecomap {
+    cursor: default;
+    position: relative;
+  }
+
   @media screen and (max-width: 1023px) {
     flex-flow: column nowrap;
     position: relative;
