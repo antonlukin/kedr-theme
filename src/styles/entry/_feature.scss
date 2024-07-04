@@ -188,8 +188,9 @@
   }
 
   .entry-feature__meta-ecomap {
-    cursor: default;
+    z-index: 2; // overflow title
     position: relative;
+    font-weight: 600;
   }
 
   @media screen and (max-width: 1023px) {

@@ -126,7 +126,7 @@ class Kedr_Modules_Postinfo {
      */
     public static function get_ecomap() {
         if ( get_post_type() === Kedr_Modules_Region_About::$post_type ) {
-            return 'Экокарта';
+            return esc_html__( 'Экокарта', 'kedr-theme' );
         }
         return '';
     }
