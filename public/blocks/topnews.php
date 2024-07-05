@@ -36,7 +36,7 @@ class Kedr_Blocks_Topnews {
                 'sanitize_callback' => 'absint',
                 'show_in_rest'      => true,
                 'single'            => true,
-                'auth_callback'     => function() {
+                'auth_callback'     => function () {
                     return current_user_can( 'edit_posts' );
                 },
             )

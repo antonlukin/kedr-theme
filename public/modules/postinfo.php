@@ -76,6 +76,10 @@ class Kedr_Modules_Postinfo {
      * Get list of post authors
      */
     public static function get_authors( $output = '' ) {
+        if ( get_post_type() === Kedr_Modules_Region_About::$post_type ) {
+            return '';
+        }
+
         if ( function_exists( 'coauthors_posts_links' ) ) {
             $output = coauthors_posts_links( ', ', ', ', null, null, false );
         }
@@ -111,7 +115,20 @@ class Kedr_Modules_Postinfo {
      * Get post publish date
      */
     public static function get_date() {
+        if ( get_post_type() === Kedr_Modules_Region_About::$post_type ) {
+            return '';
+        }
         return esc_html( get_the_date() );
+    }
+
+    /**
+     * Get post ecomap flag
+     */
+    public static function get_ecomap() {
+        if ( get_post_type() === Kedr_Modules_Region_About::$post_type ) {
+            return esc_html__( 'Экокарта', 'kedr-theme' );
+        }
+        return '';
     }
 
     /**
@@ -137,6 +154,34 @@ class Kedr_Modules_Postinfo {
             $output = esc_html( __( 'Фото: ', 'kedr-theme' ) . $caption );
         }
 
+        return $output;
+    }
+
+    /**
+     * Get link to post region-about type
+     */
+    public static function get_region_about_link( $output = '' ) {
+        global $wp;
+        if ( isset( $wp->query_vars['region'] ) ) {
+            $tax_slug = $wp->query_vars['region'];
+
+            $args = array(
+                'post_type'      => Kedr_Modules_Region_About::$post_type,
+                'posts_per_page' => 1,
+                'tax_query'      => array(
+                    array(
+                        'taxonomy' => Kedr_Modules_Regions::$taxonomy,
+                        'field'    => 'slug',
+                        'terms'    => $tax_slug,
+                    ),
+                ),
+            );
+
+            $query = new WP_Query( $args );
+            if ( ! empty( $query->posts ) ) {
+                return get_permalink( $query->posts[0] );
+            }
+        }
         return $output;
     }
 

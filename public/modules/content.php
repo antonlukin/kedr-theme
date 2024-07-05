@@ -62,8 +62,9 @@ class Kedr_Modules_Content {
         }
 
         $extra = sprintf(
-            '<figure class="frame-promo frame-promo--map">%s</figure>',
-            wpautop( strip_tags( $extra, '<a>' ) )
+            '<figure class="frame-promo frame-map"><div class="frame-map__logo"></div>%1$s<a class="frame-map__button button" href="https://maps.kedr.media/" target="_blank" rel="noopener">%2$s</a></figure>',
+            wpautop( strip_tags( $extra, '<a>' ) ),
+            esc_html__( 'Читать', 'kedr-theme' )
         );
 
         return $content . $extra;

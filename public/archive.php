@@ -21,6 +21,10 @@ get_header(); ?>
         <?php
         while ( have_posts() ) :
             the_post();
+            // temporary hide posts region-about
+            if ( get_post_type() === 'region-about' ) {
+                continue;
+            }
             get_template_part( 'templates/frame', 'double' );
         endwhile;
         ?>

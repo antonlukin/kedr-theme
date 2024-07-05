@@ -1,10 +1,1 @@
-/*!************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/heading/editor.scss ***!
-  \************************************************************************************************************************************************************************************************************************************************/
-.wp-block.is-style-separator {
-  padding-bottom: 1.75rem;
-  text-align: center;
-  border-bottom: solid 1px #d6d6d6;
-}
-
-/*# sourceMappingURL=index.css.map*/
+.wp-block.is-style-separator{border-bottom:1px solid #d6d6d6;padding-bottom:1.75rem;text-align:center}
