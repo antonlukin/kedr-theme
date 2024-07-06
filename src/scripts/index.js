@@ -6,6 +6,7 @@ import initFancybox from './packages/initFancybox';
 import handleRequests from './packages/handleRequests';
 import loadMorePosts from './packages/loadMorePosts';
 import showTelegramFrame from './packages/showTelegramFrame';
+import setupRegionsMap from './packages/setupRegionsMap';
 
 // Show post's reference blocks
 showReference( document.querySelector( '.post' ) );
@@ -30,3 +31,5 @@ replaceEmbeds( document.querySelectorAll( '[data-embed]' ) );
 
 // Handle requests forms
 handleRequests( document.querySelectorAll( '[data-requests]' ) );
+
+window.setupRegionsMap = setupRegionsMap;
