@@ -1,18 +1,19 @@
-
 <header class="header header--ecomap">
     <div class="header__inner">
-        <a class="header__ecomap" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'Главная страница', 'kedr-theme' ); ?>">
+        <a class="header__ecomap" href="<?php echo esc_url( home_url( '/regions' ) ); ?>" aria-label="<?php esc_attr_e( 'Главная страница', 'kedr-theme' ); ?>">
             
-            <img class="header__search-icon" src=
+            <img class="header__ecomap-icon" src=
                 <?php
-                echo esc_url( get_template_directory_uri() . '/assets/images/ecomap-small.png' );
+                echo esc_url( get_template_directory_uri() . '/assets/images/ecomap-logo.png' );
                 ?>
             >
-        </a>
 
-        <div class="header__navbar">
-            Экокарта
-        </div>
+            <div class="header__ecomap-label">
+                <?php
+                echo esc_html__( 'Экокарта', 'kedr-theme' )
+                ?>
+            </div>
+        </a>
         <button class="header__region-select">
             Регионы
                 <?php
@@ -26,7 +27,7 @@
         
         <a class="header__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'Главная страница', 'kedr-theme' ); ?>">
             
-            <img class="header__search-icon" src=
+            <img class="header__kedr-icon" src=
                     <?php
                     echo esc_url( get_template_directory_uri() . '/assets/images/logo-ecomap.png' );
                     ?>
