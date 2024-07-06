@@ -171,21 +171,6 @@
       height: 100%;
     }
 
-    .header__ecomap {
-      display: block;
-
-      width: 57px;
-      height: 32px;
-
-
-      .header__ecomap-icon {
-        display: block;
-
-        width: 100%;
-        height: 100%;
-      }
-    }
-
     &:hover {
       opacity: 100%;
     }
@@ -261,6 +246,36 @@
     }
   }
 
+  .header__kedr-icon {
+    width: 100%;
+    height: 2rem;
+  }
+
+  .header__ecomap {
+    display: flex;
+    align-items: center;
+    width: 57px;
+    height: 2rem;
+    gap: .75rem;
+
+    .header__ecomap-icon {
+
+      display: flex;
+      align-items: center;
+      width: auto;
+      height: 100%;
+    }
+
+    .header__ecomap-label {
+      display: block;
+      height: auto;
+
+      @media screen and (max-width: 479px) {
+        display: none;
+      }
+    }
+  }
+
   .header__region-select {
     display: flex;
     margin-left: auto;
@@ -275,11 +290,9 @@
   }
 
   &.header--ecomap {
-
     font-family: inherit;
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.5;
-
   }
 }

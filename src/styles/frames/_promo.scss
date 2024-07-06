@@ -16,8 +16,8 @@
     .frame-map__logo {
       flex-basis: 21%;
       align-self: stretch;
-      background-image: url("images/ecomap-large.png");
-      background-repeat:no-repeat;
+      background-image: url("images/ecomap-logo.png");
+      background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
@@ -33,7 +33,7 @@
       border-bottom: none;
       padding: 8px 29px;
     }
-    
+
     @media screen and (max-width: 767px) {
       flex-wrap: wrap;
 
@@ -51,6 +51,7 @@
         width: 100%;
       }
     }
+
     @media screen and (max-width: 479px) {
 
       .frame-map__logo {
@@ -58,5 +59,5 @@
       }
 
     }
-  } 
+  }
 }
