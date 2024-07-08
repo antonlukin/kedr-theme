@@ -13,7 +13,7 @@ const KedrTitleLimit = () => {
 
 	useEffect( () => {
 		if ( loaded ) {
-			const maxTitleLength = 115;
+			const maxTitleLength = 130;
 
 			if ( postTitle.length > maxTitleLength ) {
 				editPost( { title: postTitle.substring( 0, maxTitleLength ) } );

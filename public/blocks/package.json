@@ -11,5 +11,6 @@
     "@wordpress/eslint-plugin": "^14.8.0",
     "@wordpress/icons": "^9.28.0",
     "@wordpress/scripts": "^26.6.0"
-  }
+  },
+  "dependencies": {}
 }
