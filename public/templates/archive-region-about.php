@@ -8,12 +8,6 @@
 
 get_header(); ?>
 
-<script type="text/javascript">
-window.onload = function() {
-    var regions = <?php echo json_encode( kedr_theme_get( 'regions' ) ); ?>;
-    window.setupRegionsMap(regions);
-}
-</script>
 
 <section class="content region">
     <div class="region__double">
@@ -423,7 +417,21 @@ window.onload = function() {
         </svg>
         <div id="plate-tooltip" class="plate-tooltip"></div>
     </div>
+
+    <?php
+    if ( is_active_sidebar( 'kedr-bottom' ) ) :
+        dynamic_sidebar( 'kedr-bottom' );
+        endif;
+    ?>
 </section>
+
+
+<script type="text/javascript">
+window.onload = function() {
+    var regions = <?php echo json_encode( kedr_theme_get( 'regions' ) ); ?>;
+    window.setupRegionsMap(regions);
+}
+</script>
 
 <?php
 get_footer();
