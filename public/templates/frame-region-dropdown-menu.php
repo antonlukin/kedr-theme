@@ -13,7 +13,7 @@ $options = $args['options'];
 
 if ( ! empty( $options ) ) :
 	?>
-	<ul class="dropdown__menu">
+	<ul class="dropdown__menu dropdown__menu--close">
 		<div class="dropdown__items">
 			<?php foreach ( $options as $option ) : ?>
 				<li class="dropdown__item">

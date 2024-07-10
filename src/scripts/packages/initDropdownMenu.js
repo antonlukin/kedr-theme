@@ -8,13 +8,7 @@ function dropdownMenu( toggleButton, menu ) {
 	if ( ! menu || ! toggleButton ) {
 		return;
 	}
-
-	/**
-	 * Toggle the visibility of the dropdown menu
-	 */
-	function toggleDropdown() {
-		menu.classList.toggle( 'dropdown__menu--open' );
-	}
+	menu.classList.add( 'dropdown__menu--close' );
 
 	/**
 	 * Handle click outside the dropdown to close it
@@ -24,17 +18,21 @@ function dropdownMenu( toggleButton, menu ) {
 	function handleClickOutside( e ) {
 		if ( ! menu.contains( e.target ) && ! toggleButton.contains( e.target ) ) {
 			menu.classList.remove( 'dropdown__menu--open' );
+			menu.classList.add( 'dropdown__menu--close' );
 			document.removeEventListener( 'click', handleClickOutside );
 		}
 	}
 
 	// Add event listener to toggle button
 	toggleButton.addEventListener( 'click', function( e ) {
-		e.stopPropagation();
-		toggleDropdown();
-		if ( menu.classList.contains( 'dropdown__menu--open' ) ) {
+		e.preventDefault();
+		if ( ! menu.classList.contains( 'dropdown__menu--open' ) ) {
+			menu.classList.add( 'dropdown__menu--open' );
+			menu.classList.remove( 'dropdown__menu--close' );
 			document.addEventListener( 'click', handleClickOutside );
 		} else {
+			menu.classList.remove( 'dropdown__menu--open' );
+			menu.classList.add( 'dropdown__menu--close' );
 			document.removeEventListener( 'click', handleClickOutside );
 		}
 	} );
