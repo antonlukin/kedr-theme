@@ -16,11 +16,8 @@ class Kedr_Modules_Postsettings {
      * Get navigation mod
      */
     public static function get_navigation_mod( $output = '' ) {
-
         if ( is_tax( 'region' ) ) {
-            // temporary hide on taxonomy page
-            // return 'ecomap';
-            return $output;
+            return 'ecomap';
         }
 
         if ( is_post_type_archive( 'region-about' ) ) {
