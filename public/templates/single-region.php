@@ -33,9 +33,7 @@ get_header(); ?>
     </div>
 
     <?php
-    if ( is_active_sidebar( 'kedr-bottom' ) ) :
-        dynamic_sidebar( 'kedr-bottom' );
-        endif;
+    get_template_part( 'templates/frame', 'region-articles' );
     ?>
 </section>
 
