@@ -9,7 +9,7 @@
 get_header(); ?>
 
 <section class="content region">
-    <div class="region__wrapper">
+    <div class="region__double">
         <div class="region__content">
             <?php the_archive_title(); ?>
             <div>
@@ -22,7 +22,7 @@ get_header(); ?>
                     '">О регионе</a>'
                 );
                 ?>
-            </div>
+        </div>
         <div class="region__image">
             <img class="region__image-thumbnail" src=
                 <?php

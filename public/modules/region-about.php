@@ -33,6 +33,7 @@ class Kedr_Modules_Region_About {
         add_action( 'init', array( __CLASS__, 'register_post_type' ) );
         add_filter( 'post_type_link', array( __CLASS__, 'post_type_permalink' ), 1, 2 );
         add_filter( 'option_default_post_format', array( __CLASS__, 'default_post_format_filter' ), 95 );
+        add_filter( 'archive_template', array( __CLASS__, 'include_archive' ) );
     }
 
     /**
@@ -55,7 +56,7 @@ class Kedr_Modules_Region_About {
             'show_in_rest'          => true,
             'rest_base'             => '',
             'rest_controller_class' => 'WP_REST_Posts_Controller',
-            'has_archive'           => 'map',
+            'has_archive'           => 'regions',
             'show_in_menu'          => true,
             'show_in_nav_menus'     => true,
             'delete_with_user'      => false,
@@ -97,6 +98,22 @@ class Kedr_Modules_Region_About {
             $format = 'gallery';
         }
         return $format;
+    }
+
+
+    /**
+     * Include custom archive template for region-about
+     */
+    public static function include_archive( $template ) {
+        if ( is_post_type_archive( self::$post_type ) ) {
+            $new_template = locate_template( array( 'templates/archive-region-about.php' ) );
+
+            if ( ! empty( $new_template ) ) {
+                return $new_template;
+            }
+        }
+
+        return $template;
     }
 }
 

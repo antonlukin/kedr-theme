@@ -1,0 +1,28 @@
+.plate {
+	position: relative;
+	transition: all 150ms;
+	fill: var(--color-region-plate-inactive);
+
+	&.plate--active {
+		cursor: pointer;
+		fill: var(--color-region-accent);
+	}
+
+	&.plate--hover {
+		fill: var(--color-region-plate-hover);
+	}
+}
+
+.plate-tooltip {
+	position: absolute;
+	display: none;
+	color: #fff;
+	background: var(--color-region-accent);
+	padding: 4px 8px;
+	border-radius: 5px;
+	white-space: nowrap;
+
+	&.plate-tooltip--visible {
+		display: block;
+	}
+}

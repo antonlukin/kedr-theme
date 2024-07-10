@@ -22,6 +22,10 @@ class Kedr_Modules_Postsettings {
             // return 'ecomap';
             return $output;
         }
+
+        if ( is_post_type_archive( 'region-about' ) ) {
+            return 'ecomap';
+        }
         global $wp;
 
         if ( isset( $wp->query_vars['region'] ) ) {
@@ -47,5 +51,17 @@ class Kedr_Modules_Postsettings {
             }
         }
         return $output;
+    }
+
+    public static function get_regions( $output = array() ) {
+        $args    = array( 'name' => Kedr_Modules_Regions::$taxonomy );
+        $regions = get_terms(
+            array(
+                'taxonomy'   => Kedr_Modules_Regions::$taxonomy,
+                'hide_empty' => false,
+            )
+        );
+
+        return $regions;
     }
 }
