@@ -2,7 +2,7 @@
     background-color: var(--color-region-dark);
     padding-bottom: 2em;
 
-    .region__wrapper {
+    .region__double {
         width: 100%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -26,17 +26,18 @@
             -webkit-backface-visibility: hidden;
         }
 
-        @media screen and (max-width: 1023px) {
-            padding-top: 62.5%;
-        }
+        // Copied media-screens from other file. Not sure, how it should work
+        // @media screen and (max-width: 1023px) {
+        //     padding-top: 62.5%;
+        // }
 
-        @media screen and (max-width: 767px) {
-            padding-top: 50%;
-        }
+        // @media screen and (max-width: 767px) {
+        //     padding-top: 50%;
+        // }
 
-        @media screen and (max-width: 479px) {
-            padding-top: 62.5%;
-        }
+        // @media screen and (max-width: 479px) {
+        //     padding-top: 62.5%;
+        // }
     }
 
     .region__content {
@@ -49,6 +50,7 @@
         height: 100%;
         padding-top: 1.75rem;
         padding-left: calc(var(--space-outer) * 2);
+        padding-bottom: var(--space-outer);
     }
 
     .region__content-title {
@@ -72,5 +74,13 @@
 
     @media screen and (max-width: 767px) {
         grid-template-columns: 1fr;
+    }
+
+    .region__map {
+        background-color: var(--color-region-dark);
+
+        margin: 0 auto 0;
+        padding: 76px var(--space-outer) 76px;
+
     }
 }

@@ -8,15 +8,53 @@
 
 get_header(); ?>
 
-<script type="text/javascript">
-window.onload = function() {
-    var regions = <?php echo json_encode( kedr_theme_get( 'regions' ) ); ?>;
-    window.setupRegionsMap(regions);
-}
-</script>
 
-<section class="content ecomap">
-    <div class="ecomap__wrapper">
+<section class="content region">
+    <div class="region__double">
+        <div class="region__content">
+            <h1 class="caption__title region__content-title">
+                <?php
+                echo esc_html__( 'Экологическая карта России', 'kedr-theme' );
+                ?>
+            </h1>
+            <?php
+            echo wp_kses_post( get_theme_mod( 'extra-ecomap-description' ) );
+            ?>
+
+            <?php
+            $regions = kedr_theme_get( 'regions' );
+
+            if ( ! empty( $regions ) ) :
+                ?>
+                <div class="dropdown">
+                    <button class="dropdown__button dropdown__toggle button">
+                    Выбрать регион                
+                    <?php
+                        printf(
+                            '<svg class="dropdown__toggle-icon"><use xlink:href="%s"></use></svg>',
+                            esc_url( get_template_directory_uri() . '/assets/images/icons-sprite.svg#kedr-icon-chevron' )
+                        );
+                    ?>
+                    </button>
+
+                    <?php
+                    $options = array( 'options' =>  $regions );
+                    get_template_part( 'templates/frame', 'region-dropdown-menu', $options );
+                    ?>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="region__image">
+            <img class="region__image-thumbnail" src=
+                <?php
+                echo esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' );
+                ?>
+            >
+        </div>
+    </div>
+
+
+    <div class="region__map">
         <svg class="w-full" viewBox="0 0 1165 629" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="russia_plate_map">
                 <!--        <path class="plate" id="zaporozhye"-->
@@ -379,7 +417,21 @@ window.onload = function() {
         </svg>
         <div id="plate-tooltip" class="plate-tooltip"></div>
     </div>
+
+    <?php
+    if ( is_active_sidebar( 'kedr-bottom' ) ) :
+        dynamic_sidebar( 'kedr-bottom' );
+        endif;
+    ?>
 </section>
+
+
+<script type="text/javascript">
+window.onload = function() {
+    var regions = <?php echo json_encode( kedr_theme_get( 'regions' ) ); ?>;
+    window.setupRegionsMap(regions);
+}
+</script>
 
 <?php
 get_footer();

@@ -8,7 +8,7 @@ function setupRegionsMap( regions ) {
 		plate.firstChild.textContent = region.name;
 		plate.classList.add( 'plate--active' );
 
-		plate.onmouseover = function( e ) {
+		plate.addEventListener( 'mouseover', function() {
 			const rect = plate.getBoundingClientRect();
 			const coords = {
 				left: rect.left + window.scrollX,
@@ -19,18 +19,18 @@ function setupRegionsMap( regions ) {
 			tooltip.style.left = coords.left + 'px';
 			tooltip.textContent = region.name;
 
-			tooltip.classList.add( 'tooltip--visible' );
+			tooltip.classList.add( 'plate-tooltip--visible' );
 			plate.classList.add( 'plate--hover' );
-		};
+		} );
 
-		plate.onmouseout = function() {
-			tooltip.classList.remove( 'tooltip--visible' );
+		plate.addEventListener( 'mouseout', function() {
+			tooltip.classList.remove( 'plate-tooltip--visible' );
 			plate.classList.remove( 'plate--hover' );
-		};
+		} );
 
-		plate.onclick = function() {
+		plate.addEventListener( 'click', function() {
 			window.location.href = `/region/${ region.slug }`;
-		};
+		} );
 	}
 }
 

@@ -277,15 +277,26 @@
   }
 
   .header__region-select {
-    display: flex;
     margin-left: auto;
-    margin-right: 40px;
-    align-items: center;
-    gap: 4px;
+    margin-right: calc(var(--space-outer) * 2);
+
+    .header__region-select-button {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
     .header__region-select-icon {
       width: 1.125rem;
       height: 1.125rem;
+    }
+
+    // Not sure if it good to mix styles. But it should prevent overflow menu to the right side
+    @media screen and (max-width: 1199px) {
+      .dropdown__menu {
+        right: 0;
+        left: auto;
+      }
     }
   }
 
