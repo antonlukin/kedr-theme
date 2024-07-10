@@ -1,8 +1,8 @@
 /**
  * Initialize dropdown menu functionality
  *
- * @param {HTMLElement} menu         Dropdown menu HTML element
  * @param {HTMLElement} toggleButton Toggle button HTML element
+ * @param {HTMLElement} menu         Dropdown menu HTML element
  */
 function dropdownMenu( toggleButton, menu ) {
 	if ( ! menu || ! toggleButton ) {

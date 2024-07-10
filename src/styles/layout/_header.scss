@@ -281,9 +281,7 @@
     margin-right: calc(var(--space-outer) * 2);
 
     .header__region-select-button {
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      @include center-svg;
     }
 
     .header__region-select-icon {

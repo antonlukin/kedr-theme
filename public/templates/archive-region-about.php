@@ -26,9 +26,11 @@ get_header(); ?>
 
             if ( ! empty( $regions ) ) :
                 ?>
-                <div class="dropdown">
-                    <button class="dropdown__button dropdown__toggle button">
-                    Выбрать регион                
+                <div class="region__dropdown dropdown">
+                    <button class="region__dropdown-button dropdown__button dropdown__toggle button">
+                    <?php
+                    echo esc_html__( 'Выбрать регион    ', 'kedr-theme' );
+                    ?>
                     <?php
                         printf(
                             '<svg class="dropdown__toggle-icon"><use xlink:href="%s"></use></svg>',

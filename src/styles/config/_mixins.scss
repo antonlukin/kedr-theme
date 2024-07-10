@@ -98,3 +98,9 @@
     font-size: 0.75rem;
   }
 }
+
+@mixin center-svg {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

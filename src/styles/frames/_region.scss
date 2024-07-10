@@ -9,6 +9,10 @@
         grid-gap: var(--space-outer);
         position: relative;
         background-color: var(--color-region-light);
+
+        @media screen and (max-width: 767px) {
+            grid-template-columns: 1fr;
+        }
     }
 
     .region__image {
@@ -50,7 +54,7 @@
         height: 100%;
         padding-top: 1.75rem;
         padding-left: calc(var(--space-outer) * 2);
-        padding-bottom: var(--space-outer);
+        padding-bottom: calc(var(--space-outer) * 2);
     }
 
     .region__content-title {
@@ -72,15 +76,19 @@
         margin-bottom: 1.5rem;
     }
 
-    @media screen and (max-width: 767px) {
-        grid-template-columns: 1fr;
-    }
-
     .region__map {
         background-color: var(--color-region-dark);
 
         margin: 0 auto 0;
         padding: 76px var(--space-outer) 76px;
 
+    }
+
+    .region__dropdown {
+        padding-top: var(--space-outer);
+    }
+
+    .region__dropdown-button {
+        @include center-svg;
     }
 }

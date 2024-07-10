@@ -52,6 +52,7 @@
 	}
 
 	.dropdown__menu--close {
+		max-height: 0;
 		opacity: 0;
 		transform: scale(0.95);
 		transition: transform 0.075s ease-in, opacity 0.075s ease-in;
