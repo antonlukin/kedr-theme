@@ -65,6 +65,10 @@
       -webkit-backface-visibility: hidden;
     }
 
+    .frame-triple__region {
+      @include region-label-base;
+    }
+
     @media screen and (max-width: 767px) {
       padding-top: 50%;
     }
@@ -165,6 +169,30 @@
 
     @media screen and (max-width: 1023px) {
       font-size: 0.8125rem;
+    }
+  }
+
+
+
+  &.frame-triple--ecomap {
+    .frame-triple__wrapper {
+      background-color: var(--color-region-frames);
+      color: var(--color-light);
+    }
+
+    .frame-triple__content-authors {
+      color: var(--color-muted);
+
+      a:hover,
+      a:focus {
+        color: var(--color-light);
+      }
+    }
+
+    .frame-triple__content-category {
+      a {
+        color: var(--color-muted);
+      }
     }
   }
 

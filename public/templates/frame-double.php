@@ -18,6 +18,16 @@
             )
         );
         ?>
+
+        <?php
+        if ( $args['add_region_label'] ) {
+            kedr_theme_info(
+                'region',
+                '<p class="frame-double__region">',
+                '</p>'
+            );
+        }
+        ?>
     </figure>
 
     <div class="frame-double__content">

@@ -75,7 +75,8 @@
 
   transition: filter 0.25s;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     filter: brightness(120%);
   }
 }
@@ -90,7 +91,8 @@
 
   transition: filter 0.25s;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     filter: brightness(120%);
   }
 
@@ -103,4 +105,39 @@
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+@mixin region-label-base {
+  display: inline-flex;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  padding: 0.25rem var(--space-outer);
+  text-transform: uppercase;
+
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 0.875rem;
+  letter-spacing: 0.05rem;
+
+  color: var(--color-light);
+  background-color: var(--color-primary);
+
+  border-bottom: 0;
+  border-radius: var(--radius-frame) 0 var(--radius-frame) 0;
+
+  transition: filter 0.25s;
+
+  a {
+    @include full-after(1);
+
+    display: block;
+  }
+
+  &:hover {
+    filter: brightness(150%);
+  }
 }

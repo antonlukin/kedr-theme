@@ -32,7 +32,7 @@
                 </button>
 
                 <?php
-                $options = array( 'options' =>  $regions );
+                $options = array( 'options' => $regions );
                 get_template_part( 'templates/frame', 'region-dropdown-menu', $options );
                 ?>
 
