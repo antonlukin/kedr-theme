@@ -26,7 +26,7 @@ get_header(); ?>
 
             if ( ! empty( $regions ) ) :
                 ?>
-                <div class="region__dropdown dropdown">
+                <div class="dropdown">
                     <button class="region__dropdown-button dropdown__button dropdown__toggle button">
                     <?php
                     echo esc_html__( 'Выбрать регион    ', 'kedr-theme' );
@@ -40,7 +40,7 @@ get_header(); ?>
                     </button>
 
                     <?php
-                    $options = array( 'options' =>  $regions );
+                    $options = array( 'options' => $regions );
                     get_template_part( 'templates/frame', 'region-dropdown-menu', $options );
                     ?>
                 </div>

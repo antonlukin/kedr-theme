@@ -37,6 +37,18 @@
   }
 }
 
+@mixin padding-to-container {
+  padding-left: max(var(--space-outer), calc((100vw - var(--width-site))*0.5));
+
+  @media screen and (max-width: 1023px) {
+    padding-left: max(var(--space-outer), calc((100vw - var(--width-content))*0.5));
+  }
+
+  @media screen and (max-width: 479px) {
+    padding-left: var(--space-outer);
+  }
+}
+
 @mixin cross-button($width, $height: 2px) {
   width: $width;
   height: $width;
