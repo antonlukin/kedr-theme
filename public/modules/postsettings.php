@@ -61,4 +61,31 @@ class Kedr_Modules_Postsettings {
 
         return $regions;
     }
+    
+    /**
+     * Get taxonomy articles
+     */
+    public static function get_taxonomy_articles( $output = array() ) {
+        global $wp;
+        if ( isset( $wp->query_vars['region'] ) ) {
+            $tax_slug = $wp->query_vars['region'];
+        } else {
+            $terms = get_terms(Kedr_Modules_Regions::$taxonomy);
+            $tax_slug = wp_list_pluck($terms,'slug');
+        }
+
+        $tax_query = array(
+            'taxonomy' => Kedr_Modules_Regions::$taxonomy,
+            'field'    => 'slug',
+            'terms'    => $tax_slug,
+        );
+
+        $args = array(
+            'post_type'      => ['post'],
+            'posts_per_page' => 6,
+            'tax_query'      => array($tax_query),
+        );
+
+        return new WP_Query( $args );
+    }
 }
