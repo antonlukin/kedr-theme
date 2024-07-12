@@ -26,10 +26,10 @@ get_header(); ?>
 
             if ( ! empty( $regions ) ) :
                 ?>
-                <div class="region__dropdown dropdown">
+                <div class="dropdown">
                     <button class="region__dropdown-button dropdown__button dropdown__toggle button">
                     <?php
-                    echo esc_html__( 'Выбрать регион    ', 'kedr-theme' );
+                    echo esc_html__( 'Выбрать регион', 'kedr-theme' );
                     ?>
                     <?php
                         printf(
@@ -40,13 +40,13 @@ get_header(); ?>
                     </button>
 
                     <?php
-                    $options = array( 'options' =>  $regions );
+                    $options = array( 'options' => $regions );
                     get_template_part( 'templates/frame', 'region-dropdown-menu', $options );
                     ?>
                 </div>
             <?php endif; ?>
         </div>
-        <div class="region__image">
+        <div class="region__image region__image--desktop">
             <img class="region__image-thumbnail" src=
                 <?php
                 echo esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' );

@@ -273,4 +273,32 @@ class Kedr_Modules_Postinfo {
 
         return null;
     }
+
+
+    public static function get_region_thumbnail() {
+        global $wp;
+        if ( isset( $wp->query_vars['region'] ) ) {
+            $tax_slug = $wp->query_vars['region'];
+
+            $args = array(
+                'post_type'      => Kedr_Modules_Region_About::$post_type,
+                'posts_per_page' => 1,
+                'tax_query'      => array(
+                    array(
+                        'taxonomy' => Kedr_Modules_Regions::$taxonomy,
+                        'field'    => 'slug',
+                        'terms'    => $tax_slug,
+                    ),
+                ),
+            );
+
+            $query = new WP_Query( $args );
+            if ( ! empty( $query->posts ) ) {
+                return get_the_post_thumbnail( $query->posts[0] );
+            }
+        }
+        return '<img class="region__image-thumbnail" src=' .
+                esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' ) .
+                '>';
+    }
 }

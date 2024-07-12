@@ -24,11 +24,11 @@ get_header(); ?>
                 ?>
         </div>
         <div class="region__image">
-            <img class="region__image-thumbnail" src=
-                <?php
-                echo esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' );
-                ?>
-            >
+            <?php
+            kedr_theme_info(
+                'region_thumbnail'
+            );
+            ?>
         </div>
     </div>
 

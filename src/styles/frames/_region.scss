@@ -1,17 +1,29 @@
 .region {
     background-color: var(--color-region-dark);
     padding-bottom: 2em;
+    padding-top: var(--space-outer);
 
     .region__double {
-        width: 100%;
+        @include container;
+
+        position: relative;
+        margin: 0 auto 0;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-gap: var(--space-outer);
-        position: relative;
+
+        border-radius: var(--radius-frame);
         background-color: var(--color-region-light);
 
         @media screen and (max-width: 767px) {
             grid-template-columns: 1fr;
+
+            .region__image {
+                order: -1;
+            }
+
+            .region__image--desktop {
+                display: none;
+            }
         }
     }
 
@@ -21,6 +33,11 @@
         width: auto;
         overflow: hidden;
 
+        // Bad design. Can't set overflow:hidden on region__double because of dropdown
+        border-top-right-radius: var(--radius-frame);
+        border-bottom-right-radius: var(--radius-frame);
+
+        .wp-post-image,
         .region__image-thumbnail {
             display: block;
             width: 100%;
@@ -28,6 +45,18 @@
             object-fit: cover;
             object-position: center;
             -webkit-backface-visibility: hidden;
+        }
+
+        @media screen and (max-width: 767px) {
+            order: -1;
+
+            border-top-right-radius: var(--radius-frame);
+            border-top-left-radius: var(--radius-frame);
+            border-bottom-right-radius: 0;
+
+            .region__image--desktop {
+                display: none;
+            }
         }
 
         // Copied media-screens from other file. Not sure, how it should work
@@ -50,9 +79,8 @@
         flex-flow: column nowrap;
         align-items: flex-start;
         gap: 12px;
-        width: 100%;
         height: 100%;
-        padding: 1.75rem calc(var(--space-outer) * 2) calc(var(--space-outer) * 2);
+        padding: 1.76rem calc(var(--space-outer)*2) calc(var(--space-outer)*2) var(--space-outer);
     }
 
     .region__content-title {
@@ -76,15 +104,12 @@
 
     .region__map {
         background-color: var(--color-region-dark);
+        @include container;
 
         margin: 0 auto 0;
-        padding: 76px calc(var(--space-outer)*2) 76px;
-
+        padding: 76px var(--space-outer) 76px;
     }
 
-    .region__dropdown {
-        padding-top: var(--space-outer);
-    }
 
     .region__dropdown-button {
         @include center-svg;
