@@ -101,4 +101,20 @@ class Kedr_Modules_Postsettings {
 
         return $add_region_label;
     }
+
+    public static function get_post_row_size( $total_posts, $posts_left ) {
+        if ( $posts_left <= 0 ) {
+            return 0;
+        }
+        if ( $total_posts === $posts_left ) {
+            return 1;
+        }
+        if ( $posts_left <= 3 ) {
+            return $posts_left;
+        }
+        if ( $posts_left === 4 ) {
+            return 2;
+        }
+        return 3;
+    }
 }
