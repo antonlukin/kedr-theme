@@ -171,4 +171,24 @@
       font-size: 0.8125rem;
     }
   }
+
+  &.frame-single--ecomap {
+    .frame-single__wrapper {
+      background-color: var(--color-region-frames);
+      color: var(--color-light);
+
+
+      @media screen and (min-width: 1024px) {
+        grid-template-columns: 1fr 32.75rem;
+
+        .frame-single__image {
+          order: -1;
+        }
+      }
+    }
+  }
+
+  .frame-single__region {
+    @include region-label-base;
+  }
 }

@@ -103,12 +103,12 @@ if ( ! function_exists( 'kedr_theme_get' ) ) :
     /**
      * Public template function to show post info
      */
-    function kedr_theme_get( $option ) {
+    function kedr_theme_get( $option, ...$args ) {
         $output = null;
         $method = 'get_' . $option;
 
         if ( method_exists( 'Kedr_Modules_Postsettings', $method ) ) {
-            return Kedr_Modules_Postsettings::$method();
+            return Kedr_Modules_Postsettings::$method( ...$args );
         }
 
         return null;

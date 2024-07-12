@@ -170,6 +170,32 @@
     }
   }
 
+  .frame-double__region {
+    @include region-label-base;
+  }
+
+  &.frame-double--ecomap {
+    .frame-double__wrapper {
+      background-color: var(--color-region-frames);
+      color: var(--color-light);
+    }
+
+    .frame-double__content-authors {
+      color: var(--color-muted);
+
+      a:hover,
+      a:focus {
+        color: var(--color-light);
+      }
+    }
+
+    .frame-double__content-category {
+      a {
+        color: var(--color-muted);
+      }
+    }
+  }
+
   @media screen and (max-width: 767px) {
     grid-template-columns: 1fr;
   }

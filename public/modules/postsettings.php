@@ -50,7 +50,7 @@ class Kedr_Modules_Postsettings {
         return $output;
     }
 
-    public static function get_regions( $output = array() ) {
+    public static function get_regions() {
         $args    = array( 'name' => Kedr_Modules_Regions::$taxonomy );
         $regions = get_terms(
             array(
@@ -61,17 +61,17 @@ class Kedr_Modules_Postsettings {
 
         return $regions;
     }
-    
+
     /**
      * Get taxonomy articles
      */
-    public static function get_taxonomy_articles( $output = array() ) {
+    public static function get_taxonomy_articles() {
         global $wp;
         if ( isset( $wp->query_vars['region'] ) ) {
             $tax_slug = $wp->query_vars['region'];
         } else {
-            $terms = get_terms(Kedr_Modules_Regions::$taxonomy);
-            $tax_slug = wp_list_pluck($terms,'slug');
+            $terms    = get_terms( Kedr_Modules_Regions::$taxonomy );
+            $tax_slug = wp_list_pluck( $terms, 'slug' );
         }
 
         $tax_query = array(
@@ -81,11 +81,40 @@ class Kedr_Modules_Postsettings {
         );
 
         $args = array(
-            'post_type'      => ['post'],
+            'post_type'      => array( 'post' ),
             'posts_per_page' => 6,
-            'tax_query'      => array($tax_query),
+            'tax_query'      => array( $tax_query ),
         );
 
         return new WP_Query( $args );
+    }
+
+    /**
+     * Should add region labels on posts or not
+     */
+    public static function get_add_region_label() {
+        $add_region_label = true;
+        global $wp;
+        if ( isset( $wp->query_vars['region'] ) ) {
+            $add_region_label = false;
+        }
+
+        return $add_region_label;
+    }
+
+    public static function get_post_row_size( $total_posts, $posts_left ) {
+        if ( $posts_left <= 0 ) {
+            return 0;
+        }
+        if ( $total_posts === $posts_left ) {
+            return 1;
+        }
+        if ( $posts_left <= 3 ) {
+            return $posts_left;
+        }
+        if ( $posts_left === 4 ) {
+            return 2;
+        }
+        return 3;
     }
 }
