@@ -10,7 +10,6 @@
         margin: 0 auto 0;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-gap: var(--space-outer);
 
         border-radius: var(--radius-frame);
         background-color: var(--color-region-light);
@@ -38,6 +37,7 @@
         border-top-right-radius: var(--radius-frame);
         border-bottom-right-radius: var(--radius-frame);
 
+        .wp-post-image,
         .region__image-thumbnail {
             display: block;
             width: 100%;
