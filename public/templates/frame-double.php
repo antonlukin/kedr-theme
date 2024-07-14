@@ -20,7 +20,7 @@
         ?>
 
         <?php
-        if ( $args['add_region_label'] ) {
+        if ( isset( $args['add_region_label'] ) && $args['add_region_label'] ) {
             kedr_theme_info(
                 'region',
                 '<p class="frame-double__region">',

@@ -23,13 +23,13 @@ get_header(); ?>
                 );
                 ?>
         </div>
-        <div class="region__image">
+        <figure class="region__image">
             <?php
             kedr_theme_info(
                 'region_thumbnail'
             );
             ?>
-        </div>
+        </figure>
     </div>
 
     <?php

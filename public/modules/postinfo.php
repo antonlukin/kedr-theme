@@ -158,31 +158,35 @@ class Kedr_Modules_Postinfo {
     }
 
     /**
-     * Get link to post region-about type
+     * Get link to the post of region-about type
      */
     public static function get_region_about_link( $output = '' ) {
-        global $wp;
-        if ( isset( $wp->query_vars['region'] ) ) {
-            $tax_slug = $wp->query_vars['region'];
-
-            $args = array(
-                'post_type'      => Kedr_Modules_Region_About::$post_type,
-                'posts_per_page' => 1,
-                'tax_query'      => array(
-                    array(
-                        'taxonomy' => Kedr_Modules_Regions::$taxonomy,
-                        'field'    => 'slug',
-                        'terms'    => $tax_slug,
-                    ),
-                ),
-            );
-
-            $query = new WP_Query( $args );
-            if ( ! empty( $query->posts ) ) {
-                return get_permalink( $query->posts[0] );
-            }
+        $post = self::resolve_first_taxonomy_post();
+        if ( ! empty( $post ) ) {
+            return get_permalink( $post );
         }
+
         return $output;
+    }
+
+    /**
+     * Get image thumbnail to the post of region-about type
+     */
+    public static function get_region_thumbnail() {
+        $post = self::resolve_first_taxonomy_post();
+        if ( ! empty( $post ) ) {
+                return get_the_post_thumbnail(
+                    $post,
+                    'thumbnail-size',
+                    array(
+                        'class'   => 'region__image-thumbnail',
+                        'loading' => 'lazy',
+                    )
+                );
+        }
+        return '<img class="region__image-thumbnail" src=' .
+                esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' ) .
+                '>';
     }
 
     /**
@@ -274,8 +278,10 @@ class Kedr_Modules_Postinfo {
         return null;
     }
 
-
-    public static function get_region_thumbnail() {
+    /**
+     * Get the post of type 'region-about'
+     */
+    private static function resolve_first_taxonomy_post() {
         global $wp;
         if ( isset( $wp->query_vars['region'] ) ) {
             $tax_slug = $wp->query_vars['region'];
@@ -294,11 +300,9 @@ class Kedr_Modules_Postinfo {
 
             $query = new WP_Query( $args );
             if ( ! empty( $query->posts ) ) {
-                return get_the_post_thumbnail( $query->posts[0] );
+                return $query->posts[0];
             }
         }
-        return '<img class="region__image-thumbnail" src=' .
-                esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' ) .
-                '>';
+        return null;
     }
 }
