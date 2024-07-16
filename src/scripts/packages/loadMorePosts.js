@@ -40,7 +40,7 @@ function loadMorePosts( navigate ) {
 	const url = new URL( button.getAttribute( 'href' ) );
 
 	// Find category slug and page
-	const matches = url.pathname.match( /^\/(.+?)\/(.+?)\/page\/(\d+)/ );
+	const matches = url.pathname.match( /^\/(.+?)\/(.+?)\/(?:page\/(\d+))?/ );
 
 	if ( matches === null ) {
 		return;
@@ -48,11 +48,16 @@ function loadMorePosts( navigate ) {
 
 	let [ , archive, slug, page ] = matches;
 
+	// If no page set, check the data-page attribute
+	let isDataAttr = false;
+	if ( page === undefined ) {
+		isDataAttr = true;
+		page = button.getAttribute( 'data-page' );
+	}
 	page = parseInt( page );
 
 	button.addEventListener( 'click', async ( e ) => {
 		e.preventDefault();
-
 		button.classList.add( 'button--preload' );
 
 		try {
@@ -68,12 +73,14 @@ function loadMorePosts( navigate ) {
 				return button.remove();
 			}
 
-			window.history.pushState( {}, '', url );
-
 			page = page + 1;
-			url.pathname = `/${ archive }/${ slug }/page/${ page }`;
-
-			button.setAttribute( 'href', url.href );
+			if ( isDataAttr ) {
+				button.setAttribute( 'data-page', page );
+			} else {
+				window.history.pushState( {}, '', url );
+				url.pathname = `/${ archive }/${ slug }/page/${ page }`;
+				button.setAttribute( 'href', url.href );
+			}
 		} catch ( error ) {
 			return document.location.href = url.href;
 		}
