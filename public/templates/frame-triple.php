@@ -18,8 +18,11 @@
             )
         );
         ?>
+    </figure>
 
+    <div class="frame-triple__content">
         <?php
+
         if ( isset( $args['add_region_label'] ) && $args['add_region_label'] ) {
             kedr_theme_info(
                 'region',
@@ -27,11 +30,7 @@
                 '</p>'
             );
         }
-        ?>
-    </figure>
 
-    <div class="frame-triple__content">
-        <?php
         kedr_theme_info(
             'category',
             '<div class="frame-triple__content-category">',

@@ -46,7 +46,7 @@ get_header(); ?>
                 </div>
             <?php endif; ?>
         </div>
-        <div class="region__image region__image--desktop">
+        <div class="region__image">
             <img class="region__image-thumbnail" src=
                 <?php
                 echo esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' );

@@ -251,9 +251,7 @@
   }
 
   .header__ecomap {
-    display: flex;
-    align-items: center;
-    width: 57px;
+    @include center-svg;
     height: 2rem;
     gap: .75rem;
 
@@ -263,6 +261,7 @@
       align-items: center;
       width: auto;
       height: 100%;
+      width: 57px;
     }
 
     .header__ecomap-label {
@@ -280,7 +279,9 @@
     margin-right: calc(var(--space-outer) * 2);
 
     .header__region-select-button {
+      color: inherit;
       @include center-svg;
+      gap: 4px;
     }
 
     .header__region-select-icon {
