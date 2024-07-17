@@ -80,7 +80,7 @@ class Kedr_Modules_Loadmore {
                 $slug = null;
             }
             $query    = self::get_ecomap_posts( $slug, $page );
-            $template = array( 'triple', null );
+            $template = array( 'triple', array( 'add_region_label' => ! isset( $slug ) ) );
             return self::show_posts( $query, $template, $page );
         }
 

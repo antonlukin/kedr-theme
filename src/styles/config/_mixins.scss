@@ -113,6 +113,21 @@
   }
 }
 
+@mixin underline_link {
+  a {
+    border-bottom: solid 0.0625rem var(--color-primary);
+    transition: border-bottom 0.25s;
+
+    &:hover {
+      border-bottom-color: transparent;
+    }
+
+    @media screen and (max-width: 767px) {
+      border-width: 0.0625rem;
+    }
+  }
+}
+
 @mixin center-svg {
   display: flex;
   align-items: center;

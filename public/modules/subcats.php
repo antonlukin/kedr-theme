@@ -19,7 +19,7 @@ class Kedr_Modules_Subcats {
      * @access  public
      * @var     array
      */
-    public static $allowed_taxonomies = array( 'category', 'regions' );
+    public static $allowed_taxonomies = array( 'category', 'region' );
 
     /**
      * Unique meta to videos options

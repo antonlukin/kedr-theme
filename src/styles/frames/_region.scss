@@ -50,6 +50,8 @@
     }
 
     .region__content {
+        @include underline_link;
+
         position: relative;
         display: flex;
         flex-flow: column nowrap;
