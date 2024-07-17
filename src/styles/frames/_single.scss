@@ -35,7 +35,6 @@
 
   .frame-single__image {
     z-index: -1;
-    order: -1;
 
     .frame-single__image-thumbnail {
       @include frame__image-thumbnail;
@@ -46,7 +45,7 @@
     }
 
     @media screen and (max-width: 767px) {
-      // order: 1;
+      order: -1;
     }
 
     @include frame__image;
@@ -147,15 +146,6 @@
     .frame-single__wrapper {
       background-color: var(--color-region-frames);
       color: var(--color-light);
-
-
-      @media screen and (min-width: 1024px) and (max-width: 767px) {
-        grid-template-columns: 1fr 32.75rem;
-
-        .frame-single__image {
-          order: -1;
-        }
-      }
     }
 
     .frame-single__content-category {
