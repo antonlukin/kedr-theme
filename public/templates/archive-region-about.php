@@ -9,7 +9,7 @@
 get_header(); ?>
 
 
-<section class="content region">
+<div class="content region">
     <div class="region__double">
         <div class="region__content">
             <h1 class="caption__title region__content-title">
@@ -423,7 +423,7 @@ get_header(); ?>
     <?php
     get_template_part( 'templates/frame', 'region-articles' );
     ?>
-</section>
+</div>
 
 
 <script type="text/javascript">

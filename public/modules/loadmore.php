@@ -71,18 +71,31 @@ class Kedr_Modules_Loadmore {
         $archive = $request->get_param( 'archive' );
 
         if ( $archive === 'search' ) {
-            return self::show_search_posts( $slug, $page );
+            $query    = self::get_search_posts( $slug, $page );
+            $template = array( 'search', null );
+            return self::show_posts( $query, $template, $page );
+        }
+        if ( $archive === 'region' ) {
+            if ( $slug === 'all' ) {
+                $slug = null;
+            }
+            $query    = self::get_ecomap_posts( $slug, $page );
+            $template = array( 'triple', null );
+            return self::show_posts( $query, $template, $page );
         }
 
         if ( taxonomy_exists( $archive ) ) {
-            return self::show_taxonomy_posts( $archive, $slug, $page );
+            $query    = self::get_taxonomy_posts( $archive, $slug, $page );
+            $template = self::get_taxonomy_template( $archive, $slug );
+
+            return self::show_posts( $query, $template, $page );
         }
     }
 
     /**
-     * Show posts only for search page
+     * Get posts only for search page
      */
-    private static function show_search_posts( $slug, $page ) {
+    private static function get_search_posts( $slug, $page ) {
         $query = new WP_Query(
             array(
                 'paged'               => $page,
@@ -91,40 +104,27 @@ class Kedr_Modules_Loadmore {
                 'ignore_sticky_posts' => true,
             )
         );
-
-        if ( ! $query->have_posts() ) {
-            return new WP_REST_Response( array( 'message' => esc_html__( 'Ничего не найдено', 'kedr-theme' ) ), 400 );
-        }
-
-        ob_start();
-
-        while ( $query->have_posts() ) {
-            $query->the_post();
-            get_template_part( 'templates/frame', 'search' );
-        }
-
-        wp_reset_postdata();
-
-        $results = array(
-            'output' => ob_get_clean(),
-            'pages'  => array(
-                'current' => $page,
-                'total'   => $query->max_num_pages,
-            ),
-        );
-
-        return new WP_REST_Response( $results, 200 );
+        return $query;
     }
 
     /**
-     * Show posts only for taxonomy archives
+     * Get posts only for ecomap pages
      */
-    private static function show_taxonomy_posts( $taxonomy, $slug, $page ) {
+    private static function get_ecomap_posts( $slug, $page ) {
+        $query = kedr_theme_get( 'taxonomy_articles', $page, $slug );
+
+        return $query;
+    }
+
+    /**
+     * Get posts only for taxonomy archives
+     */
+    private static function get_taxonomy_posts( $taxonomy, $slug, $page ) {
         $query = new WP_Query(
             array(
-                'paged'               => $page,
-                'post_type'           => 'post',
-                'post_status'         => 'publish',
+                'paged'       => $page,
+                'post_type'   => 'post',
+                'post_status' => 'publish',
                 'tax_query'           => array( // phpcs:ignore
                     array(
                         'taxonomy' => $taxonomy,
@@ -135,11 +135,18 @@ class Kedr_Modules_Loadmore {
             )
         );
 
+        return $query;
+    }
+
+    /**
+     * Show posts
+     */
+    private static function show_posts( $query, $template, $page ) {
         if ( ! $query->have_posts() ) {
             return new WP_REST_Response( array( 'message' => esc_html__( 'Ничего не найдено', 'kedr-theme' ) ), 400 );
         }
 
-        list( $partial, $options ) = self::get_taxonomy_template( $taxonomy, $slug );
+        list( $partial, $options ) = $template;
 
         ob_start();
 
