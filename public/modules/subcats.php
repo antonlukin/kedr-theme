@@ -12,6 +12,15 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 class Kedr_Modules_Subcats {
+
+    /**
+     * Taxonomies, that have subcats
+     *
+     * @access  public
+     * @var     array
+     */
+    public static $allowed_taxonomies = array( 'category', 'regions' );
+
     /**
      * Unique meta to videos options
      *
@@ -51,6 +60,10 @@ class Kedr_Modules_Subcats {
     public static function add_options_fields() {
         add_action( 'category_edit_form_fields', array( __CLASS__, 'print_options_row' ), 9 );
         add_action( 'edited_category', array( __CLASS__, 'save_options_meta' ) );
+
+        add_action( 'region_edit_form_fields', array( __CLASS__, 'print_options_row' ), 9 );
+        add_action( 'edited_region', array( __CLASS__, 'save_options_meta' ) );
+
         add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_options_assets' ) );
     }
 
@@ -73,7 +86,7 @@ class Kedr_Modules_Subcats {
     public static function enqueue_options_assets( $hook ) {
         $screen = get_current_screen();
 
-        if ( $hook !== 'term.php' || $screen->taxonomy !== 'category' ) {
+        if ( $hook !== 'term.php' || ! in_array( $screen->taxonomy, self::$allowed_taxonomies, true ) ) {
             return;
         }
 
@@ -136,7 +149,7 @@ class Kedr_Modules_Subcats {
     /**
      * Get custom subcats cover
      */
-    public static function get_image( $term_id, $output = '' ) {
+    public static function get_image( $term_id, $size = 'card', $output = '' ) {
         if ( empty( $term_id ) ) {
             return null;
         }
@@ -144,7 +157,7 @@ class Kedr_Modules_Subcats {
         $options = (array) get_term_meta( $term_id, self::$term_meta, true );
 
         if ( ! empty( $options['attachment'] ) ) {
-            $output = wp_get_attachment_image_url( $options['attachment'], 'card' );
+            $output = wp_get_attachment_image_url( $options['attachment'], $size );
         }
 
         return $output;

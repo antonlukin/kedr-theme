@@ -173,19 +173,14 @@ class Kedr_Modules_Postinfo {
      * Get image thumbnail to the post of region-about type
      */
     public static function get_region_thumbnail() {
-        $post = self::resolve_first_taxonomy_post();
-        if ( ! empty( $post ) ) {
-                return get_the_post_thumbnail(
-                    $post,
-                    'thumbnail-size',
-                    array(
-                        'class'   => 'region__image-thumbnail',
-                        'loading' => 'lazy',
-                    )
-                );
+        $image = Kedr_Modules_Subcats::get_image( get_queried_object()->term_id, 'full' );
+
+        if ( empty( $image ) ) {
+            $image = esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' );
         }
+
         return '<img class="region__image-thumbnail" src=' .
-                esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' ) .
+                $image .
                 '>';
     }
 
