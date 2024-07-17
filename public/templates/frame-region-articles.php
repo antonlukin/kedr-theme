@@ -16,7 +16,7 @@
             }
 
             $frame_type = $frame_types[ $frame_size - 1 ];
-            echo '<div class="frame-' . $frame_type . ' frame-' . $frame_type . '--ecomap">';
+            echo '<div class="frame-' . $frame_type . ' frame-' . $frame_type . '--ecomap">'; // phpcs:ignore
             for ( $i = 0; $i < $frame_size; $i++ ) {
                 if ( ! $query->have_posts() ) {
                     break;

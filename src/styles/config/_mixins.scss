@@ -116,27 +116,20 @@
 @mixin center-svg {
   display: flex;
   align-items: center;
-  gap: 4px;
 }
 
-@mixin region-label-base {
+@mixin frame__region {
   display: inline-flex;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-
-  padding: 0.25rem var(--space-outer);
+  padding: 0;
   text-transform: uppercase;
 
-  font-size: 0.625rem;
-  font-weight: 600;
-  line-height: 0.875rem;
+  font-size: 0.91375rem;
+  line-height: 1rem;
+  font-weight: 700;
   letter-spacing: 0.05rem;
 
-  color: var(--color-light);
-  background-color: var(--color-primary);
+  color: var(--color-region-accent);
 
   border-bottom: 0;
   border-radius: var(--radius-frame) 0 var(--radius-frame) 0;
@@ -154,6 +147,18 @@
   }
 }
 
+@mixin frame__content {
+  display: flex;
+  position: relative;
+
+  flex-flow: column nowrap;
+  align-items: flex-start;
+
+  width: 100%;
+  height: 100%;
+  padding: var(--space-outer);
+}
+
 @mixin frame__image {
   display: block;
   position: relative;
@@ -164,10 +169,6 @@
   overflow: hidden;
 
   transition: filter 0.25s;
-
-  .frame-triple__region {
-    @include region-label-base;
-  }
 
   @media screen and (max-width: 767px) {
     padding-top: 50%;

@@ -71,7 +71,7 @@
   }
 
   .frame-ecomap__region {
-    @include region-label-base;
+    @include frame__region;
   }
 
   .frame-ecomap__content {

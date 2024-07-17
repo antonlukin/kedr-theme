@@ -32,6 +32,12 @@ get_header(); ?>
         </figure>
     </div>
 
+    <div class="region__map">
+        <?php
+        get_template_part( 'templates/frame', 'map' );
+        ?>
+    </div>
+
     <?php
     get_template_part( 'templates/frame', 'region-articles' );
     ?>
