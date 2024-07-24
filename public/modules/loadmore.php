@@ -86,8 +86,9 @@ class Kedr_Modules_Loadmore {
         $query = new WP_Query(
             array(
                 'paged'               => $page,
+                'post_type'           => 'post',
                 's'                   => $slug,
-                'post_status'         => 'any',
+                'post_status'         => 'publish',
                 'ignore_sticky_posts' => true,
             )
         );
@@ -122,10 +123,10 @@ class Kedr_Modules_Loadmore {
     private static function show_taxonomy_posts( $taxonomy, $slug, $page ) {
         $query = new WP_Query(
             array(
-                'paged'               => $page,
-                'post_type'           => 'post',
-                'post_status'         => 'publish',
-                'tax_query'           => array( // phpcs:ignore
+                'paged'       => $page,
+                'post_type'   => 'post',
+                'post_status' => 'publish',
+                'tax_query'   => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
                     array(
                         'taxonomy' => $taxonomy,
                         'terms'    => $slug,
