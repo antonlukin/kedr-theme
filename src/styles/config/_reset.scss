@@ -184,6 +184,10 @@ section {
   display: block;
 }
 
+script {
+  display: none !important;
+}
+
 .screen-reader-text {
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px);
