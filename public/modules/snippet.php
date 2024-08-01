@@ -47,13 +47,14 @@ class Kedr_Modules_Snippet {
      * Generate poster on post save
      */
     public static function generate_poster( $post_id ) {
+        $category = null;
+
+        // Get categories list if exist.
         $categories = get_the_category( $post_id );
 
-        if ( empty( $categories ) ) {
-            return;
+        if ( ! empty( $categories ) ) {
+            $category = $categories[0]->slug;
         }
-
-        $category = $categories[0];
 
         if ( ! class_exists( 'PosterEditor\PosterEditor' ) ) {
             require_once get_template_directory() . '/external/poster-editor.php';
@@ -94,7 +95,7 @@ class Kedr_Modules_Snippet {
      * Get proper template for this post
      */
     public static function include_template( $options, $post_id, $category ) {
-        if ( $category->slug === 'news' ) {
+        if ( $category === 'news' ) {
             return include get_template_directory() . '/includes/posters/snippet-news.php';
         }
 
