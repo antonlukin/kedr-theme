@@ -142,23 +142,12 @@
     }
   }
 
-  &.frame-single--ecomap {
-    .frame-single__wrapper {
-      background-color: var(--color-region-frames);
-      color: var(--color-light);
-    }
-
-    .frame-single__content-category {
-      display: none;
-    }
-
-    @media screen and (max-width: 767px) {
-      width: 100%;
-      max-width: 100%;
-    }
-  }
-
   .frame-single__region {
     @include frame__region;
   }
+
+  &.frame-single--ecomap {
+    @include frame--ecomap;
+  }
+
 }

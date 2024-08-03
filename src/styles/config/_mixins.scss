@@ -210,3 +210,30 @@
 
   -webkit-backface-visibility: hidden;
 }
+
+@mixin frame--ecomap {
+
+  .frame-single__wrapper,
+  .frame-double__wrapper,
+  .frame-triple__wrapper {
+    background-color: var(--color-region-frames);
+    color: var(--color-light);
+  }
+
+  .frame-single__content-authors,
+  .frame-triple__content-authors,
+  .frame-double__content-authors {
+    color: var(--color-muted);
+
+    a:hover,
+    a:focus {
+      color: var(--color-light);
+    }
+  }
+
+  .frame-single__content-category,
+  .frame-double__content-category,
+  .frame-triple__content-category {
+    display: none;
+  }
+}

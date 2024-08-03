@@ -125,32 +125,11 @@
     @include frame__region;
   }
 
-  &.frame-double--ecomap {
-    .frame-double__wrapper {
-      background-color: var(--color-region-frames);
-      color: var(--color-light);
-    }
-
-    .frame-double__content-authors {
-      color: var(--color-muted);
-
-      a:hover,
-      a:focus {
-        color: var(--color-light);
-      }
-    }
-
-    .frame-double__content-category {
-      display: none;
-    }
-
-    @media screen and (max-width: 767px) {
-      width: 100%;
-      max-width: 100%;
-    }
-  }
-
   @media screen and (max-width: 767px) {
     grid-template-columns: 1fr;
+  }
+
+  &.frame-double--ecomap {
+    @include frame--ecomap;
   }
 }
