@@ -10,17 +10,19 @@ get_header(); ?>
 
 
 <div class="content region">
-    <div class="region__double">
-        <div class="region__content">
-            <h1 class="caption__title region__content-title">
+    <div class="region__main-wrapper">
+        <div class="region__main-background"> </div>
+        <div class="region__main">
+            <div class="region__main-subtitle">
+                <?php
+                echo esc_html__( 'Спецпроект «Кедр.медиа»', 'kedr-theme' );
+                ?>
+            </div>
+            <div class="region__main-title">
                 <?php
                 echo esc_html__( 'Экологическая карта России', 'kedr-theme' );
                 ?>
-            </h1>
-
-            <?php
-            echo wp_kses_post( get_theme_mod( 'extra-ecomap-description' ) );
-            ?>
+            </div>
 
             <?php
             $regions = kedr_theme_get( 'regions' );
@@ -47,12 +49,14 @@ get_header(); ?>
             <?php endif; ?>
         </div>
 
-        <div class="region__image">
-            <img class="region__image-thumbnail" src=
-                <?php
-                echo esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' );
-                ?>
-            >
+
+        <div class="region__main-arrow">
+            <?php
+            printf(
+                '<svg class="region__main-arrow-icon"><use xlink:href="%s"></use></svg>',
+                esc_url( get_template_directory_uri() . '/assets/images/icons-sprite.svg#kedr-icon-chevron' )
+            );
+            ?>
         </div>
     </div>
 

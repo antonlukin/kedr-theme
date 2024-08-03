@@ -1,6 +1,75 @@
 .region {
-    background-color: var(--color-region-dark);
+    background-color: var(--color-region-light);
     padding-bottom: 2em;
+
+    .region__main-wrapper {
+        width: 100%;
+        display: grid;
+        grid-template-areas: "area";
+        max-height: 100vh;
+    }
+
+    .region__main-background {
+        grid-area: area;
+        background-image: linear-gradient(to bottom, transparent 0 70%, 80%, var(--color-region-light)), url('../assets/images/ecomap-cover.png');
+
+        background-size: cover;
+        background-position: top;
+        width: 100%;
+        height: 100%;
+    }
+
+    .region__main {
+        grid-area: area;
+
+        justify-self: center;
+        @include container;
+        max-width: 1000px;
+
+        margin: var(--space-outer) auto 0;
+
+        padding-bottom: calc(50vh - 8rem);
+        padding-top: calc(50vh - 8rem);
+    }
+
+    .region__main-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.125;
+        padding-bottom: 1.5rem;
+
+        color: var(--color-region-accent);
+    }
+
+    .region__main-subtitle {
+        font-size: 1rem;
+        line-height: 2.5rem;
+        line-height: 1.125;
+    }
+
+    .region__main-arrow {
+        grid-area: area;
+
+        align-self: end;
+
+        margin: var(--space-outer) auto 0;
+    }
+
+    .region__main-arrow-icon {
+        height: 1rem;
+        fill: var(--color-region-dark);
+
+        height: 2rem;
+        margin: 0 auto 0;
+        width: auto;
+        display: block;
+
+        transition: all 1s ease;
+
+        &:hover {
+            fill: var(--color-region-accent);
+        }
+    }
 
     .region__double {
         @include container;
@@ -86,7 +155,7 @@
         @include container;
         max-width: 1000px;
 
-        background-color: var(--color-region-dark);
+        // background-color: var(--color-region-dark);
 
         margin: var(--space-outer) auto 0;
         padding: var(--space-outer);
