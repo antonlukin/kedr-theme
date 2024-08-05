@@ -52,7 +52,7 @@
 
         align-self: end;
 
-        margin: var(--space-outer) auto 0;
+        margin: 0 auto var(--space-outer);
     }
 
     .region__main-arrow-icon {
@@ -136,6 +136,7 @@
         font-weight: 700;
         line-height: 1;
         color: var(--color-region-accent);
+        margin-bottom: 0.5rem;
     }
 
     .region__content-description {

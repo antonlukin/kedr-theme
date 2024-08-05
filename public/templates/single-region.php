@@ -12,16 +12,14 @@ get_header(); ?>
     <div class="region__double">
         <div class="region__content">
             <?php the_archive_title(); ?>
-            <div>
-                <?php the_archive_description(); ?>
-            </div>
-                <?php
-                kedr_theme_info(
-                    'region_about_link',
-                    '<a class="button region__content-button" type="button" href="',
-                    '">О регионе</a>'
-                );
-                ?>
+            <?php the_archive_description(); ?>
+            <?php
+            kedr_theme_info(
+                'region_about_link',
+                '<a class="button region__content-button" type="button" href="',
+                '">О регионе</a>'
+            );
+            ?>
         </div>
         <figure class="region__image">
             <?php
