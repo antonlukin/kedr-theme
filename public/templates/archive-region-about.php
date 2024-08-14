@@ -66,9 +66,11 @@ get_header(); ?>
         ?>
     </div>
 
-    <?php
-    get_template_part( 'templates/frame', 'region-articles' );
-    ?>
+    <section class="region__articles">
+        <?php
+        get_template_part( 'templates/frame', 'region-articles' );
+        ?>
+    </section>
 </div>
 
 <?php

@@ -30,15 +30,16 @@ get_header(); ?>
         </figure>
     </div>
 
-    <div class="region__map">
-        <?php
-        get_template_part( 'templates/frame', 'map' );
-        ?>
+    <div class="region__ebala">
+        НАСТОЯЩИЙ МАТЕРИАЛ (ИНФОРМАЦИЯ) ПРОИЗВЕДЕН И РАСПРОСТРАНЕН ИНОСТРАННЫМ АГЕНТОМ «КЕДР.МЕДИА» ЛИБО КАСАЕТСЯ ДЕЯТЕЛЬНОСТИ ИНОСТРАННОГО АГЕНТА «КЕДР.МЕДИА». 18+
     </div>
 
-    <?php
-    get_template_part( 'templates/frame', 'region-articles' );
-    ?>
+    <section class="region__articles">
+        <h2 class="region__articles-title"> Публикации о регионе </h2>
+        <?php
+        get_template_part( 'templates/frame', 'region-articles' );
+        ?>
+    </section>
 </section>
 
 <?php get_footer(); ?>
