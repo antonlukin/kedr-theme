@@ -11,8 +11,10 @@ get_header(); ?>
 <section class="content region">
     <div class="region__double">
         <div class="region__content">
-            <?php the_archive_title(); ?>
-            <?php the_archive_description(); ?>
+            <div class="region__description">
+                <?php the_archive_title(); ?>
+                <?php the_archive_description(); ?>
+            </div>
             <?php
             kedr_theme_info(
                 'region_about_link',
