@@ -164,12 +164,6 @@
         @media screen and (max-width: 767px) {
             padding-left: var(--space-outer);
         }
-
-        @media screen and (max-width: 1023px) {
-            a {
-                margin-top: calc(var(--space-outer) - 0.75rem);
-            }
-        }
     }
 
     .region__content-title {
