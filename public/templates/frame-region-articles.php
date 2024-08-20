@@ -36,7 +36,7 @@ if ( ! isset( $region_tax ) ) {
 if ( $query->max_num_pages > 1 ) :
     $navigate_url = home_url( '/region/' . $region_tax . '/' );
     ?> 
-            <nav class="navigate navigate--more navigate--small">
+            <nav class="navigate navigate--more">
                 <a href="<?php echo $navigate_url; ?>" class="navigate__button button" data-page="2">
                 <?php
                 echo esc_html__( 'Показать еще', 'kedr-theme' );
