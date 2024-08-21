@@ -2,11 +2,11 @@
     <div class="header__inner">
         <a class="header__ecomap" href="<?php echo esc_url( home_url( '/regions' ) ); ?>" aria-label="<?php esc_attr_e( 'Главная страница', 'kedr-theme' ); ?>">
             
-            <img class="header__ecomap-icon" src=
+            <img class="header__ecomap-icon" src="
                 <?php
                 echo esc_url( get_template_directory_uri() . '/assets/images/ecomap-logo.png' );
                 ?>
-            >
+            ">
 
             <div class="header__ecomap-label">
                 <?php
@@ -42,11 +42,11 @@
         
         <a class="header__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'Главная страница', 'kedr-theme' ); ?>">
             
-            <img class="header__kedr-icon" src=
-                    <?php
-                    echo esc_url( get_template_directory_uri() . '/assets/images/logo-ecomap.png' );
-                    ?>
-                >
+            <img class="header__kedr-icon" src="
+                <?php
+                echo esc_url( get_template_directory_uri() . '/assets/images/logo-ecomap.png' );
+                ?>
+            ">
         </a>
 
     </div>
