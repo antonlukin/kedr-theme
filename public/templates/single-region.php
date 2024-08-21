@@ -37,9 +37,9 @@ get_header(); ?>
     </div>
 
     <section class="region__articles">
-        <h2 class="region__articles-title"> Публикации о регионе </h2>
         <?php
-        get_template_part( 'templates/frame', 'region-articles' );
+        $options = array( 'is_single_region' => true );
+        get_template_part( 'templates/frame', 'region-articles', $options );
         ?>
     </section>
 </section>
