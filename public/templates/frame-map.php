@@ -1,3 +1,15 @@
+<?php
+
+wp_localize_script(
+    'kedr-theme',
+    'ecomapData',
+    array(
+        'regions' => kedr_theme_get( 'regions' ),
+    )
+);
+
+?>
+
 <svg class="w-full" viewBox="0 0 1165 629" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="russia_plate_map">
         <!--        <path class="plate" id="zaporozhye"-->
@@ -359,10 +371,3 @@
     </g>
 </svg>
 <div id="plate-tooltip" class="plate-tooltip"></div>
-
-<script type="text/javascript">
-window.onload = function() {
-    var regions = <?php echo wp_json_encode( kedr_theme_get( 'regions' ) ); ?>;
-    window.setupRegionsMap(regions);
-}
-</script>

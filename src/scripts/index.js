@@ -36,4 +36,8 @@ handleRequests( document.querySelectorAll( '[data-requests]' ) );
 // Dropdown menus
 initDropdownMenu( );
 
-window.setupRegionsMap = setupRegionsMap;
+document.addEventListener( 'DOMContentLoaded', function() {
+	if ( typeof ecomapData !== 'undefined' && ecomapData.regions ) {
+		setupRegionsMap( ecomapData.regions );
+	}
+} );
