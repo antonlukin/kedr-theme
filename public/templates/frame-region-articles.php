@@ -1,11 +1,21 @@
 <?php
 
+$is_single_region = isset( $args['is_single_region'] ) and $args['is_single_region'];
+
 $query       = kedr_theme_get( 'taxonomy_articles' );
 $region_tax  = kedr_theme_get( 'region_taxonomy' );
 $frame_args  = array( 'add_region_label' => ! isset( $region_tax ) );
 $frame_types = array( 'single', 'double', 'triple' );
 
 if ( $query->have_posts() ) {
+
+    if ( $is_single_region ) :
+        ?>
+        <h2 class="region__articles-title"> Публикации о регионе </h2>
+        <?php
+    endif;
+
+
     $total_posts = $query->post_count;
 
     for ( $count = 0, $frame_size = 0; $count < $total_posts; $count += $frame_size ) {
@@ -35,7 +45,8 @@ if ( ! isset( $region_tax ) ) {
 
 if ( $query->max_num_pages > 1 ) :
     $navigate_url = home_url( '/region/' . $region_tax . '/' );
-    ?> 
+    ?>
+     
             <nav class="navigate navigate--more">
                 <a href="<?php echo $navigate_url; ?>" class="navigate__button button" data-page="2">
                 <?php
