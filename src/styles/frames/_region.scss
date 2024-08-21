@@ -1,63 +1,189 @@
 .region {
-    background-color: var(--color-region-dark);
+    background-color: var(--color-region-light);
     padding-bottom: 2em;
 
-    .region__wrapper {
+    .region__main-wrapper {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: var(--space-outer);
-        position: relative;
-        background-color: var(--color-region-light);
+        grid-template-areas: "area";
+        max-height: 100vh;
+
+        // Depends of header height
+        height: calc(100vh - 5rem);
+
+        @media screen and (max-width: 1199px) {
+            height: calc(100vh - 3.75rem);
+        }
     }
 
-    .region__image {
-        display: block;
-        height: 100%;
-        width: auto;
-        overflow: hidden;
+    .region__main-background {
+        grid-area: area;
+        background-image: linear-gradient(to bottom, transparent 0 0%, var(--color-region-light)), url('../assets/images/ecomap-cover.png');
 
-        .region__image-thumbnail {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            -webkit-backface-visibility: hidden;
-        }
+        background-size: cover;
+        background-position: top;
+        width: 100%;
+        height: 100%;
+    }
+
+    .region__main {
+        grid-area: area;
+
+        justify-self: center;
+        @include container;
+        max-width: 1000px;
+
+        margin: var(--space-outer) auto 0;
+
+        padding-top: calc(50vh - 8rem);
+    }
+
+    .region__main-title {
+        font-size: 3.25rem;
+        font-weight: 700;
+        line-height: 1.125;
+        padding-bottom: 1.5rem;
+
+        color: var(--color-region-accent);
+
 
         @media screen and (max-width: 1023px) {
-            padding-top: 62.5%;
+            font-size: 2.5rem;
         }
 
         @media screen and (max-width: 767px) {
-            padding-top: 50%;
-        }
-
-        @media screen and (max-width: 479px) {
-            padding-top: 62.5%;
+            font-size: 2rem;
+            line-height: 1.125;
         }
     }
 
-    .region__content {
+    .region__main-subtitle {
+        font-weight: 400;
+        line-height: 1.375;
+        font-size: 1.25rem;
+
+        @media screen and (max-width: 1023px) {
+            font-size: 1rem;
+        }
+    }
+
+    .region__main-arrow {
+        grid-area: area;
+
+        align-self: end;
+
+        margin: 0 auto var(--space-outer);
+
+        @media screen and (max-width: 479px) {
+            display: none;
+        }
+    }
+
+    .region__main-arrow-icon {
+        height: 1rem;
+        fill: var(--color-region-dark);
+
+        height: 2rem;
+        margin: 0 auto 0;
+        width: auto;
+        display: block;
+
+        transition: all 1s ease;
+
+        &:hover {
+            fill: var(--color-region-accent);
+        }
+    }
+
+    .region__double {
+        @include container;
+
+        position: relative;
+        min-height: 25rem;
+        margin: 0 auto 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        border-bottom-left-radius: var(--radius-frame);
+        border-bottom-right-radius: var(--radius-frame);
+        background-color: var(--color-region-light);
+
+        @media screen and (max-width: 1023px) {
+            grid-template-columns: 1fr;
+
+            .region__image {
+                order: -1;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            // full size on mobile
+            width: 100%;
+            max-width: 100%;
+            border-radius: 0;
+        }
+
+    }
+
+    .region__image {
+        @include frame__image;
+
+        // Bad design. Can't set overflow:hidden on region__double because of dropdown
+        border-bottom-right-radius: var(--radius-frame);
+        transition: filter 0.25s;
+
+        .region__image-thumbnail {
+            @include frame__image-thumbnail;
+        }
+
+        @media screen and (max-width: 1023px) {
+            order: -1;
+            border-radius: 0;
+
+            .region__image--desktop {
+                display: none;
+            }
+        }
+    }
+
+    .region__description {
+        @include underline_link;
+
         position: relative;
         display: flex;
         flex-flow: column nowrap;
         align-items: flex-start;
-        gap: 12px;
-        width: 100%;
-        height: 100%;
-        padding-top: 1.75rem;
-        padding-left: calc(var(--space-outer) * 2);
+        gap: .75rem;
+
+        margin-bottom: 1.25rem;
     }
+
+    .region__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        padding: calc(var(--space-outer)*1.4) var(--space-outer) 0 0;
+        height: 100%;
+
+        a {
+            margin-top: auto;
+        }
+
+        @media screen and (max-width: 767px) {
+            padding-left: var(--space-outer);
+        }
+    }
+
+
 
     .region__content-title {
         display: block;
         font-size: 2rem;
         font-weight: 700;
         line-height: 1;
-        padding-bottom: 0.75rem;
         color: var(--color-region-accent);
+        margin-bottom: 0.5rem;
     }
 
     .region__content-description {
@@ -65,12 +191,77 @@
     }
 
     .region__content-button {
+        @include center-svg;
+
+        gap: 4px;
         padding-left: 2rem;
         padding-right: 2rem;
-        margin-bottom: 1.5rem;
+
+
     }
 
-    @media screen and (max-width: 767px) {
-        grid-template-columns: 1fr;
+    .region__map {
+        @include container;
+        max-width: 1000px;
+
+        // background-color: var(--color-region-dark);
+
+        margin: var(--space-outer) auto 0;
+        padding: var(--space-outer);
+
+        @media screen and (max-width: 767px) {
+            display: none;
+        }
     }
+
+    .region__articles {
+        padding-top: var(--space-outer);
+    }
+
+    .region__articles-title {
+        @include container;
+        display: block;
+        margin: auto;
+        padding-top: var(--space-outer);
+
+        border-top: solid 1px var(--color-primary);
+
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--color-primary);
+
+        @media screen and (max-width: 767px) {
+            font-size: 1.5rem;
+        }
+
+        @media screen and (max-width: 479px) {
+            font-size: 1.375rem;
+            line-height: 1.375;
+        }
+
+    }
+
+    .region__ebala {
+        display: block;
+        overflow: hidden;
+
+        @include container;
+        margin: var(--space-outer) auto;
+
+        padding: 2rem;
+        font-family: var(--font-regular);
+        font-size: 1.125rem;
+
+        color: var(--color-dark);
+        background-color: var(--color-light);
+
+        border-radius: 0.3125rem;
+
+
+        @media screen and (max-width: 767px) {
+            padding: 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
 }

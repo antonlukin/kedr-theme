@@ -71,6 +71,8 @@
     font-size: 0.875rem;
     line-height: 1.5;
 
+    @include underline_link;
+
     p {
       margin: 0 0 1rem;
 
@@ -80,19 +82,6 @@
 
       @media screen and (max-width: 1023px) {
         margin-bottom: 0.75rem;
-      }
-    }
-
-    a {
-      border-bottom: solid 0.0625rem var(--color-primary);
-      transition: border-bottom 0.25s;
-
-      &:hover {
-        border-bottom-color: transparent;
-      }
-
-      @media screen and (max-width: 767px) {
-        border-width: 0.0625rem;
       }
     }
 
@@ -168,12 +157,42 @@
     }
   }
 
+  .footer__itcoop-logo {
+    display: block;
+    border: none;
+    margin-top: 1.5rem;
+    grid-area: service;
+  }
+
+  .footer__itcoop-logo-image {
+    height: 1rem;
+    width: auto;
+  }
+
   &.footer--ecomap {
 
     .footer__inner {
-      grid-template-areas: "description service";
+      grid-template-areas: "description contacts";
       grid-template-columns: 1fr auto;
 
+      .footer__description {
+        font-size: 1rem;
+      }
+
+      .footer__contacts {
+        grid-area: contacts;
+
+        .footer__contacts-description {
+          @include underline_link;
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        grid-template-areas:
+          "description"
+          "contacts";
+        grid-template-columns: 1fr;
+      }
     }
   }
 }

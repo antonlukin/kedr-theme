@@ -22,6 +22,15 @@
 
     <div class="frame-triple__content">
         <?php
+
+        if ( isset( $args['add_region_label'] ) && $args['add_region_label'] ) {
+            kedr_theme_info(
+                'region',
+                '<p class="frame-triple__region">',
+                '</p>'
+            );
+        }
+
         kedr_theme_info(
             'category',
             '<div class="frame-triple__content-category">',

@@ -18,4 +18,14 @@
       padding: 0.625rem 1.25rem;
     }
   }
+
+  &.navigate--small {
+    @extend .frame-triple;
+
+    &:before {
+      display: block;
+      width: 100%;
+      content: "";
+    }
+  }
 }
