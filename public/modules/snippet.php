@@ -90,9 +90,13 @@ class Kedr_Modules_Snippet {
 
         $term = get_term( $term_id, Kedr_Modules_Regions::$taxonomy );
 
-        $image = Kedr_Modules_Subcats::get_image( $term_id, 'full' );
+        $options = (array) get_term_meta( $term_id, '_kedr-subcats-options', true );
+        if ( ! empty( $options['attachment'] ) ) {
+            $image = get_attached_file( $options['attachment'] );
+        }
+
         if ( empty( $image ) ) {
-            $image = esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' );
+            $image = get_template_directory_uri() . '/assets/images/region-placeholder.jpg';
         }
 
         try {
