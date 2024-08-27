@@ -41,12 +41,19 @@ class Kedr_Modules_Snippet {
      */
     public static function load_module() {
         add_action( 'wp_after_insert_post', array( __CLASS__, 'generate_poster' ), 10, 3 );
+        add_action( 'edited_' . Kedr_Modules_Regions::$taxonomy, array( __CLASS__, 'generate_region_poster' ), 10, 3 );
     }
 
     /**
      * Generate poster on post save
      */
     public static function generate_poster( $post_id ) {
+        [$basedir, $baseurl] = self::get_upload_paths();
+        if ( ! $basedir ) {
+            return;
+        }
+        $filename = $post_id . uniqid( '-' ) . '.jpg';
+
         $category = null;
 
         // Get categories list if exist.
@@ -56,31 +63,11 @@ class Kedr_Modules_Snippet {
             $category = $categories[0]->slug;
         }
 
-        if ( ! class_exists( 'PosterEditor\PosterEditor' ) ) {
-            require_once get_template_directory() . '/external/poster-editor.php';
-        }
-
-        $uploads = wp_upload_dir();
-
-        $basedir = $uploads['basedir'] . self::$upload_folder;
-        $baseurl = $uploads['baseurl'] . self::$upload_folder;
-
-        if ( ! wp_is_writable( $basedir ) && ! wp_mkdir_p( $basedir ) ) {
-            return;
-        }
-
-        $filename = $post_id . uniqid( '-' ) . '.jpg';
-
         try {
-            $options = array(
-                'file'       => $basedir . $filename,
-                'color'      => '#48625e',
-                'label'      => esc_html( get_cat_name( $category->term_id ) ),
-                'caption'    => get_the_title( $post_id ),
-                'logo-green' => get_template_directory() . '/assets/images/logosign-green.png',
-                'logo-white' => get_template_directory() . '/assets/images/logosign-white.png',
-                'font-bold'  => get_template_directory() . '/assets/fonts/Raleway-Bold.ttf',
-                'font-thin'  => get_template_directory() . '/assets/fonts/Raleway-Regular.ttf',
+            $options = self::generate_options(
+                $basedir . $filename,
+                esc_html( get_cat_name( $category->term_id ) ),
+                get_the_title( $post_id )
             );
 
             self::include_template( $options, $post_id, $category );
@@ -92,9 +79,46 @@ class Kedr_Modules_Snippet {
     }
 
     /**
+     * Generate region poster on region save
+     */
+    public static function generate_region_poster( $term_id ) {
+        [$basedir, $baseurl] = self::get_upload_paths();
+        if ( ! $basedir ) {
+            return;
+        }
+        $filename = 'region-' . $term_id . uniqid( '-' ) . '.jpg';
+
+        $term = get_term( $term_id, Kedr_Modules_Regions::$taxonomy );
+
+        $image = Kedr_Modules_Subcats::get_image( $term_id, 'full' );
+        if ( empty( $image ) ) {
+            $image = esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' );
+        }
+
+        try {
+            $options = self::generate_options(
+                $basedir . $filename,
+                'Экокарта',
+                $term->name,
+                $image
+            );
+
+            self::include_template( $options, $term_id, null );
+        } catch ( Exception $error ) {
+            return;
+        }
+
+        update_term_meta( $term_id, self::$meta_image, $baseurl . $filename );
+    }
+
+    /**
      * Get proper template for this post
      */
     public static function include_template( $options, $post_id, $category ) {
+        if ( ! class_exists( 'PosterEditor\PosterEditor' ) ) {
+            require_once get_template_directory() . '/external/poster-editor.php';
+        }
+
         if ( $category === 'news' ) {
             return include get_template_directory() . '/includes/posters/snippet-news.php';
         }
@@ -118,10 +142,12 @@ class Kedr_Modules_Snippet {
 
         if ( is_singular() && ! is_front_page() ) {
             $poster = get_post_meta( get_queried_object_id(), self::$meta_image, true );
+        } elseif ( is_tax( Kedr_Modules_Regions::$taxonomy ) ) {
+            $poster = get_term_meta( get_queried_object_id(), self::$meta_image, true );
+        }
 
-            if ( ! empty( $poster ) ) {
-                $image = $poster;
-            }
+        if ( ! empty( $poster ) ) {
+            $image = $poster;
         }
 
         $options = array(
@@ -131,6 +157,48 @@ class Kedr_Modules_Snippet {
         );
 
         return $options;
+    }
+
+    /**
+     * Get upload directory paths for sharing images
+     *
+     * @return array
+     */
+    public static function get_upload_paths() {
+        $uploads = wp_upload_dir();
+
+        $basedir = $uploads['basedir'] . self::$upload_folder;
+
+        if ( ! wp_is_writable( $basedir ) && ! wp_mkdir_p( $basedir ) ) {
+            $basedir = null;
+        }
+
+        $baseurl = $uploads['baseurl'] . self::$upload_folder;
+
+        return array( $basedir, $baseurl );
+    }
+
+    /**
+     * Generate options array for the social sharing image
+     *
+     * @param string $filename The filename for the image.
+     * @param string $label The label text for the image.
+     * @param string $caption The caption text for the image.
+     * @param string $image The path to the thumbnail or main image.
+     * @return array The options array for generating the social sharing image.
+     */
+    public static function generate_options( $filename, $label, $caption, $image = null ) {
+        return array(
+            'file'       => $filename,
+            'color'      => '#48625e',
+            'label'      => $label,
+            'caption'    => $caption,
+            'logo-green' => get_template_directory() . '/assets/images/logosign-green.png',
+            'logo-white' => get_template_directory() . '/assets/images/logosign-white.png',
+            'font-bold'  => get_template_directory() . '/assets/fonts/Raleway-Bold.ttf',
+            'font-thin'  => get_template_directory() . '/assets/fonts/Raleway-Regular.ttf',
+            'thumbnail'  => $image,
+        );
     }
 }
 
