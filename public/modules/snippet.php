@@ -144,7 +144,9 @@ class Kedr_Modules_Snippet {
     public static function get_image() {
         $image = get_template_directory_uri() . '/assets/images/poster-feature.png';
 
-        if ( is_singular() && ! is_front_page() ) {
+        if ( is_post_type_archive( 'region-about' ) ) {
+            $image = get_template_directory_uri() . '/assets/images/poster-ecomap.jpg';
+        } elseif ( is_singular() && ! is_front_page() ) {
             $poster = get_post_meta( get_queried_object_id(), self::$meta_image, true );
         } elseif ( is_tax( Kedr_Modules_Regions::$taxonomy ) ) {
             $poster = get_term_meta( get_queried_object_id(), self::$meta_image, true );
