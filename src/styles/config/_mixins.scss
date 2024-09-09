@@ -164,7 +164,6 @@
 
 @mixin frame__content {
   display: flex;
-  position: relative;
 
   flex-flow: column nowrap;
   align-items: flex-start;
