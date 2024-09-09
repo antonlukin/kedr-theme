@@ -70,7 +70,15 @@ class Kedr_Modules_Snippet {
                 get_the_title( $post_id )
             );
 
-            self::include_template( $options, $post_id, $category );
+            if ( has_post_thumbnail( $post_id ) ) {
+                $options['thumbnail'] = get_attached_file( get_post_thumbnail_id( $post_id ) );
+            }
+
+            if ( has_excerpt( $post_id ) ) {
+                $options['excerpt'] = wp_strip_all_tags( get_the_excerpt( $post_id ) );
+            }
+
+            self::include_template( $options, $category );
         } catch ( Exception $error ) {
             return;
         }
@@ -107,7 +115,7 @@ class Kedr_Modules_Snippet {
                 $image
             );
 
-            self::include_template( $options, $term_id, null );
+            self::include_template( $options, null );
         } catch ( Exception $error ) {
             return;
         }
@@ -118,21 +126,13 @@ class Kedr_Modules_Snippet {
     /**
      * Get proper template for this post
      */
-    public static function include_template( $options, $post_id, $category ) {
+    public static function include_template( $options, $category ) {
         if ( ! class_exists( 'PosterEditor\PosterEditor' ) ) {
             require_once get_template_directory() . '/external/poster-editor.php';
         }
 
         if ( $category === 'news' ) {
             return include get_template_directory() . '/includes/posters/snippet-news.php';
-        }
-
-        if ( has_post_thumbnail( $post_id ) ) {
-            $options['thumbnail'] = get_attached_file( get_post_thumbnail_id( $post_id ) );
-        }
-
-        if ( has_excerpt( $post_id ) ) {
-            $options['excerpt'] = wp_strip_all_tags( get_the_excerpt( $post_id ) );
         }
 
         return include get_template_directory() . '/includes/posters/snippet-article.php';
