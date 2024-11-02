@@ -46,7 +46,9 @@ add_filter(
 add_filter(
     'coauthors_posts_link',
     function( $args, $author ) {
-        if ( ! is_single() || ! has_category( 'news', get_queried_object_id() ) ) {
+        global $post;
+
+        if ( ! is_single() || ! has_category( 'news', $post->ID ) ) {
             return $args;
         }
 
