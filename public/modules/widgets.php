@@ -108,6 +108,16 @@ class Kedr_Modules_Widgets {
                 'after_widget'  => '</div>',
             )
         );
+
+        register_sidebar(
+            array(
+                'name'          => esc_html__( 'Категория "В мире"', 'kedr-theme' ),
+                'id'            => 'kedr-world',
+                'description'   => esc_html__( 'Добавленные виджеты появятся в архиве категории "В мире".', 'kedr-theme' ),
+                'before_widget' => '<div class="frame-%2$s frame-%2$s--bottom">',
+                'after_widget'  => '</div>',
+            )
+        );
     }
 
     /**
