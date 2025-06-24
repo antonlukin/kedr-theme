@@ -55,8 +55,7 @@
 
         <?php
         printf(
-            '<a class="header__donate button" href="%s">%s</a>',
-            esc_url( home_url( '/donate/' ) ),
+            '<a class="header__donate button" href="https://friendly2.me/support/kedr_media/" target="_blank">%s</a>',
             esc_html__( 'Поддержать', 'kedr-theme' )
         );
         ?>
