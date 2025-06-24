@@ -1,1 +1,25 @@
-.wp-block-kedr-help{background-color:var(--wp--custom--color-background);border-radius:.3125rem;box-sizing:border-box;color:var(--wp--custom--color-dark);font-family:var(--wp--preset--font-family--regular);font-size:1.125rem;margin:1rem 0;padding:2rem}.wp-block-kedr-help p{margin:0}.wp-block-kedr-help.has-overlay-background-color{background-color:var(--wp--custom--color-overlay)}.wp-block-kedr-help.has-italic-font{font-family:var(--wp--preset--font-family--serif);font-style:italic}
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/help/editor.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+.wp-block-kedr-help {
+  box-sizing: border-box;
+  margin: 1rem 0;
+  padding: 2rem;
+  font-family: var(--wp--preset--font-family--regular);
+  font-size: 1.125rem;
+  color: var(--wp--custom--color-dark);
+  background-color: var(--wp--custom--color-background);
+  border-radius: 0.3125rem;
+}
+.wp-block-kedr-help p {
+  margin: 0;
+}
+.wp-block-kedr-help.has-overlay-background-color {
+  background-color: var(--wp--custom--color-overlay);
+}
+.wp-block-kedr-help.has-italic-font {
+  font-family: var(--wp--preset--font-family--serif);
+  font-style: italic;
+}
+
+/*# sourceMappingURL=index.css.map*/

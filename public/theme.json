@@ -135,6 +135,22 @@
             }
           ]
         }
+      },
+      "kedr/insertion": {
+        "color": {
+          "palette": [
+            {
+              "name": "Полупрозрачный",
+              "slug": "overlay",
+              "color": "var(--wp--custom--color-overlay)"
+            },
+            {
+              "name": "Альтернативный",
+              "slug": "secondary",
+              "color": "var(--wp--custom--color-background)"
+            }
+          ]
+        }
       }
     },
     "spacing": {

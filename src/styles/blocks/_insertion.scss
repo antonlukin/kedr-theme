@@ -1,0 +1,39 @@
+.wp-block-kedr-insertion {
+  display: block;
+  overflow: hidden;
+
+  padding: 2rem;
+  font-family: var(--font-regular);
+  font-size: 1.125rem;
+
+  color: var(--color-dark);
+  background-color: var(--color-background);
+
+  border-radius: 0.3125rem;
+
+  & > * {
+    margin: 0 auto 1rem;
+  }
+
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+
+  &.has-italic-font {
+    font-family: var(--font-content);
+    font-style: italic;
+  }
+
+  &.has-overlay-background-color {
+    background-color: var(--color-overlay);
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,39 @@
+.wp-block-kedr-insertion {
+  box-sizing: border-box;
+
+  margin: 1rem 0;
+	padding: 2rem;
+  font-family: var(--wp--preset--font-family--regular);
+  font-size: 1.125rem;
+  line-height: 1.5;
+
+  color: var(--wp--custom--color-dark);
+  background-color: var(--wp--custom--color-background);
+
+  border-radius: 0.25rem;
+
+  & > * {
+    display: block;
+
+    width: 100%;
+    max-width: var(--width-content);
+    margin: 0.75rem 0 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+	&.has-overlay-background-color {
+		background-color: var(--wp--custom--color-overlay);
+	}
+
+	&.has-italic-font {
+		font-family: var(--wp--preset--font-family--serif);
+		font-style: italic;
+	}
+}

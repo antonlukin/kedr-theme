@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+    "name": "kedr/insertion",
+    "title": "Врезка",
+    "category": "text",
+	"textdomain": "kedr-theme",
+	"description": "Отображает врезку",
+	"icon": "format-aside",
+	"editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+	"keywords": [
+		"insertion",
+		"врезка",
+		"цитата",
+		"справка"
+	],
+	"attributes": {
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"backgroundColor": {
+			"type": "string",
+			"default": "quote"
+		}
+	}
+}
