@@ -118,6 +118,16 @@ class Kedr_Modules_Widgets {
                 'after_widget'  => '</div>',
             )
         );
+
+        register_sidebar(
+            array(
+                'name'          => esc_html__( 'Категория "Видео"', 'kedr-theme' ),
+                'id'            => 'kedr-video',
+                'description'   => esc_html__( 'Добавленные виджеты появятся в архиве категории "Видео".', 'kedr-theme' ),
+                'before_widget' => '<div class="frame-%2$s frame-%2$s--bottom">',
+                'after_widget'  => '</div>',
+            )
+        );
     }
 
     /**

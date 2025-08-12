@@ -243,7 +243,7 @@ class Kedr_Modules_Postinfo {
     /**
      * Get first url to YouTube video from content blocks
      */
-    private static function parse_video_url( $content ) {
+    public static function parse_video_url( $content ) {
         if ( ! has_blocks( $content ) ) {
             return null;
         }
@@ -259,7 +259,9 @@ class Kedr_Modules_Postinfo {
                 continue;
             }
 
-            if ( $block['attrs']['providerNameSlug'] !== 'youtube' ) {
+            $providers = array( 'youtube', 'vimeo' );
+
+            if ( ! in_array( $block['attrs']['providerNameSlug'], $providers, true ) ) {
                 continue;
             }
 

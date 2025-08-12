@@ -63,6 +63,10 @@ class Kedr_Modules_Snippet {
             $category = $categories[0]->slug;
         }
 
+        if ( empty( $category->term_id ) ) {
+            return;
+        }
+
         try {
             $options = self::generate_options(
                 $basedir . $filename,

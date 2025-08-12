@@ -1,6 +1,6 @@
 <?php
 
-$is_single_region = isset( $args['is_single_region'] ) and $args['is_single_region'];
+$is_single_region = isset( $args['is_single_region'] ) && $args['is_single_region'];
 
 $query       = kedr_theme_get( 'taxonomy_articles' );
 $region_tax  = kedr_theme_get( 'region_taxonomy' );
@@ -46,13 +46,13 @@ if ( ! isset( $region_tax ) ) {
 if ( $query->max_num_pages > 1 ) :
     $navigate_url = home_url( '/region/' . $region_tax . '/' );
     ?>
-     
+
             <nav class="navigate navigate--more">
-                <a href="<?php echo $navigate_url; ?>" class="navigate__button button" data-page="2">
+                <a href="<?php echo esc_url( $navigate_url ); ?>" class="navigate__button button" data-page="2">
                 <?php
                 echo esc_html__( 'Показать еще', 'kedr-theme' );
                 ?>
-                </a>   
+                </a>
             </nav>
         <?php
         endif;
