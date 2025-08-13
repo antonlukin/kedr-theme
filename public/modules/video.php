@@ -28,9 +28,15 @@ class Kedr_Modules_Video {
      * Check if user has access to video category
      */
     public static function check_access() {
-        if ( is_category( self::$slug ) && ! is_user_logged_in() ) {
-            wp_safe_redirect( wp_login_url( get_category_link( get_category_by_slug( self::$slug ) ) ) );
-            exit;
+        if ( is_user_logged_in() ) {
+            return;
+        }
+
+        if ( is_category( self::$slug ) || ( is_single() && has_category( self::$slug ) ) ) {
+            global $wp_query;
+            $wp_query->set_404();
+            status_header( 404 );
+            nocache_headers();
         }
     }
 

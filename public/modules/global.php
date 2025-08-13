@@ -65,9 +65,12 @@ class Kedr_Modules_Global {
             }
         );
 
-        add_action( 'admin_init', function() {
-    remove_action( 'admin_notices', 'update_nag', 3 );
-} );
+        add_action(
+            'admin_init',
+            function () {
+                remove_action( 'admin_notices', 'update_nag', 3 );
+            }
+        );
     }
 
     /**
@@ -186,7 +189,7 @@ class Kedr_Modules_Global {
             $classes[] = 'is-post';
         }
 
-        if ( ! have_posts() ) {
+        if ( is_404() ) {
             $classes[] = 'is-empty';
         }
 
