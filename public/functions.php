@@ -72,7 +72,7 @@ add_action(
         add_theme_support( 'automatic-feed-links' );
 
         // Add custom post formats support
-        add_theme_support( 'post-formats', array( 'gallery', 'video' ) );
+        add_theme_support( 'post-formats', array( 'gallery' ) );
 
         // Add selective refresh support
         add_theme_support( 'customize-selective-refresh-widgets' );
