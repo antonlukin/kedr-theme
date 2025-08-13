@@ -12,17 +12,16 @@
 $options = $args['options'];
 
 if ( ! empty( $options ) ) :
-	?>
-	<ul class="dropdown__menu dropdown__menu--close">
-		<div class="dropdown__items">
-			<?php foreach ( $options as $option ) : ?>
-				<li class="dropdown__item">
-					<a href="<?php echo esc_url( '/region/' . $option->slug . '/' ); ?>" class="dropdown__link">
-						<?php echo esc_html( $option->name ); ?>
-					</a>
-				</li>
-			<?php endforeach; ?>
-		</div>
-	</ul>
+    ?>
+    <ul class="dropdown__menu dropdown__menu--close">
+        <div class="dropdown__items">
+            <?php foreach ( $options as $option ) : ?>
+                <li class="dropdown__item">
+                    <a href="<?php echo esc_url( '/region/' . $option->slug . '/' ); ?>" class="dropdown__link">
+                        <?php echo esc_html( $option->name ); ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </div>
+    </ul>
 <?php endif; ?>
-

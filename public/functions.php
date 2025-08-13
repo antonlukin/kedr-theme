@@ -145,5 +145,6 @@ require_once get_template_directory() . '/modules/region-taxonomy.php';
 require_once get_template_directory() . '/modules/snippet.php';
 require_once get_template_directory() . '/modules/requests.php';
 require_once get_template_directory() . '/modules/subcats.php';
+require_once get_template_directory() . '/modules/video.php';
 require_once get_template_directory() . '/modules/world.php';
 require_once get_template_directory() . '/modules/comments.php';

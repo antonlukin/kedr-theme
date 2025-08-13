@@ -103,7 +103,7 @@ class Kedr_Widget_Single extends WP_Widget {
  */
 add_action(
     'widgets_init',
-    function() {
+    function () {
         register_widget( 'Kedr_Widget_Single' );
     }
 );

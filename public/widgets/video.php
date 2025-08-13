@@ -15,7 +15,7 @@ class Kedr_Widget_Video extends WP_Widget {
     /**
      * Categories to show in photostory widget
      */
-    private $category = 'videos';
+    private $category = 'video';
 
     /**
      * Widget constructor
@@ -51,17 +51,17 @@ class Kedr_Widget_Video extends WP_Widget {
             )
         );
 
+        if ( ! method_exists( 'Kedr_Modules_Postinfo', 'parse_video_url' ) ) {
+            return;
+        }
+
         if ( $query->have_posts() ) {
             echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput
 
             while ( $query->have_posts() ) {
                 $query->the_post();
 
-                $options = array(
-                    'video' => $this->get_video_url( get_the_content() ),
-                );
-
-                get_template_part( 'templates/frame', 'video', $options );
+                get_template_part( 'templates/frame', 'video' );
             }
 
             wp_reset_postdata();
@@ -156,7 +156,9 @@ class Kedr_Widget_Video extends WP_Widget {
                 continue;
             }
 
-            if ( $block['attrs']['providerNameSlug'] !== 'youtube' ) {
+            $providers = array( 'youtube', 'vimeo' );
+
+            if ( ! in_array( $block['attrs']['providerNameSlug'], $providers, true ) ) {
                 continue;
             }
 
@@ -176,7 +178,7 @@ class Kedr_Widget_Video extends WP_Widget {
  */
 add_action(
     'widgets_init',
-    function() {
+    function () {
         register_widget( 'Kedr_Widget_Video' );
     }
 );
