@@ -1,11 +1,26 @@
 <?php
 
 /**
+ * Disable useless assets
+ */
+add_action(
+    'wp_enqueue_scripts',
+    function () {
+        if ( ! is_admin() ) {
+            wp_deregister_style( 'co-authors-plus-avatar-style' );
+            wp_deregister_style( 'co-authors-plus-coauthors-style' );
+            wp_deregister_style( 'co-authors-plus-image-style' );
+        }
+    },
+    20
+);
+
+/**
  * Return default class for author post link
  */
 add_filter(
     'coauthors_posts_link',
-    function( $args ) {
+    function ( $args ) {
         $args['class'] = null;
 
         return $args;
@@ -17,7 +32,7 @@ add_filter(
  */
 add_filter(
     'get_coauthors',
-    function( $coauthors, $post_id ) {
+    function ( $coauthors, $post_id ) {
         if ( ! has_category( 'news', $post_id ) ) {
             return $coauthors;
         }
@@ -45,7 +60,7 @@ add_filter(
  */
 add_filter(
     'coauthors_posts_link',
-    function( $args, $author ) {
+    function ( $args, $author ) {
         global $post;
 
         if ( ! is_single() || ! has_category( 'news', $post->ID ) ) {
@@ -71,7 +86,7 @@ add_filter(
  */
 add_filter(
     'posts_search',
-    function( $where ) {
+    function ( $where ) {
         if ( is_admin() || ! is_search() ) {
             return $where;
         }

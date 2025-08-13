@@ -60,10 +60,14 @@ class Kedr_Modules_Global {
 
         add_action(
             'admin_init',
-            function() {
+            function () {
                 remove_action( 'admin_head', 'wp_site_icon' );
             }
         );
+
+        add_action( 'admin_init', function() {
+    remove_action( 'admin_notices', 'update_nag', 3 );
+} );
     }
 
     /**
@@ -250,7 +254,7 @@ class Kedr_Modules_Global {
             );
         }
 
-        if ( is_tax('region') ) {
+        if ( is_tax( 'region' ) ) {
             return sprintf(
                 '<h1 class="caption__title region__content-title">%s</h1>',
                 single_term_title( '', false )

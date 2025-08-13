@@ -23,11 +23,11 @@ endif;
 ?>
 
 <?php if ( have_posts() ) : ?>
-    <section class="frame-video">
+    <section class="frame-asset">
         <?php
         while ( have_posts() ) :
             the_post();
-            get_template_part( 'templates/frame', 'video' );
+            get_template_part( 'templates/frame', 'asset' );
         endwhile;
         ?>
     </section>
