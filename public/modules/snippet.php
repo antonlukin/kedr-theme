@@ -52,6 +52,7 @@ class Kedr_Modules_Snippet {
         if ( ! $basedir ) {
             return;
         }
+
         $filename = $post_id . uniqid( '-' ) . '.jpg';
 
         $category = null;
@@ -60,7 +61,7 @@ class Kedr_Modules_Snippet {
         $categories = get_the_category( $post_id );
 
         if ( ! empty( $categories ) ) {
-            $category = $categories[0]->slug;
+            $category = $categories[0];
         }
 
         if ( empty( $category->term_id ) ) {
@@ -82,7 +83,7 @@ class Kedr_Modules_Snippet {
                 $options['excerpt'] = wp_strip_all_tags( get_the_excerpt( $post_id ) );
             }
 
-            self::include_template( $options, $category );
+            self::include_template( $options, $category->slug );
         } catch ( Exception $error ) {
             return;
         }
