@@ -96,37 +96,12 @@ class Kedr_Modules_Embeds {
             return $result;
         }
 
-        if ( ! preg_match( '#https?://(?:.+\.)?vimeo\.com/(?:video/)?([\d]+).*#i', $url, $match ) ) {
+        // Матчим id и возможный hash из пути вида /{id}/{h}
+        if ( ! preg_match( '#https?://(?:player\.)?vimeo\.com/(?:video/|.*?/)?(\d+)(?:/([a-z0-9]+))?#i', $url, $m ) ) {
             return $result;
         }
 
-        $request = wp_remote_get( "https://vimeo.com/api/v2/video/{$match[1]}.json" );
-        $preview = '';
-
-        if ( ! is_wp_error( $request ) ) {
-            $meta = json_decode( wp_remote_retrieve_body( $request ) );
-
-            foreach ( array( 'thumbnail_large', 'thumbnail_medium', 'thumbnail_small' ) as $size ) {
-                if ( isset( $meta[0]->$size ) ) {
-                    $preview = $meta[0]->$size;
-
-                    break;
-                }
-            }
-        }
-
-        $result = sprintf(
-            '<div class="embed embed--vimeo" data-embed="%1$s">%2$s</div>',
-            sprintf(
-                'https://player.vimeo.com/video/%s?byline=0&autoplay=1',
-                esc_attr( $match[1] )
-            ),
-            sprintf(
-                '<a class="embed__dummy" href="%1$s" target="_blank" style="background-image: url(%2$s)"></a>',
-                esc_url( $url ),
-                esc_url( $preview )
-            )
-        );
+        $result = sprintf( '<div class="embed">%s</div>', $result );
 
         return $result;
     }
