@@ -48,6 +48,10 @@ class Kedr_Modules_Snippet {
      * Generate poster on post save
      */
     public static function generate_poster( $post_id ) {
+        if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) {
+            return;
+        }
+
         [$basedir, $baseurl] = self::get_upload_paths();
         if ( ! $basedir ) {
             return;
@@ -55,23 +59,33 @@ class Kedr_Modules_Snippet {
 
         $filename = $post_id . uniqid( '-' ) . '.jpg';
 
-        $category = null;
+        $category      = null;
+        $category_name = '';
+        $category_slug = '';
 
-        // Get categories list if exist.
-        $categories = get_the_category( $post_id );
+        $post_type = get_post_type( $post_id );
 
-        if ( ! empty( $categories ) ) {
-            $category = $categories[0];
-        }
+        if ( $post_type === 'region-about' ) {
+            $category_name = __( 'Экокарта', 'kedr-theme' );
+            $category_slug = 'region-about';
+        } else {
+            $categories = get_the_category( $post_id );
+            if ( ! empty( $categories ) ) {
+                $category = $categories[0];
+            }
 
-        if ( empty( $category->term_id ) ) {
-            return;
+            if ( empty( $category->term_id ) ) {
+                return;
+            }
+
+            $category_name = esc_html( get_cat_name( $category->term_id ) );
+            $category_slug = $category->slug;
         }
 
         try {
             $options = self::generate_options(
                 $basedir . $filename,
-                esc_html( get_cat_name( $category->term_id ) ),
+                $category_name,
                 get_the_title( $post_id )
             );
 
@@ -83,7 +97,7 @@ class Kedr_Modules_Snippet {
                 $options['excerpt'] = wp_strip_all_tags( get_the_excerpt( $post_id ) );
             }
 
-            self::include_template( $options, $category->slug );
+            self::include_template( $options, $category_slug );
         } catch ( Exception $error ) {
             return;
         }
