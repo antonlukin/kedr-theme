@@ -31,15 +31,9 @@ class Kedr_Modules_Video {
      * Get cached term id for the video category
      */
     private static function get_video_term_id() {
-        if ( ! is_null( self::$term_id_cache ) ) {
-            return self::$term_id_cache;
-        }
-
         $term = get_category_by_slug( self::$slug );
 
-        self::$term_id_cache = $term ? (int) $term->term_id : 0;
-
-        return self::$term_id_cache;
+        return $term ? (int) $term->term_id : 0;
     }
 
     /**
@@ -79,10 +73,12 @@ class Kedr_Modules_Video {
             $term_id = self::get_video_term_id();
 
             if ( $term_id ) {
-                $not_in   = (array) $query->get( 'category__not_in', array() );
-                $not_in[] = (int) $term_id;
-                $not_in   = array_values( array_unique( array_map( 'intval', $not_in ) ) );
-                $query->set( 'category__not_in', $not_in );
+                $not_in = (array) $query->get( 'category__not_in' );
+
+                if ( ! in_array( (int) $term_id, $not_in, true ) ) {
+                    $not_in[] = (int) $term_id;
+                    $query->set( 'category__not_in', $not_in );
+                }
             }
         }
     }

@@ -235,7 +235,7 @@ class Kedr_Modules_Global {
     /**
      * Custom archive title
      */
-    public static function update_archive_title() {
+    public static function update_archive_title( $title ) {
         if ( is_category() ) {
             return sprintf(
                 '<h1 class="caption__title caption__title--category">%s</h1>',
