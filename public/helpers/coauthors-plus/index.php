@@ -1,15 +1,24 @@
 <?php
-
 /**
  * Disable useless assets
  */
 add_action(
     'wp_enqueue_scripts',
     function () {
-        if ( ! is_admin() ) {
-            wp_deregister_style( 'co-authors-plus-avatar-style' );
-            wp_deregister_style( 'co-authors-plus-coauthors-style' );
-            wp_deregister_style( 'co-authors-plus-image-style' );
+        if ( is_admin() ) {
+            return;
+        }
+
+        $handlers = array( 'co-authors-plus-avatar-style', 'co-authors-plus-coauthors-style', 'co-authors-plus-image-style' );
+
+        foreach ( $handlers as $handler ) {
+            if ( ! wp_style_is( $handler, 'registered' ) ) {
+                wp_register_style( $handler, false, array(), null ); // phpcs:ignore
+            }
+
+            if ( wp_style_is( $handler, 'enqueued' ) ) {
+                wp_dequeue_style( $handler );
+            }
         }
     },
     20

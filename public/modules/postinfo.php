@@ -179,9 +179,7 @@ class Kedr_Modules_Postinfo {
             $image = esc_url( get_template_directory_uri() . '/assets/images/region-placeholder.jpg' );
         }
 
-        return '<img class="region__image-thumbnail" src=' .
-                $image .
-                '>';
+        return '<img class="region__image-thumbnail" src=' . $image . ' alt="">';
     }
 
     /**
@@ -190,8 +188,21 @@ class Kedr_Modules_Postinfo {
     public static function get_video( $output = '' ) {
         $url = self::parse_video_url( get_the_content() );
 
-        if ( ! empty( $url ) ) {
-            $output = apply_filters( 'embed_oembed_html', wp_oembed_get( $url ), $url );
+        if ( ! $url ) {
+            return $output;
+        }
+
+        global $wp_embed;
+
+        $attr = array(
+            'width'  => 736,
+            'height' => 552,
+        );
+
+        $html = $wp_embed->shortcode( $attr, $url );
+
+        if ( $html ) {
+            return $html;
         }
 
         return $output;
@@ -286,7 +297,7 @@ class Kedr_Modules_Postinfo {
             $args = array(
                 'post_type'      => Kedr_Modules_Region_About::$post_type,
                 'posts_per_page' => 1,
-                'tax_query'      => array(
+                'tax_query'      => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
                     array(
                         'taxonomy' => Kedr_Modules_Regions::$taxonomy,
                         'field'    => 'slug',
