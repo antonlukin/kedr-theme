@@ -138,7 +138,7 @@ class Kedr_Widget_Photostory extends WP_Widget {
  */
 add_action(
     'widgets_init',
-    function() {
+    function () {
         register_widget( 'Kedr_Widget_Photostory' );
     }
 );

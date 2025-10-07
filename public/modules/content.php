@@ -18,6 +18,7 @@ class Kedr_Modules_Content {
     public static function load_module() {
         add_filter( 'content_save_pre', array( __CLASS__, 'remove_linked_space' ) );
         add_filter( 'content_save_pre', array( __CLASS__, 'add_links_target' ) );
+        add_filter( 'the_content', array( __CLASS__, 'prepend_help_block' ), 5 );
         add_filter( 'the_content', array( __CLASS__, 'add_map_promo' ) );
     }
 
@@ -37,6 +38,34 @@ class Kedr_Modules_Content {
         $content = links_add_target( wp_unslash( $content ) );
 
         return wp_slash( $content );
+    }
+
+    /**
+     * Prepend the mandatory help block to post content.
+     *
+     * @param string $content Post content.
+     *
+     * @return string
+     */
+    public static function prepend_help_block( $content ) {
+        if ( is_admin() && ! wp_doing_ajax() ) {
+            return $content;
+        }
+
+        global $post;
+
+        if ( empty( $post ) || $post->post_type !== 'post' ) {
+            return $content;
+        }
+
+        $help_text = esc_html__( 'НАСТОЯЩИЙ МАТЕРИАЛ (ИНФОРМАЦИЯ) ПРОИЗВЕДЕН И РАСПРОСТРАНЕН ИНОСТРАННЫМ АГЕНТОМ «КЕДР.МЕДИА» ЛИБО КАСАЕТСЯ ДЕЯТЕЛЬНОСТИ ИНОСТРАННОГО АГЕНТА «КЕДР.МЕДИА». 18+', 'kedr-theme' );
+
+        $block = sprintf(
+            '<div class="wp-block-kedr-help"><p>%s</p></div>' . "\n",
+            wp_kses_post( $help_text )
+        );
+
+        return $block . ltrim( $content );
     }
 
     /**
